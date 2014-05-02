@@ -1,0 +1,49 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Faq
+ *
+ * @ORM\Table(name="faq", indexes={@ORM\Index(name="FK_FAQ_DichVu_idx", columns={"idTTHC"})})
+ * @ORM\Entity
+ */
+class Faq
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NDCauHoi", type="string", length=45, nullable=false)
+     */
+    private $ndcauhoi;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NDCauTraLoi", type="string", length=45, nullable=true)
+     */
+    private $ndcautraloi;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idFAQ", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idfaq;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Tthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idTTHC", referencedColumnName="idTTHC")
+     * })
+     */
+    private $idtthc;
+
+
+}

@@ -1,0 +1,105 @@
+acme_permission_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmePermissionBundle:Default:index }
+admin:
+    pattern:  /function
+    defaults: { _controller: AcmePermissionBundle:Default:index }
+permission:
+    pattern:  /function/permission
+    defaults: { _controller: AcmePermissionBundle:Permission:permission }
+createUser:
+    pattern:  /function/createUser
+    defaults: { _controller: AcmePermissionBundle:Permission:createUser }
+createTTHC:
+    pattern:  /function/createTTHC
+    defaults: { _controller: AcmePermissionBundle:Permission:createTTHC }   
+createLinhvuc:
+    pattern:  /function/createLinhvuc
+    defaults: { _controller: AcmePermissionBundle:Permission:createLinhvuc }       
+initialData:
+    pattern:  /function/initial
+    defaults: { _controller: AcmePermissionBundle:Default:intinialData }
+editPermission:
+    pattern:  /function/editPermission/{id}
+    defaults: { _controller: AcmePermissionBundle:Permission:editPermission }    
+    requirements:
+        id: \d+
+addPermission:
+    pattern:  /function/addPermission/{id}
+    defaults: { _controller: AcmePermissionBundle:Permission:addPermission }        
+    requirements:
+        id: \d+
+statistic:
+    pattern:  /function/statistic
+    defaults: { _controller: AcmePermissionBundle:Permission:statistic }        
+permission_staff:
+    pattern:  /function/showStaff
+    defaults: { _controller: AcmePermissionBundle:Major:showStaff }
+statisticPermissionStaff:
+    pattern:  /function/statisticPermissionStaff
+    defaults: { _controller: AcmePermissionBundle:Major:statisticPermissionStaff }
+statisticStatus:
+    pattern:  /function/statisticStatus
+    defaults: { _controller: AcmePermissionBundle:Major:statisticStatus }
+A&Q:
+    pattern:  /function/A&Q
+    defaults: { _controller: AcmePermissionBundle:Staff:AQ }
+tableUser:
+    pattern:  /function/tableUser/{idElement}
+    defaults: { _controller: AcmePermissionBundle:Default:tableUser }
+tableTTHC:
+    pattern:  /function/tableTTHC/{idElement}
+    defaults: { _controller: AcmePermissionBundle:Default:tableTTHC }
+tableCongdan:
+    pattern:  /function/tableCongdan/{idElement}
+    defaults: { _controller: AcmePermissionBundle:Default:tableCongdan }
+statisticListTTHC:
+    pattern:  /function/statisticListTTHC
+    defaults: { _controller: AcmePermissionBundle:Staff:statisticListTTHC }
+listedTTHC:
+    pattern:  /function/listTTHC/{id}
+    defaults: { _controller: AcmePermissionBundle:Staff:listedTTHC }
+permissionStaff:
+    pattern:  /function/permissionStaff/{id}
+    defaults: { _controller: AcmePermissionBundle:Major:permissionStaff }
+statisticListedTTHC:
+    pattern:  /function/statisticListedTTHC
+    defaults: { _controller: AcmePermissionBundle:Staff:statisticListedTTHC }
+forwardHoso:
+    pattern:  /function/forward
+    defaults: { _controller: AcmePermissionBundle:Staff:forwardHosoTTHC }
+createUserProfile:
+    pattern:  /function/createUserProfile
+    defaults: { _controller: AcmePermissionBundle:Default:createUserProfile }
+reception:
+    pattern:  /function/showreception
+    defaults: { _controller: AcmePermissionBundle:Staff:showreception }  
+giveback:
+    pattern:  /function/giveback
+    defaults: { _controller: AcmePermissionBundle:Staff:giveBackHosoTTHC } 
+viewHosotthc:
+    pattern:  /function/viewHosotthc/{id}
+    defaults: { _controller: AcmePermissionBundle:Staff:viewHosotthc} 
+    requirements:
+        id: \d+
+realReception:
+    pattern:  /function/reception/{id}
+    defaults: { _controller: AcmePermissionBundle:Staff:reception }    
+tenantRegister:
+    pattern:  /
+    defaults: { _controller: AcmePermissionBundle:Default:tenantRegister } 
+createCitizen:
+    pattern:  /function/createCitizen
+    defaults: { _controller: AcmePermissionBundle:Citizen:createCitizen } 
+showExpert:
+    pattern:  /function/showExpert/{id}
+    defaults: { _controller: AcmePermissionBundle:Default:showExpert } 
+createDVTL:
+    pattern:  /function/createDVTL
+    defaults: { _controller: AcmePermissionBundle:Permission:createDVTL } 
+saveHoso:
+    pattern:  /function/savedHS
+    defaults: { _controller: AcmePermissionBundle:Staff:saveHosotthc } 
+test:
+    pattern:  /function/test
+    defaults: { _controller: AcmePermissionBundle:Citizen:test } 

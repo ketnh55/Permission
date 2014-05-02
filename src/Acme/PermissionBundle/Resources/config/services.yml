@@ -1,0 +1,21 @@
+parameters:
+    logoutSuccess.class:
+        Acme\PermissionBundle\DependencyInjection\LogoutHandler
+    loginFail.class:
+        Acme\PermissionBundle\DependencyInjection\LoginFailHandler
+    loginSuccess.class:
+        Acme\PermissionBundle\DependencyInjection\LoginSuccessHandler
+services:
+    logoutSuccess:
+        class: "%logoutSuccess.class%"
+        arguments:  
+            ["@security.context","@router"]
+    loginFail:
+        class: "%loginFail.class%"
+        arguments:  
+            ["@security.context","@router"]
+    loginSuccess:
+        class: "%loginSuccess.class%"
+        arguments:  
+            ["@security.context","@router"]
+            

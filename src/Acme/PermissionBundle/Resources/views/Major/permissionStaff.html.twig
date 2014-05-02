@@ -1,0 +1,75 @@
+{%extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{% block javascript%}
+{% javascripts 
+                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'   
+     
+    %}   
+ <script type="text/javascript" src="{{ asset_url }}"></script>  
+    {{parent()}}             
+    {% endjavascripts %}     
+{%endblock%}
+{% block content%}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success fade in block-inner">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ flashMessage }}
+        </div>
+    {% endfor %}
+        {{ form_start(form_array,{'attr':{'class':'form-horizontal'}}) }}
+        {{ form_errors(form_array) }}
+
+        <div class="panel panel-info">
+        <div class="panel-heading">
+            <h6 class="panel-title"><i class="icon-table"></i>Điều chỉnh thủ tục hành chính</h6>
+        </div>
+        <div class="datatable">
+            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <td>Thủ tục hành chính</td>
+                            <td>Quyền hạn</td>
+                            <td>User</td>
+                        </thead>
+                        {%for form in form_array.quyentthc%} 
+                            
+                            {% if loop.index %2 == 0 %}
+                            <tr class="odd">
+                            {% else %}
+                            <tr class="even">
+                            {% endif%}
+                                <td>{{ form_widget(form.tthc,{'attr': {'class': 'form-control'}}) }}</td>
+                                <td>{{ form_widget(form.quyenhan,{'attr': {'class': 'form-control'}}) }}</td>
+                                <td>{{ form_widget(form.user,{'attr': {'class': 'form-control','disabled':'true'}}) }}</td>
+                            <input type="hidden" name="form[quyentthc][{{loop.index0}}][user]" value="{{form.vars.value.user.id}}">                                
+                            </tr>
+                                                      
+                        {%endfor%}
+                        
+                    </table>
+                    
+                </div>            
+            </div>
+        </div>
+    </div>
+
+        {{ form_widget(form_array.submit,{'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_widget(form_array._token) }}
+        {{form_end(form_array,{'render_rest': false})}}
+
+
+<script>
+    {#var user = document.getElementsByName('quyentthc[user]');
+    for (var i = 0, length = user.length; i < length; i++)
+        user[i].readonly = true;
+     var tthc = document.getElementsByName('quyentthc[tthc]');
+    for (var i = 0, length = tthc.length; i < length; i++)
+        tthc[i].disabled = true;#}
+    function submitAll(){
+        var forms = document.getElementsByName('quyentthc');
+        for (var i = 0, length = forms.length; i < length; i++)
+            forms[i].submit();
+    }
+    
+</script>
+{%endblock%}

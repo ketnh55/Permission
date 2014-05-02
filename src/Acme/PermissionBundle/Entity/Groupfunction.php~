@@ -1,0 +1,49 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Groupfunction
+ *
+ * @ORM\Table(name="groupfunction", indexes={@ORM\Index(name="fk_GroupFunction_Role1_idx", columns={"Role"})})
+ * @ORM\Entity
+ */
+class Groupfunction
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idGroupFunction", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idgroupfunction;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Role
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Role")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Role", referencedColumnName="id")
+     * })
+     */
+    private $role;
+
+
+}

@@ -1,0 +1,49 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Vanbanlienquan
+ *
+ * @ORM\Table(name="vanbanlienquan", indexes={@ORM\Index(name="IDX_C328B7844F4C5628", columns={"Tthc"})})
+ * @ORM\Entity
+ */
+class Vanbanlienquan
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TenVBLQ", type="string", length=300, nullable=false)
+     */
+    private $tenvblq;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PathToVBLQ", type="string", length=300, nullable=false)
+     */
+    private $pathtovblq;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idVanBanLienQuan", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idvanbanlienquan;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Tthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Tthc", referencedColumnName="idTTHC")
+     * })
+     */
+    private $tthc;
+    private $file;
+
+}

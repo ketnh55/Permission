@@ -1,0 +1,50 @@
+{% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}     
+{% block javascript%}
+    {{parent()}}
+    {% javascripts 
+                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
+    %}        
+     <script type="text/javascript" src="{{ asset_url }}"></script>        
+    {% endjavascripts %}     
+{%endblock%}
+{%block  content%}
+         {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+{{ form_errors(form) }}
+<div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-table"></i>Chọn cán bộ thụ lý tiếp nhận</h6>
+                </div>
+                <div class="datatable">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>                                    
+                                    <td>ID</td>
+                                    <td>Họ tên</td>
+                                    <td>Ngày sinh</td>
+                                    <td>Đơn vị</td>
+                                    <td>Chọn</td>
+                                </thead>
+                                {%for chuyenvien in chuyenvienthuly%}
+                                <tr>
+                                    <td>{{chuyenvien.idchuyenvienthuly}}</td>
+                                    <td>{{chuyenvien.namecb}}</td>
+                                    <td>{{chuyenvien.ngaysinh|date('d-m-Y')}}</td>
+                                    <td>{{chuyenvien.donvithuly.namedonvithuly}}</td>
+                                     <td>{{form_widget(form.chuyenvienthuly[chuyenvien.idchuyenvienthuly])}}</td>
+                                </tr>
+                                {%endfor%}
+                                
+                            </table>
+                              <div class="form-actions text-right">
+                            {{ form_widget(form.submit,{'attr': {'class': 'btn btn-primary'}}) }}            
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+</div>
+
+{{ form_widget(form._token) }}
+{{form_end(form, {'render_rest': false})}}
+{%endblock%}

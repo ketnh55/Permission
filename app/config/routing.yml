@@ -1,0 +1,11 @@
+acme_permission:
+    resource: "@AcmePermissionBundle/Resources/config/routing.yml"
+    prefix:   /
+login:
+    path: /login/{domain}
+    defaults: { _controller: AcmePermissionBundle:Security:login,domain:'',username:'',image:''}
+login_check:
+    path: function/login_check
+logout:
+    path: function/logout
+

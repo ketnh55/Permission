@@ -1,0 +1,14 @@
+<ul class="navigation">
+    {% for role in roles%}
+        {%for groupfunc in role.groupFunc%}
+            <li><a href="#" id="second-level"><span>{{groupfunc.name}}</span> <i class="{{groupfunc.icon}}"></i></a>
+                <ul style="display: none;">
+                    {%for function in groupfunc.functions%}
+                        <li><a href="{{path(function.path)}}"><span>{{function.name}}</span></a></li>
+                    {%endfor%}
+                </ul>
+            </li>        
+        {%endfor%}
+    {%endfor%}
+</ul>
+{#{{roles[0].groupfunc[0]}}#}

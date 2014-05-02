@@ -1,0 +1,81 @@
+        {% stylesheets 'bundles/acmepermission/bootstrap/css/bootstrap.min.css' 
+                        'bundles/acmepermission/bootstrap/css/styles.min.css'
+                        'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
+                     filter='cssrewrite' %}
+                    <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %} 
+                    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
+                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+{%block content%}
+<div class="tab-pane fade active in" id="settings">
+              {{ form_start(form,{'attr':{'class':'block','rp;e':'form'}}) }}
+                {{ form_errors(form) }}              
+                <h6 class="heading-hr"><i class="icon-user"></i> Thông tin cá nhân</h6>
+                <div class="block-inner">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Họ tên</label>
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                      </div>
+                      <div class="col-md-6">
+                        <label>CMTND</label>
+                        {{ form_widget(form.cmtnd, {'attr': {'class': 'form-control'}}) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Quê quán</label>
+                        {{ form_widget(form.quequan, {'attr': {'class': 'form-control'}}) }}
+                      </div>
+                      <div class="col-md-6">
+                        <label>Nơi ở hiện tại</label>
+                            {{ form_widget(form.noiohientai, {'attr': {'class': 'form-control'}}) }}
+                      </div>
+                    </div>
+                  </div>   
+                    <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label>Ngày</label>
+                            {{ form_widget(form.ngaysinh.day, {'attr': {'class': 'form-control'}}) }}
+                      </div>
+                      <div class="col-md-4">
+                        <label>Tháng</label>
+                             {{ form_widget(form.ngaysinh.month, {'attr': {'class': 'form-control'}}) }}
+                      </div>
+                      <div class="col-md-4">
+                        <label>Năm</label>
+                             {{ form_widget(form.ngaysinh.year, {'attr': {'class': 'form-control'}}) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Email</label>
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                      </div>
+                      <div class="col-md-6">
+                        <label>Phone </label>
+                        {{ form_widget(form.sdt, {'attr': {'class': 'form-control'}}) }}
+                        <span class="help-block">+84-99-9999-9999</span> </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+
+                    </div>
+                  </div>
+                </div>             
+        </div>
+         <div class="form-actions text-right">
+             {{ form_widget(form.submit,{'attr': {'class': 'btn btn-success','onclick':'xong();'}}) }}
+        </div>
+</div>
+{{ form_widget(form._token) }}
+{{form_end(form, {'render_rest': false})}}
+
+{%endblock%}

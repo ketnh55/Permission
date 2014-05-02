@@ -1,0 +1,80 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Hoidaptt
+ *
+ * @ORM\Table(name="hoidaptt", indexes={@ORM\Index(name="FK_HoiDapTT_DichVu_idx", columns={"TTHC"}), @ORM\Index(name="FK_HoiDapTT_CongDan_idx", columns={"CongDan"})})
+ * @ORM\Entity
+ */
+class Hoidaptt
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CauHoi", type="text", nullable=false)
+     */
+    private $cauhoi;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CauTraLoi", type="text", nullable=true)
+     */
+    private $cautraloi;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isHide", type="boolean", nullable=false)
+     */
+    private $ishide;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="thoigianhoi", type="date", nullable=true)
+     */
+    private $thoigianhoi;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="thoigiantraloi", type="date", nullable=true)
+     */
+    private $thoigiantraloi;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idHoiDapTT", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idhoidaptt;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Tthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="TTHC", referencedColumnName="idTTHC")
+     * })
+     */
+    private $tthc;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Congdan
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Congdan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="CongDan", referencedColumnName="idCongDan")
+     * })
+     */
+    private $congdan;
+
+
+}

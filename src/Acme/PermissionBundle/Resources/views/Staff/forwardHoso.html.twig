@@ -1,0 +1,80 @@
+{%extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{% block javascript%}
+{% javascripts 
+                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
+    %}        
+     <script type="text/javascript" src="{{ asset_url }}"></script>        
+    {% endjavascripts %}     
+    {{parent()}}
+    
+{%endblock%}
+{% block content%}
+{{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+{{ form_errors(form) }}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h6 class="panel-title"><i class="icon-table"></i> Thống kê thủ tục hành chính</h6>
+    </div>
+    <div class="datatable-add-row">
+        <div id="DataTables_Table_17_wrapper" class="dataTables_wrapper" role="grid">
+            <div class="table-responsive">
+                <table class="table">
+                    {%block header%}
+                    <thead>
+                        <td>Id</td>
+                        <td>Công dân</td>
+                        <td>Thủ tục hành chính</td>
+                        <td>Ngày nhận</td>
+                        <td>Ngày hẹn trả</td>
+                        <td>Chuyển thụ lý</td>                        
+                    </thead>
+                    <tfoot>
+                  <tr>
+                    <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                    <th><input type="text" name="search_thu" placeholder="Công dân" class="form-control"></th>
+                    <th><input type="text" name="search_so" placeholder="Thủ tục hành chính" class="form-control"></th>
+                    <th><input type="text" name="search_ngaynhan" placeholder="Ngày nhận" size="10" class="form-control"></th>
+                    <th><input type="text" name="search_ngaytra" placeholder="Ngày trả" size="10" class="form-control"></th>
+                    <th></th>
+                  </tr>
+                    </tfoot>
+                   {%endblock%}
+                {% for hosotthc in hoso%}
+                    {% if loop.index %2 == 0 %}
+                    <tr class="odd">
+                    {% else %}
+                    <tr class="even">
+                    {% endif%}
+                        <td><a href="{{path('viewHosotthc',{'id': hosotthc.idhosotthc})}}">{{hosotthc.idhosotthc}}</a></td>
+                        <td>{{hosotthc.congdan.name}}</td>
+                        <td>{{hosotthc.tthc.nametthc}}</td>
+                        <td>{{hosotthc.ngaynhan|date('d-m-Y')}}</td>
+                        <td>{{hosotthc.ngayhentra|date('d-m-Y')}}</td>
+                        <td>{{form_widget(form.hosotthc[hosotthc.idhosotthc])}}</td>
+                    </tr>
+                {%endfor%}
+                </table>
+                <div class="form-actions text-right">
+                    <button type="button" class="btn btn-success" onclick="check();">Submit</button>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+{{ form_widget(form._token) }}
+{{form_end(form, {'render_rest': false})}}
+<script>
+    function check(){
+       var radios = document.getElementsByName('form[hosotthc][]');
+	for (var i = 0, length = radios.length; i < length; i++) {
+	    if (radios[i].checked) {	        	        
+{#                var id = radios[i].value;
+                window.open('{{path('showExpert',{'id':""})}}','name','height=500,width=800');
+#}                $("form").submit();
+                return;
+	    }
+	}        
+        alert('Bạn chưa chọn hồ sơ');
+    }
+</script>
+{%endblock%}

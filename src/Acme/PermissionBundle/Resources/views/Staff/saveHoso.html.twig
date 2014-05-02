@@ -1,0 +1,60 @@
+{% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{% block javascript%}
+    {% javascripts 
+                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
+    %}  
+    {{parent()}}
+          
+     <script type="text/javascript" src="{{ asset_url }}"></script>        
+    {% endjavascripts %}     
+{%endblock%}
+{%block pagetitle%}
+     <h3>Hồ sơ được lưu trữ <small>Basic/advanced form components</small></h3>
+{%endblock%}
+{%block content %}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h6 class="panel-title"><i class="icon-table"></i> Thống kê thủ tục hành chính</h6>
+    </div>
+    <div class="datatable-add-row">
+        <div id="DataTables_Table_17_wrapper" class="dataTables_wrapper" role="grid">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <td>Id</td>
+                        <td>Thủ tục hành chính</td>
+                        <td>Số biên nhận</td>
+                        <td>Ngày nhận</td>                        
+                        <td>Ngày trả</td>                        
+                        <td>Người tiếp nhận</td>                        
+                    </thead>
+                    <tfoot>
+                  <tr>
+                    <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                    <th><input type="text" name="search_thu" placeholder="Thủ tục hành chính" class="form-control"></th>
+                    <th><input type="text" name="search_so" placeholder="Số biên nhận" class="form-control"></th>
+                    <th><input type="text" name="search_ngaynhan" placeholder="Ngày nhận" class="form-control"></th>
+                    <th><input type="text" name="search_ngaytra" placeholder="Ngày trả" class="form-control"></th>
+                    <th><input type="text" name="search_ngtiepnhan" placeholder="Người tiếp nhận" class="form-control"></th>
+                  </tr>
+                    </tfoot>
+                {% for hoso in hosotthc%}
+                    {% if loop.index %2 == 0 %}
+                    <tr class="odd">
+                    {% else %}
+                    <tr class="even">
+                    {% endif%}
+                        <td><a href="{{path('viewHosotthc',{'id':hoso.idhosotthc})}}">{{hoso.idhosotthc}}</a></td>                        
+                        <td>{{hoso.tthc.nametthc}}</td>
+                        <td>{{hoso.sobiennhanhoso}}</td>
+                        <td>{{hoso.ngaynhan|date('d-m-y')}}</td>
+                        <td>{{hoso.ngayhentra|date('d-m-y')}}</td>
+                        <td>{{hoso.tthc.quyentthc[1].user.thontincanhan.hoten}}</td>
+                    </tr>
+                {%endfor%}
+                </table>
+            </div>            
+        </div>
+    </div>
+</div>
+{% endblock%}

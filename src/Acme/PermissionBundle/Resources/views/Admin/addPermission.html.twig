@@ -1,0 +1,8 @@
+{# empty Twig template #}
+{%extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{% block content%}
+<h2>Thêm quyền hạn người dùng - {{user.username}}</h2>
+{{ form_start(form) }}
+{{ form_errors(form) }} 
+{{form_end(form)}}
+{%endblock%}

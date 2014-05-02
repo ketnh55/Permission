@@ -1,0 +1,125 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<p>
+    <strong>Giấy biên nhận </strong>
+</p>
+<table border="0" cellspacing="0" cellpadding="0" width="680">
+    <tbody>
+        <tr>
+            <td width="302" valign="top">
+                <p align="center">                    
+                    {{app.user.tenant.tendonvi}}
+                    <strong>
+                        <br/>
+                        {{app.user.tenant.tendonvi}}
+                        <br/>
+                        <br/>
+                    </strong>
+                    <strong></strong>
+                </p>
+            </td>
+            <td width="378" valign="top">
+                                    <strong>
+                        CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                        <br/>
+                    </strong>
+                    <strong>Độc lập – Tự do – Hạnh phúc</strong>
+                    <strong>
+                        <br/>
+                        <br/>
+                    </strong>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="302" valign="top">
+                <p align="center">
+                    Số: /GBN- {{hoso.sobiennhanhoso}}
+                </p>
+            </td>
+            <td width="378" valign="top">
+                <p align="right">
+                    <em> Hà Nội , ngày {{"now"|date('d')}} tháng {{"now"|date('m')}} {{"now"|date('Y')}}</em>
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p align="center">
+    <strong></strong>
+</p>
+<p align="center">
+    <strong>GIẤY BIÊN NHẬN</strong>
+</p>
+<p align="center">
+    <strong>Hồ sơ số {{hoso.idhosotthc}}</strong>
+</p>
+<p align="center">
+    <strong>--------------</strong>
+</p>
+<p>
+    Họ tên cán bộ: {{chuyenvienthuly.thontincanhan.hoten}}
+</p>
+<p>
+    Chức vụ, đơn vị công tác:Cán bộ bộ phận một cửa
+</p>
+<p>
+    Đã tiếp nhận hồ sơ của: 
+</p>
+<p>
+    Ông (bà): {{hoso.congdan.name}}
+</p>
+<p>
+    Giấy tờ bao gồm:
+</p>
+{%for dinhkem in hoso.tthc.dinhkem%}
+<p>
+    {{loop.index}}: {{dinhkem.tenfiledk}}
+</p>
+{%endfor%}
+<table border="0" cellspacing="0" cellpadding="0" width="590">
+    <tbody>
+        <tr>
+            <td width="295" valign="top">
+                <p>
+                    <strong>
+                        <em>
+                            <br/>
+                            Nơi nhận: 
+                            <br/>
+                        </em>
+                    </strong>
+                    - Hà Nội
+                    <br/>
+                    - Lưu: Hồ sơ.
+                </p>
+            </td>
+            <td width="295" valign="top">
+                <p align="center">
+                    <strong>
+                        NGƯỜI TIẾP NHẬN
+                        <br/>
+                    </strong>
+                    <strong>
+                        <br/>
+                    </strong>
+                    <em>
+                        (Ký tên, đóng dấu (nếu có))
+                        <br/>
+                        <br/>
+                    </em>
+                    <strong>Họ và tên </strong>
+                    <strong>{{chuyenvienthuly.thontincanhan.hoten}}</strong>
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <strong><em>Ghi chú:</em></strong>
+</p>
+<p>
+    (1) Đề nghị chuyên viên thụ lý giữ giấy biên nhận cẩn thận để làm chứng cứ xác minh.
+</p>
+<p>
+    (2) Nếu hồ sơ bị thất lạc,người nhận phải chịu hoàn toàn trách nhiệm trước cơ quan cũng như pháp luật
+</p>

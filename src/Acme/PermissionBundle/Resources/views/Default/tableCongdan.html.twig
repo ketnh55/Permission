@@ -1,0 +1,83 @@
+        {% stylesheets 'bundles/acmepermission/bootstrap/css/bootstrap.min.css' 
+                        'bundles/acmepermission/bootstrap/css/styles.min.css'
+                        'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
+                     filter='cssrewrite' %}
+                    <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}  
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+        <script>
+                $(document).ready(function () {
+                $("li").click(function () {
+                $('li > ul').not($(this).children("ul")).hide();
+                $(this).children("ul").toggle();
+            });
+            });
+        </script>
+        {% javascripts 
+
+                        '@AcmePermissionBundle/Resources/public/bootstrap/js/*' 
+                        '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'
+        %}
+        
+         <script type="text/javascript" src="{{ asset_url }}"></script>
+        
+        {% endjavascripts %}          
+{%block content %}
+     {{ form_start(form) }}
+            {{ form_errors(form) }} 
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-table"></i> Bảng người dùng</h6>
+                </div>
+                <div class="datatable">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <td></td>
+                                    <td>ID</td>
+                                    <td>Username</td>
+                                    <td>Email</td>
+                                </thead>
+                            {% for congdan in congdans%}
+                                {% if loop.index %2 == 0 %}
+                                <tr class="odd">
+                                {% else %}
+                                <tr class="even">
+                                {% endif%}
+                                    <td>{{form_widget(form.congdans[congdan.idcongdan])}}</td>
+                                    <td>{{congdan.idcongdan}}</td>
+                                    <td>{{congdan.name}}</td>
+                                    <td id="children_user">{{congdan.name}}</td>
+                                </tr>
+                            {%endfor%}
+                            </table>
+                        </div>            
+                        <div class="form-actions text-right">
+                            <input type="button" value="Chọn" onclick="xong();" />  
+                            <input type="button" value="Đóng" onclick="closewindow();" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{form_end(form, {'render_rest': false})}}
+{% endblock%}
+<script>
+    function xong() 
+    { 
+{#        opener.document.getElementById('{{idElement}}').value = "xyz";#}
+	var radios = document.getElementsByName('form[congdans][]');
+	for (var i = 0, length = radios.length; i < length; i++) {
+	    if (radios[i].checked) {
+	        opener.document.getElementById('{{idElement}}').value= radios[i].value;
+                
+	    }
+	}
+        close();
+    }  
+    function closewindow(){
+	window.close();
+}
+     </script>
+{#{{form(form)}}#}

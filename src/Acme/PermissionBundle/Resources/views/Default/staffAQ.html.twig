@@ -1,0 +1,10 @@
+<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-bubble6"></i><span class="label label-default">{{hoidaptt|length}}</span></a>
+    <div class="popup dropdown-menu dropdown-menu-right">
+        <div class="popup-header"><a href="#" class="pull-left"><i class="icon-spinner7"></i></a><span>Activity</span><a href="#" class="pull-right"><i class="icon-paragraph-justify"></i></a></div>
+        <ul class="popup-messages">    
+            {%for hoidap in hoidaptt%}                
+            <li class="unread"><a href="{{path('A&Q')}}"><img src="{{asset(hoidap.congdan.pathtofile|default('uploads/avatar/anonymous.jpg'))}}" alt="" class="user-face"><strong>{{hoidap.congdan.name}} <i class="icon-attachment2"></i></strong><span>{{hoidap.cauhoi|slice(0,25)}}</span></a></li>
+            {%endfor%}
+        </ul>
+    </div>
+</li>

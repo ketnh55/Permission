@@ -1,0 +1,49 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Dinhkemguihs
+ *
+ * @ORM\Table(name="dinhkemguihs", indexes={@ORM\Index(name="fk_dinhkemguihs_hosotthc1_idx", columns={"hosotthc_idHoSoTTHC"})})
+ * @ORM\Entity
+ */
+class Dinhkemguihs
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TenFileDinhKem", type="string", length=45, nullable=false)
+     */
+    private $tenfiledinhkem;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PathToFile", type="string", length=45, nullable=false)
+     */
+    private $pathtofile;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idDinhKemGuiHS", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $iddinhkemguihs;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Hosotthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Hosotthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="hosotthc_idHoSoTTHC", referencedColumnName="idHoSoTTHC")
+     * })
+     */
+    private $hosotthchosotthc;
+
+
+}

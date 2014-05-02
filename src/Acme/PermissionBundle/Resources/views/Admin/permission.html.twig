@@ -1,0 +1,55 @@
+{% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{% block javascript%}
+{% javascripts 
+                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
+    %}   
+ <script type="text/javascript" src="{{ asset_url }}"></script>  
+    {{parent()}}             
+    {% endjavascripts %}     
+{%endblock%}
+{%block content %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }} 
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
+        </div>
+        <div class="datatable">
+            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <td>ID</td>
+                            <td>Username</td>
+                            <td>Quyền Hạn</td>
+                            <td>Thủ Tục Hành Chính</td>
+                            <td>Sửa</td>
+                            <td>Xóa</td>
+                        </thead>
+                    {% for func in vaitroxuly%}
+                        {% if loop.index %2 == 0 %}
+                        <tr class="odd">
+                        {% else %}
+                        <tr class="even">
+                        {% endif%}
+                            <td>{{func.id}}</td>
+                            <td>{{func.user.username}}</td>
+                            <td>{{func.quyenhan.name}}</td>
+                            <td>{{func.tthc.nametthc}}</td>
+                            <td><a href="{{path('editPermission',{'id':func.id})}}">Edit</a></td>
+                            <td>{{form_widget(form.quyenhan[func.id])}}</td>
+                        </tr>
+                    {%endfor%}
+                    </table>
+                </div>            
+                <div class="form-actions text-right">
+                    {{ form_widget(form.submit,{'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{form_end(form)}}
+    
+{% endblock%}
+     
+{#{{form(form)}}#}

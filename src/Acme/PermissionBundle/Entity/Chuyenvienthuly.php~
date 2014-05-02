@@ -1,0 +1,49 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Chuyenvienthuly
+ *
+ * @ORM\Table(name="chuyenvienthuly", indexes={@ORM\Index(name="FK_CanBo_DVThuLy_idx", columns={"DonViThuLy"})})
+ * @ORM\Entity
+ */
+class Chuyenvienthuly
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NameCB", type="string", length=45, nullable=false)
+     */
+    private $namecb;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="NgaySinh", type="date", nullable=false)
+     */
+    private $ngaysinh;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idChuyenVienThuLy", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idchuyenvienthuly;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Donvithuly
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Donvithuly")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="DonViThuLy", referencedColumnName="idDonViThuLy")
+     * })
+     */
+    private $donvithuly;
+
+
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/Acme/PermissionBundle/Controller/PermissionController.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>98</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/F:/Utility/xampp/htdocs/Permission/app/config/security.yml</file>
+            <file>file:/F:/Utility/xampp/htdocs/Permission/src/Acme/PermissionBundle/Resources/config/services.yml</file>
+            <file>file:/F:/Utility/xampp/htdocs/Permission/src/Acme/PermissionBundle/Resources/config/routing.yml</file>
+            <file>file:/F:/Utility/xampp/htdocs/Permission/src/Acme/PermissionBundle/DependencyInjection/LoginSuccessHandler.php</file>
+            <file>file:/F:/Utility/xampp/htdocs/Permission/src/Acme/PermissionBundle/Entity/Dinhkemtthc.php</file>
+            <file>file:/F:/Utility/xampp/htdocs/Permission/src/Acme/PermissionBundle/Resources/views/Admin/baseAdmin.html.twig</file>
+        </group>
+    </open-files>
+</project-private>

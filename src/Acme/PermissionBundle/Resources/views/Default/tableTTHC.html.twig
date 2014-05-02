@@ -1,0 +1,90 @@
+        {% stylesheets 'bundles/acmepermission/bootstrap/css/bootstrap.min.css' 
+                        'bundles/acmepermission/bootstrap/css/styles.min.css'
+                        'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
+                     filter='cssrewrite' %}
+                    <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}  
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+        <script>
+                $(document).ready(function () {
+                $("li").click(function () {
+                $('li > ul').not($(this).children("ul")).hide();
+                $(this).children("ul").toggle();
+            });
+            });
+        </script>
+        {% javascripts 
+
+                        '@AcmePermissionBundle/Resources/public/lanhdao/js/*' 
+                        '@AcmePermissionBundle/Resources/public/lanhdao/js/plugins/interface/datatables.min.js'
+        %}
+        
+         <script type="text/javascript" src="{{ asset_url }}"></script>
+        
+        {% endjavascripts %}          
+{%block content %}
+     {{ form_start(form) }}
+            {{ form_errors(form) }} 
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-table"></i> Bảng người dùng</h6>
+                </div>
+               {# <div class="form-actions text-left">
+                    {{form_widget(form.username, {'attr': {'id': 'username_field'}})}}
+                </div>#}
+                <div class="datatable">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <td></td>
+                                    <td>ID</td>
+                                    <td>Thủ tục hành chính</td>
+                                </thead>
+                            {% for tthc in vaitro%}
+                                {% if loop.index %2 == 0 %}
+                                <tr class="odd">
+                                {% else %}
+                                <tr class="even">
+                                {% endif%}
+                                    <td>{{form_widget(form.vaitro[tthc.idtthc])}}</td>
+                                    <td>{{tthc.idtthc}}</td>
+                                    <td id="children_user">{{tthc.nametthc}}</td>
+                                </tr>
+                            {%endfor%}
+                            </table>
+                        </div>            
+                        <div class="form-actions text-right">
+                            <input type="button" value="Chọn" onclick="xong();" />  
+                            <input type="button" value="Đóng" onclick="closewindow();" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{form_end(form, {'render_rest': false})}}
+{% endblock%}
+<script>
+    function xong() 
+    { 
+	var radios = document.getElementsByName('form[vaitro][]');
+        {#alert(radios.length);#}
+        var temp;
+	for (var i = 0, length = radios.length; i < length; i++) {
+	    if (radios[i].checked) {
+	        // do whatever you want with the checked radio
+	        opener.document.getElementById('quyentthc_tthc').value= radios[i].value;
+                //opener.document.getElementById('vaitroxuly_user').value= radios[i].id;
+    		{#close();#}
+	        // only one radio can be logically checked, don't check the rest
+	        {#break;#}
+	    }
+	}
+        //opener.document.getElementById('quyentthc_user').value = temp;
+        close();
+    }  
+    function closewindow(){
+	window.close();
+}
+     </script>
+{#{{form(form)}}#}

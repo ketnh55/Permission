@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Londinium - premium responsive admin template by Eugene Kopyov</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/londinium-theme.min.css" rel="stylesheet" type="text/css">
+<link href="css/styles.min.css" rel="stylesheet" type="text/css">
+<link href="css/icons.min.css" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+{#{% javascripts 
+                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/charts/*'   
+     '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/forms/*'   
+'@AcmePermissionBundle/Resources/public/bootstrap/js/bootstrap.min.js'   
+'@AcmePermissionBundle/Resources/public/bootstrap/js/application.js' 
+'@AcmePermissionBundle/Resources/public/bootstrap/js/charts/full/*'
+'@AcmePermissionBundle/Resources/public/bootstrap/js/charts/widgets/*'
+    %}   
+ <script type="text/javascript" src="{{ asset_url }}"></script>  
+{% endjavascripts %} #}   
+<script type="text/javascript" src="{{asset(js/plugins/charts/sparkline.min.js)}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/charts/flot.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/charts/flot.orderbars.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/charts/flot.pie.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/charts/flot.time.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/charts/flot.animator.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/charts/excanvas.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/charts/flot.resize.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/uniform.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/select2.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/inputmask.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/autosize.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/inputlimit.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/listbox.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/multiselect.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/validate.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/tags.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/switch.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/uploader/plupload.full.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/uploader/plupload.queue.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/wysihtml5/wysihtml5.min.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/forms/wysihtml5/toolbar.js}}"></script>
+<script type="text/javascript" src="{{asset({{asset(js/plugins/interface/daterangepicker.js}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/interface/fancybox.min.js}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/interface/moment.js}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/interface/jgrowl.min.js}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/interface/datatables.min.js}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/interface/colorpicker.js}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/interface/fullcalendar.min.js}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/interface/timepicker.min.js}}"></script>
+<script type="text/javascript" src="{{asset(js/plugins/interface/collapsible.min.js}}"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/application.js"></script>
+<script type="text/javascript" src="js/charts/full/vertical_bars.js"></script>
+<script type="text/javascript" src="js/charts/full/horizontal_bars.js"></script>
+<script type="text/javascript" src="js/charts/full/simple_graph.js"></script>
+<script type="text/javascript" src="js/charts/full/auto_filled.js"></script>
+<script type="text/javascript" src="js/charts/full/auto_empty.js"></script>
+<script type="text/javascript" src="js/charts/full/multiple_axes.js"></script>
+<script type="text/javascript" src="js/charts/full/animated_1.js"></script>
+<script type="text/javascript" src="js/charts/full/animated_2.js"></script>
+<script type="text/javascript" src="js/charts/full/animated_3.js"></script>
+<script type="text/javascript" src="js/charts/full/donut.js"></script>
+<script type="text/javascript" src="js/charts/full/pie.js"></script>
+<script type="text/javascript" src="js/charts/full/pie_full.js"></script>
+<script type="text/javascript" src="js/charts/widgets/filled_green.js"></script>
+<script type="text/javascript" src="js/charts/widgets/filled_red.js"></script>
+<script type="text/javascript" src="js/charts/widgets/filled_blue.js"></script>
+<script type="text/javascript" src="js/charts/widgets/updating_1.js"></script>
+<script type="text/javascript" src="js/charts/widgets/updating_2.js"></script>
+<script type="text/javascript" src="js/charts/widgets/updating_3.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse" role="navigation">      
+</div>
+      <div class="col-md-4">
+        <!-- Animated graph 1 -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h6 class="panel-title"><i class="icon-calendar2"></i> Animated graph 1</h6>
+          </div>
+          <div class="panel-body">
+            <div class="graph-standard" id="animated_1"></div>
+          </div>
+        </div>
+        <!-- /animated graph 1 -->
+      </div>
+      <div class="col-md-4">
+        <!-- Animated graph 2 -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h6 class="panel-title"><i class="icon-calendar2"></i> Animated graph 2</h6>
+          </div>
+          <div class="panel-body">
+            <div class="graph-standard" id="animated_2"></div>
+          </div>
+        </div>
+        <!-- /animated graph 2 -->
+      </div>
+      <div class="col-md-4">
+        <!-- Animated graph 3 -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h6 class="panel-title"><i class="icon-calendar2"></i> Animated graph 3</h6>
+          </div>
+          <div class="panel-body">
+            <div class="graph-standard" id="animated_3"></div>
+          </div>
+        </div>
+        <!-- /animated graph 3 -->
+      </div>
+    </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h6 class="panel-title"><i class="icon-calendar2"></i> Vertical bars</h6>
+          </div>
+          <div class="panel-body">
+            <div class="graph-standard" id="vertical_bars"></div>
+          </div>
+        </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tinhtrangthuly
+ *
+ * @ORM\Table(name="tinhtrangthuly", indexes={@ORM\Index(name="FK_TTTL_ChuyenVienTL_idx", columns={"ChuyenVienThuLy"})})
+ * @ORM\Entity
+ */
+class Tinhtrangthuly
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TinhTrangThuLy", type="string", length=45, nullable=false)
+     */
+    private $tinhtrangthuly;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Time", type="datetime", nullable=false)
+     */
+    private $time;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ThuTuThuLy", type="integer", nullable=false)
+     */
+    private $thututhuly;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idTinhTrangThuLy", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtinhtrangthuly;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Chuyenvienthuly
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Chuyenvienthuly")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ChuyenVienThuLy", referencedColumnName="idChuyenVienThuLy")
+     * })
+     */
+    private $chuyenvienthuly;
+
+
+}

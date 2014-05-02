@@ -1,0 +1,49 @@
+{% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{% block javascript%}
+    {{parent()}}
+    {% javascripts 
+                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
+    %}        
+     <script type="text/javascript" src="{{ asset_url }}"></script>        
+    {% endjavascripts %}     
+{%endblock%}
+{%block content %}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
+    </div>
+    <div class="datatable">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <td>Id</td>
+                        <td>Username</td>
+                        <td>Role</td>
+                        <td>TTHC</td>
+                    </thead>
+                {% for user in users%}
+                    {% if loop.index %2 == 0 %}
+                    <tr class="odd">
+                    {% else %}
+                    <tr class="even">
+                    {% endif%}
+                        <td>{{user.id}}</td>
+                        <td>
+                            <a href="{{path('addPermission',{'id':user.id})}}" >Thêm quyền</a>
+                            --{{user.username}}
+                        </td>
+                        <td>
+                            {% for role in user.role%}
+                                {{role.role}},
+                            {%endfor%}
+                        </td>
+                        <td>{{user.quyentthc|length}}</td>
+                    </tr>
+                {%endfor%}
+                </table>
+            </div>            
+        </div>
+    </div>
+</div>
+{% endblock%}

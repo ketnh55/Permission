@@ -1,0 +1,63 @@
+{{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+{{ form_errors(form) }}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h6 class="panel-title"><i class="icon-bubble4"></i> Tạo người dùng</h6>
+    </div>
+    <div class="panel-body">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success fade in block-inner">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ flashMessage }}
+        </div>
+        {% endfor %}
+        <div class="form-group">
+            {{ form_label(form.username, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.username) }}
+                {{ form_errors(form.username) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.password, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.password) }}
+                {{ form_errors(form.password) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.email, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+        </div>
+        <div class="form-group">
+             {{ form_label(form.role, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {% for role in form.role%}
+                <div class="checkbox">
+                    <label>                        
+                      {{ form_widget(role,{'attr': {'class': 'styled'}}) }}
+                      {{ form_label(role) }}
+                    </label>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="form-actions text-right">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>
+
+        {{ form_widget(form._token) }}
+{{form_end(form, {'render_rest': false})}}
+<script>
+    function submit(){
+{#        var temp = $("#user_username").val();
+        $("#user_username").val(temp+"@{{app.user.tenant.domain}}");
+        return false;#}
+        $("#inside").find("form").submit();
+    }
+</script>

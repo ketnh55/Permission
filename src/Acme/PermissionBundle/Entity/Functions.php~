@@ -1,0 +1,63 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Functions
+ *
+ * @ORM\Table(name="functions", indexes={@ORM\Index(name="fk_Function_GroupFunction1_idx", columns={"GroupFunction"})})
+ * @ORM\Entity
+ */
+class Functions
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=45, nullable=false)
+     */
+    private $path;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idFunctions", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idfunctions;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Groupfunction
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Groupfunction")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GroupFunction", referencedColumnName="idGroupFunction")
+     * })
+     */
+    private $groupfunction;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Acme\PermissionBundle\Entity\Role", mappedBy="functionsfunctions")
+     */
+    private $role;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->role = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
