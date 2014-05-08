@@ -8,12 +8,18 @@
     {{parent()}}
     
 {%endblock%}
+{%block title%}
+<title>Chuyển thụ lý hồ sơ</title>
+{%endblock%}
+{%block pagetitle%}
+<h3>Chuyển thụ lý hồ sơ <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>       
+{%endblock%}
 {% block content%}
-{{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+{{ form_start(form,{'attr':{'class':'form-horizontal','id':'thisform'}}) }}
 {{ form_errors(form) }}
 <div class="panel panel-info">
     <div class="panel-heading">
-        <h6 class="panel-title"><i class="icon-table"></i> Thống kê thủ tục hành chính</h6>
+        <h6 class="panel-title"><i class="icon-table"></i> Hồ sơ chờ chuyển thụ lý</h6>
     </div>
     <div class="datatable-add-row">
         <div id="DataTables_Table_17_wrapper" class="dataTables_wrapper" role="grid">
@@ -51,11 +57,14 @@
                         <td>{{hosotthc.ngaynhan|date('d-m-Y')}}</td>
                         <td>{{hosotthc.ngayhentra|date('d-m-Y')}}</td>
                         <td>{{form_widget(form.hosotthc[hosotthc.idhosotthc])}}</td>
+                        {#<td>{{form_widget(form.chuyenvienthuly)}}</td>#}
                     </tr>
                 {%endfor%}
                 </table>
                 <div class="form-actions text-right">
-                    <button type="button" class="btn btn-success" onclick="check();">Submit</button>
+                    <input type="hidden" id="form_chuyenvienthuly" name="form[chuyenvienthuly]"/>
+                    <button type="button" class="btn btn-success" onclick="check();">Tạo mới cán bộ</button>
+                    <button type="button" class="btn btn-success" onclick="check();">Chọn cán bộ</button>                    
                 </div>
             </div>            
         </div>
@@ -68,9 +77,7 @@
        var radios = document.getElementsByName('form[hosotthc][]');
 	for (var i = 0, length = radios.length; i < length; i++) {
 	    if (radios[i].checked) {	        	        
-{#                var id = radios[i].value;
-                window.open('{{path('showExpert',{'id':""})}}','name','height=500,width=800');
-#}                $("form").submit();
+                window.open('{{path('showExpert')}}','name','height=500,width=800');
                 return;
 	    }
 	}        

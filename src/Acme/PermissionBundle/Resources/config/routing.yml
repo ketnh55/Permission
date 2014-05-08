@@ -92,7 +92,7 @@ createCitizen:
     pattern:  /function/createCitizen
     defaults: { _controller: AcmePermissionBundle:Citizen:createCitizen } 
 showExpert:
-    pattern:  /function/showExpert/{id}
+    pattern:  /function/showExpert
     defaults: { _controller: AcmePermissionBundle:Default:showExpert } 
 createDVTL:
     pattern:  /function/createDVTL

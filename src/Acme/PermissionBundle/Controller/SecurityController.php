@@ -10,7 +10,7 @@ class SecurityController extends Controller{
     {        
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Tenant');
         $tenant = $resposity->findBy(array('domain'=>$domain));
-        if (count($tenant) == 0)  throw $this->createNotFoundException('Your domain does not exist.');;
+        if (count($tenant) == 0)  throw $this->createNotFoundException('Your domain does not exist.');
         $request = $this->getRequest();
         $session = $request->getSession();        
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {

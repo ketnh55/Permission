@@ -12,6 +12,8 @@ use Acme\PermissionBundle\Form\HosotthcType;
 use Acme\PermissionBundle\Entity\Vanbanlienquan;
 use Acme\PermissionBundle\Entity\Dinhkemtthc;
 use Acme\PermissionBundle\Entity\Dinhkemnhanhs;
+use Acme\PermissionBundle\Entity\Tthc;
+use Acme\PermissionBundle\Entity\Tinhtrangthuly;
 class StaffController extends Controller
 {
     /**
@@ -21,8 +23,15 @@ class StaffController extends Controller
     {
         $usr = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $tthc = $em->createQuery('SELECT t FROM AcmePermissionBundle:Tthc t JOIN t.linhvuc lv WHERE lv.tenant = :tenantid AND t.ishide=1')
-                ->setParameter('tenantid',$usr->getTenant()->getId())->getResult();        
+        $tthc = $em->createQuery(
+                'SELECT t FROM AcmePermissionBundle:Tthc t '
+                . 'JOIN t.linhvuc lv '
+                . 'JOIN t.quyentthc qt '
+                . 'JOIN qt.user u '                
+                . 'WHERE lv.tenant = :tenantid AND t.ishide=1 AND qt.quyenhan = 2 AND u.id=:userid')
+                ->setParameter('tenantid',$usr->getTenant()->getId())
+                ->setParameter('userid',$usr->getId())
+                ->getResult();        
         return $this->render('AcmePermissionBundle:Staff:showReception.html.twig',array('tthcs'=>$tthc)); 
     }
     /**
@@ -33,6 +42,8 @@ class StaffController extends Controller
         $usr = $this->get('security.context')->getToken()->getUser();       
         $em = $this->getDoctrine()->getManager();
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Tthc');
+        $trangthaiRPS = $this->getDoctrine()->getRepository('AcmePermissionBundle:Trangthaihoso');
+        $tiepnhan = $trangthaiRPS->find(1);
         $tthc = $resposity->find($id);       
         $hosotthc = new Hosotthc();     
         
@@ -46,15 +57,22 @@ class StaffController extends Controller
             'action'=>$this->generateUrl('realReception',array("id"=>$tthc->getIdtthc()))
         ));
         $form->handleRequest($request);
+        $tinhtrangthuly = new Tinhtrangthuly();
+        $tinhtrangthuly->setTrangthaihoso($tiepnhan);
         if($form->isValid()){
-            $random = rand();
+            $random = rand();            
             $hosotthc->setSobiennhanhoso($random);
+            $now = new \DateTime();
+            $tinhtrangthuly->setTime($now);            
             foreach($hosotthc->getDinhkemnhanhs() as $dinhkemnhanhs){
                 $dinhkemnhanhs->upload();
                 $dinhkemnhanhs->setHosoTthc($hosotthc);
-                $em->persist($dinhkemnhanhs);
-            }
-            $em->persist($hosotthc);
+                $em->persist($dinhkemnhanhs);                
+            }            
+            $em->persist($hosotthc);      
+            $tinhtrangthuly->setHosotthc($hosotthc);
+            $tinhtrangthuly->setChiutrachnhiem($usr);
+            $em->persist($tinhtrangthuly);
             $em->flush();
             $this->get('session')->getFlashBag()->add('notice', 'Nộp hồ sơ thành công!');
             $pdfGenerator = $this->get('siphoc.pdf.generator');
@@ -83,7 +101,7 @@ class StaffController extends Controller
                 ->setParameter('tenant',$usr->getTenant()->getId())
                 ->getResult();   
         if (count($hoidaptt) != 0){
-            $tthc = $hoidaptt[0]->getTthc();
+            $tthc = new Tthc();
             $tthc->setHoidaptt($hoidaptt);
             $form = $this->createFormBuilder($tthc)
                     ->add('hoidaptt','collection',array(
@@ -92,6 +110,7 @@ class StaffController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()){
                 $em->flush();
+                return $this->redirect('A&Q');
             }
             return $this->render('AcmePermissionBundle:Staff:AQ.html.twig',array('hoidaptt'=>$hoidaptt,'form'=>$form->createView()));
         }
@@ -174,9 +193,9 @@ class StaffController extends Controller
     public function forwardHosoTTHCAction(Request $request){
         $usr= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();    
-        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Tinhtrangthuly');
-        $usr= $this->get('security.context')->getToken()->getUser();
-        $tinhtrangthuly = $resposity->find(5);
+        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Trangthaihoso');                
+        $tinhtrangthuly = new Tinhtrangthuly();
+        $tinhtrangthuly->setTrangthaihoso($resposity->find(2));        
         $hoso = $em->createQuery(
             'SELECT hs
             FROM AcmePermissionBundle:Hosotthc hs
@@ -185,7 +204,8 @@ class StaffController extends Controller
             JOIN q.quyenhan qh
             JOIN q.user u
             JOIN t.linhvuc lv
-            WHERE u.id = :userid AND qh.id = 2 AND hs.tinhtrangthuly is NULL AND lv.tenant = :tenant'                
+            JOIN hs.tinhtrangthuly tt
+            WHERE u.id = :userid AND qh.id = 2 AND lv.tenant = :tenant group by hs.idhosotthc having count(tt.trangthaihoso) = 1'                
         )->setParameter('userid',$usr->getId())
                 ->setParameter("tenant",$usr->getTenant()->getId())
                 ->getResult();
@@ -193,13 +213,16 @@ class StaffController extends Controller
                 ->add('hosotthc','entity',array(
                     'class'=>'AcmePermissionBundle:Hosotthc',
                     'query_builder' => function(EntityRepository $er) use ($usr) {
-                        return $er->createQueryBuilder('hs')                                
+                        return $er->createQueryBuilder('hs')                                     
                                 ->JOIN('hs.tthc','t')
                                 ->JOIN('t.quyentthc','q')
                                 ->JOIN ('q.quyenhan','qh')
                                 ->JOIN ('q.user','u')        
                                 ->JOIN ('t.linhvuc',"lv")
-                                ->WHERE ('u.id = :userid AND qh.id = 2 AND hs.tinhtrangthuly is NULL AND lv.tenant = :tenant')
+                                ->JOIN('hs.tinhtrangthuly','tt')
+                                ->WHERE ('u.id = :userid AND qh.id = 2 AND lv.tenant = :tenant')
+                                ->GROUPBY("hs.idhosotthc")
+                                ->HAVING("count(tt.trangthaihoso) = 1")
                                 ->ORDERBY('hs.ngayhentra','desc')
                                 ->setParameter('userid',$usr->getId())
                                 ->setParameter('tenant',$usr->getTenant()->getId());
@@ -208,16 +231,24 @@ class StaffController extends Controller
                     'multiple'=>TRUE,
                     'expanded'=>TRUE
                 ))
+                ->add('chuyenvienthuly','entity',array(
+                    'class'=>'AcmePermissionBundle:Chuyenvienthuly',
+                    'property'=>'idChuyenvienthuly'
+                ))           
                 ->add('submit','submit')
                             ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()){
-            foreach ($form->getData()['hosotthc'] as $hosotthc) {
-                $hosotthc->setTinhtrangthuly($tinhtrangthuly);                
-                $em->flush();        
-               
+            $tinhtrangthuly->setTiepnhan($form->getData()['chuyenvienthuly']);                                                                     
+            foreach ($form->getData()['hosotthc'] as $hosotthc) {                
+                $tinhtrangthuly->setHosotthc($hosotthc);
+                $now = new \DateTime();
+                $tinhtrangthuly->setTime($now);      
+                $em->persist($tinhtrangthuly);
             }
-             return $this->redirect($this->generateUrl('showExpert',array('id'=>$hosotthc->getIdhosotthc())));
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('notice', 'Chuyển thụ lý thành công');
+            return $this->redirect($this->generateUrl('forwardHoso'));
         }
         return $this->render('AcmePermissionBundle:Staff:forwardHoso.html.twig',array('form'=>$form->createView(),'hoso'=>$hoso));
     }
@@ -236,7 +267,8 @@ class StaffController extends Controller
             JOIN t.quyentthc q
             JOIN q.quyenhan qh
             JOIN q.user u        
-            WHERE u.id = :userid AND qh.id = 2 AND hs.tinhtrangthuly =6'                
+            JOIN hs.tinhtrangthuly tt
+            WHERE u.id = :userid AND qh.id = 2 group by hs.idhosotthc having count(tt.trangthaihoso) = 4'                
         )->setParameter('userid',$usr->getId())->getResult();
         $form = $this->createFormBuilder()
                 ->add('hosotthc','entity',array(
@@ -246,8 +278,9 @@ class StaffController extends Controller
                                 ->JOIN('hs.tthc','t')
                                 ->JOIN('t.quyentthc','q')
                                 ->JOIN ('q.quyenhan','qh')
-                                ->JOIN ('q.user','u')        
-                                ->WHERE ('u.id = :userid AND qh.id = 2 AND hs.tinhtrangthuly = 6')
+                                ->JOIN ('q.user','u')     
+                                ->JOIN('hs.tinhtrangthuly','tt')
+                                ->WHERE ('u.id = :userid AND qh.id = 2 AND tt.trangthaihoso = 6')
                                 ->ORDERBY('hs.ngayhentra','desc')
                                 ->setParameter('userid',$usr->getId());
                     },                            
@@ -278,7 +311,8 @@ class StaffController extends Controller
         $hoso = $resposity->createQueryBuilder("h")
                 ->JOIN("h.tthc","t")
                 ->JOIN("t.linhvuc","lv")
-                ->WHERE("lv.tenant = :tenant")
+                ->JOIN("h.tinhtrangthuly","tt")
+                ->WHERE("lv.tenant = :tenant AND tt.trangthaihoso = 7")
                 ->setParameter("tenant",$usr->getTenant()->getId())->getQuery()->getResult();
         return $this->render('AcmePermissionBundle:Staff:saveHoso.html.twig',array('hosotthc'=>$hoso)); 
     }

@@ -37,6 +37,7 @@ class DefaultController extends Controller
             $usr->setPassword($password12);
             $em->persist($thongtincanhan); 
             $em->flush();
+            $this->get('session')->getFlashBag()->add('notice', 'Cập nhật thông tin người dùng thành công!');
         }
         return $this->render('AcmePermissionBundle:Default:profile.html.twig',array('form' => $form->createView()));
     }
@@ -91,7 +92,7 @@ class DefaultController extends Controller
     {
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:TTHC');
         $vaitro = $resposity->findAll();
-        $form = $this->createFormBuilder()// tao checkbox xoa
+        $form = $this->createFormBuilder()
                 ->add('vaitro','entity',array(
                     'class'=>'AcmePermissionBundle:Tthc',
                     'query_builder' => function(EntityRepository $er) use ($user) {
@@ -113,12 +114,13 @@ class DefaultController extends Controller
         $hs = $em->createQuery(
             'SELECT hs
             FROM AcmePermissionBundle:Hosotthc hs
+            JOIN hs.tinhtrangthuly tt 
             JOIN hs.tthc t
             JOIN t.quyentthc q
             JOIN q.quyenhan qh
             JOIN q.user u     
             JOIN t.linhvuc tn
-            WHERE u.id = :userid AND qh.id = 2 AND tn.tenant = :tenantid AND hs.tinhtrangthuly is NULL'                
+            WHERE u.id = :userid AND qh.id = 2 AND tn.tenant = :tenantid AND tt.trangthaihoso = 1'                
         )
                 ->setParameter('userid',$usr->getId())
                 ->setParameter('tenantid',$usr->getTenant()->getId())
@@ -161,12 +163,12 @@ class DefaultController extends Controller
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Role');
         $role = $resposity->findOneBy(array('role'=>'ROLE_ADMIN'));
         $user = new User();
-        $congdan = new Congdan();
-        $congdan->setName("anonymous");
         $form = $this->createFormBuilder($user)
                 ->add('username','text')
                 ->add('password','password')
+                ->add('email','email')
                 ->add('tenant',new TenantRegisterType())
+                ->add('register','submit')
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()){            
@@ -175,51 +177,38 @@ class DefaultController extends Controller
             $password12 = $encoder->encodePassword($user->getPassword(),$user->getSalt());
             $user->setUsername($user->getUsername()."@".$user->getTenant()->getDomain());
             $user->setPassword($password12);
-            $user->addRole($role);
-            $congdan->setTenant($user->getTenant());
-            $em->persist($user);
-            $em->persist($congdan);
+            $user->addRole($role);            
+            $em->persist($user);            
             $em->flush();
             return $this->redirect($this->generateUrl('login',array('domain'=>$user->getTenant()->getDomain())));
         }
         return $this->render('AcmePermissionBundle:Default:blank1.html.twig',array('form'=>$form->createView()));
     }
-    public function showExpertAction(Request $request,$id){
+    public function showExpertAction(){            
         $user= $this->get('security.context')->getToken()->getUser();
-        $chuyenvienthuly = new Chuyenvienthuly();
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Chuyenvienthuly');
-        $form = $this->createFormBuilder()
+        $chuyenvien = $resposity->createQueryBuilder("c")
+                ->JOIN("c.donvithuly","d")
+                ->WHERE("d.tenant = :tenant")
+                ->setParameter("tenant",$user->getTenant()->getId())
+                ->getQuery()
+                ->getResult();
+        $form = $this->createFormBuilder()// tao checkbox xoa
                 ->add('chuyenvienthuly','entity',array(
                     'class'=>'AcmePermissionBundle:Chuyenvienthuly',
                     'query_builder' => function(EntityRepository $er) use ($user) {
                         return $er->createQueryBuilder('c')     
                                 ->JOIN('c.donvithuly','d')
-                                ->WHERE ('d.tenant = :tenant')
-                                ->setParameter('tenant',$user->getTenant()->getId());
-                    },  
-                    'property'=>'namecb',
-                    'expanded'=>TRUE
+                                ->WHERE ('d.tenant = :tenantid')
+                                ->setParameter('tenantid',$user->getTenant()->getId());
+                     },
+                    'property'=>'idChuyenvienthuly',
+                    'expanded'=>TRUE,
+//                    'multiple'=>TRUE
                 ))
                 ->add('submit','submit')
-                            ->getForm();
-        $chuyenvienthuly = $resposity->createQueryBuilder('c')     
-                                ->JOIN('c.donvithuly','d')
-                                ->WHERE ('d.tenant = :tenant')
-                ->setParameter("tenant",$user->getTenant()->getId())->getQuery()->getResult();
-        $form->handleRequest($request);
-        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Hosotthc');
-        $hoso = $resposity->find($id);
-        if ($form->isValid()){
-            
-            $chuyenvien = $form->getData()['chuyenvienthuly'];     
-            $pdfGenerator = $this->get('siphoc.pdf.generator');
-            $pdfGenerator->setName('giaybienhan.pdf');
-            return $pdfGenerator->displayForView(
-                'AcmePermissionBundle:Staff:quittanceForward.html.twig',array('chuyenvienthuly'=>$chuyenvien,'hoso'=>$hoso)
-                );            
-        }
-        
-        return $this->render('AcmePermissionBundle:Default:expert.html.twig',array('form'=>$form->createView(),'chuyenvienthuly'=>$chuyenvienthuly));
+                ->getForm();           
+        return $this->render('AcmePermissionBundle:Default:tableChuyenvien.html.twig',array('chuyenvien'=>$chuyenvien,'form'=>$form->createView()));
         
     }
 }

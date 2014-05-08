@@ -27,7 +27,7 @@
             {{ form_errors(form) }} 
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h6 class="panel-title"><i class="icon-table"></i> Bảng người dùng</h6>
+                    <h6 class="panel-title"><i class="icon-table"></i> Bảng chuyên viên</h6>
                 </div>
                 <div class="datatable">
                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
@@ -36,20 +36,21 @@
                                 <thead>
                                     <td></td>
                                     <td>ID</td>
-                                    <td>Username</td>
-                                    <td>Email</td>
+                                    <td>Họ tên</td>
+                                    <td>Ngày sinh</td>
+                                    <td>Đơn vị</td>
                                 </thead>
-                            {% for user in users%}
+                            {% for user in chuyenvien%}
                                 {% if loop.index %2 == 0 %}
                                 <tr class="odd">
                                 {% else %}
                                 <tr class="even">
                                 {% endif%}
-                                    <td>{{form_widget(form.users[user.id])}}</td>
-                                    <td>{{user.id}}</td>
-                                    <td>{{user.username}}</td>
-                                    <td>{{user.email}}</td>
-                                    {#<td id="children_user">{{user.username}}</td>#}
+                                    <td>{{form_widget(form.chuyenvienthuly[user.idchuyenvienthuly])}}</td>
+                                    <td>{{user.idchuyenvienthuly}}</td>
+                                    <td>{{user.namecb}}</td>
+                                    <td>{{user.ngaysinh|date('d-m-y')}}</td>                                    
+                                    <td>{{user.donvithuly.namedonvithuly}}</td>                                    
                                 </tr>
                             {%endfor%}
                             </table>
@@ -65,11 +66,12 @@
 
 <script>
     function xong() 
-    { 
-	var radios = document.getElementsByName('form[users][]');
+    {       
+	var radios = document.getElementsByName('form[chuyenvienthuly]');
 	for (var i = 0, length = radios.length; i < length; i++) {
 	    if (radios[i].checked) {
-	        opener.document.getElementById('{{idElement}}').value= radios[i].value;
+	        opener.document.getElementById('form_chuyenvienthuly').value= radios[i].value;
+                opener.document.getElementById('thisform').submit();
 	    }
 	}
         window.close();

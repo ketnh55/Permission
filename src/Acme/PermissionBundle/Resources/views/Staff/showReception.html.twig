@@ -1,4 +1,10 @@
 {% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{%block title%}
+<title>Tiếp nhận hồ sơ công dân</title>
+{%endblock%}
+{%block pagetitle%}
+<h3>Tiếp nhận hồ sơ công dân <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>       
+{%endblock%}
 {%block content%}
 <div class="col-lg-12">
         <!-- Page tabs -->
@@ -9,7 +15,7 @@
                     <li class="active"><a href="#{{tthc.idtthc}}" data-toggle="tab"><i class="icon-paragraph-justify2"></i>  {{tthc.nametthc}}</a></li>
                 {%else%}
                 
-                    <li><a href="#{{tthc.idtthc}}" data-toggle="tab"><i class="icon-stats2"></i> {{tthc.nametthc}} <i class="icon-spinner7 spin pull-right"></i></a></li>
+                    <li><a href="#{{tthc.idtthc}}" data-toggle="tab"><i class="icon-stats2"></i> {{tthc.nametthc}}</a></li>
                 {%endif%}
             {%endfor%}           
           </ul>

@@ -25,9 +25,9 @@ class TenantRegisterType extends AbstractType{
             'label' =>'Domain'
         ))
         ->add('ngaysinh','date',array(
-            'label' =>'Ngày sinh'
+            'label' =>'Ngày sinh',
+            'widget'=>'text'
         ))
-        ->add('submit','submit')
             ;
     }
     public function setDefaultOptions(OptionsResolverInterface $resolver)

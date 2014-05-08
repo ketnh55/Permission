@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hosotthc
  *
- * @ORM\Table(name="hosotthc", indexes={@ORM\Index(name="FK_HSTTHC_CongDan_idx", columns={"CongDan"}), @ORM\Index(name="FK_HSTTHC_TTHC_idx", columns={"TTHC"}), @ORM\Index(name="FK_HSTTHC_TTTL_idx", columns={"TinhTrangThuLy"})})
+ * @ORM\Table(name="hosotthc", indexes={@ORM\Index(name="FK_HSTTHC_CongDan_idx", columns={"CongDan"}), @ORM\Index(name="FK_HSTTHC_TTHC_idx", columns={"TTHC"})})
  * @ORM\Entity
  */
 class Hosotthc
@@ -43,44 +43,35 @@ class Hosotthc
     /**
      * @var integer
      *
+     * @ORM\Column(name="sobiennhanhoso", type="integer", nullable=false)
+     */
+    private $sobiennhanhoso;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="idHoSoTTHC", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idhosotthc;
-    /**
-     * @var integer
-     * 
-     * @ORM\Column(name="sobiennhanhoso", type="integer", nullable=false)
-     */
-    private $sobiennhanhoso;
-
-
-    /**
-     * @var \Acme\PermissionBundle\Entity\Tinhtrangthuly
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tinhtrangthuly")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="TinhTrangThuLy", referencedColumnName="idTinhTrangThuLy")
-     * })
-     */
-    private $tinhtrangthuly;
 
     /**
      * @var \Acme\PermissionBundle\Entity\Tthc
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="TTHC", referencedColumnName="idTTHC", nullable=false)
+     *   @ORM\JoinColumn(name="TTHC", referencedColumnName="idTTHC")
      * })
      */
     private $tthc;
+
     /**
      * @var \Acme\PermissionBundle\Entity\Congdan
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Congdan")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="CongDan", referencedColumnName="idCongDan",nullable=false)
+     *   @ORM\JoinColumn(name="CongDan", referencedColumnName="idCongDan")
      * })
      */
     private $congdan;
@@ -88,29 +79,16 @@ class Hosotthc
     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemnhanhs", mappedBy="hosotthc")
     */
     public $dinhkemnhanhs;
+    /**
+    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Tinhtrangthuly", mappedBy="hosotthc")
+    */
+    public $tinhtrangthuly;
     public function __construct()
     {
         $this->dinhkemnhanhs = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    public function getDinhkemnhanhs(){
-            return $this->dinhkemnhanhs;
-    }
-     public function addDinhkemnhanhs(\Acme\PermissionBundle\Entity\Dinhkemnhanhs $dinhkemnhanhs)
-    {
-        $this->dinhkemnhanhs[] = $dinhkemnhanhs;
-
-        return $this;
+        $this->tinhtrangthuly = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Remove user
-     *
-     * @param \Acme\PermissionBundle\Entity\User $user
-     */
-    public function removeDinhkemnhanhs(\Acme\PermissionBundle\Entity\Dinhkemnhanhs $dinhkemnhanhs)
-    {
-        $this->user->removeElement($dinhkemnhanhs);
-    }
 
     /**
      * Set ngaynhan
@@ -205,6 +183,29 @@ class Hosotthc
     }
 
     /**
+     * Set sobiennhanhoso
+     *
+     * @param integer $sobiennhanhoso
+     * @return Hosotthc
+     */
+    public function setSobiennhanhoso($sobiennhanhoso)
+    {
+        $this->sobiennhanhoso = $sobiennhanhoso;
+
+        return $this;
+    }
+
+    /**
+     * Get sobiennhanhoso
+     *
+     * @return integer 
+     */
+    public function getSobiennhanhoso()
+    {
+        return $this->sobiennhanhoso;
+    }
+
+    /**
      * Get idhosotthc
      *
      * @return integer 
@@ -212,29 +213,6 @@ class Hosotthc
     public function getIdhosotthc()
     {
         return $this->idhosotthc;
-    }
-
-    /**
-     * Set tinhtrangthuly
-     *
-     * @param \Acme\PermissionBundle\Entity\Tinhtrangthuly $tinhtrangthuly
-     * @return Hosotthc
-     */
-    public function setTinhtrangthuly(\Acme\PermissionBundle\Entity\Tinhtrangthuly $tinhtrangthuly = null)
-    {
-        $this->tinhtrangthuly = $tinhtrangthuly;
-
-        return $this;
-    }
-
-    /**
-     * Get tinhtrangthuly
-     *
-     * @return \Acme\PermissionBundle\Entity\Tinhtrangthuly 
-     */
-    public function getTinhtrangthuly()
-    {
-        return $this->tinhtrangthuly;
     }
 
     /**
@@ -258,29 +236,6 @@ class Hosotthc
     public function getTthc()
     {
         return $this->tthc;
-    }
-
-    /**
-     * Set donvithuly
-     *
-     * @param \Acme\PermissionBundle\Entity\Donvithuly $donvithuly
-     * @return Hosotthc
-     */
-    public function setDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly = null)
-    {
-        $this->donvithuly = $donvithuly;
-
-        return $this;
-    }
-
-    /**
-     * Get donvithuly
-     *
-     * @return \Acme\PermissionBundle\Entity\Donvithuly 
-     */
-    public function getDonvithuly()
-    {
-        return $this->donvithuly;
     }
 
     /**

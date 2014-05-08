@@ -7,6 +7,12 @@
      <script type="text/javascript" src="{{ asset_url }}"></script>        
     {% endjavascripts %}     
 {%endblock%}
+{%block title%}
+<title>Chọn cán bộ tiếp nhận hồ sơ</title>
+{%endblock%}
+{%block pagetitle%}
+     <h3>Chọn cán bộ tiếp nhận hồ sơ <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+{%endblock%}
 {%block  content%}
          {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
 {{ form_errors(form) }}

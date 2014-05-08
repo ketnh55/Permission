@@ -15,7 +15,7 @@ class Thontincanhan
     /**
      * @var string
      *
-     * @ORM\Column(name="pathtoimage", type="string", length=100, nullable=false)
+     * @ORM\Column(name="pathtoimage", type="string", length=100, nullable=true)
      */
     private $pathtoimage;
     /**

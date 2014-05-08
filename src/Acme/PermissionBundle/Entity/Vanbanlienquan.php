@@ -15,7 +15,7 @@ class Vanbanlienquan
     /**
      * @var string
      *
-     * @ORM\Column(name="TenVBLQ", type="string", length=300, nullable=false)
+     * @ORM\Column(name="TenVBLQ", type="string", length=300, nullable=true)
      */
     private $tenvblq;
 

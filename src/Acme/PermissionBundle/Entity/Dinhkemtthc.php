@@ -15,7 +15,7 @@ class Dinhkemtthc
     /**
      * @var string
      *
-     * @ORM\Column(name="TenFileDK", type="string", length=300, nullable=false)
+     * @ORM\Column(name="TenFileDK", type="string", length=300, nullable=true)
      */
     private $tenfiledk;
 

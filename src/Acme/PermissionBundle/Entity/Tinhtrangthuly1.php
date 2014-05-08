@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Tinhtrangthuly
  *
- * @ORM\Table(name="tinhtrangthuly", indexes={@ORM\Index(name="fk_tinhtrangthuly_Trangthaihoso1_idx", columns={"Trangthaihoso"}), @ORM\Index(name="IDX_33CFE5E1BA4A83C4", columns={"Hosotthc"}), @ORM\Index(name="IDX_33CFE5E1554DDB45", columns={"Chiutrachnhiem"}), @ORM\Index(name="IDX_33CFE5E1405A5954", columns={"Tiepnhan"})})
+ * @ORM\Table(name="tinhtrangthuly", indexes={@ORM\Index(name="FK_TTTL_Chitrachnhiem_idx", columns={"Chiutrachnhiem"}),@ORM\Index(name="FK_TTTL_Tiepnhan_idx", columns={"Tiepnhan"}), @ORM\Index(name="fk_tinhtrangthuly_Trangthaihoso1_idx", columns={"Trangthaihoso"}), @ORM\Index(name="IDX_33CFE5E1BA4A83C4", columns={"Hosotthc"})})
  * @ORM\Entity
  */
-class Tinhtrangthuly
+class Tinhtrangthuly1
 {
     /**
      * @var \DateTime
@@ -57,13 +57,12 @@ class Tinhtrangthuly
      * })
      */
     private $chiutrachnhiem;
-
     /**
      * @var \Acme\PermissionBundle\Entity\Chuyenvienthuly
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Chuyenvienthuly")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Tiepnhan", referencedColumnName="idChuyenVienThuLy")
+     *   @ORM\JoinColumn(name="Tiepnhan", referencedColumnName="idchuyenvienthuly")
      * })
      */
     private $tiepnhan;
@@ -148,6 +147,7 @@ class Tinhtrangthuly
     {
         return $this->hosotthc;
     }
+
 
     /**
      * Set chiutrachnhiem

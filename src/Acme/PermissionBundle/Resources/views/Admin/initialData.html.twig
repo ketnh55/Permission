@@ -1,4 +1,10 @@
 {% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{%block title%}
+<title>Khởi tạo dữ liệu cho hệ thống</title>
+{%endblock%}
+{%block pagetitle%}
+     <h3>Khởi tạo dữ liệu cho hệ thống <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+{%endblock%}
 {% block javascript%}
     {{parent()}}
     {% javascripts 
@@ -14,7 +20,7 @@
         <li class="active"><a href="#inside" data-toggle="tab"><i class="icon-checkbox-partial"></i> Tạo mới người dùng</a></li>
         <li class=""><a href="#outside" data-toggle="tab"><i class="icon-checkbox-unchecked"></i> Tạo mới lĩnh vực hành chính</a></li>
         <li class=""><a href="#advanced" data-toggle="tab"><i class="icon-checkmark3"></i> Tạo mới thủ tục hành chính</a></li>
-        <li class=""><a href="#ok" data-toggle="tab"><i class="icon-checkmark3"></i> Tạo mới thủ tục hành chính</a></li>
+        <li class=""><a href="#ok" data-toggle="tab"><i class="icon-checkmark3"></i>Tạo đơn vị thụ lý</a></li>
       </ul>
       <div class="tab-content">
         <!-- First tab content -->

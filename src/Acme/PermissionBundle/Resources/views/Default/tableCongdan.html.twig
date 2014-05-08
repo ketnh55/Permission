@@ -23,7 +23,6 @@
          <script type="text/javascript" src="{{ asset_url }}"></script>
         
         {% endjavascripts %}          
-{%block content %}
      {{ form_start(form) }}
             {{ form_errors(form) }} 
             <div class="panel panel-info">
@@ -62,7 +61,7 @@
                 </div>
             </div>
             {{form_end(form, {'render_rest': false})}}
-{% endblock%}
+
 <script>
     function xong() 
     { 

@@ -9,12 +9,6 @@
     {% endjavascripts %}     
 {%endblock%}
 {% block content%}
-    {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="alert alert-success fade in block-inner">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-                {{ flashMessage }}
-        </div>
-    {% endfor %}
         {{ form_start(form_array,{'attr':{'class':'form-horizontal'}}) }}
         {{ form_errors(form_array) }}
 
