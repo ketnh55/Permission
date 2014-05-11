@@ -1,28 +1,64 @@
-SET FOREIGN_KEY_CHECKS=0;
+-- phpMyAdmin SQL Dump
+-- version 4.0.4.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 11, 2014 at 11:50 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+--
+-- Database: `kate`
+--
 CREATE DATABASE IF NOT EXISTS `kate` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `kate`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chuyenvienthuly`
+--
 
 CREATE TABLE IF NOT EXISTS `chuyenvienthuly` (
   `idChuyenVienThuLy` int(11) NOT NULL AUTO_INCREMENT,
   `NameCB` varchar(45) NOT NULL,
   `NgaySinh` date NOT NULL,
   `DonViThuLy` int(11) DEFAULT NULL,
+  `quequan` varchar(45) NOT NULL,
+  `noiohientai` varchar(45) NOT NULL,
+  `CMTND` varchar(45) NOT NULL,
+  `email` tinytext NOT NULL,
+  `sdt` tinytext NOT NULL,
   PRIMARY KEY (`idChuyenVienThuLy`),
   KEY `FK_CanBo_DVThuLy_idx` (`DonViThuLy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
-INSERT INTO `chuyenvienthuly` (`idChuyenVienThuLy`, `NameCB`, `NgaySinh`, `DonViThuLy`) VALUES
-(1, 'ABC', '2014-04-07', 1),
-(2, 'Phạm Văn Doanh', '2014-05-14', 2),
-(3, 'Nguyen Thi A', '2014-05-16', 2);
+--
+-- Dumping data for table `chuyenvienthuly`
+--
+
+INSERT INTO `chuyenvienthuly` (`idChuyenVienThuLy`, `NameCB`, `NgaySinh`, `DonViThuLy`, `quequan`, `noiohientai`, `CMTND`, `email`, `sdt`) VALUES
+(1, 'ABC', '2014-04-07', 1, '', '', '', '', ''),
+(2, 'Phạm Văn Doanh', '2014-05-14', 2, '', '', '', '', ''),
+(3, 'Nguyen Thi A', '2014-05-16', 2, '', '', '', '', ''),
+(4, 'Đinh Công Mạnh', '2009-01-01', NULL, '23432', '342432', '1323523', '43243@dfafdas', '2432432'),
+(5, 'Đinh Công Mạnh', '2009-01-01', NULL, '23432', '342432', '1323523', '43243@dfafdas', '2432432'),
+(6, 'Đinh Công Mạnh', '2009-01-01', NULL, 'àda', 'fdaf', '321321', 'fadsf@xn--dada-znac', '321321');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `congdan`
+--
 
 CREATE TABLE IF NOT EXISTS `congdan` (
   `idCongDan` int(11) NOT NULL AUTO_INCREMENT,
@@ -38,6 +74,10 @@ CREATE TABLE IF NOT EXISTS `congdan` (
   PRIMARY KEY (`idCongDan`),
   KEY `IDX_C751475A4E59C462` (`tenant`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
+
+--
+-- Dumping data for table `congdan`
+--
 
 INSERT INTO `congdan` (`idCongDan`, `Name`, `Ngaysinh`, `QueQuan`, `SDT`, `email`, `pathtoimage`, `tenant`, `cmtnd`, `noiohientai`) VALUES
 (1, 'a', '2014-04-14', 'vn', '010000000', 'aa@xyz', '', 3, '', ''),
@@ -83,6 +123,12 @@ INSERT INTO `congdan` (`idCongDan`, `Name`, `Ngaysinh`, `QueQuan`, `SDT`, `email
 (41, 'Phạm Văn Thắng', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 18, '0123456789', 'Hà Nội'),
 (42, 'Lê Văn Dầu', '2009-01-01', 'Hưng Yên', '126566513', 'ket.nguyen.huu@gmail.com', NULL, 18, '343256354', 'Hà Nội');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dinhkemguihs`
+--
+
 CREATE TABLE IF NOT EXISTS `dinhkemguihs` (
   `idDinhKemGuiHS` int(11) NOT NULL AUTO_INCREMENT,
   `TenFileDinhKem` varchar(300) NOT NULL,
@@ -91,6 +137,12 @@ CREATE TABLE IF NOT EXISTS `dinhkemguihs` (
   PRIMARY KEY (`idDinhKemGuiHS`),
   KEY `fk_dinhkemguihs_hosotthc1_idx` (`hosotthc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dinhkemnhanhs`
+--
 
 CREATE TABLE IF NOT EXISTS `dinhkemnhanhs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -101,7 +153,11 @@ CREATE TABLE IF NOT EXISTS `dinhkemnhanhs` (
   PRIMARY KEY (`id`),
   KEY `fk_dinhkemnhanhs_hosotthc1_idx` (`hosotthc`),
   KEY `IDX_264C20294FC789D4` (`dinhkemtthc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=89 ;
+
+--
+-- Dumping data for table `dinhkemnhanhs`
+--
 
 INSERT INTO `dinhkemnhanhs` (`id`, `TenFileDinhKem`, `PathToFile`, `hosotthc`, `dinhkemtthc`) VALUES
 (1, '01_td (1).pdf', 'uploads/attachments/01_td (1).pdf', 1, 19),
@@ -189,7 +245,15 @@ INSERT INTO `dinhkemnhanhs` (`id`, `TenFileDinhKem`, `PathToFile`, `hosotthc`, `
 (83, '1', NULL, 83, 40),
 (84, '1', NULL, 83, 41),
 (85, '1', NULL, 83, 42),
-(86, '1', NULL, 83, 43);
+(86, '1', NULL, 83, 43),
+(87, '1', NULL, 84, 39),
+(88, '1', NULL, 85, 39);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dinhkemtthc`
+--
 
 CREATE TABLE IF NOT EXISTS `dinhkemtthc` (
   `idDinhKemTTHC` int(11) NOT NULL AUTO_INCREMENT,
@@ -199,6 +263,10 @@ CREATE TABLE IF NOT EXISTS `dinhkemtthc` (
   PRIMARY KEY (`idDinhKemTTHC`),
   KEY `IDX_4FC789D44F4C5628` (`Tthc`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
+
+--
+-- Dumping data for table `dinhkemtthc`
+--
 
 INSERT INTO `dinhkemtthc` (`idDinhKemTTHC`, `TenFileDK`, `PathToFile`, `Tthc`) VALUES
 (19, 'uh', 'uploads/attachments/[kickass.to]dragon.tiger.gate.2006.720p.brrip.xvid.ac3.vision.torrent', 25),
@@ -227,6 +295,12 @@ INSERT INTO `dinhkemtthc` (`idDinhKemTTHC`, `TenFileDK`, `PathToFile`, `Tthc`) V
 (42, 'Chứng minh thư của nữ đăng ký kết hôn', NULL, 42),
 (43, 'Giấy tờ khác', NULL, 42);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donvithuly`
+--
+
 CREATE TABLE IF NOT EXISTS `donvithuly` (
   `idDonViThuLy` int(11) NOT NULL AUTO_INCREMENT,
   `NameDonViThuLy` varchar(45) NOT NULL,
@@ -235,9 +309,19 @@ CREATE TABLE IF NOT EXISTS `donvithuly` (
   KEY `IDX_9D1555684E59C462` (`tenant`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- Dumping data for table `donvithuly`
+--
+
 INSERT INTO `donvithuly` (`idDonViThuLy`, `NameDonViThuLy`, `tenant`) VALUES
 (1, 'Sở nhà đất hà nội', 18),
 (2, 'Sở nhà đất hà nội', 18);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq`
+--
 
 CREATE TABLE IF NOT EXISTS `faq` (
   `idFAQ` int(11) NOT NULL AUTO_INCREMENT,
@@ -248,6 +332,12 @@ CREATE TABLE IF NOT EXISTS `faq` (
   KEY `FK_FAQ_DichVu_idx` (`idTTHC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `functions`
+--
+
 CREATE TABLE IF NOT EXISTS `functions` (
   `idFunctions` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -256,6 +346,10 @@ CREATE TABLE IF NOT EXISTS `functions` (
   PRIMARY KEY (`idFunctions`),
   KEY `fk_Function_GroupFunction1_idx` (`GroupFunction`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `functions`
+--
 
 INSERT INTO `functions` (`idFunctions`, `name`, `path`, `GroupFunction`) VALUES
 (1, 'Khởi tạo dữ liệu', 'initialData', 1),
@@ -271,6 +365,12 @@ INSERT INTO `functions` (`idFunctions`, `name`, `path`, `GroupFunction`) VALUES
 (13, 'Trả hồ sơ ', 'giveback', 3),
 (14, 'Hồ sơ lưu trữ', 'saveHoso', 3);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groupfunction`
+--
+
 CREATE TABLE IF NOT EXISTS `groupfunction` (
   `idGroupFunction` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -281,6 +381,10 @@ CREATE TABLE IF NOT EXISTS `groupfunction` (
   KEY `fk_GroupFunction_Role1_idx` (`Role`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
+--
+-- Dumping data for table `groupfunction`
+--
+
 INSERT INTO `groupfunction` (`idGroupFunction`, `name`, `description`, `Role`, `icon`) VALUES
 (1, 'Quản trị hệ thống', NULL, 1, 'icon-screen2'),
 (2, 'Niêm yết thủ tục hành chính', NULL, 2, 'icon-copy'),
@@ -288,6 +392,12 @@ INSERT INTO `groupfunction` (`idGroupFunction`, `name`, `description`, `Role`, `
 (4, 'Thống kê thủ tục hành chính', NULL, 3, 'icon-bars'),
 (5, 'Hỏi đáp trực tuyến', NULL, 2, 'icon-bubble6'),
 (7, 'Phân quyền cán bộ', NULL, 3, 'icon-bug');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hoidaptt`
+--
 
 CREATE TABLE IF NOT EXISTS `hoidaptt` (
   `idHoiDapTT` int(11) NOT NULL AUTO_INCREMENT,
@@ -303,12 +413,22 @@ CREATE TABLE IF NOT EXISTS `hoidaptt` (
   KEY `FK_HoiDapTT_CongDan_idx` (`CongDan`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
+--
+-- Dumping data for table `hoidaptt`
+--
+
 INSERT INTO `hoidaptt` (`idHoiDapTT`, `TTHC`, `CongDan`, `CauHoi`, `CauTraLoi`, `isHide`, `thoigianhoi`, `thoigiantraloi`) VALUES
 (3, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'ok', 0, '2014-05-23', '2014-05-05'),
 (17, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'ok', 0, '2014-05-23', '2014-05-05'),
 (18, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'uh', 0, '2014-05-23', '2014-05-05'),
 (19, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'ok', 0, '2014-05-23', '2014-05-05'),
 (20, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'ok men', 0, '2014-05-23', '2014-05-05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hosotthc`
+--
 
 CREATE TABLE IF NOT EXISTS `hosotthc` (
   `idHoSoTTHC` int(11) NOT NULL AUTO_INCREMENT,
@@ -322,7 +442,11 @@ CREATE TABLE IF NOT EXISTS `hosotthc` (
   PRIMARY KEY (`idHoSoTTHC`),
   KEY `FK_HSTTHC_CongDan_idx` (`CongDan`),
   KEY `FK_HSTTHC_TTHC_idx` (`TTHC`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=84 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
+
+--
+-- Dumping data for table `hosotthc`
+--
 
 INSERT INTO `hosotthc` (`idHoSoTTHC`, `TTHC`, `CongDan`, `NgayNhan`, `NgayHenTra`, `IsSentDVTL`, `IsRecieveDVTL`, `sobiennhanhoso`) VALUES
 (1, 25, 2, '2014-04-21', '2014-04-21', NULL, NULL, 0),
@@ -379,7 +503,15 @@ INSERT INTO `hosotthc` (`idHoSoTTHC`, `TTHC`, `CongDan`, `NgayNhan`, `NgayHenTra
 (80, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 20521),
 (81, 38, 36, '2014-05-06', '2014-05-06', NULL, NULL, 24347),
 (82, 42, 42, '2014-05-08', '2014-05-08', NULL, NULL, 29608),
-(83, 42, 37, '2014-05-08', '2014-05-08', NULL, NULL, 8001);
+(83, 42, 37, '2014-05-08', '2014-05-08', NULL, NULL, 8001),
+(84, 40, 35, '2014-05-11', '2014-05-11', NULL, NULL, 16856),
+(85, 40, 35, '2014-05-11', '2014-05-11', NULL, NULL, 25310);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linhvuc`
+--
 
 CREATE TABLE IF NOT EXISTS `linhvuc` (
   `idLinhVuc` int(11) NOT NULL AUTO_INCREMENT,
@@ -389,6 +521,10 @@ CREATE TABLE IF NOT EXISTS `linhvuc` (
   PRIMARY KEY (`idLinhVuc`),
   KEY `IDX_F09E180E4E59C462` (`tenant`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data for table `linhvuc`
+--
 
 INSERT INTO `linhvuc` (`idLinhVuc`, `NameDV`, `MoTaLinhVuc`, `tenant`) VALUES
 (1, 'đất', '111111111111111', 3),
@@ -408,6 +544,12 @@ INSERT INTO `linhvuc` (`idLinhVuc`, `NameDV`, `MoTaLinhVuc`, `tenant`) VALUES
 (15, 'hôn nhân', 'hôn nhân', 17),
 (16, 'Hôn nhân', 'Đăng ký kết hôn', 18);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quyenhan`
+--
+
 CREATE TABLE IF NOT EXISTS `quyenhan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -417,11 +559,21 @@ CREATE TABLE IF NOT EXISTS `quyenhan` (
   KEY `fk_quyenhan_role1_idx` (`role`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
+--
+-- Dumping data for table `quyenhan`
+--
+
 INSERT INTO `quyenhan` (`id`, `name`, `mota`, `role`) VALUES
 (1, 'niêm yết', NULL, 2),
 (2, 'tiếp nhận', NULL, 2),
 (3, 'phân quyền xử lý', NULL, 4),
 (4, 'hỏi đáp', NULL, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quyentthc`
+--
 
 CREATE TABLE IF NOT EXISTS `quyentthc` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -434,6 +586,10 @@ CREATE TABLE IF NOT EXISTS `quyentthc` (
   KEY `fk_QuyenTTHC_TTHC1_idx` (`TTHC`),
   KEY `fk_QuyenTTHC_Quyenhan1_idx` (`Quyenhan`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=137 ;
+
+--
+-- Dumping data for table `quyentthc`
+--
 
 INSERT INTO `quyentthc` (`id`, `mota`, `User`, `TTHC`, `Quyenhan`) VALUES
 (65, NULL, 20, 25, 1),
@@ -509,6 +665,12 @@ INSERT INTO `quyentthc` (`id`, `mota`, `User`, `TTHC`, `Quyenhan`) VALUES
 (135, NULL, 59, 42, 3),
 (136, NULL, 57, 42, 4);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -516,11 +678,21 @@ CREATE TABLE IF NOT EXISTS `role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
+--
+-- Dumping data for table `role`
+--
+
 INSERT INTO `role` (`id`, `name`, `role`) VALUES
 (1, 'admin', 'ROLE_ADMIN'),
 (2, 'staff', 'ROLE_STAFF'),
 (3, 'major', 'ROLE_MAJOR'),
 (4, 'lanhdao', 'ROLE_LEADER');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_functions`
+--
 
 CREATE TABLE IF NOT EXISTS `role_has_functions` (
   `Role_id` int(11) NOT NULL,
@@ -529,6 +701,12 @@ CREATE TABLE IF NOT EXISTS `role_has_functions` (
   KEY `fk_Role_has_Functions_Functions1_idx` (`Functions_idFunctions`),
   KEY `fk_Role_has_Functions_Role1_idx` (`Role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tenant`
+--
 
 CREATE TABLE IF NOT EXISTS `tenant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -542,6 +720,10 @@ CREATE TABLE IF NOT EXISTS `tenant` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_4E59C462A7A91E0B` (`domain`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `tenant`
+--
 
 INSERT INTO `tenant` (`id`, `hoten`, `quequan`, `CMTND`, `SDT`, `ngaysinh`, `domain`, `tendonvi`) VALUES
 (3, 'Lê Đình Thanh', 'Hà Nội', '0123456789', '0123456789', '2014-04-23', 'uet', 'Đại học công nghệ'),
@@ -559,6 +741,12 @@ INSERT INTO `tenant` (`id`, `hoten`, `quequan`, `CMTND`, `SDT`, `ngaysinh`, `dom
 (17, 'Nguyễn Văn A', 'Hà Nội', '012914971', '01656122711', '1992-11-25', 'kateteddy', 'Lao động chân tay'),
 (18, 'Nguyễn Hữu Kết', 'Hà Nội', '012914951', '01656122711', '1992-11-25', 'coltech', 'Đại học công nghệ');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thontincanhan`
+--
+
 CREATE TABLE IF NOT EXISTS `thontincanhan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hoten` varchar(45) DEFAULT NULL,
@@ -569,6 +757,10 @@ CREATE TABLE IF NOT EXISTS `thontincanhan` (
   `pathtoimage` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `thontincanhan`
+--
 
 INSERT INTO `thontincanhan` (`id`, `hoten`, `quequan`, `CMTND`, `SDT`, `ngaysinh`, `pathtoimage`) VALUES
 (1, 'Nguyyễn Hữu Kết', 'Hà Nội', '0123456789', '0123456789', '2014-04-22', 'uploads/avatar/icon.png'),
@@ -582,6 +774,12 @@ INSERT INTO `thontincanhan` (`id`, `hoten`, `quequan`, `CMTND`, `SDT`, `ngaysinh
 (9, 'Ibra', 'fdsafdas', '031321', '0132413', '1111-11-25', NULL),
 (10, 'Nguyyễn Hữu Kết', 'Hà Nội', '0123456789', '0123456789', '1992-05-23', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tinhtrangthuly`
+--
+
 CREATE TABLE IF NOT EXISTS `tinhtrangthuly` (
   `idTinhTrangThuLy` int(11) NOT NULL AUTO_INCREMENT,
   `Time` datetime NOT NULL,
@@ -594,7 +792,11 @@ CREATE TABLE IF NOT EXISTS `tinhtrangthuly` (
   KEY `IDX_33CFE5E1BA4A83C4` (`Hosotthc`),
   KEY `IDX_33CFE5E1554DDB45` (`Chiutrachnhiem`),
   KEY `IDX_33CFE5E1405A5954` (`Tiepnhan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+
+--
+-- Dumping data for table `tinhtrangthuly`
+--
 
 INSERT INTO `tinhtrangthuly` (`idTinhTrangThuLy`, `Time`, `Chiutrachnhiem`, `Trangthaihoso`, `Hosotthc`, `Tiepnhan`) VALUES
 (5, '2014-04-22 00:00:00', NULL, NULL, 0, NULL),
@@ -616,7 +818,16 @@ INSERT INTO `tinhtrangthuly` (`idTinhTrangThuLy`, `Time`, `Chiutrachnhiem`, `Tra
 (21, '2014-05-07 04:58:35', NULL, 2, 76, 2),
 (22, '2014-05-08 10:27:55', 57, 1, 82, NULL),
 (23, '2014-05-08 10:28:31', 57, 1, 83, NULL),
-(24, '2014-05-08 10:46:51', NULL, 2, 82, 2);
+(24, '2014-05-08 10:46:51', NULL, 2, 82, 2),
+(25, '2014-05-11 04:59:20', 52, 1, 84, NULL),
+(26, '2014-05-11 05:35:11', NULL, 2, 84, 6),
+(27, '2014-05-11 05:36:27', 52, 1, 85, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trangthaihoso`
+--
 
 CREATE TABLE IF NOT EXISTS `trangthaihoso` (
   `idTrangthaihoso` int(11) NOT NULL AUTO_INCREMENT,
@@ -624,9 +835,19 @@ CREATE TABLE IF NOT EXISTS `trangthaihoso` (
   PRIMARY KEY (`idTrangthaihoso`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- Dumping data for table `trangthaihoso`
+--
+
 INSERT INTO `trangthaihoso` (`idTrangthaihoso`, `trangthai`) VALUES
 (1, 'Mới tiếp nhận'),
 (2, 'Chuyển thụ lý');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tthc`
+--
 
 CREATE TABLE IF NOT EXISTS `tthc` (
   `idTTHC` int(11) NOT NULL AUTO_INCREMENT,
@@ -641,6 +862,10 @@ CREATE TABLE IF NOT EXISTS `tthc` (
   KEY `FK_TTHC_DichVu_idx` (`LinhVuc`),
   KEY `FK_TTHC_DVThuLy_idx` (`DonViThuLy`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
+
+--
+-- Dumping data for table `tthc`
+--
 
 INSERT INTO `tthc` (`idTTHC`, `NameTTHC`, `LinhVuc`, `DonViThuLy`, `NoiDungThucHien`, `GiayToHoSo`, `ThoiGianGiaiQuyet`, `IsHide`) VALUES
 (24, 'bán nhà trái phép', 7, NULL, NULL, NULL, NULL, 0),
@@ -663,6 +888,12 @@ INSERT INTO `tthc` (`idTTHC`, `NameTTHC`, `LinhVuc`, `DonViThuLy`, `NoiDungThucH
 (41, 'Đăng ký kết hôn', 15, NULL, NULL, NULL, NULL, 0),
 (42, 'Đăng ký kết hôn', 16, NULL, 'Thực hiện thủ tục đăng ký kết hôn giữa hai công dân khác giới trong phường xã thuộc thẩm quyền', 'Giấy tờ bắt buộc gồm: CMTND của 2 công dân,sổ', '1 tháng', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
@@ -676,6 +907,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `fk_User_Thontincanhan1_idx` (`Thontincanhan`),
   KEY `IDX_8D93D6494E59C462` (`tenant`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
+
+--
+-- Dumping data for table `user`
+--
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `isActive`, `Thontincanhan`, `tenant`) VALUES
 (1, 'admin@uet', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'admin@uet.vnu.edu.vn', NULL, 2, 3),
@@ -717,6 +952,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `isActive`, `Thontinc
 (59, 'leader@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '11111111@aaa', NULL, NULL, 18),
 (60, 'major@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '11111111@aaa', NULL, NULL, 18);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_has_role`
+--
+
 CREATE TABLE IF NOT EXISTS `user_has_role` (
   `User_id` int(11) NOT NULL,
   `Role_id` int(11) NOT NULL,
@@ -724,6 +965,10 @@ CREATE TABLE IF NOT EXISTS `user_has_role` (
   KEY `fk_User_has_Role_Role1_idx` (`Role_id`),
   KEY `fk_User_has_Role_User1_idx` (`User_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_has_role`
+--
 
 INSERT INTO `user_has_role` (`User_id`, `Role_id`) VALUES
 (1, 1),
@@ -761,12 +1006,24 @@ INSERT INTO `user_has_role` (`User_id`, `Role_id`) VALUES
 (55, 4),
 (59, 4);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vaitro`
+--
+
 CREATE TABLE IF NOT EXISTS `vaitro` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `mota` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vaitroxuly`
+--
 
 CREATE TABLE IF NOT EXISTS `vaitroxuly` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -779,6 +1036,12 @@ CREATE TABLE IF NOT EXISTS `vaitroxuly` (
   KEY `fk_Vaitroxuly_HoSoTTHC1_idx` (`HoSoTTHC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vanbanlienquan`
+--
+
 CREATE TABLE IF NOT EXISTS `vanbanlienquan` (
   `idVanBanLienQuan` int(11) NOT NULL AUTO_INCREMENT,
   `TenVBLQ` varchar(300) DEFAULT NULL,
@@ -787,6 +1050,10 @@ CREATE TABLE IF NOT EXISTS `vanbanlienquan` (
   PRIMARY KEY (`idVanBanLienQuan`),
   KEY `IDX_C328B7844F4C5628` (`Tthc`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+
+--
+-- Dumping data for table `vanbanlienquan`
+--
 
 INSERT INTO `vanbanlienquan` (`idVanBanLienQuan`, `TenVBLQ`, `PathToVBLQ`, `Tthc`) VALUES
 (14, 'uh', 'uploads/attachments/[kickass.to]brick.lane.2007.dvdrip.xvid.eng.duqa.torrent', 25),
@@ -807,84 +1074,149 @@ INSERT INTO `vanbanlienquan` (`idVanBanLienQuan`, `TenVBLQ`, `PathToVBLQ`, `Tthc
 (32, 'Nghị định 36CQ về việc đăng ký kết hôn', 'uploads/attachments/zoom.png', 42),
 (33, 'Quyết định của chủ tịch UBND Xã về việc đăng ký kết hôn', 'uploads/attachments/images.jpg', 42);
 
+--
+-- Constraints for dumped tables
+--
 
+--
+-- Constraints for table `chuyenvienthuly`
+--
 ALTER TABLE `chuyenvienthuly`
   ADD CONSTRAINT `FK_2C8715E549B06482` FOREIGN KEY (`DonViThuLy`) REFERENCES `donvithuly` (`idDonViThuLy`);
 
+--
+-- Constraints for table `congdan`
+--
 ALTER TABLE `congdan`
   ADD CONSTRAINT `FK_C751475A4E59C462` FOREIGN KEY (`tenant`) REFERENCES `tenant` (`id`);
 
+--
+-- Constraints for table `dinhkemguihs`
+--
 ALTER TABLE `dinhkemguihs`
   ADD CONSTRAINT `fk_dinhkemguihs_hosotthc1` FOREIGN KEY (`hosotthc`) REFERENCES `hosotthc` (`idHoSoTTHC`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `dinhkemnhanhs`
+--
 ALTER TABLE `dinhkemnhanhs`
   ADD CONSTRAINT `FK_264C20294FC789D4` FOREIGN KEY (`dinhkemtthc`) REFERENCES `dinhkemtthc` (`idDinhKemTTHC`),
   ADD CONSTRAINT `fk_dinhkemnhanhs_hosotthc1` FOREIGN KEY (`hosotthc`) REFERENCES `hosotthc` (`idHoSoTTHC`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `dinhkemtthc`
+--
 ALTER TABLE `dinhkemtthc`
   ADD CONSTRAINT `FK_4FC789D44F4C5628` FOREIGN KEY (`Tthc`) REFERENCES `tthc` (`idTTHC`);
 
+--
+-- Constraints for table `donvithuly`
+--
 ALTER TABLE `donvithuly`
   ADD CONSTRAINT `FK_9D1555684E59C462` FOREIGN KEY (`tenant`) REFERENCES `tenant` (`id`);
 
+--
+-- Constraints for table `faq`
+--
 ALTER TABLE `faq`
   ADD CONSTRAINT `FK_E8FF75CCA24E502` FOREIGN KEY (`idTTHC`) REFERENCES `tthc` (`idTTHC`);
 
+--
+-- Constraints for table `functions`
+--
 ALTER TABLE `functions`
   ADD CONSTRAINT `fk_Function_GroupFunction1` FOREIGN KEY (`GroupFunction`) REFERENCES `groupfunction` (`idGroupFunction`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `groupfunction`
+--
 ALTER TABLE `groupfunction`
   ADD CONSTRAINT `fk_GroupFunction_Role1` FOREIGN KEY (`Role`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `hoidaptt`
+--
 ALTER TABLE `hoidaptt`
   ADD CONSTRAINT `FK_93CB269530A13826` FOREIGN KEY (`CongDan`) REFERENCES `congdan` (`idCongDan`),
   ADD CONSTRAINT `FK_93CB2695D9EB14A2` FOREIGN KEY (`TTHC`) REFERENCES `tthc` (`idTTHC`);
 
+--
+-- Constraints for table `hosotthc`
+--
 ALTER TABLE `hosotthc`
   ADD CONSTRAINT `FK_433CE19230A13826` FOREIGN KEY (`CongDan`) REFERENCES `congdan` (`idCongDan`),
   ADD CONSTRAINT `FK_433CE192D9EB14A2` FOREIGN KEY (`TTHC`) REFERENCES `tthc` (`idTTHC`);
 
+--
+-- Constraints for table `linhvuc`
+--
 ALTER TABLE `linhvuc`
   ADD CONSTRAINT `FK_F09E180E4E59C462` FOREIGN KEY (`tenant`) REFERENCES `tenant` (`id`);
 
+--
+-- Constraints for table `quyenhan`
+--
 ALTER TABLE `quyenhan`
   ADD CONSTRAINT `fk_quyenhan_role1` FOREIGN KEY (`role`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `quyentthc`
+--
 ALTER TABLE `quyentthc`
   ADD CONSTRAINT `fk_QuyenTTHC_Quyenhan1` FOREIGN KEY (`Quyenhan`) REFERENCES `quyenhan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_QuyenTTHC_TTHC1` FOREIGN KEY (`TTHC`) REFERENCES `tthc` (`idTTHC`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_QuyenTTHC_User1` FOREIGN KEY (`User`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `role_has_functions`
+--
 ALTER TABLE `role_has_functions`
   ADD CONSTRAINT `fk_Role_has_Functions_Functions1` FOREIGN KEY (`Functions_idFunctions`) REFERENCES `functions` (`idFunctions`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Role_has_Functions_Role1` FOREIGN KEY (`Role_id`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `tinhtrangthuly`
+--
 ALTER TABLE `tinhtrangthuly`
   ADD CONSTRAINT `FK_33CFE5E1405A5954` FOREIGN KEY (`Tiepnhan`) REFERENCES `chuyenvienthuly` (`idChuyenVienThuLy`),
   ADD CONSTRAINT `FK_33CFE5E1554DDB45` FOREIGN KEY (`Chiutrachnhiem`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `FK_33CFE5E1BA4A83C4` FOREIGN KEY (`Hosotthc`) REFERENCES `hosotthc` (`idHoSoTTHC`),
   ADD CONSTRAINT `fk_tinhtrangthuly_Trangthaihoso1` FOREIGN KEY (`Trangthaihoso`) REFERENCES `trangthaihoso` (`idTrangthaihoso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `tthc`
+--
 ALTER TABLE `tthc`
   ADD CONSTRAINT `FK_EF7EF91649B06482` FOREIGN KEY (`DonViThuLy`) REFERENCES `donvithuly` (`idDonViThuLy`),
   ADD CONSTRAINT `FK_EF7EF91676E6772` FOREIGN KEY (`LinhVuc`) REFERENCES `linhvuc` (`idLinhVuc`);
 
+--
+-- Constraints for table `user`
+--
 ALTER TABLE `user`
   ADD CONSTRAINT `FK_8D93D6494E59C462` FOREIGN KEY (`tenant`) REFERENCES `tenant` (`id`),
   ADD CONSTRAINT `fk_User_Thontincanhan1` FOREIGN KEY (`Thontincanhan`) REFERENCES `thontincanhan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `user_has_role`
+--
 ALTER TABLE `user_has_role`
   ADD CONSTRAINT `fk_User_has_Role_Role1` FOREIGN KEY (`Role_id`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_User_has_Role_User1` FOREIGN KEY (`User_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `vaitroxuly`
+--
 ALTER TABLE `vaitroxuly`
   ADD CONSTRAINT `fk_Vaitroxuly_HoSoTTHC1` FOREIGN KEY (`HoSoTTHC`) REFERENCES `hosotthc` (`idHoSoTTHC`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Vaitroxuly_User1` FOREIGN KEY (`User`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Vaitroxuly_Vaitro1` FOREIGN KEY (`Vaitro`) REFERENCES `vaitro` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Constraints for table `vanbanlienquan`
+--
 ALTER TABLE `vanbanlienquan`
   ADD CONSTRAINT `FK_C328B7844F4C5628` FOREIGN KEY (`Tthc`) REFERENCES `tthc` (`idTTHC`);
-SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
