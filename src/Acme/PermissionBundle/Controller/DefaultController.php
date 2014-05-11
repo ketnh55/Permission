@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Acme\PermissionBundle\Form\UserPassType;
 use Acme\PermissionBundle\Form\TenantRegisterType;
 use Acme\PermissionBundle\Entity\User;
-use Acme\PermissionBundle\Entity\Congdan;
+use Acme\PermissionBundle\Form\ChuyenvienthulyType;
 use Acme\PermissionBundle\Entity\Chuyenvienthuly;
 class DefaultController extends Controller
 {
@@ -210,5 +210,17 @@ class DefaultController extends Controller
                 ->getForm();           
         return $this->render('AcmePermissionBundle:Default:tableChuyenvien.html.twig',array('chuyenvien'=>$chuyenvien,'form'=>$form->createView()));
         
+    }
+    public function createChuyenvienthulyAction(Request $request){
+        $chuyenvienthuly = new Chuyenvienthuly();
+        $form = $this->createForm(new ChuyenvienthulyType(),$chuyenvienthuly);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($chuyenvienthuly);
+            $em->flush();
+            return $this->render('AcmePermissionBundle:Default:creationCvtlSuccess.html.twig',array('id'=>$chuyenvienthuly->getIdchuyenvienthuly()));
+        }
+        return $this->render('AcmePermissionBundle:Default:creationChuyenvienthuly.html.twig',array('form'=>$form->createView()));
     }
 }

@@ -8,7 +8,7 @@
                     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 {%block content%}
-<div class="tab-pane fade active in" id="settings">
+        <div class="tab-pane fade active in" id="settings" onload="onload();">
               {{ form_start(form,{'attr':{'class':'block','rp;e':'form'}}) }}
                 {{ form_errors(form) }}              
                 <h6 class="heading-hr"><i class="icon-user"></i> Thông tin cá nhân</h6>
@@ -17,7 +17,8 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Họ tên</label>
-                        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(form.namecb, {'attr': {'class': 'form-control'}}) }}
+                        {{form_errors(form.namecb)}}
                       </div>
                       <div class="col-md-6">
                         <label>CMTND</label>

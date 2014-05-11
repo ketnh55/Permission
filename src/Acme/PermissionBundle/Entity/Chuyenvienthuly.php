@@ -18,7 +18,37 @@ class Chuyenvienthuly
      * @ORM\Column(name="NameCB", type="string", length=45, nullable=false)
      */
     private $namecb;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quequan", type="string", length=45, nullable=false)
+     */
+    private $quequan;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noiohientai", type="string", length=45, nullable=false)
+     */
+    private $noiohientai;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CMTND", type="string", length=45, nullable=false)
+     */
+    private $cmtnd;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="text", length=45, nullable=false)
+     */
+    private $email;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sdt", type="text", length=45, nullable=false)
+     */
+    private $sdt;
     /**
      * @var \DateTime
      *
@@ -124,5 +154,122 @@ class Chuyenvienthuly
     public function getDonvithuly()
     {
         return $this->donvithuly;
+    }
+
+    /**
+     * Set quequan
+     *
+     * @param string $quequan
+     * @return Chuyenvienthuly
+     */
+    public function setQuequan($quequan)
+    {
+        $this->quequan = $quequan;
+
+        return $this;
+    }
+
+    /**
+     * Get quequan
+     *
+     * @return string 
+     */
+    public function getQuequan()
+    {
+        return $this->quequan;
+    }
+
+    /**
+     * Set noiohientai
+     *
+     * @param string $noiohientai
+     * @return Chuyenvienthuly
+     */
+    public function setNoiohientai($noiohientai)
+    {
+        $this->noiohientai = $noiohientai;
+
+        return $this;
+    }
+
+    /**
+     * Get noiohientai
+     *
+     * @return string 
+     */
+    public function getNoiohientai()
+    {
+        return $this->noiohientai;
+    }
+
+    /**
+     * Set cmtnd
+     *
+     * @param string $cmtnd
+     * @return Chuyenvienthuly
+     */
+    public function setCmtnd($cmtnd)
+    {
+        $this->cmtnd = $cmtnd;
+
+        return $this;
+    }
+
+    /**
+     * Get cmtnd
+     *
+     * @return string 
+     */
+    public function getCmtnd()
+    {
+        return $this->cmtnd;
+    }
+
+   
+
+    /**
+     * Set sdt
+     *
+     * @param string $sdt
+     * @return Chuyenvienthuly
+     */
+    public function setSdt($sdt)
+    {
+        $this->sdt = $sdt;
+
+        return $this;
+    }
+
+    /**
+     * Get sdt
+     *
+     * @return string 
+     */
+    public function getSdt()
+    {
+        return $this->sdt;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Chuyenvienthuly
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

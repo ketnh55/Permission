@@ -63,8 +63,8 @@
                 </table>
                 <div class="form-actions text-right">
                     <input type="hidden" id="form_chuyenvienthuly" name="form[chuyenvienthuly]"/>
-                    <button type="button" class="btn btn-success" onclick="check();">Tạo mới cán bộ</button>
-                    <button type="button" class="btn btn-success" onclick="check();">Chọn cán bộ</button>                    
+                    <button type="button" class="btn btn-success" onclick="checkCreate();">Tạo mới cán bộ</button>
+                    <button type="button" class="btn btn-success" onclick="checkChoose();">Chọn cán bộ</button>                    
                 </div>
             </div>            
         </div>
@@ -73,11 +73,21 @@
 {{ form_widget(form._token) }}
 {{form_end(form, {'render_rest': false})}}
 <script>
-    function check(){
+    function checkChoose(){
        var radios = document.getElementsByName('form[hosotthc][]');
 	for (var i = 0, length = radios.length; i < length; i++) {
 	    if (radios[i].checked) {	        	        
                 window.open('{{path('showExpert')}}','name','height=500,width=800');
+                return;
+	    }
+	}        
+        alert('Bạn chưa chọn hồ sơ');
+    }
+    function checkCreate(){
+       var radios = document.getElementsByName('form[hosotthc][]');
+	for (var i = 0, length = radios.length; i < length; i++) {
+	    if (radios[i].checked) {	        	        
+                window.open('{{path('createChuyenvienthuly')}}','name','height=500,width=800');
                 return;
 	    }
 	}        

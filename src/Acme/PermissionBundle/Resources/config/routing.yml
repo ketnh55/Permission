@@ -100,6 +100,9 @@ createDVTL:
 saveHoso:
     pattern:  /function/savedHS
     defaults: { _controller: AcmePermissionBundle:Staff:saveHosotthc } 
+createChuyenvienthuly:
+    pattern:  /function/createChuyenvienthuly
+    defaults: { _controller: AcmePermissionBundle:Default:createChuyenvienthuly } 
 test:
     pattern:  /function/test
     defaults: { _controller: AcmePermissionBundle:Citizen:test } 
