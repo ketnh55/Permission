@@ -248,7 +248,12 @@ class StaffController extends Controller
             }
             $em->flush();
             $this->get('session')->getFlashBag()->add('notice', 'Chuyển thụ lý thành công');
-            return $this->redirect($this->generateUrl('forwardHoso'));
+            $pdfGenerator = $this->get('siphoc.pdf.generator');
+            $pdfGenerator->setName('giaybienhan.pdf');
+            return $pdfGenerator->displayForView(
+                'AcmePermissionBundle:Staff:quittanceForward.html.twig',
+                    array('chuyenvienthuly'=>$form->getData()['chuyenvienthuly'],'hoso'=>$form->getData()['hosotthc'])
+                );    
         }
         return $this->render('AcmePermissionBundle:Staff:forwardHoso.html.twig',array('form'=>$form->createView(),'hoso'=>$hoso));
     }

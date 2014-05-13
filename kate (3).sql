@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2014 at 11:50 AM
+-- Generation Time: May 13, 2014 at 04:18 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `chuyenvienthuly` (
   `sdt` tinytext NOT NULL,
   PRIMARY KEY (`idChuyenVienThuLy`),
   KEY `FK_CanBo_DVThuLy_idx` (`DonViThuLy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `chuyenvienthuly`
@@ -52,7 +52,8 @@ INSERT INTO `chuyenvienthuly` (`idChuyenVienThuLy`, `NameCB`, `NgaySinh`, `DonVi
 (3, 'Nguyen Thi A', '2014-05-16', 2, '', '', '', '', ''),
 (4, 'Đinh Công Mạnh', '2009-01-01', NULL, '23432', '342432', '1323523', '43243@dfafdas', '2432432'),
 (5, 'Đinh Công Mạnh', '2009-01-01', NULL, '23432', '342432', '1323523', '43243@dfafdas', '2432432'),
-(6, 'Đinh Công Mạnh', '2009-01-01', NULL, 'àda', 'fdaf', '321321', 'fadsf@xn--dada-znac', '321321');
+(6, 'Đinh Công Mạnh', '2009-01-01', NULL, 'àda', 'fdaf', '321321', 'fadsf@xn--dada-znac', '321321'),
+(7, 'Đinh Công Mạnh', '2009-01-01', NULL, 'àda', 'fdaf', '1323523', 'vietnam@vtc.vn', '321321');
 
 -- --------------------------------------------------------
 
@@ -153,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `dinhkemnhanhs` (
   PRIMARY KEY (`id`),
   KEY `fk_dinhkemnhanhs_hosotthc1_idx` (`hosotthc`),
   KEY `IDX_264C20294FC789D4` (`dinhkemtthc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=89 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=90 ;
 
 --
 -- Dumping data for table `dinhkemnhanhs`
@@ -247,7 +248,8 @@ INSERT INTO `dinhkemnhanhs` (`id`, `TenFileDinhKem`, `PathToFile`, `hosotthc`, `
 (85, '1', NULL, 83, 42),
 (86, '1', NULL, 83, 43),
 (87, '1', NULL, 84, 39),
-(88, '1', NULL, 85, 39);
+(88, '1', NULL, 85, 39),
+(89, '1', NULL, 86, 33);
 
 -- --------------------------------------------------------
 
@@ -442,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `hosotthc` (
   PRIMARY KEY (`idHoSoTTHC`),
   KEY `FK_HSTTHC_CongDan_idx` (`CongDan`),
   KEY `FK_HSTTHC_TTHC_idx` (`TTHC`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
 
 --
 -- Dumping data for table `hosotthc`
@@ -505,7 +507,8 @@ INSERT INTO `hosotthc` (`idHoSoTTHC`, `TTHC`, `CongDan`, `NgayNhan`, `NgayHenTra
 (82, 42, 42, '2014-05-08', '2014-05-08', NULL, NULL, 29608),
 (83, 42, 37, '2014-05-08', '2014-05-08', NULL, NULL, 8001),
 (84, 40, 35, '2014-05-11', '2014-05-11', NULL, NULL, 16856),
-(85, 40, 35, '2014-05-11', '2014-05-11', NULL, NULL, 25310);
+(85, 40, 35, '2014-05-11', '2014-05-11', NULL, NULL, 25310),
+(86, 35, 1, '2014-05-13', '2014-05-13', NULL, NULL, 16948);
 
 -- --------------------------------------------------------
 
@@ -792,7 +795,7 @@ CREATE TABLE IF NOT EXISTS `tinhtrangthuly` (
   KEY `IDX_33CFE5E1BA4A83C4` (`Hosotthc`),
   KEY `IDX_33CFE5E1554DDB45` (`Chiutrachnhiem`),
   KEY `IDX_33CFE5E1405A5954` (`Tiepnhan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `tinhtrangthuly`
@@ -821,7 +824,9 @@ INSERT INTO `tinhtrangthuly` (`idTinhTrangThuLy`, `Time`, `Chiutrachnhiem`, `Tra
 (24, '2014-05-08 10:46:51', NULL, 2, 82, 2),
 (25, '2014-05-11 04:59:20', 52, 1, 84, NULL),
 (26, '2014-05-11 05:35:11', NULL, 2, 84, 6),
-(27, '2014-05-11 05:36:27', 52, 1, 85, NULL);
+(27, '2014-05-11 05:36:27', 52, 1, 85, NULL),
+(28, '2014-05-13 04:11:30', NULL, 2, 35, 7),
+(29, '2014-05-13 04:16:04', 20, 1, 86, NULL);
 
 -- --------------------------------------------------------
 
@@ -906,7 +911,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `isActive_UNIQUE` (`isActive`),
   KEY `fk_User_Thontincanhan1_idx` (`Thontincanhan`),
   KEY `IDX_8D93D6494E59C462` (`tenant`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
 
 --
 -- Dumping data for table `user`
@@ -950,7 +955,9 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `isActive`, `Thontinc
 (57, 'staff1@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'staff@staff', NULL, 10, 18),
 (58, 'staff2@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'admin@gmail.com', NULL, NULL, 18),
 (59, 'leader@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '11111111@aaa', NULL, NULL, 18),
-(60, 'major@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '11111111@aaa', NULL, NULL, 18);
+(60, 'major@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '11111111@aaa', NULL, NULL, 18),
+(61, 'ketnh_55@uet', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'ketnh@gmail.com', NULL, NULL, 3),
+(62, 'ketnh_55@uet', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'ketnh@gmail.com', NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -995,6 +1002,8 @@ INSERT INTO `user_has_role` (`User_id`, `Role_id`) VALUES
 (53, 2),
 (57, 2),
 (58, 2),
+(61, 2),
+(62, 2),
 (21, 3),
 (26, 3),
 (31, 3),
