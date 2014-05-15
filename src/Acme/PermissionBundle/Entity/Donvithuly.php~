@@ -18,6 +18,30 @@ class Donvithuly
      * @ORM\Column(name="NameDonViThuLy", type="string", length=45, nullable=false)
      */
     private $namedonvithuly;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mota", type="string", length=45, nullable=false)
+     */
+    private $mota;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diachi", type="string", length=45, nullable=false)
+     */
+    private $diachi;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sdt", type="string", length=45, nullable=false)
+     */
+    private $sdt;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="madonvi", type="string", length=45, nullable=false)
+     */
+    private $madonvi;
 
     /**
      * @var integer
@@ -32,7 +56,7 @@ class Donvithuly
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tenant")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tenant", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tenant", referencedColumnName="id", nullable=false)
      * })
      */
     private $tenant;
@@ -69,5 +93,120 @@ class Donvithuly
     public function getIddonvithuly()
     {
         return $this->iddonvithuly;
+    }
+
+    /**
+     * Set tenant
+     *
+     * @param \Acme\PermissionBundle\Entity\Tenant $tenant
+     * @return Donvithuly
+     */
+    public function setTenant(\Acme\PermissionBundle\Entity\Tenant $tenant = null)
+    {
+        $this->tenant = $tenant;
+
+        return $this;
+    }
+
+    /**
+     * Get tenant
+     *
+     * @return \Acme\PermissionBundle\Entity\Tenant 
+     */
+    public function getTenant()
+    {
+        return $this->tenant;
+    }
+
+    /**
+     * Set mota
+     *
+     * @param string $mota
+     * @return Donvithuly
+     */
+    public function setMota($mota)
+    {
+        $this->mota = $mota;
+
+        return $this;
+    }
+
+    /**
+     * Get mota
+     *
+     * @return string 
+     */
+    public function getMota()
+    {
+        return $this->mota;
+    }
+
+    /**
+     * Set diachi
+     *
+     * @param string $diachi
+     * @return Donvithuly
+     */
+    public function setDiachi($diachi)
+    {
+        $this->diachi = $diachi;
+
+        return $this;
+    }
+
+    /**
+     * Get diachi
+     *
+     * @return string 
+     */
+    public function getDiachi()
+    {
+        return $this->diachi;
+    }
+
+    /**
+     * Set sdt
+     *
+     * @param string $sdt
+     * @return Donvithuly
+     */
+    public function setSdt($sdt)
+    {
+        $this->sdt = $sdt;
+
+        return $this;
+    }
+
+    /**
+     * Get sdt
+     *
+     * @return string 
+     */
+    public function getSdt()
+    {
+        return $this->sdt;
+    }
+
+    /**
+     * Set madonvi
+     *
+     * @param string $madonvi
+     * @return Donvithuly
+     */
+    public function setMadonvi($madonvi)
+    {
+        $this->madonvi = $madonvi;
+
+        return $this;
+    }
+
+    /**
+     * Get madonvi
+     *
+     * @return string 
+     */
+    public function getMadonvi()
+    {
+        return $this->madonvi;
     }
 }

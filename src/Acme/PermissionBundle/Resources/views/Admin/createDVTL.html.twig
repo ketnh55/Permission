@@ -18,6 +18,34 @@
                 {{ form_errors(form.namedonvithuly) }}
             </div>
         </div>
+        <div class="form-group">
+            {{ form_label(form.mota, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.mota,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.mota) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.diachi, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.diachi,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.diachi) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.sdt, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.sdt,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.sdt) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.madonvi, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.madonvi,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.madonvi) }}
+            </div>
+        </div>
         <div class="form-actions text-right">
              {{ form_widget(form.submit,{'attr': {'class': 'btn btn-primary'}}) }}            
         </div>

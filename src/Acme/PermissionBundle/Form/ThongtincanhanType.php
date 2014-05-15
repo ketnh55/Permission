@@ -6,10 +6,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ThongtincanhanType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options){        
-        $builder->add('hoten','text',array(
-            'label'=>'Họ tên',
-            'required'=>FALSE
-        ))
+        $builder
         ->add('quequan','text',array(
             'label'=>'Quê quán',
             'required'=>FALSE
@@ -30,6 +27,12 @@ class ThongtincanhanType extends AbstractType{
         ->add('file','file',array(
             'label' =>'Ảnh đại diện',
             'required'=>FALSE
+        ))
+        ->add('email','email',array(
+            'label' =>'Email',
+        ))
+        ->add('noiohientai','text',array(
+            'label' =>'Nơi ở hiện tại',
         ))
         ->add('submit','submit')
             ;

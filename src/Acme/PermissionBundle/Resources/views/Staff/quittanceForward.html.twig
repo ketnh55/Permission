@@ -7,7 +7,7 @@
         <tr>
             <td width="302" valign="top">
                 <p align="center">                    
-                    {{app.user.tenant.tendonvi}}
+                    Hệ thống dịch vụ công 
                     <strong>
                         <br/>
                         {{app.user.tenant.tendonvi}}
@@ -33,7 +33,7 @@
         <tr>
             <td width="302" valign="top">
                 <p align="center">
-                    Số: /GBN- {{hoso.sobiennhanhoso}}
+                    Số: /GBN- {%for hs in hoso%}{{hs.sobiennhanhoso}}{%endfor%}
                 </p>
             </td>
             <td width="378" valign="top">
@@ -51,7 +51,9 @@
     <strong>GIẤY BIÊN NHẬN</strong>
 </p>
 <p align="center">
-    <strong>Hồ sơ số {{hoso.idhosotthc}}</strong>
+    {%for hs in hoso%}
+    <strong>Hồ sơ số {{hs.idhosotthc}}</strong>
+    {%endfor%}
 </p>
 <p align="center">
     <strong>--------------</strong>
@@ -63,18 +65,21 @@
     Chức vụ, đơn vị công tác:Chuyên viên thụ lý
 </p>
 <p>
-    Đã tiếp nhận hồ sơ của: 
+    Đã tiếp nhận hồ sơ: 
 </p>
+{%for hs in hoso%}
 <p>
-    Ông (bà): {{hoso.congdan.name}}
+    Ông (bà): {{hs.congdan.name}}
 </p>
+
 <p>
     Giấy tờ bao gồm:
 </p>
-{%for dinhkem in hoso.tthc.dinhkem%}
+{%for dinhkem in hs.tthc.dinhkem%}
 <p>
     {{loop.index}}: {{dinhkem.tenfiledk}}
 </p>
+{%endfor%}
 {%endfor%}
 <table border="0" cellspacing="0" cellpadding="0" width="590">
     <tbody>

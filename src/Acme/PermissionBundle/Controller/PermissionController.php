@@ -77,7 +77,20 @@ class PermissionController extends Controller
         ))
                 ->add('namedonvithuly','text',array(
                     'label'=>'Tên đơn vị thụ lý'
-                ))->getForm()
+                ))
+                ->add('mota','text',array(
+                    'label'=>'Mô tả'
+                ))
+                ->add('diachi','text',array(
+                    'label'=>'Địa chỉ'
+                ))
+                ->add('sdt','text',array(
+                    'label'=>'Số điện thoại'
+                ))
+                ->add('madonvi','text',array(
+                    'label'=>'Mã đơn vị'
+                ))
+                ->getForm()
                 ->add('submit','submit');               
         $form->handleRequest($request);
         if ($form->isValid()){        
@@ -85,7 +98,7 @@ class PermissionController extends Controller
             $donvitl->setTenant($usr->getTenant());
             $em->persist($donvitl);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('notice', 'Tạo mới lĩnh vực thành công!');
+            $this->get('session')->getFlashBag()->add('notice', 'Tạo mới đơn vị thụ lý thành công!');
             return $this->redirect($this->generateUrl('initialData'));
         }
         return $this->render('AcmePermissionBundle:Admin:createDVTL.html.twig',array('form'=>$form->createView()));
@@ -123,7 +136,7 @@ class PermissionController extends Controller
         return $this->render('AcmePermissionBundle:Admin:createTTHC.html.twig',array('form'=>$form->createView()));
     }
     /**
-    * @Secure(roles="ROLE_ADMIN")
+    * @Secure(roles="ROLE_ADMIN, ROLE_MAJOR")
     */
     public function permissionAction(Request $request)
     {
@@ -151,11 +164,12 @@ class PermissionController extends Controller
            $form->handleRequest($request);        
            if ($form->isValid()){
                $em = $this->getDoctrine()->getManager();
-               $func = $form->getData()['vaitro'];
+               $func = $form->getData()['quyenhan'];
                foreach ($func as $f){
                    $em->remove($f);
                }
                $em->flush();
+               $this->get('session')->getFlashBag()->add('notice', 'Điều chỉnh quyền cán bộ thành công!');
                return $this->redirect($this->generateUrl('permission'));
         }
         return $this->render('AcmePermissionBundle:Admin:permission.html.twig',array('vaitroxuly'=>$vaitro,'form'=>$form->createView()));
@@ -173,6 +187,7 @@ class PermissionController extends Controller
         if ($form->isValid()){            
             $em = $this->getDoctrine()->getManager();
             $em->flush();
+            $this->get('session')->getFlashBag()->add('notice', 'Điều chỉnh quyền cán bộ thành công!');
             return $this->redirect($this->generateUrl('permission'));
         }
         return $this->render('AcmePermissionBundle:Admin:editPermission.html.twig',array('form'=>$form->createView(),'quyentthc'=>$vaitro));
@@ -200,10 +215,23 @@ class PermissionController extends Controller
     */
     public function statisticAction(){
         $usr= $this->get('security.context')->getToken()->getUser();
-        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:User');
-        $users = $resposity->createQueryBuilder('u')
+        $user_resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:User');
+        $lv_resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Linhvuc');
+        $tthc_resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Tthc');
+        $dvtl_resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Donvithuly');
+        $users = $user_resposity->createQueryBuilder('u')
                 ->WHERE('u.tenant = :tenantid')
                 ->setParameter('tenantid',$usr->getTenant()->getId())->getQuery()->getResult();
-        return $this->render('AcmePermissionBundle:Admin:statistic.html.twig',array('users'=>$users));
+        $lv = $lv_resposity->createQueryBuilder('u')
+                ->WHERE('u.tenant = :tenantid')
+                ->setParameter('tenantid',$usr->getTenant()->getId())->getQuery()->getResult();
+        $tthc = $tthc_resposity->createQueryBuilder('t')
+                ->JOIN("t.linhvuc","lv")
+                ->WHERE('lv.tenant = :tenantid')
+                ->setParameter('tenantid',$usr->getTenant()->getId())->getQuery()->getResult();
+        $donvithuly = $dvtl_resposity->createQueryBuilder('t')
+                ->WHERE('t.tenant = :tenantid')
+                ->setParameter('tenantid',$usr->getTenant()->getId())->getQuery()->getResult();
+        return $this->render('AcmePermissionBundle:Admin:statistic.html.twig',array('users'=>$users,'tthc'=>$tthc,'lv'=>$lv,'dvtl'=>$donvithuly));
     }          
 }

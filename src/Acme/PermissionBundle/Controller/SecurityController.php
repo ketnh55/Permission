@@ -9,7 +9,7 @@ class SecurityController extends Controller{
     public function loginAction($domain,$user = null)
     {        
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Tenant');
-        $tenant = $resposity->findBy(array('domain'=>$domain));
+        $tenant = $resposity->findOneBy(array('domain'=>$domain));
         if (count($tenant) == 0)  throw $this->createNotFoundException('Your domain does not exist.');
         $request = $this->getRequest();
         $session = $request->getSession();        
@@ -27,7 +27,8 @@ class SecurityController extends Controller{
                 array(
                     'last_username' => $session->get(SecurityContext::LAST_USERNAME),
                     'error' => $error,
-                    'domain'=> $domain
+                    'domain'=> $domain,
+                    'tenant'=> $tenant
                 )
             );
         }

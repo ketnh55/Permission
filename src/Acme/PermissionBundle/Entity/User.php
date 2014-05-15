@@ -30,9 +30,9 @@ class User implements UserInterface,  EquatableInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=45, nullable=true)
+     * @ORM\Column(name="hoten", type="string", length=45, nullable=false)
      */
-    private $email;
+    private $hoten;
 
     /**
      * @var boolean
@@ -175,30 +175,7 @@ class User implements UserInterface,  EquatableInterface, \Serializable
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
+    }   
 
     /**
      * Set isactive
@@ -340,7 +317,7 @@ class User implements UserInterface,  EquatableInterface, \Serializable
         if ($this->password !== $user->getPassword()){      
             return false;
         }
-        if($this->email !== $user->getEmail()) {
+        if($this->hoten !== $user->getHoten()) {
             return FALSE;
         }
         if ($this->getSalt() !== $user->getSalt()) {
@@ -386,5 +363,28 @@ class User implements UserInterface,  EquatableInterface, \Serializable
         $this->vaitroxuly[] = $vaitroxuly;
 
         return $this;
+    }
+
+    /**
+     * Set hoten
+     *
+     * @param string $hoten
+     * @return User
+     */
+    public function setHoten($hoten)
+    {
+        $this->hoten = $hoten;
+
+        return $this;
+    }
+
+    /**
+     * Get hoten
+     *
+     * @return string 
+     */
+    public function getHoten()
+    {
+        return $this->hoten;
     }
 }

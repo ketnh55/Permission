@@ -22,6 +22,16 @@ class NewTTHCType extends AbstractType{
                     'property'=>'namedv',
                     'label'=>'Lĩnh vực'
                 ))   
+            ->add('donvithuly','entity',array(
+                'class'=>'AcmePermissionBundle:Donvithuly',
+                'query_builder' => function(EntityRepository $er) use ($user) {
+                        return $er->createQueryBuilder('dvtl')                                 
+                                ->WHERE ('dvtl.tenant = :tenantid')
+                                ->setParameter('tenantid',$user->getTenant()->getId());
+                    },                            
+                    'property'=>'namedonvithuly',
+                    'label'=>'Đơn vị thụ lý'
+            ))
             ->add('nametthc','text',array(
             'label'=>'Tên TTHC'
             ))

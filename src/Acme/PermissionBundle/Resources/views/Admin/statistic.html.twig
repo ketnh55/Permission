@@ -8,42 +8,148 @@
     {% endjavascripts %}     
 {%endblock%}
 {%block content %}
-<div class="panel panel-info">
-    <div class="panel-heading">
-        <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
-    </div>
-    <div class="datatable">
-        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <td>Id</td>
-                        <td>Username</td>
-                        <td>Role</td>
-                        <td>TTHC</td>
-                    </thead>
-                {% for user in users%}
-                    {% if loop.index %2 == 0 %}
-                    <tr class="odd">
-                    {% else %}
-                    <tr class="even">
-                    {% endif%}
-                        <td>{{user.id}}</td>
-                        <td>
-                            <a href="{{path('addPermission',{'id':user.id})}}" >Thêm quyền</a>
-                            --{{user.username}}
-                        </td>
-                        <td>
-                            {% for role in user.role%}
-                                {{role.role}},
+<div class="tabbable page-tabs">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#inside" data-toggle="tab"><i class="icon-checkbox-partial"></i> Thống kê người dùng</a></li>
+        <li class=""><a href="#outside" data-toggle="tab"><i class="icon-checkbox-unchecked"></i> Thống kê lĩnh vực hành chính</a></li>
+        <li class=""><a href="#advanced" data-toggle="tab"><i class="icon-checkmark3"></i> Thống kê thủ tục hành chính</a></li>
+        <li class=""><a href="#ok" data-toggle="tab"><i class="icon-checkmark3"></i>Thống kê đợn vị thụ lý</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade active in" id="inside">     
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-table"></i> Thống kê người dùng</h6>
+                </div>
+                <div class="datatable">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <td>Id</td>
+                                    <td>Tên đăng nhập</td>
+                                    <td>Họ tên</td>
+                                    <td>Trách nhiệm</td>
+                                </thead>
+                            {% for user in users%}
+                                {% if loop.index %2 == 0 %}
+                                <tr class="odd">
+                                {% else %}
+                                <tr class="even">
+                                {% endif%}
+                                    <td>{{user.id}}</td>
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.hoten}}</td>
+                                    <td>
+                                        {% for role in user.role%}
+                                            {{role.role}},
+                                        {%endfor%}
+                                    </td>
+
+                                </tr>
                             {%endfor%}
-                        </td>
-                        <td>{{user.quyentthc|length}}</td>
-                    </tr>
-                {%endfor%}
-                </table>
-            </div>            
+                            </table>
+                        </div>            
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        <div class="tab-pane fade active in" id="outside">     
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-table"></i> Thống kê lĩnh vực hành chính</h6>
+                </div>
+                <div class="datatable">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <td>Id</td>
+                                    <td>Tên lĩnh vực</td>
+                                    <td>Mô tả</td>                                    
+                                </thead>
+                            {% for linhvuc in lv%}
+                                {% if loop.index %2 == 0 %}
+                                <tr class="odd">
+                                {% else %}
+                                <tr class="even">
+                                {% endif%}
+                                    <td>{{linhvuc.idlinhvuc}}</td>
+                                    <td>{{linhvuc.namedv}}</td>
+                                    <td>{{linhvuc.motalinhvuc}}</td>
+                                </tr>
+                            {%endfor%}
+                            </table>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade active in" id="advanced">     
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-table"></i> Thống kê thủ tục hành chính</h6>
+                </div>
+                <div class="datatable">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <td>Id</td>
+                                    <td>Tên thủ tục</td>
+                                    <td>Lĩnh vực</td>     
+                                </thead>
+                            {% for tt in tthc%}
+                                {% if loop.index %2 == 0 %}
+                                <tr class="odd">
+                                {% else %}
+                                <tr class="even">
+                                {% endif%}
+                                    <td>{{tt.idtthc}}</td>
+                                    <td>{{tt.nametthc}}</td>
+                                    <td>{{tt.linhvuc.namedv}}</td>
+                                </tr>
+                            {%endfor%}
+                            </table>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade active in" id="ok">     
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-table"></i> Thống kê đơn vị thụ lý</h6>
+                </div>
+                <div class="datatable">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <td>Id</td>
+                                    <td>Tên đơn vị</td>
+                                    <td>Mô tả</td>   
+                                    <td>Địa chỉ</td>   
+                                    <td>Mã đơn vị</td>   
+                                </thead>
+                            {% for dv in dvtl%}
+                                {% if loop.index %2 == 0 %}
+                                <tr class="odd">
+                                {% else %}
+                                <tr class="even">
+                                {% endif%}
+                                    <td>{{dv.iddonvithuly}}</td>
+                                    <td>{{dv.namedonvithuly}}</td>
+                                    <td>{{dv.mota}}</td>
+                                    <td>{{dv.diachi}}</td>
+                                    <td>{{dv.madonvi}}</td>
+                                </tr>
+                            {%endfor%}
+                            </table>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
 {% endblock%}

@@ -114,16 +114,16 @@ class DefaultController extends Controller
         $hs = $em->createQuery(
             'SELECT hs
             FROM AcmePermissionBundle:Hosotthc hs
-            JOIN hs.tinhtrangthuly tt 
             JOIN hs.tthc t
             JOIN t.quyentthc q
             JOIN q.quyenhan qh
-            JOIN q.user u     
-            JOIN t.linhvuc tn
-            WHERE u.id = :userid AND qh.id = 2 AND tn.tenant = :tenantid AND tt.trangthaihoso = 1'                
+            JOIN q.user u
+            JOIN t.linhvuc lv
+            JOIN hs.tinhtrangthuly tt
+            WHERE u.id = :userid AND qh.id = 2 AND lv.tenant = :tenant group by hs.idhosotthc having count(tt.trangthaihoso) = 1'                
         )
                 ->setParameter('userid',$usr->getId())
-                ->setParameter('tenantid',$usr->getTenant()->getId())
+                ->setParameter("tenant",$usr->getTenant()->getId())
                 ->getResult();
         return $this->render('AcmePermissionBundle:Default:staffHoso.html.twig',array('hs'=>$hs));
     }
@@ -166,9 +166,11 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($user)
                 ->add('username','text')
                 ->add('password','password')
-                ->add('email','email')
+                ->add('hoten','text')
                 ->add('tenant',new TenantRegisterType())
-                ->add('register','submit')
+                ->add('register','submit',array(
+                    'label'=>'Đăng ký'
+                ))
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()){            
@@ -212,11 +214,12 @@ class DefaultController extends Controller
         
     }
     public function createChuyenvienthulyAction(Request $request){
+        $user= $this->get('security.context')->getToken()->getUser();
         $chuyenvienthuly = new Chuyenvienthuly();
-        $form = $this->createForm(new ChuyenvienthulyType(),$chuyenvienthuly);
+        $form = $this->createForm(new ChuyenvienthulyType($user),$chuyenvienthuly);
         $form->handleRequest($request);
         if($form->isValid()){
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();            
             $em->persist($chuyenvienthuly);
             $em->flush();
             return $this->render('AcmePermissionBundle:Default:creationCvtlSuccess.html.twig',array('id'=>$chuyenvienthuly->getIdchuyenvienthuly()));

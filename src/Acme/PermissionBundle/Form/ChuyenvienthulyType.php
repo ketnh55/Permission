@@ -3,9 +3,14 @@ namespace Acme\PermissionBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
+use Doctrine\ORM\EntityRepository;
 class ChuyenvienthulyType extends AbstractType{
-    public function buildForm(FormBuilderInterface $builder, array $options){        
+    private $user;
+    public function __construct($user) {
+        $this->user = $user;
+    }
+    public function buildForm(FormBuilderInterface $builder, array $options){    
+        $user = $this->user;
         $builder->add('namecb','text',array(
             'label'=>'Họ tên:'
         ))
@@ -26,6 +31,16 @@ class ChuyenvienthulyType extends AbstractType{
         ))
         ->add('sdt','number',array(
             'label'=>'SDT'
+        ))
+        ->add('donvithuly','entity',array(
+            'label'=>'Đơn vị thụ lý',
+            'class'=>'AcmePermissionBundle:Donvithuly',
+            'query_builder' => function(EntityRepository $er) use ($user) {
+                        return $er->createQueryBuilder('dv')     
+                                ->WHERE ('dv.tenant = :tenantid')
+                                ->setParameter('tenantid',$user->getTenant()->getId());
+                },
+            'property'=>'namedonvithuly'
         ))
         ->add('submit','submit')
             ;

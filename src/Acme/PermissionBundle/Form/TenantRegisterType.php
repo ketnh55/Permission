@@ -6,9 +6,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TenantRegisterType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options){        
-        $builder->add('hoten','text',array(
-            'label'=>'Họ tên:'
-        ))
+        $builder
         ->add('quequan','text',array(
             'label' =>'Quê quán'
         ))

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Login</title>
+<title>Đăng nhập hệ thống dịch vụ công {{tenant.tendonvi}}</title>
 {% stylesheets 'bundles/acmepermission/bootstrap/css/bootstrap.min.css' 
                 'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
                 'bundles/acmepermission/bootstrap/css/styles.min.css'
@@ -14,7 +14,7 @@
         
         {% endstylesheets %}  
 
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese,latin-ext" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -25,31 +25,26 @@
 <div class="navbar navbar-inverse" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-right"><span class="sr-only">Toggle navbar</span><i class="icon-grid3"></i></button>
-    <a class="navbar-brand" href="#">Home</a></div>
+    <a class="navbar-brand" href="#">Hệ thống dịch vụ công - {{tenant.tendonvi}}</a></div>
 
 </div>
 <!-- /navbar -->
 <!-- Login wrapper -->
 <div class="login-wrapper">
   <form action="{{ path('login_check') }}" role="form" method="post">
-    <div class="popup-header"><a href="#" class="pull-left"><i class="icon-user-plus"></i></a><span class="text-semibold">User Login</span>
+    <div class="popup-header"><a href="#" class="pull-left"><i class="icon-user-plus"></i></a><span class="text-semibold">Đăng nhập hệ thống</span>
       <div class="btn-group pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cogs"></i></a>
-        <ul class="dropdown-menu icons-right dropdown-menu-right">
-          <li><a href="#"><i class="icon-people"></i> Change user</a></li>
-          <li><a href="#"><i class="icon-info"></i> Forgot password?</a></li>
-          <li><a href="#"><i class="icon-support"></i> Contact admin</a></li>
-          <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
-        </ul>
+
       </div>
     </div>
     <div class="well">
       <div class="form-group has-feedback">
-        <label>Username</label>
+        <label>Tên đăng nhập</label>
         <input type="text" class="form-control" id="kate"  placeholder="Username">
         <input type="hidden" class="form-control" id="username" name="_username" placeholder="Username">
         <i class="icon-users form-control-feedback"></i></div>
       <div class="form-group has-feedback">
-        <label>Password</label>
+        <label>Mật khẩu</label>
         <input type="password" class="form-control" placeholder="Password" id="password" name="_password">
         <i class="icon-lock form-control-feedback"></i></div>
       <div class="row form-actions">
@@ -57,11 +52,11 @@
           <div class="checkbox checkbox-success">
             <label>
               <input type="checkbox" class="styled" name="_remember_me" id="remember_me" checked>
-              Remember me</label>
+              Ghi nhớ</label>
           </div>
         </div>
         <div class="col-xs-6">
-            <button type="submit" class="btn btn-warning pull-right" onclick="checkout();"><i class="icon-menu2" oncl></i> Sign in</button>
+            <button type="submit" class="btn btn-warning pull-right" onclick="checkout();"><i class="icon-menu2" oncl></i> Đăng nhập</button>
         </div>
       </div>
     </div>

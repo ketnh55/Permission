@@ -194,8 +194,7 @@ class StaffController extends Controller
         $usr= $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();    
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Trangthaihoso');                
-        $tinhtrangthuly = new Tinhtrangthuly();
-        $tinhtrangthuly->setTrangthaihoso($resposity->find(2));        
+        
         $hoso = $em->createQuery(
             'SELECT hs
             FROM AcmePermissionBundle:Hosotthc hs
@@ -239,8 +238,11 @@ class StaffController extends Controller
                             ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()){
-            $tinhtrangthuly->setTiepnhan($form->getData()['chuyenvienthuly']);                                                                     
-            foreach ($form->getData()['hosotthc'] as $hosotthc) {                
+            
+            foreach ($form->getData()['hosotthc'] as $hosotthc) {          
+                $tinhtrangthuly = new Tinhtrangthuly();
+                $tinhtrangthuly->setTrangthaihoso($resposity->find(2)); 
+                $tinhtrangthuly->setTiepnhan($form->getData()['chuyenvienthuly']);                                                                     
                 $tinhtrangthuly->setHosotthc($hosotthc);
                 $now = new \DateTime();
                 $tinhtrangthuly->setTime($now);      

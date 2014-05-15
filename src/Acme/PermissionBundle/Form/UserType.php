@@ -13,32 +13,35 @@ class UserType extends AbstractType{
         $form = $event->getForm();
         if (!$user || null === $user->getId()) {
         $form->add('username','text',array(
-            'label'=>'Username:',
+            'label'=>'Tên đăng nhập',
             'attr'=>array(
                 'class'=>'form-control',
                 'required'=>TRUE
             )
         ))
         ->add('password','password',array(
-            'label' =>'Password',
+            'label' =>'Mật khẩu',
             'attr'=>array(
                 'class'=>'form-control',
                 'required'=>TRUE
             )
         ))
         ->add('role','entity',array(
+            'label'=>'Trách nhiệm',
             'class'=>'AcmePermissionBundle:Role',
             'property'=>'name',
             'multiple'=>TRUE,
             'attr' => array('class'=>'styled'),
             'expanded'=>TRUE,
         ))
-        ->add('email','email',array('required'=>FALSE,
+        ->add('hoten','text',array(
+            'label'=>'Họ tên cán bộ',
             'attr'=>array(
                 'class'=>'form-control',
-                'required'=>TRUE
+                'required'=>TRUE,
+                                
             )))
-        ->add('submit','submit');
+        ->add('Ghi nhận','submit');
         }
         else {
             $form->add('quyenlinhvuc','collection',array(

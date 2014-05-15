@@ -2,10 +2,11 @@
 {% block javascript%}
 {% javascripts 
                     '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
-    %}   
- <script type="text/javascript" src="{{ asset_url }}"></script>  
-    {{parent()}}             
+    %}        
+     <script type="text/javascript" src="{{ asset_url }}"></script>        
     {% endjavascripts %}     
+    {{parent()}}
+    
 {%endblock%}
 {%block content %}
     {{ form_start(form) }}
@@ -14,18 +15,28 @@
         <div class="panel-heading">
             <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
         </div>
-        <div class="datatable">
+        <div class="datatable-add-row">
             <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <td>ID</td>
-                            <td>Username</td>
+                            <td>Họ tên</td>
                             <td>Quyền Hạn</td>
                             <td>Thủ Tục Hành Chính</td>
                             <td>Sửa</td>
                             <td>Xóa</td>
                         </thead>
+                        <tfoot>
+                            <tr>
+                              <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                              <th><input type="text" name="search_hoten" placeholder="Công dân" class="form-control"></th>
+                              <th><input type="text" name="search_quyenhan" placeholder="Thủ tục hành chính" class="form-control"></th>
+                              <th><input type="text" name="search_tthc" placeholder="Ngày nhận" size="10" class="form-control"></th>                                                            
+                              <th></th>
+                              <th></th>
+                            </tr>
+                        </tfoot>
                     {% for func in vaitroxuly%}
                         {% if loop.index %2 == 0 %}
                         <tr class="odd">
@@ -33,13 +44,14 @@
                         <tr class="even">
                         {% endif%}
                             <td>{{func.id}}</td>
-                            <td>{{func.user.username}}</td>
+                            <td>{{func.user.hoten|default(func.user.username)}}</td>
                             <td>{{func.quyenhan.name}}</td>
                             <td>{{func.tthc.nametthc}}</td>
                             <td><a href="{{path('editPermission',{'id':func.id})}}">Edit</a></td>
                             <td>{{form_widget(form.quyenhan[func.id])}}</td>
                         </tr>
                     {%endfor%}
+   
                     </table>
                 </div>            
                 <div class="form-actions text-right">

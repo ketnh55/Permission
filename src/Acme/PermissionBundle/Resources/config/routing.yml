@@ -103,6 +103,9 @@ saveHoso:
 createChuyenvienthuly:
     pattern:  /function/createChuyenvienthuly
     defaults: { _controller: AcmePermissionBundle:Default:createChuyenvienthuly } 
+manageTenant:
+    pattern:  /manageTenant
+    defaults: { _controller: AcmePermissionBundle:SuperAdmin:manageTenant } 
 test:
-    pattern:  /function/test
-    defaults: { _controller: AcmePermissionBundle:Citizen:test } 
+    pattern:  /admin
+    defaults: { _controller: AcmePermissionBundle:Major:test } 

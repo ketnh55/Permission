@@ -74,6 +74,6 @@ class MajorController extends Controller
         return $this->render('AcmePermissionBundle:Major:permissionStaff.html.twig',array('form_array'=>$form->createView()));
     }
     public function testAction(){
-        return $this->render('AcmePermissionBundle:Default:index.html.twig');
+        return $this->render('AcmePermissionBundle:Major:a.html.twig');
     }
 }

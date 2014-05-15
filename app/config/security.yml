@@ -46,3 +46,5 @@ security:
                 lifetime: 31536000 
                 path: /
                 domain: ~ 
+    access_control:
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
