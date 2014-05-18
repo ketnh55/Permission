@@ -1,130 +1,640 @@
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<p>
-    <strong>Giấy biên nhận </strong>
-</p>
-<table border="0" cellspacing="0" cellpadding="0" width="680">
-    <tbody>
-        <tr>
-            <td width="302" valign="top">
-                <p align="center">                    
-                    Hệ thống dịch vụ công 
-                    <strong>
-                        <br/>
-                        {{app.user.tenant.tendonvi}}
-                        <br/>
-                        <br/>
-                    </strong>
-                    <strong></strong>
-                </p>
-            </td>
-            <td width="378" valign="top">
-                                    <strong>
-                        CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
-                        <br/>
-                    </strong>
-                    <strong>Độc lập – Tự do – Hạnh phúc</strong>
-                    <strong>
-                        <br/>
-                        <br/>
-                    </strong>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="302" valign="top">
-                <p align="center">
-                    Số: /GBN- {%for hs in hoso%}{{hs.sobiennhanhoso}}{%endfor%}
-                </p>
-            </td>
-            <td width="378" valign="top">
-                <p align="right">
-                    <em> Hà Nội , ngày {{"now"|date('d')}} tháng {{"now"|date('m')}} {{"now"|date('Y')}}</em>
-                </p>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<p align="center">
-    <strong></strong>
-</p>
-<p align="center">
-    <strong>GIẤY BIÊN NHẬN</strong>
-</p>
-<p align="center">
-    {%for hs in hoso%}
-    <strong>Hồ sơ số {{hs.idhosotthc}}</strong>
-    {%endfor%}
-</p>
-<p align="center">
-    <strong>--------------</strong>
-</p>
-<p>
-    Họ tên cán bộ: {{chuyenvienthuly.namecb}}
-</p>
-<p>
-    Chức vụ, đơn vị công tác:Chuyên viên thụ lý
-</p>
-<p>
-    Đã tiếp nhận hồ sơ: 
-</p>
-{%for hs in hoso%}
-<p>
-    Ông (bà): {{hs.congdan.name}}
-</p>
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
 
-<p>
-    Giấy tờ bao gồm:
-</p>
-{%for dinhkem in hs.tthc.dinhkem%}
-<p>
-    {{loop.index}}: {{dinhkem.tenfiledk}}
-</p>
-{%endfor%}
-{%endfor%}
-<table border="0" cellspacing="0" cellpadding="0" width="590">
-    <tbody>
-        <tr>
-            <td width="295" valign="top">
-                <p>
-                    <strong>
-                        <em>
-                            <br/>
-                            Nơi nhận: 
-                            <br/>
-                        </em>
-                    </strong>
-                    - Hà Nội
-                    <br/>
-                    - Lưu: Hồ sơ.
-                </p>
-            </td>
-            <td width="295" valign="top">
-                <p align="center">
-                    <strong>
-                        NGƯỜI TIẾP NHẬN
-                        <br/>
-                    </strong>
-                    <strong>
-                        <br/>
-                    </strong>
-                    <em>
-                        (Ký tên, đóng dấu (nếu có))
-                        <br/>
-                        <br/>
-                    </em>
-                    <strong>Họ và tên </strong>
-                    <strong>{{chuyenvienthuly.namecb}}</strong>
-                </p>
-            </td>
-        </tr>
-    </tbody>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=unicode">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 14">
+<meta name=Originator content="Microsoft Word 14">
+<link rel=File-List href="New%20Text%20Document_files/filelist.xml">
+<title>Giấy biên nhận</title>
+<link rel=themeData href="New%20Text%20Document_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="New%20Text%20Document_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SplitPgBreakAndParaMark/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Footnote Text Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+span.FootnoteTextChar
+	{mso-style-name:"Footnote Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Footnote Text";
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.msopapdefault, li.msopapdefault, div.msopapdefault
+	{mso-style-name:msopapdefault;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;
+	mso-style-unhide:no;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-hansi-font-family:Calibri;
+	mso-bidi-font-family:Calibri;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=608
+ style='width:456.0pt;background:white;border-collapse:collapse;mso-yfti-tbllook:
+ 1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=260 valign=top style='width:195.0pt;background:transparent;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:0in;margin-right:-1.2pt;
+  margin-bottom:12.0pt;margin-left:0in;text-align:center;line-height:130%'><span
+  style='font-size:14.0pt;line-height:130%;font-family:"Times New Roman","serif";
+  color:#333333'>DỊCH VỤ CÔNG<b><br>
+  {{app.user.tenant.tendonvi}} (2)<br style='mso-special-character:line-break'>
+  <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+  <![endif]></b></span><span style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+  </td>
+  <td width=348 valign=top style='width:261.0pt;background:transparent;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:0in;margin-right:-1.2pt;
+  margin-bottom:12.0pt;margin-left:0in;text-align:center;line-height:130%'><b><span
+  style='font-size:14.0pt;line-height:130%;font-family:"Times New Roman","serif";
+  color:#333333'>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM<br>
+  Độc lập – Tự do – Hạnh phúc<br style='mso-special-character:line-break'>
+  <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+  <![endif]></span></b><span style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
+  <td width=260 valign=top style='width:195.0pt;background:transparent;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:0in;margin-right:-1.2pt;
+  margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+  line-height:130%'><span style='font-size:14.0pt;line-height:130%;font-family:
+  "Times New Roman","serif";color:#333333'>Số:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/GBN-
+  {{hoso[0].sobiennhanhoso}}.</span><span style='font-size:14.0pt;line-height:
+  130%'><o:p></o:p></span></p>
+  </td>
+  <td width=348 valign=top style='width:261.0pt;background:transparent;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:0in;margin-right:-1.2pt;
+  margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+  line-height:130%'><i><span style='font-size:14.0pt;line-height:130%;
+  font-family:"Times New Roman","serif";color:#333333'>Hà Nội , ngày
+  {{'now'|date('d')}} tháng {{'now'|date('m')}}
+  {{'now'|date('Y')}}</span></i><span style='font-size:14.0pt;
+  line-height:130%'><o:p></o:p></span></p>
+  </td>
+ </tr>
 </table>
-<p>
-    <strong><em>Ghi chú:</em></strong>
-</p>
-<p>
-    (1) Đề nghị chuyên viên thụ lý giữ giấy biên nhận cẩn thận để làm chứng cứ xác minh.
-</p>
-<p>
-    (2) Nếu hồ sơ bị thất lạc,người nhận phải chịu hoàn toàn trách nhiệm trước cơ quan cũng như pháp luật
-</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.2pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;line-height:130%;background:white'><b><span
+style='font-size:14.0pt;line-height:130%;font-family:"Times New Roman","serif";
+color:#333333'>&nbsp;</span></b><span style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:-1.45pt;
+margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+line-height:130%;background:white'><b><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>GIẤY BIÊN NHẬN</span></b><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:-1.45pt;
+margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+line-height:130%;background:white'><b><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>Hồ sơ số {%for hs in
+hoso%}{{hs.idhosotthc}}-{%endfor%}</span></b><span style='font-size:14.0pt;
+line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:-1.45pt;
+margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+text-indent:38.15pt;line-height:130%;background:white'><b><span
+style='font-size:14.0pt;line-height:130%;font-family:"Times New Roman","serif";
+color:#333333'>&nbsp;</span></b><span style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;text-indent:38.15pt;
+line-height:130%;background:white'><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>Họ tên cán bộ:
+{{chuyenvienthuly.namecb}}</span><span style='font-size:14.0pt;line-height:
+130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;text-indent:38.15pt;
+line-height:130%;background:white'><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>Chức vụ, đơn vị công
+tác: Chuyên viên bộ phận một cửa</span><span style='font-size:14.0pt;
+line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;text-indent:38.15pt;
+line-height:130%;background:white'><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>{%block tiepnhan%}Đã
+tiếp nhận hồ sơ của:{%endblock%}</span><span style='font-size:14.0pt;
+line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-indent:
+.5in;line-height:130%'><span style='font-size:14.0pt;line-height:130%;
+font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>{%for
+hs in hoso%} <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;text-indent:38.15pt;
+line-height:130%;background:white'><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>Ông (bà):{{hs.congdan.name}}</span><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;text-indent:38.15pt;
+line-height:130%;background:white'><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>Bao gồm:</span><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-indent:
+.5in;line-height:130%'><span style='font-size:14.0pt;line-height:130%;
+font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>{%for
+dinhkem in hs.tthc.dinhkem%} <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;text-indent:38.15pt;
+line-height:130%;background:white'><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>{{loop.index}}:
+{{dinhkem.tenfiledk}}</span><span style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-indent:
+.5in;line-height:130%'><span style='font-size:14.0pt;line-height:130%;
+font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>{%endfor%}
+{%endfor%} <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;text-indent:38.15pt;
+line-height:130%;background:white'><span style='font-size:14.0pt;line-height:
+130%;font-family:"Times New Roman","serif";color:#333333'>&nbsp;</span><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=590
+ style='width:6.15in;background:white;border-collapse:collapse;mso-yfti-tbllook:
+ 1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=295 valign=top style='width:221.4pt;background:transparent;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:-1.2pt;margin-bottom:
+  0in;margin-left:0in;margin-bottom:.0001pt;line-height:130%'><b><i><span
+  style='font-size:14.0pt;line-height:130%;font-family:"Times New Roman","serif";
+  color:#333333'><br>
+  Nơi nhận:<br>
+  </span></i></b><span style='font-size:14.0pt;line-height:130%;font-family:
+  "Times New Roman","serif";color:#333333'>- …. (8)….;<br>
+  - Lưu: Hồ sơ.</span><span style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+  </td>
+  <td width=295 valign=top style='width:221.4pt;background:transparent;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:0in;margin-right:-1.2pt;
+  margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+  line-height:130%'><b><span style='font-size:14.0pt;line-height:130%;
+  font-family:"Times New Roman","serif";color:#333333'>NGƯỜI TIẾP NHẬN<br>
+  <br>
+  </span></b><i><span style='font-size:14.0pt;line-height:130%;font-family:
+  "Times New Roman","serif";color:#333333'>(Ký tên, đóng dấu (nếu có))<br>
+  <br>
+  </span></i><b><span style='font-size:14.0pt;line-height:130%;font-family:
+  "Times New Roman","serif";color:#333333'>Họ và tên :
+  {{chuyenvienthuly.namecb}}</span></b><span style='font-size:14.0pt;
+  line-height:130%'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:130%'><span style='font-size:14.0pt;line-height:130%;
+font-family:"Times New Roman","serif";color:#333333'>&nbsp;</span><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:130%;
+background:white'><b><i><span style='font-size:14.0pt;line-height:130%;
+font-family:"Times New Roman","serif";color:#333333'>Ghi chú:</span></i></b><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:130%;
+background:white'><span style='font-size:14.0pt;line-height:130%;font-family:
+"Times New Roman","serif";color:#333333'>(1) (1) Đề nghị chuyên viên thụ lý giữ
+giấy biên nhận cẩn thận để làm chứng cứ xác minh. </span><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-1.45pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:130%;
+background:white'><span style='font-size:14.0pt;line-height:130%;font-family:
+"Times New Roman","serif";color:#333333'>(2) Nếu hồ sơ bị thất lạc,người nhận
+phải chịu hoàn toàn trách nhiệm trước cơ quan cũng như pháp luật </span><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:130%'><span style='font-size:14.0pt;
+line-height:130%;font-family:"Times New Roman","serif"'>&nbsp;</span><span
+style='font-size:14.0pt;line-height:130%'><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

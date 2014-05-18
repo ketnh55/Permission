@@ -3,10 +3,10 @@
 {% javascripts 
                     '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
     %}        
-     <script type="text/javascript" src="{{ asset_url }}"></script>        
+<script type="text/javascript" src="{{ asset_url }}"></script>        
     {% endjavascripts %}     
     {{parent()}}
-    
+
 {%endblock%}
 {%block title%}
 <title>Chuyển thụ lý hồ sơ</title>
@@ -19,7 +19,9 @@
 {{ form_errors(form) }}
 <div class="panel panel-info">
     <div class="panel-heading">
+        {%block tabletitle%}
         <h6 class="panel-title"><i class="icon-table"></i> Hồ sơ chờ chuyển thụ lý</h6>
+        {%endblock%}
     </div>
     <div class="datatable-add-row">
         <div id="DataTables_Table_17_wrapper" class="dataTables_wrapper" role="grid">
@@ -27,22 +29,22 @@
                 <table class="table">
                     {%block header%}
                     <thead>
-                        <td>Id</td>
-                        <td>Công dân</td>
-                        <td>Thủ tục hành chính</td>
-                        <td>Ngày nhận</td>
-                        <td>Ngày hẹn trả</td>
-                        <td>Chuyển thụ lý</td>                        
+                    <td>Id</td>
+                    <td>Công dân</td>
+                    <td>Thủ tục hành chính</td>
+                    <td>Ngày nhận</td>
+                    <td>Ngày hẹn trả</td>
+                    <td>Chuyển thụ lý</td>                        
                     </thead>
                     <tfoot>
-                  <tr>
-                    <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
-                    <th><input type="text" name="search_thu" placeholder="Công dân" class="form-control"></th>
-                    <th><input type="text" name="search_so" placeholder="Thủ tục hành chính" class="form-control"></th>
-                    <th><input type="text" name="search_ngaynhan" placeholder="Ngày nhận" size="10" class="form-control"></th>
-                    <th><input type="text" name="search_ngaytra" placeholder="Ngày trả" size="10" class="form-control"></th>
-                    <th></th>
-                  </tr>
+                        <tr>
+                            <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                            <th><input type="text" name="search_thu" placeholder="Công dân" class="form-control"></th>
+                            <th><input type="text" name="search_so" placeholder="Thủ tục hành chính" class="form-control"></th>
+                            <th><input type="text" name="search_ngaynhan" placeholder="Ngày nhận" size="10" class="form-control"></th>
+                            <th><input type="text" name="search_ngaytra" placeholder="Ngày trả" size="10" class="form-control"></th>
+                            <th></th>
+                        </tr>
                     </tfoot>
                    {%endblock%}
                 {% for hosotthc in hoso%}
@@ -62,9 +64,11 @@
                 {%endfor%}
                 </table>
                 <div class="form-actions text-right">
+                    {%block submit%}
                     <input type="hidden" id="form_chuyenvienthuly" name="form[chuyenvienthuly]"/>
                     <button type="button" class="btn btn-success" onclick="checkCreate();">Tạo mới cán bộ</button>
                     <button type="button" class="btn btn-success" onclick="checkChoose();">Chọn cán bộ</button>                    
+                    {%endblock%}
                 </div>
             </div>            
         </div>
@@ -73,24 +77,24 @@
 {{ form_widget(form._token) }}
 {{form_end(form, {'render_rest': false})}}
 <script>
-    function checkChoose(){
-       var radios = document.getElementsByName('form[hosotthc][]');
-	for (var i = 0, length = radios.length; i < length; i++) {
-	    if (radios[i].checked) {	        	        
-                window.open('{{path('showExpert')}}','name','height=500,width=800');
+    function checkChoose() {
+        var radios = document.getElementsByName('form[hosotthc][]');
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                window.open('{{path('showExpert')}}', 'name', 'height=500,width=800');
                 return;
-	    }
-	}        
+            }
+        }
         alert('Bạn chưa chọn hồ sơ');
     }
-    function checkCreate(){
-       var radios = document.getElementsByName('form[hosotthc][]');
-	for (var i = 0, length = radios.length; i < length; i++) {
-	    if (radios[i].checked) {	        	        
-                window.open('{{path('createChuyenvienthuly')}}','name','height=500,width=800');
+    function checkCreate() {
+        var radios = document.getElementsByName('form[hosotthc][]');
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                window.open('{{path('createChuyenvienthuly')}}', 'name', 'height=500,width=800');
                 return;
-	    }
-	}        
+            }
+        }
         alert('Bạn chưa chọn hồ sơ');
     }
 </script>

@@ -5,12 +5,6 @@
         <h6 class="panel-title"><i class="icon-bubble4"></i> Tạo mới thủ tục hành chính</h6>
     </div>
     <div class="panel-body">
-{#        {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="alert alert-success fade in block-inner">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-                {{ flashMessage }}
-        </div>
-        {% endfor %}#}
         <div class="form-group">
             {{ form_label(form.nametthc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
             <div class="col-sm-10">
@@ -22,7 +16,7 @@
             {{ form_label(form.linhvuc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
             <div class="col-sm-10">
                 {{ form_widget(form.linhvuc,{'attr': {'class': 'multi-select'}}) }}
-                
+
                 {{ form_errors(form.linhvuc) }}
             </div>
         </div>
@@ -30,21 +24,21 @@
             {{ form_label(form.donvithuly, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
             <div class="col-sm-10">
                 {{ form_widget(form.donvithuly,{'attr': {'class': 'multi-select'}}) }}
-                
+
                 {{ form_errors(form.donvithuly) }}
             </div>
         </div>
         {%for quyentthc in form.quyentthc%}
            {% set idElement = 'tthc_quyentthc_'~loop.index0~'_user' %}
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Quyền <b>{{form.vars.value.quyentthc[loop.index0].quyenhan.name}}</b> </label>
-                <div class="col-sm-10">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Quyền <b>{{form.vars.value.quyentthc[loop.index0].quyenhan.name}}</b> </label>
+            <div class="col-sm-10">
                     {{ form_widget(quyentthc.user,{'attr': {'class': 'multi-select'}}) }}
                     {{ form_errors(quyentthc.user) }}
-                     <a href="#" onclick="window.open('{{path('tableUser',{'idElement':idElement})}}','name','height=500,width=800')">Tìm Nhanh</a>
-                </div>
+                <a href="#" onclick="window.open('{{path('tableUser',{'idElement':idElement})}}', 'name', 'height=500,width=800')">Tìm Nhanh</a>
             </div>
-            <input type="hidden" name="tthc[quyentthc][{{loop.index0}}][quyenhan]" value="{{form.vars.value.quyentthc[loop.index0].quyenhan.id}}"/>
+        </div>
+        <input type="hidden" name="tthc[quyentthc][{{loop.index0}}][quyenhan]" value="{{form.vars.value.quyentthc[loop.index0].quyenhan.id}}"/>
         {%endfor%}
         <div class="form-actions text-right">
              {{ form_widget(form.submit,{'attr': {'class': 'btn btn-primary'}}) }}

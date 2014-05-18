@@ -4,12 +4,12 @@
                     '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'   
      
     %}   
- <script type="text/javascript" src="{{ asset_url }}"></script>  
+<script type="text/javascript" src="{{ asset_url }}"></script>  
     {{parent()}}        
     {% endjavascripts %}     
 {%endblock%}
 {%block pagetitle%}
-     <h3>Thống kê người dùng <small>Basic/advanced form components</small></h3>
+<h3>Thống kê người dùng <small>Basic/advanced form components</small></h3>
 {%endblock%}
 {%block content %}
 <div class="panel panel-info">
@@ -21,12 +21,12 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <td>Id</td>
-                        <td>User</td>
-                        <td>Email</td>    
-                        <td>Niêm yết</td>
-                        <td>Tiếp nhận</td>
-                        <td>Hỏi đáp</td>
+                    <td>Id</td>
+                    <td>User</td>
+                    <td>Email</td>    
+                    <td>Niêm yết</td>
+                    <td>Tiếp nhận</td>
+                    <td>Hỏi đáp</td>
                     </thead>
                 {% for staff in staffs%}
                     {% if loop.index %2 == 0 %}

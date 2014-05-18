@@ -10,14 +10,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="congdan")
  * @ORM\Entity
  */
-class Congdan
-{
+class Congdan {
+
     /**
      * @var string
      *
      * @ORM\Column(name="pathtoimage", type="string", length=100, nullable=true)
      */
     private $pathtoimage;
+
     /**
      * @var string
      *
@@ -52,12 +53,14 @@ class Congdan
      * @ORM\Column(name="email", type="string", length=45, nullable=false)
      */
     private $email;
+
     /**
      * @var string
      *
      * @ORM\Column(name="cmtnd", type="string", length=45, nullable=false)
      */
     private $cmtnd;
+
     /**
      * @var string
      *
@@ -73,6 +76,7 @@ class Congdan
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idcongdan;
+
     /**
      * @var \Acme\PermissionBundle\Entity\Tenant
      *
@@ -82,28 +86,32 @@ class Congdan
      * })
      */
     private $tenant;
-     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Hoidaptt", mappedBy="congdan")
-    */
+
+    /**
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Hoidaptt", mappedBy="congdan")
+     */
     public $hoidaptt;
+
     public function __construct() {
         $this->hoidaptt = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    public function getHoidaptt(){
+
+    public function getHoidaptt() {
         return $this->hoidaptt;
     }
-    public function addHoidaptt(Hoidaptt $hoidap){
+
+    public function addHoidaptt(Hoidaptt $hoidap) {
         $this->hoidaptt[] = $hoidap;
         return $this;
     }
+
     /**
      * Set name
      *
      * @param string $name
      * @return Congdan
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -114,8 +122,7 @@ class Congdan
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -125,8 +132,7 @@ class Congdan
      * @param \DateTime $ngaysinh
      * @return Congdan
      */
-    public function setNgaysinh($ngaysinh)
-    {
+    public function setNgaysinh($ngaysinh) {
         $this->ngaysinh = $ngaysinh;
 
         return $this;
@@ -137,8 +143,7 @@ class Congdan
      *
      * @return \DateTime 
      */
-    public function getNgaysinh()
-    {
+    public function getNgaysinh() {
         return $this->ngaysinh;
     }
 
@@ -148,8 +153,7 @@ class Congdan
      * @param string $quequan
      * @return Congdan
      */
-    public function setQuequan($quequan)
-    {
+    public function setQuequan($quequan) {
         $this->quequan = $quequan;
 
         return $this;
@@ -160,8 +164,7 @@ class Congdan
      *
      * @return string 
      */
-    public function getQuequan()
-    {
+    public function getQuequan() {
         return $this->quequan;
     }
 
@@ -171,8 +174,7 @@ class Congdan
      * @param string $sdt
      * @return Congdan
      */
-    public function setSdt($sdt)
-    {
+    public function setSdt($sdt) {
         $this->sdt = $sdt;
 
         return $this;
@@ -183,8 +185,7 @@ class Congdan
      *
      * @return string 
      */
-    public function getSdt()
-    {
+    public function getSdt() {
         return $this->sdt;
     }
 
@@ -194,8 +195,7 @@ class Congdan
      * @param string $email
      * @return Congdan
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -206,8 +206,7 @@ class Congdan
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -216,18 +215,17 @@ class Congdan
      *
      * @return integer 
      */
-    public function getIdcongdan()
-    {
+    public function getIdcongdan() {
         return $this->idcongdan;
     }
+
     /**
      * Set username
      *
      * @param string $username
      * @return User
      */
-    public function setPathtoimage($pathtoimage)
-    {
+    public function setPathtoimage($pathtoimage) {
         $this->pathtoimage = $pathtoimage;
 
         return $this;
@@ -238,8 +236,7 @@ class Congdan
      *
      * @return string 
      */
-    public function getPathtoimage()
-    {
+    public function getPathtoimage() {
         return $this->pathtoimage;
     }
 
@@ -249,8 +246,7 @@ class Congdan
      * @param \Acme\PermissionBundle\Entity\Tenant $tenant
      * @return Congdan
      */
-    public function setTenant(\Acme\PermissionBundle\Entity\Tenant $tenant = null)
-    {
+    public function setTenant(\Acme\PermissionBundle\Entity\Tenant $tenant = null) {
         $this->tenant = $tenant;
 
         return $this;
@@ -261,8 +257,7 @@ class Congdan
      *
      * @return \Acme\PermissionBundle\Entity\Tenant 
      */
-    public function getTenant()
-    {
+    public function getTenant() {
         return $this->tenant;
     }
 
@@ -271,8 +266,7 @@ class Congdan
      *
      * @param \Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt
      */
-    public function removeHoidaptt(\Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt)
-    {
+    public function removeHoidaptt(\Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt) {
         $this->hoidaptt->removeElement($hoidaptt);
     }
 
@@ -282,8 +276,7 @@ class Congdan
      * @param string $cmtnd
      * @return Congdan
      */
-    public function setCmtnd($cmtnd)
-    {
+    public function setCmtnd($cmtnd) {
         $this->cmtnd = $cmtnd;
 
         return $this;
@@ -294,8 +287,7 @@ class Congdan
      *
      * @return string 
      */
-    public function getCmtnd()
-    {
+    public function getCmtnd() {
         return $this->cmtnd;
     }
 
@@ -305,8 +297,7 @@ class Congdan
      * @param string $noiohientai
      * @return Congdan
      */
-    public function setNoiohientai($noiohientai)
-    {
+    public function setNoiohientai($noiohientai) {
         $this->noiohientai = $noiohientai;
 
         return $this;
@@ -317,8 +308,8 @@ class Congdan
      *
      * @return string 
      */
-    public function getNoiohientai()
-    {
+    public function getNoiohientai() {
         return $this->noiohientai;
     }
+
 }

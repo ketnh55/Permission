@@ -10,32 +10,36 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="chuyenvienthuly", indexes={@ORM\Index(name="FK_CanBo_DVThuLy_idx", columns={"DonViThuLy"})})
  * @ORM\Entity
  */
-class Chuyenvienthuly
-{
+class Chuyenvienthuly {
+
     /**
      * @var string
      *
      * @ORM\Column(name="NameCB", type="string", length=45, nullable=false)
      */
     private $namecb;
+
     /**
      * @var string
      *
      * @ORM\Column(name="quequan", type="string", length=45, nullable=false)
      */
     private $quequan;
+
     /**
      * @var string
      *
      * @ORM\Column(name="noiohientai", type="string", length=45, nullable=false)
      */
     private $noiohientai;
+
     /**
      * @var string
      *
      * @ORM\Column(name="CMTND", type="string", length=45, nullable=false)
      */
     private $cmtnd;
+
     /**
      * @var string
      *
@@ -49,6 +53,7 @@ class Chuyenvienthuly
      * @ORM\Column(name="sdt", type="text", length=45, nullable=false)
      */
     private $sdt;
+
     /**
      * @var \DateTime
      *
@@ -75,16 +80,13 @@ class Chuyenvienthuly
      */
     private $donvithuly;
 
-
-
     /**
      * Set namecb
      *
      * @param string $namecb
      * @return Chuyenvienthuly
      */
-    public function setNamecb($namecb)
-    {
+    public function setNamecb($namecb) {
         $this->namecb = $namecb;
 
         return $this;
@@ -95,8 +97,7 @@ class Chuyenvienthuly
      *
      * @return string 
      */
-    public function getNamecb()
-    {
+    public function getNamecb() {
         return $this->namecb;
     }
 
@@ -106,8 +107,7 @@ class Chuyenvienthuly
      * @param \DateTime $ngaysinh
      * @return Chuyenvienthuly
      */
-    public function setNgaysinh($ngaysinh)
-    {
+    public function setNgaysinh($ngaysinh) {
         $this->ngaysinh = $ngaysinh;
 
         return $this;
@@ -118,8 +118,7 @@ class Chuyenvienthuly
      *
      * @return \DateTime 
      */
-    public function getNgaysinh()
-    {
+    public function getNgaysinh() {
         return $this->ngaysinh;
     }
 
@@ -128,8 +127,7 @@ class Chuyenvienthuly
      *
      * @return integer 
      */
-    public function getIdchuyenvienthuly()
-    {
+    public function getIdchuyenvienthuly() {
         return $this->idchuyenvienthuly;
     }
 
@@ -139,8 +137,7 @@ class Chuyenvienthuly
      * @param \Acme\PermissionBundle\Entity\Donvithuly $donvithuly
      * @return Chuyenvienthuly
      */
-    public function setDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly = null)
-    {
+    public function setDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly = null) {
         $this->donvithuly = $donvithuly;
 
         return $this;
@@ -151,8 +148,7 @@ class Chuyenvienthuly
      *
      * @return \Acme\PermissionBundle\Entity\Donvithuly 
      */
-    public function getDonvithuly()
-    {
+    public function getDonvithuly() {
         return $this->donvithuly;
     }
 
@@ -162,8 +158,7 @@ class Chuyenvienthuly
      * @param string $quequan
      * @return Chuyenvienthuly
      */
-    public function setQuequan($quequan)
-    {
+    public function setQuequan($quequan) {
         $this->quequan = $quequan;
 
         return $this;
@@ -174,8 +169,7 @@ class Chuyenvienthuly
      *
      * @return string 
      */
-    public function getQuequan()
-    {
+    public function getQuequan() {
         return $this->quequan;
     }
 
@@ -185,8 +179,7 @@ class Chuyenvienthuly
      * @param string $noiohientai
      * @return Chuyenvienthuly
      */
-    public function setNoiohientai($noiohientai)
-    {
+    public function setNoiohientai($noiohientai) {
         $this->noiohientai = $noiohientai;
 
         return $this;
@@ -197,8 +190,7 @@ class Chuyenvienthuly
      *
      * @return string 
      */
-    public function getNoiohientai()
-    {
+    public function getNoiohientai() {
         return $this->noiohientai;
     }
 
@@ -208,8 +200,7 @@ class Chuyenvienthuly
      * @param string $cmtnd
      * @return Chuyenvienthuly
      */
-    public function setCmtnd($cmtnd)
-    {
+    public function setCmtnd($cmtnd) {
         $this->cmtnd = $cmtnd;
 
         return $this;
@@ -220,12 +211,9 @@ class Chuyenvienthuly
      *
      * @return string 
      */
-    public function getCmtnd()
-    {
+    public function getCmtnd() {
         return $this->cmtnd;
     }
-
-   
 
     /**
      * Set sdt
@@ -233,8 +221,7 @@ class Chuyenvienthuly
      * @param string $sdt
      * @return Chuyenvienthuly
      */
-    public function setSdt($sdt)
-    {
+    public function setSdt($sdt) {
         $this->sdt = $sdt;
 
         return $this;
@@ -245,8 +232,7 @@ class Chuyenvienthuly
      *
      * @return string 
      */
-    public function getSdt()
-    {
+    public function getSdt() {
         return $this->sdt;
     }
 
@@ -256,8 +242,7 @@ class Chuyenvienthuly
      * @param string $email
      * @return Chuyenvienthuly
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -268,8 +253,8 @@ class Chuyenvienthuly
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
+
 }

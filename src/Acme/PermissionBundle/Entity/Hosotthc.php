@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="hosotthc", indexes={@ORM\Index(name="FK_HSTTHC_CongDan_idx", columns={"CongDan"}), @ORM\Index(name="FK_HSTTHC_TTHC_idx", columns={"TTHC"})})
  * @ORM\Entity
  */
-class Hosotthc
-{
+class Hosotthc {
+
     /**
      * @var \DateTime
      *
@@ -75,20 +75,21 @@ class Hosotthc
      * })
      */
     private $congdan;
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemnhanhs", mappedBy="hosotthc")
-    */
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemnhanhs", mappedBy="hosotthc")
+     */
     public $dinhkemnhanhs;
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Tinhtrangthuly", mappedBy="hosotthc")
-    */
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Tinhtrangthuly", mappedBy="hosotthc")
+     */
     public $tinhtrangthuly;
-    public function __construct()
-    {
+
+    public function __construct() {
         $this->dinhkemnhanhs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tinhtrangthuly = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Set ngaynhan
@@ -96,8 +97,7 @@ class Hosotthc
      * @param \DateTime $ngaynhan
      * @return Hosotthc
      */
-    public function setNgaynhan($ngaynhan)
-    {
+    public function setNgaynhan($ngaynhan) {
         $this->ngaynhan = $ngaynhan;
 
         return $this;
@@ -108,8 +108,7 @@ class Hosotthc
      *
      * @return \DateTime 
      */
-    public function getNgaynhan()
-    {
+    public function getNgaynhan() {
         return $this->ngaynhan;
     }
 
@@ -119,8 +118,7 @@ class Hosotthc
      * @param \DateTime $ngayhentra
      * @return Hosotthc
      */
-    public function setNgayhentra($ngayhentra)
-    {
+    public function setNgayhentra($ngayhentra) {
         $this->ngayhentra = $ngayhentra;
 
         return $this;
@@ -131,8 +129,7 @@ class Hosotthc
      *
      * @return \DateTime 
      */
-    public function getNgayhentra()
-    {
+    public function getNgayhentra() {
         return $this->ngayhentra;
     }
 
@@ -142,8 +139,7 @@ class Hosotthc
      * @param boolean $issentdvtl
      * @return Hosotthc
      */
-    public function setIssentdvtl($issentdvtl)
-    {
+    public function setIssentdvtl($issentdvtl) {
         $this->issentdvtl = $issentdvtl;
 
         return $this;
@@ -154,8 +150,7 @@ class Hosotthc
      *
      * @return boolean 
      */
-    public function getIssentdvtl()
-    {
+    public function getIssentdvtl() {
         return $this->issentdvtl;
     }
 
@@ -165,8 +160,7 @@ class Hosotthc
      * @param boolean $isrecievedvtl
      * @return Hosotthc
      */
-    public function setIsrecievedvtl($isrecievedvtl)
-    {
+    public function setIsrecievedvtl($isrecievedvtl) {
         $this->isrecievedvtl = $isrecievedvtl;
 
         return $this;
@@ -177,8 +171,7 @@ class Hosotthc
      *
      * @return boolean 
      */
-    public function getIsrecievedvtl()
-    {
+    public function getIsrecievedvtl() {
         return $this->isrecievedvtl;
     }
 
@@ -188,8 +181,7 @@ class Hosotthc
      * @param integer $sobiennhanhoso
      * @return Hosotthc
      */
-    public function setSobiennhanhoso($sobiennhanhoso)
-    {
+    public function setSobiennhanhoso($sobiennhanhoso) {
         $this->sobiennhanhoso = $sobiennhanhoso;
 
         return $this;
@@ -200,8 +192,7 @@ class Hosotthc
      *
      * @return integer 
      */
-    public function getSobiennhanhoso()
-    {
+    public function getSobiennhanhoso() {
         return $this->sobiennhanhoso;
     }
 
@@ -210,8 +201,7 @@ class Hosotthc
      *
      * @return integer 
      */
-    public function getIdhosotthc()
-    {
+    public function getIdhosotthc() {
         return $this->idhosotthc;
     }
 
@@ -221,8 +211,7 @@ class Hosotthc
      * @param \Acme\PermissionBundle\Entity\Tthc $tthc
      * @return Hosotthc
      */
-    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null)
-    {
+    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null) {
         $this->tthc = $tthc;
 
         return $this;
@@ -233,8 +222,7 @@ class Hosotthc
      *
      * @return \Acme\PermissionBundle\Entity\Tthc 
      */
-    public function getTthc()
-    {
+    public function getTthc() {
         return $this->tthc;
     }
 
@@ -244,8 +232,7 @@ class Hosotthc
      * @param \Acme\PermissionBundle\Entity\Congdan $congdan
      * @return Hosotthc
      */
-    public function setCongdan(\Acme\PermissionBundle\Entity\Congdan $congdan = null)
-    {
+    public function setCongdan(\Acme\PermissionBundle\Entity\Congdan $congdan = null) {
         $this->congdan = $congdan;
 
         return $this;
@@ -256,8 +243,7 @@ class Hosotthc
      *
      * @return \Acme\PermissionBundle\Entity\Congdan 
      */
-    public function getCongdan()
-    {
+    public function getCongdan() {
         return $this->congdan;
     }
 
@@ -267,8 +253,7 @@ class Hosotthc
      * @param \Acme\PermissionBundle\Entity\Dinhkemnhanhs $dinhkemnhanhs
      * @return Hosotthc
      */
-    public function addDinhkemnhanhs(\Acme\PermissionBundle\Entity\Dinhkemnhanhs $dinhkemnhanhs)
-    {
+    public function addDinhkemnhanhs(\Acme\PermissionBundle\Entity\Dinhkemnhanhs $dinhkemnhanhs) {
         $this->dinhkemnhanhs[] = $dinhkemnhanhs;
 
         return $this;
@@ -279,8 +264,7 @@ class Hosotthc
      *
      * @param \Acme\PermissionBundle\Entity\Dinhkemnhanhs $dinhkemnhanhs
      */
-    public function removeDinhkemnhanhs(\Acme\PermissionBundle\Entity\Dinhkemnhanhs $dinhkemnhanhs)
-    {
+    public function removeDinhkemnhanhs(\Acme\PermissionBundle\Entity\Dinhkemnhanhs $dinhkemnhanhs) {
         $this->dinhkemnhanhs->removeElement($dinhkemnhanhs);
     }
 
@@ -289,8 +273,7 @@ class Hosotthc
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getDinhkemnhanhs()
-    {
+    public function getDinhkemnhanhs() {
         return $this->dinhkemnhanhs;
     }
 
@@ -300,8 +283,7 @@ class Hosotthc
      * @param \Acme\PermissionBundle\Entity\Tinhtrangthuly $tinhtrangthuly
      * @return Hosotthc
      */
-    public function addTinhtrangthuly(\Acme\PermissionBundle\Entity\Tinhtrangthuly $tinhtrangthuly)
-    {
+    public function addTinhtrangthuly(\Acme\PermissionBundle\Entity\Tinhtrangthuly $tinhtrangthuly) {
         $this->tinhtrangthuly[] = $tinhtrangthuly;
 
         return $this;
@@ -312,8 +294,7 @@ class Hosotthc
      *
      * @param \Acme\PermissionBundle\Entity\Tinhtrangthuly $tinhtrangthuly
      */
-    public function removeTinhtrangthuly(\Acme\PermissionBundle\Entity\Tinhtrangthuly $tinhtrangthuly)
-    {
+    public function removeTinhtrangthuly(\Acme\PermissionBundle\Entity\Tinhtrangthuly $tinhtrangthuly) {
         $this->tinhtrangthuly->removeElement($tinhtrangthuly);
     }
 
@@ -322,8 +303,8 @@ class Hosotthc
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTinhtrangthuly()
-    {
+    public function getTinhtrangthuly() {
         return $this->tinhtrangthuly;
     }
+
 }

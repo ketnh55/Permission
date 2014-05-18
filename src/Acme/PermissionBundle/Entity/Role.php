@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="role")
  * @ORM\Entity
  */
-class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
-{
+class Role implements \Symfony\Component\Security\Core\Role\RoleInterface {
+
     /**
      * @var string
      *
@@ -56,16 +56,17 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      * )
      */
     private $functionsfunctions;
+
     /**
-    * @var \Doctrine\Common\Collections\Collection
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Groupfunction", mappedBy="role")
-    */
+     * @var \Doctrine\Common\Collections\Collection
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Groupfunction", mappedBy="role")
+     */
     private $groupfunc;
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
         $this->functionsfunctions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->groupfunc = new \Doctrine\Common\Collections\ArrayCollection();
@@ -75,18 +76,17 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      * 
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getGroupfunc()
-    {
+    public function getGroupfunc() {
         return $this->groupfunc;
     }
+
     /**
      * Set name
      *
      * @param string $name
      * @return Role
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -97,8 +97,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -108,8 +107,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      * @param string $role
      * @return Role
      */
-    public function setRole($role)
-    {
+    public function setRole($role) {
         $this->role = $role;
 
         return $this;
@@ -120,8 +118,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      *
      * @return string 
      */
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
 
@@ -130,8 +127,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -141,8 +137,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      * @param \Acme\PermissionBundle\Entity\User $user
      * @return Role
      */
-    public function addUser(\Acme\PermissionBundle\Entity\User $user)
-    {
+    public function addUser(\Acme\PermissionBundle\Entity\User $user) {
         $this->user[] = $user;
 
         return $this;
@@ -153,8 +148,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      *
      * @param \Acme\PermissionBundle\Entity\User $user
      */
-    public function removeUser(\Acme\PermissionBundle\Entity\User $user)
-    {
+    public function removeUser(\Acme\PermissionBundle\Entity\User $user) {
         $this->user->removeElement($user);
     }
 
@@ -163,8 +157,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
 
@@ -174,8 +167,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      * @param \Acme\PermissionBundle\Entity\Functions $functionsfunctions
      * @return Role
      */
-    public function addFunctionsfunction(\Acme\PermissionBundle\Entity\Functions $functionsfunctions)
-    {
+    public function addFunctionsfunction(\Acme\PermissionBundle\Entity\Functions $functionsfunctions) {
         $this->functionsfunctions[] = $functionsfunctions;
 
         return $this;
@@ -186,8 +178,7 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      *
      * @param \Acme\PermissionBundle\Entity\Functions $functionsfunctions
      */
-    public function removeFunctionsfunction(\Acme\PermissionBundle\Entity\Functions $functionsfunctions)
-    {
+    public function removeFunctionsfunction(\Acme\PermissionBundle\Entity\Functions $functionsfunctions) {
         $this->functionsfunctions->removeElement($functionsfunctions);
     }
 
@@ -196,8 +187,8 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getFunctionsfunctions()
-    {
+    public function getFunctionsfunctions() {
         return $this->functionsfunctions;
     }
+
 }

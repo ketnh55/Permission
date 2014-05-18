@@ -12,7 +12,9 @@ class LinhvucType extends AbstractType{
         ->add('motalinhvuc','textarea',array(
             'label' =>'Mô tả'
         ))
-        ->add('submit','submit')
+        ->add('submit','submit',array(
+            'label'=>'Ghi nhận'
+        ))
             ;
     }
     public function setDefaultOptions(OptionsResolverInterface $resolver)

@@ -40,7 +40,9 @@ class TTHCType extends AbstractType{
                 'allow_add' => true,
                 'required'=>FALSE
             ))
-            ->add('save','submit')
+            ->add('save','submit',array(
+                'label'=>'Lưu lại'
+            ))
             ->add('niemyet','submit',array(
                 'label'=>'Niêm yết'
             ));

@@ -1,23 +1,23 @@
 <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><i class="icon-stack"></i><span class="label label-default">{{hs|length}}</span></a>
-      <div class="popup dropdown-menu dropdown-menu-right">
+    <div class="popup dropdown-menu dropdown-menu-right">
         <div class="popup-header"><a href="#" class="pull-left"><i class="icon-spinner7"></i></a><span>Hồ sơ</span><a href="#" class="pull-right"><i class="icon-new-tab"></i></a></div>
         <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Hồ sơ số</th>
-              <th>Công dân</th>
-              <th class="text-center">Độ ưu tiên</th>
-            </tr>
-          </thead>
-          <tbody>
+            <thead>
+                <tr>
+                    <th>Hồ sơ số</th>
+                    <th>Công dân</th>
+                    <th class="text-center">Độ ưu tiên</th>
+                </tr>
+            </thead>
+            <tbody>
             {%for hoso in hs%}
-            <tr>
-              <td><span class="status status-success item-before"></span> <a href="{{path('viewHosotthc',{'id':hoso.idhosotthc})}}">{{hoso.idhosotthc}}</a></td>
-              <td><span class="text-smaller text-semibold">{{hoso.congdan.name}}</span></td>
-              <td class="text-center"><span class="label label-success">{{loop.index}}</span></td>
-            </tr>           
+                <tr>
+                    <td><span class="status status-success item-before"></span> <a href="{{path('viewHosotthc',{'id':hoso.idhosotthc})}}">{{hoso.idhosotthc}}</a></td>
+                    <td><span class="text-smaller text-semibold">{{hoso.congdan.name}}</span></td>
+                    <td class="text-center"><span class="label label-success">{{loop.index}}</span></td>
+                </tr>           
             {%endfor%}
-          </tbody>
+            </tbody>
         </table>
-      </div>
-    </li>
+    </div>
+</li>

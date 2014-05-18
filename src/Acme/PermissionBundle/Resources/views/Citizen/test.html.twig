@@ -4,135 +4,135 @@
                     '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/charts/*'   
      
     %}   
- <script type="text/javascript" src="{{ asset_url }}"></script>  
- 	<script>
-function randNum(){
-	return ((Math.floor( Math.random()* (1+40-20) ) ) + 20)* 1200;
-}
+<script type="text/javascript" src="{{ asset_url }}"></script>  
+<script>
+    function randNum() {
+        return ((Math.floor(Math.random() * (1 + 40 - 20))) + 20) * 1200;
+    }
 
-function randNum2(){
-	return ((Math.floor( Math.random()* (1+40-20) ) ) + 20) * 500;
-}
+    function randNum2() {
+        return ((Math.floor(Math.random() * (1 + 40 - 20))) + 20) * 500;
+    }
 
-function randNum3(){
-	return ((Math.floor( Math.random()* (1+40-20) ) ) + 20) * 300;
-}
+    function randNum3() {
+        return ((Math.floor(Math.random() * (1 + 40 - 20))) + 20) * 300;
+    }
 
-function randNum4(){
-	return ((Math.floor( Math.random()* (1+40-20) ) ) + 20) * 100;
-}
+    function randNum4() {
+        return ((Math.floor(Math.random() * (1 + 40 - 20))) + 20) * 100;
+    }
 
-$(document).ready(function(){
-	
-	/* ---------- Chart with points ---------- */
-	if($("#facebookChart").length)
-	{	
-		var likes = [[1, 40000], [2, 40000], [3, 40000], [4, 40000],[5, 40000],[6, 40000],[7, 40000],[8, 40+randNum()],[9, 45+randNum()],[10, 50+randNum()],[11, 55+randNum()],[12, 60+randNum()],[13, 65+randNum()]];
+    $(document).ready(function() {
 
-		var plot = $.plot($("#facebookChart"),
-			   [ { data: likes, label: "Hồ sơ"} ], {
-				   series: {
-					   lines: { show: true,
-								lineWidth: 2,
-								fill: true, fillColor: { colors: [ { opacity: 0.5 }, { opacity: 0.2 } ] }
-							 },
-					   points: { show: true, 
-								 lineWidth: 2 
-							 },
-					   shadowSize: 0
-				   },
-				   grid: { hoverable: true, 
-						   clickable: true, 
-						   tickColor: "#f9f9f9",
-						   borderWidth: 0
-						 },
-				   colors: ["#3B5998"],
-					xaxis: {ticks:6, tickDecimals: 0},
-					yaxis: {ticks:3, tickDecimals: 0},
-				 });
+        /* ---------- Chart with points ---------- */
+        if ($("#facebookChart").length)
+        {
+            var likes = [[1, 40000], [2, 40000], [3, 40000], [4, 40000], [5, 40000], [6, 40000], [7, 40000], [8, 40 + randNum()], [9, 45 + randNum()], [10, 50 + randNum()], [11, 55 + randNum()], [12, 60 + randNum()], [13, 65 + randNum()]];
 
-		function showTooltip(x, y, contents) {
-			$('<div id="tooltip">' + contents + '</div>').css( {
-				position: 'absolute',
-				display: 'none',
-				top: y + 1,
-				left: x + 1,
-				border: '1px solid #fdd',
-				padding: '2px',
-				'background-color': '#dfeffc',
-				opacity: 0.80
-			}).appendTo("body").fadeIn(200);
-		}
+            var plot = $.plot($("#facebookChart"),
+                    [{data: likes, label: "Hồ sơ"}], {
+                series: {
+                    lines: {show: true,
+                        lineWidth: 2,
+                        fill: true, fillColor: {colors: [{opacity: 0.5}, {opacity: 0.2}]}
+                    },
+                    points: {show: true,
+                        lineWidth: 2
+                    },
+                    shadowSize: 0
+                },
+                grid: {hoverable: true,
+                    clickable: true,
+                    tickColor: "#f9f9f9",
+                    borderWidth: 0
+                },
+                colors: ["#3B5998"],
+                xaxis: {ticks: 6, tickDecimals: 0},
+                yaxis: {ticks: 3, tickDecimals: 0},
+            });
 
-		var previousPoint = null;
-		$("#facebookChart").bind("plothover", function (event, pos, item) {
-			$("#x").text(pos.x.toFixed(2));
-			$("#y").text(pos.y.toFixed(2));
+            function showTooltip(x, y, contents) {
+                $('<div id="tooltip">' + contents + '</div>').css({
+                    position: 'absolute',
+                    display: 'none',
+                    top: y + 1,
+                    left: x + 1,
+                    border: '1px solid #fdd',
+                    padding: '2px',
+                    'background-color': '#dfeffc',
+                    opacity: 0.80
+                }).appendTo("body").fadeIn(200);
+            }
 
-				if (item) {
-					if (previousPoint != item.dataIndex) {
-						previousPoint = item.dataIndex;
+            var previousPoint = null;
+            $("#facebookChart").bind("plothover", function(event, pos, item) {
+                $("#x").text(pos.x.toFixed(2));
+                $("#y").text(pos.y.toFixed(2));
 
-						$("#tooltip").remove();
-						var x = item.datapoint[0].toFixed(2),
-							y = item.datapoint[1].toFixed(2);
+                if (item) {
+                    if (previousPoint != item.dataIndex) {
+                        previousPoint = item.dataIndex;
 
-						showTooltip(item.pageX, item.pageY,
-									item.series.label + " của tháng " + x + " = " + y);
-					}
-				}
-				else {
-					$("#tooltip").remove();
-					previousPoint = null;
-				}
-		});
-	
-	}
-	
-	function randNumTW(){
-		return ((Math.floor( Math.random()* (1+40-20) ) ) + 20);
-	}
-	 // we use an inline data source in the example, usually data would
-	// be fetched from a server
-	var data = [], totalPoints = 300;
-	function getRandomData() {
-		if (data.length > 0)
-			data = data.slice(1);
+                        $("#tooltip").remove();
+                        var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2);
 
-		// do a random walk
-		while (data.length < totalPoints) {
-			var prev = data.length > 0 ? data[data.length - 1] : 50;
-			var y = prev + Math.random() * 10 - 5;
-			if (y < 0)
-				y = 0;
-			if (y > 100)
-				y = 100;
-			data.push(y);
-		}
+                        showTooltip(item.pageX, item.pageY,
+                                item.series.label + " của tháng " + x + " = " + y);
+                    }
+                }
+                else {
+                    $("#tooltip").remove();
+                    previousPoint = null;
+                }
+            });
 
-		// zip the generated y values with the x values
-		var res = [];
-		for (var i = 0; i < data.length; ++i)
-			res.push([i, data[i]])
-		return res;
-	}
+        }
 
-	// setup control widget
-	var updateInterval = 30;
-	$("#updateInterval").val(updateInterval).change(function () {
-		var v = $(this).val();
-		if (v && !isNaN(+v)) {
-			updateInterval = +v;
-			if (updateInterval < 1)
-				updateInterval = 1;
-			if (updateInterval > 2000)
-				updateInterval = 2000;
-			$(this).val("" + updateInterval);
-		}
-	});
+        function randNumTW() {
+            return ((Math.floor(Math.random() * (1 + 40 - 20))) + 20);
+        }
+        // we use an inline data source in the example, usually data would
+// be fetched from a server
+        var data = [], totalPoints = 300;
+        function getRandomData() {
+            if (data.length > 0)
+                data = data.slice(1);
 
-	
-});
+            // do a random walk
+            while (data.length < totalPoints) {
+                var prev = data.length > 0 ? data[data.length - 1] : 50;
+                var y = prev + Math.random() * 10 - 5;
+                if (y < 0)
+                    y = 0;
+                if (y > 100)
+                    y = 100;
+                data.push(y);
+            }
+
+            // zip the generated y values with the x values
+            var res = [];
+            for (var i = 0; i < data.length; ++i)
+                res.push([i, data[i]])
+            return res;
+        }
+
+// setup control widget
+        var updateInterval = 30;
+        $("#updateInterval").val(updateInterval).change(function() {
+            var v = $(this).val();
+            if (v && !isNaN(+v)) {
+                updateInterval = +v;
+                if (updateInterval < 1)
+                    updateInterval = 1;
+                if (updateInterval > 2000)
+                    updateInterval = 2000;
+                $(this).val("" + updateInterval);
+            }
+        });
+
+
+    });
 </script>
 {{parent()}}
     {% endjavascripts %} 
@@ -140,18 +140,18 @@ $(document).ready(function(){
 {%block content%}
 
 <div id="content" class="col-lg-10 col-sm-11">
-<div class="row">
-    <div class="col-sm-8">
+    <div class="row">
+        <div class="col-sm-8">
             <div class="box">
-                    <div class="box-header">
-                            <h2><i class="fa fa-facebook"></i>Hồ sơ đã tiếp nhận</h2>
-                    </div>
-                    <div class="box-content">
-                            <div id="facebookChart" style="height: 300px; padding: 0px; position: relative;"><canvas class="flot-base" width="510" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 510px; height: 300px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 100px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 176px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 256px; text-align: center;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 336px; text-align: center;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 415px; text-align: center;">25</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 495px; text-align: center;">30</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 270px; left: 28px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 180px; left: 0px; text-align: right;">20000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 90px; left: 0px; text-align: right;">40000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">60000</div></div></div><canvas class="flot-overlay" width="510" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 510px; height: 300px;"></canvas><div class="legend"><div style="position: absolute; width: 39px; height: 17px; top: 14px; right: 13px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:14px;right:13px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(59,89,152);overflow:hidden"></div></div></td><td class="legendLabel">Fans</td></tr></tbody></table></div></div>
-                    </div>
+                <div class="box-header">
+                    <h2><i class="fa fa-facebook"></i>Hồ sơ đã tiếp nhận</h2>
+                </div>
+                <div class="box-content">
+                    <div id="facebookChart" style="height: 300px; padding: 0px; position: relative;"><canvas class="flot-base" width="510" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 510px; height: 300px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 100px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 176px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 256px; text-align: center;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 336px; text-align: center;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 415px; text-align: center;">25</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 72px; top: 283px; left: 495px; text-align: center;">30</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 270px; left: 28px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 180px; left: 0px; text-align: right;">20000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 90px; left: 0px; text-align: right;">40000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">60000</div></div></div><canvas class="flot-overlay" width="510" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 510px; height: 300px;"></canvas><div class="legend"><div style="position: absolute; width: 39px; height: 17px; top: 14px; right: 13px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:14px;right:13px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(59,89,152);overflow:hidden"></div></div></td><td class="legendLabel">Fans</td></tr></tbody></table></div></div>
+                </div>
             </div>
+        </div>
     </div>
 </div>
-</div>
-					
+
 {%endblock%}

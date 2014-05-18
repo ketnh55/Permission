@@ -3,54 +3,54 @@
 <title>Hỏi đáp trực tuyến</title>
 {%endblock%}
 {%block pagetitle%}
-     <h3>Hỏi đáp trực tuyến<small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+<h3>Hỏi đáp trực tuyến<small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
 {%endblock%}
 {%block content%}
  {%if form.hoidaptt is defined %}
 <div class="block">
-   
+
     {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}    
     {{ form_errors(form) }}
-      <h6><i class="icon-bubbles4"></i> Trả lời câu hỏi công dân</h6>
-      <ul class="message-list">
+    <h6><i class="icon-bubbles4"></i> Trả lời câu hỏi công dân</h6>
+    <ul class="message-list">
         <li class="message-list-header">Công dân</li>
-        
+
         {%for formHD in form.hoidaptt%}
-       <li>
-          <div class="clearfix">
-            <div class="chat-member"><a href="#"><img src="{{asset(hoidaptt[loop.index0].congdan.pathtoimage|default('uploads/avatar/anonymous.jpg'))}}" alt=""></a>
-              <h6>{{hoidaptt[loop.index0].congdan.name}} <span class="status status-success"></span> <small>&nbsp; /&nbsp; {{hoidaptt[loop.index0].cauhoi}}</small></h6>
+        <li>
+            <div class="clearfix">
+                <div class="chat-member"><a href="#"><img src="{{asset(hoidaptt[loop.index0].congdan.pathtoimage|default('uploads/avatar/anonymous.jpg'))}}" alt=""></a>
+                    <h6>{{hoidaptt[loop.index0].congdan.name}} <span class="status status-success"></span> <small>&nbsp; /&nbsp; {{hoidaptt[loop.index0].cauhoi}}</small></h6>
+                </div>
+                <div class="chat-actions"><a class="btn btn-link btn-icon btn-xs" data-toggle="collapse" href="#{{loop.index0}}"><i class="icon-bubble3"></i></a><a href="#" class="btn btn-link btn-icon btn-xs"><i class="icon-phone2"></i></a><a href="#" class="btn btn-link btn-icon btn-xs"><i class="icon-camera5"></i></a></div>
             </div>
-            <div class="chat-actions"><a class="btn btn-link btn-icon btn-xs" data-toggle="collapse" href="#{{loop.index0}}"><i class="icon-bubble3"></i></a><a href="#" class="btn btn-link btn-icon btn-xs"><i class="icon-phone2"></i></a><a href="#" class="btn btn-link btn-icon btn-xs"><i class="icon-camera5"></i></a></div>
-          </div>
-          <div class="panel-collapse collapse" id="{{loop.index0}}">
-            <div class="chat">
-              <div class="message reversed"> <a class="message-img" href="#"><img src="{{asset(hoidaptt[loop.index0].congdan.pathtoimage|default('uploads/avatar/anonymous.jpg'))}}" alt=""></a>
-                <div class="message-body">{{formHD.vars.value.cauhoi}}<span class="attribution">{{hoidaptt[loop.index0].thoigianhoi|date('m/d/Y')}}</span> </div>
-                <input type="hidden" name="form[hoidaptt][{{loop.index0}}][cauhoi]" value="{{formHD.vars.value.cauhoi}}">
-              </div>  
-            <div class="message"> <a class="message-img" href="#"><img src="{{ asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg')) }}" alt=""></a>
-                <div class="message-body">{{formHD.vars.value.cautraloi|default("")}}<span class="attribution">{{hoidaptt[loop.index0].thoigiantraloi|date('m/d/Y')|default('')}}</span> </div>
-            </div>                
-            </div>
+            <div class="panel-collapse collapse" id="{{loop.index0}}">
+                <div class="chat">
+                    <div class="message reversed"> <a class="message-img" href="#"><img src="{{asset(hoidaptt[loop.index0].congdan.pathtoimage|default('uploads/avatar/anonymous.jpg'))}}" alt=""></a>
+                        <div class="message-body">{{formHD.vars.value.cauhoi}}<span class="attribution">{{hoidaptt[loop.index0].thoigianhoi|date('m/d/Y')}}</span> </div>
+                        <input type="hidden" name="form[hoidaptt][{{loop.index0}}][cauhoi]" value="{{formHD.vars.value.cauhoi}}">
+                    </div>  
+                    <div class="message"> <a class="message-img" href="#"><img src="{{ asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg')) }}" alt=""></a>
+                        <div class="message-body">{{formHD.vars.value.cautraloi|default("")}}<span class="attribution">{{hoidaptt[loop.index0].thoigiantraloi|date('m/d/Y')|default('')}}</span> </div>
+                    </div>                
+                </div>
              {{ form_widget(formHD.cautraloi,{'attr': {'class': 'form-control','rows': 3, 'cols':'1','placeholder': 'Enter your message...'}}) }}            
-            <div class="message-controls"> <span class="pull-left"><i class="icon-checkmark-circle"></i> Some basic <a href="#" title="">HTML</a> is OK</span>
-              <div class="pull-right">
-                
-                <div class="upload-options"> <a href="#" title="" class="tip" data-original-title="Smileys"><i class="icon-smiley"></i></a> <a href="#" title="" class="tip" data-original-title="Upload photo"><i class="icon-camera3"></i></a> <a href="#" title="" class="tip" data-original-title="Attach file"><i class="icon-attachment"></i></a> </div>                               
+                <div class="message-controls"> <span class="pull-left"><i class="icon-checkmark-circle"></i> Some basic <a href="#" title="">HTML</a> is OK</span>
+                    <div class="pull-right">
+
+                        <div class="upload-options"> <a href="#" title="" class="tip" data-original-title="Smileys"><i class="icon-smiley"></i></a> <a href="#" title="" class="tip" data-original-title="Upload photo"><i class="icon-camera3"></i></a> <a href="#" title="" class="tip" data-original-title="Attach file"><i class="icon-attachment"></i></a> </div>                               
                 {{form_widget(formHD.submit,{'attr': {'class': 'btn btn-danger btn-loading'}})}}
-              </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </li>         
           {{ form_widget(formHD.thoigiantraloi.year,{'attr': {'value':"now"|date("y"),'hidden':true}}) }}
           {{ form_widget(formHD.thoigiantraloi.month,{'attr': {'value':"now"|date("m"),'hidden':true}}) }}
           {{ form_widget(formHD.thoigiantraloi.day,{'attr': {'value':"now"|date("d"),'hidden':true}}) }}
         {%endfor%}
 
-      </ul>
-    </div>   
-  
+    </ul>
+</div>   
+
   {{ form_widget(form._token) }}
 {{form_end(form,{'render_rest': false})}}
 {%endif%}

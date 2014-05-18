@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="groupfunction", indexes={@ORM\Index(name="fk_GroupFunction_Role1_idx", columns={"Role"})})
  * @ORM\Entity
  */
-class Groupfunction
-{
+class Groupfunction {
+
     /**
      * @var string
      *
@@ -25,6 +25,7 @@ class Groupfunction
      * @ORM\Column(name="description", type="string", length=45, nullable=true)
      */
     private $description;
+
     /**
      * @var string
      *
@@ -50,34 +51,36 @@ class Groupfunction
      * })
      */
     private $role;
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Functions", mappedBy="groupfunction")
-    */
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Functions", mappedBy="groupfunction")
+     */
     public $functions;
-    public function __construct()
-    {
+
+    public function __construct() {
         $this->functions = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    public function getFunctions(){
-            return $this->functions;
+
+    public function getFunctions() {
+        return $this->functions;
     }
+
     /**
      * Get icon
      *
      * @return string 
      */
-    public function getIcon()
-    {
+    public function getIcon() {
         return $this->icon;
     }
+
     /**
      * Set icon
      *
      * @param string $path
      * @return Functions
      */
-    public function setIcon($icon)
-    {
+    public function setIcon($icon) {
         $this->icon = $icon;
 
         return $this;
@@ -89,8 +92,7 @@ class Groupfunction
      * @param string $name
      * @return Groupfunction
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -101,8 +103,7 @@ class Groupfunction
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -112,8 +113,7 @@ class Groupfunction
      * @param string $description
      * @return Groupfunction
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -124,8 +124,7 @@ class Groupfunction
      *
      * @return string 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -134,8 +133,7 @@ class Groupfunction
      *
      * @return integer 
      */
-    public function getIdgroupfunction()
-    {
+    public function getIdgroupfunction() {
         return $this->idgroupfunction;
     }
 
@@ -145,8 +143,7 @@ class Groupfunction
      * @param \Acme\PermissionBundle\Entity\Role $role
      * @return Groupfunction
      */
-    public function setRole(\Acme\PermissionBundle\Entity\Role $role = null)
-    {
+    public function setRole(\Acme\PermissionBundle\Entity\Role $role = null) {
         $this->role = $role;
 
         return $this;
@@ -157,8 +154,8 @@ class Groupfunction
      *
      * @return \Acme\PermissionBundle\Entity\Role 
      */
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
+
 }

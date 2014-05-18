@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="quyentthc", indexes={@ORM\Index(name="fk_QuyenTTHC_User1_idx", columns={"User"}), @ORM\Index(name="fk_QuyenTTHC_TTHC1_idx", columns={"TTHC"}), @ORM\Index(name="fk_QuyenTTHC_Quyenhan1_idx", columns={"Quyenhan"})})
  * @ORM\Entity
  */
-class Quyentthc
-{
+class Quyentthc {
+
     /**
      * @var string
      *
@@ -58,16 +58,13 @@ class Quyentthc
      */
     private $user;
 
-
-
     /**
      * Set mota
      *
      * @param string $mota
      * @return Quyentthc
      */
-    public function setMota($mota)
-    {
+    public function setMota($mota) {
         $this->mota = $mota;
 
         return $this;
@@ -78,8 +75,7 @@ class Quyentthc
      *
      * @return string 
      */
-    public function getMota()
-    {
+    public function getMota() {
         return $this->mota;
     }
 
@@ -88,8 +84,7 @@ class Quyentthc
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -99,8 +94,7 @@ class Quyentthc
      * @param \Acme\PermissionBundle\Entity\Quyenhan $quyenhan
      * @return Quyentthc
      */
-    public function setQuyenhan(\Acme\PermissionBundle\Entity\Quyenhan $quyenhan = null)
-    {
+    public function setQuyenhan(\Acme\PermissionBundle\Entity\Quyenhan $quyenhan = null) {
         $this->quyenhan = $quyenhan;
 
         return $this;
@@ -111,8 +105,7 @@ class Quyentthc
      *
      * @return \Acme\PermissionBundle\Entity\Quyenhan 
      */
-    public function getQuyenhan()
-    {
+    public function getQuyenhan() {
         return $this->quyenhan;
     }
 
@@ -122,8 +115,7 @@ class Quyentthc
      * @param \Acme\PermissionBundle\Entity\Tthc $tthc
      * @return Quyentthc
      */
-    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null)
-    {
+    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null) {
         $this->tthc = $tthc;
 
         return $this;
@@ -134,8 +126,7 @@ class Quyentthc
      *
      * @return \Acme\PermissionBundle\Entity\Tthc 
      */
-    public function getTthc()
-    {
+    public function getTthc() {
         return $this->tthc;
     }
 
@@ -145,8 +136,7 @@ class Quyentthc
      * @param \Acme\PermissionBundle\Entity\User $user
      * @return Quyentthc
      */
-    public function setUser(\Acme\PermissionBundle\Entity\User $user = null)
-    {
+    public function setUser(\Acme\PermissionBundle\Entity\User $user = null) {
         $this->user = $user;
 
         return $this;
@@ -157,8 +147,8 @@ class Quyentthc
      *
      * @return \Acme\PermissionBundle\Entity\User 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
+
 }

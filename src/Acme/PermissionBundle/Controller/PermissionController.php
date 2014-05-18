@@ -16,46 +16,46 @@ use Symfony\Component\HttpFoundation\Request;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Doctrine\ORM\EntityRepository;
 use Acme\PermissionBundle\Entity\Donvithuly;
-class PermissionController extends Controller
-{               
-     /**
-    * @Secure(roles="ROLE_ADMIN")
-    */
-    public function createUserAction(Request $request)
-    {        
-        $usr= $this->get('security.context')->getToken()->getUser();
+
+class PermissionController extends Controller {
+
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function createUserAction(Request $request) {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $user = new User();
-        $form = $this->createForm(new UserType(),$user,array(
-            'action'=>$this->generateUrl('createUser')
+        $form = $this->createForm(new UserType(), $user, array(
+            'action' => $this->generateUrl('createUser')
         ));
         $form->handleRequest($request);
-        if ($form->isValid()){            
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
-            $password12 = $encoder->encodePassword($form->get('password')->getData(),$user->getSalt());
-            $user->setPassword($password12);    
+            $password12 = $encoder->encodePassword($form->get('password')->getData(), $user->getSalt());
+            $user->setPassword($password12);
             $user->setTenant($usr->getTenant());
-            $username = $user->getUsername().'@'.$user->getTenant()->getDomain();
+            $username = $user->getUsername() . '@' . $user->getTenant()->getDomain();
             $user->setUsername($username);
             $em->persist($user);
-            $em->flush();            
+            $em->flush();
             $this->get('session')->getFlashBag()->add('notice', 'Tạo mới người dùng thành công!');
             return $this->redirect($this->generateUrl('initialData'));
         }
-        return $this->render('AcmePermissionBundle:Admin:createUser.html.twig',array('form'=>$form->createView()));
+        return $this->render('AcmePermissionBundle:Admin:createUser.html.twig', array('form' => $form->createView()));
     }
+
     /**
-    * @Secure(roles="ROLE_ADMIN")
-    */
-    public function createLinhvucAction(Request $request)
-    {
-        $usr= $this->get('security.context')->getToken()->getUser();
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function createLinhvucAction(Request $request) {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $linhvuc = new Linhvuc();
-        $form = $this->createForm(new LinhvucType(),$linhvuc,array(
-            'action'=>$this->generateUrl('createLinhvuc')
+        $form = $this->createForm(new LinhvucType(), $linhvuc, array(
+            'action' => $this->generateUrl('createLinhvuc')
         ));
         $form->handleRequest($request);
-        if ($form->isValid()){        
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $linhvuc->setTenant($usr->getTenant());
             $em->persist($linhvuc);
@@ -63,37 +63,37 @@ class PermissionController extends Controller
             $this->get('session')->getFlashBag()->add('notice', 'Tạo mới lĩnh vực thành công!');
             return $this->redirect($this->generateUrl('initialData'));
         }
-        return $this->render('AcmePermissionBundle:Admin:createLinhvuc.html.twig',array('form'=>$form->createView()));
+        return $this->render('AcmePermissionBundle:Admin:createLinhvuc.html.twig', array('form' => $form->createView()));
     }
+
     /**
-    * @Secure(roles="ROLE_ADMIN")
-    */
-    public function createDVTLAction(Request $request)
-    {
-        $usr= $this->get('security.context')->getToken()->getUser();
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function createDVTLAction(Request $request) {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $donvitl = new Donvithuly();
-        $form = $this->createFormBuilder($donvitl,array(
-             'action'=>  $this->generateUrl('createDVTL')
-        ))
-                ->add('namedonvithuly','text',array(
-                    'label'=>'Tên đơn vị thụ lý'
+        $form = $this->createFormBuilder($donvitl, array(
+                    'action' => $this->generateUrl('createDVTL')
                 ))
-                ->add('mota','text',array(
-                    'label'=>'Mô tả'
+                ->add('namedonvithuly', 'text', array(
+                    'label' => 'Tên đơn vị thụ lý'
                 ))
-                ->add('diachi','text',array(
-                    'label'=>'Địa chỉ'
+                ->add('mota', 'text', array(
+                    'label' => 'Mô tả'
                 ))
-                ->add('sdt','text',array(
-                    'label'=>'Số điện thoại'
+                ->add('diachi', 'text', array(
+                    'label' => 'Địa chỉ'
                 ))
-                ->add('madonvi','text',array(
-                    'label'=>'Mã đơn vị'
+                ->add('sdt', 'text', array(
+                    'label' => 'Số điện thoại'
+                ))
+                ->add('madonvi', 'text', array(
+                    'label' => 'Mã đơn vị'
                 ))
                 ->getForm()
-                ->add('submit','submit');               
+                ->add('submit', 'submit');
         $form->handleRequest($request);
-        if ($form->isValid()){        
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $donvitl->setTenant($usr->getTenant());
             $em->persist($donvitl);
@@ -101,31 +101,31 @@ class PermissionController extends Controller
             $this->get('session')->getFlashBag()->add('notice', 'Tạo mới đơn vị thụ lý thành công!');
             return $this->redirect($this->generateUrl('initialData'));
         }
-        return $this->render('AcmePermissionBundle:Admin:createDVTL.html.twig',array('form'=>$form->createView()));
+        return $this->render('AcmePermissionBundle:Admin:createDVTL.html.twig', array('form' => $form->createView()));
     }
+
     /**
-    * @Secure(roles="ROLE_ADMIN")
-    */
-    public function createTTHCAction(Request $request)
-    {        
-        $usr= $this->get('security.context')->getToken()->getUser();
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function createTTHCAction(Request $request) {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $tthc = new Tthc();
         $tthc->setIshide(FALSE);
-        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Quyenhan');        
-        $quyenhan = $resposity->findAll();        
-        foreach ($quyenhan as $quyen){     
+        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Quyenhan');
+        $quyenhan = $resposity->findAll();
+        foreach ($quyenhan as $quyen) {
             $quyentthc = new Quyentthc();
             $quyentthc->setQuyenhan($quyen);
             $tthc->addQuyentthc($quyentthc);
-        }               
-        $form = $this->createForm(new NewTTHCType($usr),$tthc,array(
-            'action'=>  $this->generateUrl('createTTHC')
+        }
+        $form = $this->createForm(new NewTTHCType($usr), $tthc, array(
+            'action' => $this->generateUrl('createTTHC')
         ));
         $form->handleRequest($request);
-        if ($form->isValid()){            
-            $em = $this->getDoctrine()->getManager();            
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
             $em->persist($tthc);
-            foreach ($tthc->getQuyentthc() as $quyentthc){
+            foreach ($tthc->getQuyentthc() as $quyentthc) {
                 $quyentthc->setTthc($tthc);
                 $em->persist($quyentthc);
             }
@@ -133,105 +133,108 @@ class PermissionController extends Controller
             $this->get('session')->getFlashBag()->add('notice', 'Tạo mới thủ tục hành chính thành công!');
             return $this->redirect($this->generateUrl('initialData'));
         }
-        return $this->render('AcmePermissionBundle:Admin:createTTHC.html.twig',array('form'=>$form->createView()));
+        return $this->render('AcmePermissionBundle:Admin:createTTHC.html.twig', array('form' => $form->createView()));
     }
+
     /**
-    * @Secure(roles="ROLE_ADMIN, ROLE_MAJOR")
-    */
-    public function permissionAction(Request $request)
-    {
-        $usr= $this->get('security.context')->getToken()->getUser();
+     * @Secure(roles="ROLE_ADMIN, ROLE_MAJOR")
+     */
+    public function permissionAction(Request $request) {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Quyentthc');
         $vaitro = $resposity->createQueryBuilder("qt")
-                ->JOIN("qt.user","u")
-                   ->WHERE("u.tenant = :tenant")
-                   ->setParameter("tenant",$usr->getTenant()->getId())->getQuery()->getResult();
-           $form = $this->createFormBuilder()// tao checkbox xoa
-                   ->add('quyenhan','entity',array(
-                       'class'=>'AcmePermissionBundle:Quyentthc',
-                        'query_builder' => function(EntityRepository $er) use ($usr) {
-                        return $er->createQueryBuilder('qt')     
-                                ->JOIN("qt.user","u")
-                                   ->WHERE("u.tenant = :tenant")
-                                ->setParameter("tenant",$usr->getTenant()->getId());
-                    },
-                       'property'=>'id',
-                       'multiple'=>TRUE,
-                       'expanded'=>TRUE
-                   ))
-                   ->add('submit','submit')
-                   ->getForm();
-           $form->handleRequest($request);        
-           if ($form->isValid()){
-               $em = $this->getDoctrine()->getManager();
-               $func = $form->getData()['quyenhan'];
-               foreach ($func as $f){
-                   $em->remove($f);
-               }
-               $em->flush();
-               $this->get('session')->getFlashBag()->add('notice', 'Điều chỉnh quyền cán bộ thành công!');
-               return $this->redirect($this->generateUrl('permission'));
+                        ->JOIN("qt.user", "u")
+                        ->WHERE("u.tenant = :tenant")
+                        ->setParameter("tenant", $usr->getTenant()->getId())->getQuery()->getResult();
+        $form = $this->createFormBuilder()// tao checkbox xoa
+                ->add('quyenhan', 'entity', array(
+                    'class' => 'AcmePermissionBundle:Quyentthc',
+                    'query_builder' => function(EntityRepository $er) use ($usr) {
+                return $er->createQueryBuilder('qt')
+                        ->JOIN("qt.user", "u")
+                        ->WHERE("u.tenant = :tenant")
+                        ->setParameter("tenant", $usr->getTenant()->getId());
+            },
+                    'property' => 'id',
+                    'multiple' => TRUE,
+                    'expanded' => TRUE
+                ))
+                ->add('submit', 'submit')
+                ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $func = $form->getData()['quyenhan'];
+            foreach ($func as $f) {
+                $em->remove($f);
+            }
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('notice', 'Điều chỉnh quyền cán bộ thành công!');
+            return $this->redirect($this->generateUrl('permission'));
         }
-        return $this->render('AcmePermissionBundle:Admin:permission.html.twig',array('vaitroxuly'=>$vaitro,'form'=>$form->createView()));
-
+        return $this->render('AcmePermissionBundle:Admin:permission.html.twig', array('vaitroxuly' => $vaitro, 'form' => $form->createView()));
     }
+
     /**
-    * @Secure(roles="ROLE_ADMIN")
-    */
-    public function editPermissionAction($id,Request $request){
-        $usr= $this->get('security.context')->getToken()->getUser();
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function editPermissionAction($id, Request $request) {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Quyentthc');
         $vaitro = $resposity->find($id);
-        $form = $this->createForm(new QuyenTTHCType($usr),$vaitro);
+        $form = $this->createForm(new QuyenTTHCType($usr), $vaitro);
         $form->handleRequest($request);
-        if ($form->isValid()){            
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             $this->get('session')->getFlashBag()->add('notice', 'Điều chỉnh quyền cán bộ thành công!');
             return $this->redirect($this->generateUrl('permission'));
         }
-        return $this->render('AcmePermissionBundle:Admin:editPermission.html.twig',array('form'=>$form->createView(),'quyentthc'=>$vaitro));
+        return $this->render('AcmePermissionBundle:Admin:editPermission.html.twig', array('form' => $form->createView(), 'quyentthc' => $vaitro));
     }
+
     /**
-    * @Secure(roles="ROLE_ADMIN")
-    */
-    public function addPermissionAction($id,Request $request){
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function addPermissionAction($id, Request $request) {
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:User');
         $user = $resposity->findOneById($id);
         $quyenlinhvuc = new Quyenlinhvuc();
         $quyenlinhvuc->setUser($user);
-        $form = $this->createForm(new AddQuyenlinhvucType(),$quyenlinhvuc);
+        $form = $this->createForm(new AddQuyenlinhvucType(), $quyenlinhvuc);
         $form->handleRequest($request);
-        if ($form->isValid()){
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($quyenlinhvuc);
             $em->flush();
 //            return $this->redirect($this->generateUrl('permission'));
         }
-        return $this->render('AcmePermissionBundle:Admin:addPermission.html.twig',array('form'=>$form->createView(),'user'=>$user));
+        return $this->render('AcmePermissionBundle:Admin:addPermission.html.twig', array('form' => $form->createView(), 'user' => $user));
     }
+
     /**
-    * @Secure(roles="ROLE_ADMIN")
-    */
-    public function statisticAction(){
-        $usr= $this->get('security.context')->getToken()->getUser();
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function statisticAction() {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $user_resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:User');
         $lv_resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Linhvuc');
         $tthc_resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Tthc');
         $dvtl_resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Donvithuly');
         $users = $user_resposity->createQueryBuilder('u')
-                ->WHERE('u.tenant = :tenantid')
-                ->setParameter('tenantid',$usr->getTenant()->getId())->getQuery()->getResult();
+                        ->WHERE('u.tenant = :tenantid')
+                        ->setParameter('tenantid', $usr->getTenant()->getId())->getQuery()->getResult();
         $lv = $lv_resposity->createQueryBuilder('u')
-                ->WHERE('u.tenant = :tenantid')
-                ->setParameter('tenantid',$usr->getTenant()->getId())->getQuery()->getResult();
+                        ->WHERE('u.tenant = :tenantid')
+                        ->setParameter('tenantid', $usr->getTenant()->getId())->getQuery()->getResult();
         $tthc = $tthc_resposity->createQueryBuilder('t')
-                ->JOIN("t.linhvuc","lv")
-                ->WHERE('lv.tenant = :tenantid')
-                ->setParameter('tenantid',$usr->getTenant()->getId())->getQuery()->getResult();
+                        ->JOIN("t.linhvuc", "lv")
+                        ->WHERE('lv.tenant = :tenantid')
+                        ->setParameter('tenantid', $usr->getTenant()->getId())->getQuery()->getResult();
         $donvithuly = $dvtl_resposity->createQueryBuilder('t')
-                ->WHERE('t.tenant = :tenantid')
-                ->setParameter('tenantid',$usr->getTenant()->getId())->getQuery()->getResult();
-        return $this->render('AcmePermissionBundle:Admin:statistic.html.twig',array('users'=>$users,'tthc'=>$tthc,'lv'=>$lv,'dvtl'=>$donvithuly));
-    }          
+                        ->WHERE('t.tenant = :tenantid')
+                        ->setParameter('tenantid', $usr->getTenant()->getId())->getQuery()->getResult();
+        return $this->render('AcmePermissionBundle:Admin:statistic.html.twig', array('users' => $users, 'tthc' => $tthc, 'lv' => $lv, 'dvtl' => $donvithuly));
+    }
+
 }

@@ -2,82 +2,82 @@
                         'bundles/acmepermission/bootstrap/css/styles.min.css'
                         'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
                      filter='cssrewrite' %}
-                    <link rel="stylesheet" href="{{ asset_url }}" />
+<link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}  
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-        <script>
-                $(document).ready(function () {
-                $("li").click(function () {
-                $('li > ul').not($(this).children("ul")).hide();
-                $(this).children("ul").toggle();
-            });
-            });
-        </script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("li").click(function() {
+            $('li > ul').not($(this).children("ul")).hide();
+            $(this).children("ul").toggle();
+        });
+    });
+</script>
         {% javascripts 
 
                         '@AcmePermissionBundle/Resources/public/bootstrap/js/*' 
                         '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'
         %}
-        
-         <script type="text/javascript" src="{{ asset_url }}"></script>
-        
+
+<script type="text/javascript" src="{{ asset_url }}"></script>
+
         {% endjavascripts %}          
      {{ form_start(form) }}
             {{ form_errors(form) }} 
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h6 class="panel-title"><i class="icon-table"></i> Bảng chuyên viên</h6>
-                </div>
-                <div class="datatable">
-                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <td></td>
-                                    <td>ID</td>
-                                    <td>Họ tên</td>
-                                    <td>Ngày sinh</td>
-                                    <td>Đơn vị</td>
-                                </thead>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h6 class="panel-title"><i class="icon-table"></i> Bảng chuyên viên</h6>
+    </div>
+    <div class="datatable">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <td></td>
+                    <td>ID</td>
+                    <td>Họ tên</td>
+                    <td>Ngày sinh</td>
+                    <td>Đơn vị</td>
+                    </thead>
                             {% for user in chuyenvien%}
                                 {% if loop.index %2 == 0 %}
-                                <tr class="odd">
+                    <tr class="odd">
                                 {% else %}
-                                <tr class="even">
+                    <tr class="even">
                                 {% endif%}
-                                    <td>{{form_widget(form.chuyenvienthuly[user.idchuyenvienthuly])}}</td>
-                                    <td>{{user.idchuyenvienthuly}}</td>
-                                    <td>{{user.namecb}}</td>
-                                    <td>{{user.ngaysinh|date('d-m-y')}}</td>                                    
-                                    <td>{{user.donvithuly.namedonvithuly}}</td>                                    
-                                </tr>
+                        <td>{{form_widget(form.chuyenvienthuly[user.idchuyenvienthuly])}}</td>
+                        <td>{{user.idchuyenvienthuly}}</td>
+                        <td>{{user.namecb}}</td>
+                        <td>{{user.ngaysinh|date('d-m-y')}}</td>                                    
+                        <td>{{user.donvithuly.namedonvithuly}}</td>                                    
+                    </tr>
                             {%endfor%}
-                            </table>
-                        </div>            
-                        <div class="form-actions text-right">
-                            <input type="button" value="Chọn" onclick="xong();" />  
-                            <input type="button" value="Đóng" onclick="closewindow();" />
-                        </div>
-                    </div>
-                </div>
+                </table>
+            </div>            
+            <div class="form-actions text-right">
+                <input type="button" value="Chọn" onclick="xong();" />  
+                <input type="button" value="Đóng" onclick="closewindow();" />
             </div>
+        </div>
+    </div>
+</div>
             {{form_end(form, {'render_rest': false})}}
 
 <script>
-    function xong() 
-    {       
-	var radios = document.getElementsByName('form[chuyenvienthuly]');
-	for (var i = 0, length = radios.length; i < length; i++) {
-	    if (radios[i].checked) {
-	        opener.document.getElementById('form_chuyenvienthuly').value= radios[i].value;
+    function xong()
+    {
+        var radios = document.getElementsByName('form[chuyenvienthuly]');
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                opener.document.getElementById('form_chuyenvienthuly').value = radios[i].value;
                 opener.document.getElementById('thisform').submit();
-	    }
-	}
+            }
+        }
         window.close();
-    }  
-    function closewindow(){
-	window.close();
-}
-     </script>
+    }
+    function closewindow() {
+        window.close();
+    }
+</script>
 {#{{form(form)}}#}

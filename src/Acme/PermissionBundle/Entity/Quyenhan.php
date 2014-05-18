@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="quyenhan", indexes={@ORM\Index(name="fk_quyenhan_role1_idx", columns={"role"})})
  * @ORM\Entity
  */
-class Quyenhan
-{
+class Quyenhan {
+
     /**
      * @var string
      *
@@ -45,16 +45,13 @@ class Quyenhan
      */
     private $role;
 
-
-
     /**
      * Set name
      *
      * @param string $name
      * @return Quyenhan
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -65,8 +62,7 @@ class Quyenhan
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -76,8 +72,7 @@ class Quyenhan
      * @param string $mota
      * @return Quyenhan
      */
-    public function setMota($mota)
-    {
+    public function setMota($mota) {
         $this->mota = $mota;
 
         return $this;
@@ -88,8 +83,7 @@ class Quyenhan
      *
      * @return string 
      */
-    public function getMota()
-    {
+    public function getMota() {
         return $this->mota;
     }
 
@@ -98,8 +92,7 @@ class Quyenhan
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -109,8 +102,7 @@ class Quyenhan
      * @param \Acme\PermissionBundle\Entity\Role $role
      * @return Quyenhan
      */
-    public function setRole(\Acme\PermissionBundle\Entity\Role $role = null)
-    {
+    public function setRole(\Acme\PermissionBundle\Entity\Role $role = null) {
         $this->role = $role;
 
         return $this;
@@ -121,8 +113,8 @@ class Quyenhan
      *
      * @return \Acme\PermissionBundle\Entity\Role 
      */
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
+
 }

@@ -3,12 +3,12 @@ Tạo mới thành công
                         'bundles/acmepermission/bootstrap/css/styles.min.css'
                         'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
                      filter='cssrewrite' %}
-                    <link rel="stylesheet" href="{{ asset_url }}" />
+<link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %} 
 <input type="button" value="Nộp hồ sơ" class="btn btn-success" onclick="xong();" />  
 <script>
-    function xong(){
-        opener.document.getElementById('form_chuyenvienthuly').value= {{id}};
+    function xong() {
+        opener.document.getElementById('form_chuyenvienthuly').value = {{id}};
         opener.document.getElementById('thisform').submit();
         window.close();
     }

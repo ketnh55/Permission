@@ -1,0 +1,30 @@
+{%extends "AcmePermissionBundle::Staff/forwardHoso.html.twig"%}
+{%block title%}
+<title>Nhận hố sơ đã thụ lý</title>
+{%endblock%}
+{%block pagetitle%}
+<h3>Nhận hồ sơ đã thụ lý<small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+{%endblock%}
+{%block tabletitle%}
+<h6 class="panel-title"><i class="icon-table"></i>Hồ sơ đã chuyển thụ lý</h6>
+{%endblock%}
+{%block header%}
+<thead>
+<td>Id</td>
+<td>Công dân</td>
+<td>Thủ tục hành chính</td>
+<td>Ngày nhận</td>
+<td>Ngày hẹn trả</td>
+<td>Nhận lại</td>                        
+</thead>
+<tfoot>
+                        <tr>
+                            <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                            <th><input type="text" name="search_thu" placeholder="Công dân" class="form-control"></th>
+                            <th><input type="text" name="search_so" placeholder="Thủ tục hành chính" class="form-control"></th>
+                            <th><input type="text" name="search_ngaynhan" placeholder="Ngày nhận" size="10" class="form-control"></th>
+                            <th><input type="text" name="search_ngaytra" placeholder="Ngày trả" size="10" class="form-control"></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+{%endblock%}

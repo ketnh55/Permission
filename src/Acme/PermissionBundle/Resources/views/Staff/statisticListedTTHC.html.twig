@@ -4,23 +4,23 @@
                     '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
     %} 
     {{parent()}}
-           
-     <script type="text/javascript" src="{{ asset_url }}"></script>        
+
+<script type="text/javascript" src="{{ asset_url }}"></script>        
     {% endjavascripts %}     
 {%endblock%}
 {%block title%}
 <title>Niêm yết thủ tục hành chính công</title>
 {%endblock%}
 {%block pagetitle%}
-     <h3>Niêm yết thủ tục hành chính công<small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+<h3>Niêm yết thủ tục hành chính công<small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
 {%endblock%}
 {%block content %}
 <div class="panel panel-info">
     {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="alert alert-success fade in block-inner">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+    <div class="alert alert-success fade in block-inner">
+        <button type="button" class="close" data-dismiss="alert">×</button>
                 {{ flashMessage }}
-        </div>
+    </div>
     {% endfor %}
     <div class="panel-heading">
         <h6 class="panel-title"><i class="icon-table"></i> Thủ tục hành chính chờ niêm yết </h6>
@@ -30,19 +30,19 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <td>Id</td>
-                        <td>Tên TTHC</td>
-                        <td>Lĩnh vực</td>                        
+                    <td>Id</td>
+                    <td>Tên TTHC</td>
+                    <td>Lĩnh vực</td>                        
                     </thead>
                     <tfoot>
-                  <tr>
-                    <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
-                    <th><input type="text" name="search_thu" placeholder="TTHC" class="form-control"></th>
-                    <th><input type="text" name="search_so" placeholder="Lĩnh vực" class="form-control"></th>                    
-                  </tr>
+                        <tr>
+                            <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                            <th><input type="text" name="search_thu" placeholder="TTHC" class="form-control"></th>
+                            <th><input type="text" name="search_so" placeholder="Lĩnh vực" class="form-control"></th>                    
+                        </tr>
                     </tfoot>
                 {% for tthc in array_tthc%}
-                   
+
                     {% if loop.index %2 == 0 %}
                     <tr class="odd">
                     {% else %}                    
@@ -52,7 +52,7 @@
                         <td><a href ="{{path('listedTTHC',{'id': tthc.idtthc})}}">{{tthc.nametthc}}</a></td>
                         <td>{{tthc.linhvuc.namedv}}</td>
                     </tr>
-                   
+
                 {%endfor%}
                 </table>
             </div>            

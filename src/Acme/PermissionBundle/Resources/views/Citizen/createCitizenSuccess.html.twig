@@ -1,23 +1,23 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-        
+
 Tạo mới người dùng {{congdan.name}} - id: {{congdan.idcongdan}} thành công
 <button id="ok" onclick="xong();">Close</button>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('#ok').click();
     });
-    function xong() 
-    { 
+    function xong()
+    {
         var abc = $("#Hosotthc_congdan option", window.opener.document);
-        var count =  abc.size()/2 + 1;
-        window.opener.$("#Hosotthc_congdan").append($('<option/>', { 
+        var count = abc.size() / 2 + 1;
+        window.opener.$("#Hosotthc_congdan").append($('<option/>', {
             value: {{congdan.idcongdan}},
-            text : "{{congdan.name}}"
+            text: "{{congdan.name}}"
         }));
-        window.opener.$("#Hosotthc_congdan").val({{congdan.idcongdan}});       
+        window.opener.$("#Hosotthc_congdan").val({{congdan.idcongdan}});
         close();
-        
-    }  
+
+    }
 </script>

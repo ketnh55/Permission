@@ -7,25 +7,25 @@
 {%endblock%}
 {%block content%}
 <div class="col-lg-12">
-        <!-- Page tabs -->
-        <div class="tabbable page-tabs">
-          <ul class="nav nav-pills nav-justified">
+    <!-- Page tabs -->
+    <div class="tabbable page-tabs">
+        <ul class="nav nav-pills nav-justified">
             {%for tthc in tthcs%}
                 {%if loop.index0 == 0%}
-                    <li class="active"><a href="#{{tthc.idtthc}}" data-toggle="tab"><i class="icon-paragraph-justify2"></i>  {{tthc.nametthc}}</a></li>
+            <li class="active"><a href="#{{tthc.idtthc}}" data-toggle="tab"><i class="icon-paragraph-justify2"></i>  {{tthc.nametthc}}</a></li>
                 {%else%}
-                
-                    <li><a href="#{{tthc.idtthc}}" data-toggle="tab"><i class="icon-stats2"></i> {{tthc.nametthc}}</a></li>
+
+            <li><a href="#{{tthc.idtthc}}" data-toggle="tab"><i class="icon-stats2"></i> {{tthc.nametthc}}</a></li>
                 {%endif%}
             {%endfor%}           
-          </ul>
-          <div class="tab-content">
+        </ul>
+        <div class="tab-content">
             {%for tthc in tthcs%}
             <div class="tab-pane fade active in" id="{{tthc.idtthc}}">
                 {{ render(controller('AcmePermissionBundle:Staff:reception',{'id':tthc.idtthc}))}}
             </div>
             {%endfor%}            
         </div>
-      </div>
+    </div>
 </div>
 {%endblock%}

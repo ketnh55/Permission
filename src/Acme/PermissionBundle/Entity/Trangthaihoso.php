@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="trangthaihoso")
  * @ORM\Entity
  */
-class Trangthaihoso
-{
+class Trangthaihoso {
+
     /**
      * @var string
      *
@@ -28,16 +28,13 @@ class Trangthaihoso
      */
     private $idtrangthaihoso;
 
-
-
     /**
      * Set trangthai
      *
      * @param string $trangthai
      * @return Trangthaihoso
      */
-    public function setTrangthai($trangthai)
-    {
+    public function setTrangthai($trangthai) {
         $this->trangthai = $trangthai;
 
         return $this;
@@ -48,8 +45,7 @@ class Trangthaihoso
      *
      * @return string 
      */
-    public function getTrangthai()
-    {
+    public function getTrangthai() {
         return $this->trangthai;
     }
 
@@ -58,8 +54,8 @@ class Trangthaihoso
      *
      * @return integer 
      */
-    public function getIdtrangthaihoso()
-    {
+    public function getIdtrangthaihoso() {
         return $this->idtrangthaihoso;
     }
+
 }

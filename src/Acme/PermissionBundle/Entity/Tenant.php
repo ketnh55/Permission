@@ -1,6 +1,7 @@
 <?php
 
 namespace Acme\PermissionBundle\Entity;
+
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,8 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tenant")
  * @ORM\Entity
  */
-class Tenant
-{
+class Tenant {
 
     /**
      * @var string
@@ -40,6 +40,7 @@ class Tenant
      * @ORM\Column(name="SDT", type="string", length=45, nullable=true)
      */
     private $sdt;
+
     /**
      * @var string
      *
@@ -53,9 +54,8 @@ class Tenant
      * @ORM\Column(name="ngaysinh", type="date", nullable=true)
      */
     private $ngaysinh;
-    
 
-   /**
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -63,40 +63,46 @@ class Tenant
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
     /**
      * @var string
      *
      * @ORM\Column(name="domain", type="string", length=45, nullable=false, unique=true)
      */
     private $domain;
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\User", mappedBy="tenant")
-    */
-    public $user;   
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\User", mappedBy="tenant")
+     */
+    public $user;
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Congdan", mappedBy="tenant")
-    */
-    public $congdan;   
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Congdan", mappedBy="tenant")
+     */
+    public $congdan;
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Linhvuc", mappedBy="tenant")
-    */
-    public $linhvuc;   
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Linhvuc", mappedBy="tenant")
+     */
+    public $linhvuc;
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Quyenhan", mappedBy="tenant")
-    */
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Quyenhan", mappedBy="tenant")
+     */
     public $quyenhan;
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Donvithuly", mappedBy="tenant")
-    */
-    public $donvithuly;   
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Donvithuly", mappedBy="tenant")
+     */
+    public $donvithuly;
+
     /**
      * Set hoten
      *
      * @param string $hoten
      * @return Tenant
      */
-    public function setHoten($hoten)
-    {
+    public function setHoten($hoten) {
         $this->hoten = $hoten;
 
         return $this;
@@ -107,8 +113,7 @@ class Tenant
      *
      * @return string 
      */
-    public function getHoten()
-    {
+    public function getHoten() {
         return $this->hoten;
     }
 
@@ -118,8 +123,7 @@ class Tenant
      * @param string $quequan
      * @return Tenant
      */
-    public function setQuequan($quequan)
-    {
+    public function setQuequan($quequan) {
         $this->quequan = $quequan;
 
         return $this;
@@ -130,8 +134,7 @@ class Tenant
      *
      * @return string 
      */
-    public function getQuequan()
-    {
+    public function getQuequan() {
         return $this->quequan;
     }
 
@@ -141,8 +144,7 @@ class Tenant
      * @param string $cmtnd
      * @return Tenant
      */
-    public function setCmtnd($cmtnd)
-    {
+    public function setCmtnd($cmtnd) {
         $this->cmtnd = $cmtnd;
 
         return $this;
@@ -153,8 +155,7 @@ class Tenant
      *
      * @return string 
      */
-    public function getCmtnd()
-    {
+    public function getCmtnd() {
         return $this->cmtnd;
     }
 
@@ -164,8 +165,7 @@ class Tenant
      * @param string $sdt
      * @return Tenant
      */
-    public function setSdt($sdt)
-    {
+    public function setSdt($sdt) {
         $this->sdt = $sdt;
 
         return $this;
@@ -176,8 +176,7 @@ class Tenant
      *
      * @return string 
      */
-    public function getSdt()
-    {
+    public function getSdt() {
         return $this->sdt;
     }
 
@@ -187,8 +186,7 @@ class Tenant
      * @param \DateTime $ngaysinh
      * @return Tenant
      */
-    public function setNgaysinh($ngaysinh)
-    {
+    public function setNgaysinh($ngaysinh) {
         $this->ngaysinh = $ngaysinh;
 
         return $this;
@@ -199,8 +197,7 @@ class Tenant
      *
      * @return \DateTime 
      */
-    public function getNgaysinh()
-    {
+    public function getNgaysinh() {
         return $this->ngaysinh;
     }
 
@@ -209,8 +206,7 @@ class Tenant
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -220,8 +216,7 @@ class Tenant
      * @param string $domain
      * @return Tenant
      */
-    public function setDomain($domain)
-    {
+    public function setDomain($domain) {
         $this->domain = $domain;
 
         return $this;
@@ -232,15 +227,14 @@ class Tenant
      *
      * @return string 
      */
-    public function getDomain()
-    {
+    public function getDomain() {
         return $this->domain;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
         $this->congdan = new \Doctrine\Common\Collections\ArrayCollection();
         $this->linhvuc = new \Doctrine\Common\Collections\ArrayCollection();
@@ -254,8 +248,7 @@ class Tenant
      * @param \Acme\PermissionBundle\Entity\User $user
      * @return Tenant
      */
-    public function addUser(\Acme\PermissionBundle\Entity\User $user)
-    {
+    public function addUser(\Acme\PermissionBundle\Entity\User $user) {
         $this->user[] = $user;
 
         return $this;
@@ -266,8 +259,7 @@ class Tenant
      *
      * @param \Acme\PermissionBundle\Entity\User $user
      */
-    public function removeUser(\Acme\PermissionBundle\Entity\User $user)
-    {
+    public function removeUser(\Acme\PermissionBundle\Entity\User $user) {
         $this->user->removeElement($user);
     }
 
@@ -276,8 +268,7 @@ class Tenant
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
 
@@ -287,8 +278,7 @@ class Tenant
      * @param \Acme\PermissionBundle\Entity\Congdan $congdan
      * @return Tenant
      */
-    public function addCongdan(\Acme\PermissionBundle\Entity\Congdan $congdan)
-    {
+    public function addCongdan(\Acme\PermissionBundle\Entity\Congdan $congdan) {
         $this->congdan[] = $congdan;
 
         return $this;
@@ -299,8 +289,7 @@ class Tenant
      *
      * @param \Acme\PermissionBundle\Entity\Congdan $congdan
      */
-    public function removeCongdan(\Acme\PermissionBundle\Entity\Congdan $congdan)
-    {
+    public function removeCongdan(\Acme\PermissionBundle\Entity\Congdan $congdan) {
         $this->congdan->removeElement($congdan);
     }
 
@@ -309,8 +298,7 @@ class Tenant
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCongdan()
-    {
+    public function getCongdan() {
         return $this->congdan;
     }
 
@@ -320,8 +308,7 @@ class Tenant
      * @param \Acme\PermissionBundle\Entity\Linhvuc $linhvuc
      * @return Tenant
      */
-    public function addLinhvuc(\Acme\PermissionBundle\Entity\Linhvuc $linhvuc)
-    {
+    public function addLinhvuc(\Acme\PermissionBundle\Entity\Linhvuc $linhvuc) {
         $this->linhvuc[] = $linhvuc;
 
         return $this;
@@ -332,8 +319,7 @@ class Tenant
      *
      * @param \Acme\PermissionBundle\Entity\Linhvuc $linhvuc
      */
-    public function removeLinhvuc(\Acme\PermissionBundle\Entity\Linhvuc $linhvuc)
-    {
+    public function removeLinhvuc(\Acme\PermissionBundle\Entity\Linhvuc $linhvuc) {
         $this->linhvuc->removeElement($linhvuc);
     }
 
@@ -342,8 +328,7 @@ class Tenant
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getLinhvuc()
-    {
+    public function getLinhvuc() {
         return $this->linhvuc;
     }
 
@@ -353,8 +338,7 @@ class Tenant
      * @param \Acme\PermissionBundle\Entity\Quyenhan $quyenhan
      * @return Tenant
      */
-    public function addQuyenhan(\Acme\PermissionBundle\Entity\Quyenhan $quyenhan)
-    {
+    public function addQuyenhan(\Acme\PermissionBundle\Entity\Quyenhan $quyenhan) {
         $this->quyenhan[] = $quyenhan;
 
         return $this;
@@ -365,8 +349,7 @@ class Tenant
      *
      * @param \Acme\PermissionBundle\Entity\Quyenhan $quyenhan
      */
-    public function removeQuyenhan(\Acme\PermissionBundle\Entity\Quyenhan $quyenhan)
-    {
+    public function removeQuyenhan(\Acme\PermissionBundle\Entity\Quyenhan $quyenhan) {
         $this->quyenhan->removeElement($quyenhan);
     }
 
@@ -375,8 +358,7 @@ class Tenant
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getQuyenhan()
-    {
+    public function getQuyenhan() {
         return $this->quyenhan;
     }
 
@@ -386,8 +368,7 @@ class Tenant
      * @param \Acme\PermissionBundle\Entity\Donvithuly $donvithuly
      * @return Tenant
      */
-    public function addDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly)
-    {
+    public function addDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly) {
         $this->donvithuly[] = $donvithuly;
 
         return $this;
@@ -398,8 +379,7 @@ class Tenant
      *
      * @param \Acme\PermissionBundle\Entity\Donvithuly $donvithuly
      */
-    public function removeDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly)
-    {
+    public function removeDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly) {
         $this->donvithuly->removeElement($donvithuly);
     }
 
@@ -408,8 +388,7 @@ class Tenant
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getDonvithuly()
-    {
+    public function getDonvithuly() {
         return $this->donvithuly;
     }
 
@@ -419,8 +398,7 @@ class Tenant
      * @param string $tendonvi
      * @return Tenant
      */
-    public function setTendonvi($tendonvi)
-    {
+    public function setTendonvi($tendonvi) {
         $this->tendonvi = $tendonvi;
 
         return $this;
@@ -431,8 +409,8 @@ class Tenant
      *
      * @return string 
      */
-    public function getTendonvi()
-    {
+    public function getTendonvi() {
         return $this->tendonvi;
     }
+
 }

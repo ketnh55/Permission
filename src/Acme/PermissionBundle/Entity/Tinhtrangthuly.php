@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tinhtrangthuly", indexes={@ORM\Index(name="fk_tinhtrangthuly_Trangthaihoso1_idx", columns={"Trangthaihoso"}), @ORM\Index(name="IDX_33CFE5E1BA4A83C4", columns={"Hosotthc"}), @ORM\Index(name="IDX_33CFE5E1554DDB45", columns={"Chiutrachnhiem"}), @ORM\Index(name="IDX_33CFE5E1405A5954", columns={"Tiepnhan"})})
  * @ORM\Entity
  */
-class Tinhtrangthuly
-{
+class Tinhtrangthuly {
+
     /**
      * @var \DateTime
      *
@@ -68,16 +68,13 @@ class Tinhtrangthuly
      */
     private $tiepnhan;
 
-
-
     /**
      * Set time
      *
      * @param \DateTime $time
      * @return Tinhtrangthuly
      */
-    public function setTime($time)
-    {
+    public function setTime($time) {
         $this->time = $time;
 
         return $this;
@@ -88,8 +85,7 @@ class Tinhtrangthuly
      *
      * @return \DateTime 
      */
-    public function getTime()
-    {
+    public function getTime() {
         return $this->time;
     }
 
@@ -98,8 +94,7 @@ class Tinhtrangthuly
      *
      * @return integer 
      */
-    public function getIdtinhtrangthuly()
-    {
+    public function getIdtinhtrangthuly() {
         return $this->idtinhtrangthuly;
     }
 
@@ -109,8 +104,7 @@ class Tinhtrangthuly
      * @param \Acme\PermissionBundle\Entity\Trangthaihoso $trangthaihoso
      * @return Tinhtrangthuly
      */
-    public function setTrangthaihoso(\Acme\PermissionBundle\Entity\Trangthaihoso $trangthaihoso = null)
-    {
+    public function setTrangthaihoso(\Acme\PermissionBundle\Entity\Trangthaihoso $trangthaihoso = null) {
         $this->trangthaihoso = $trangthaihoso;
 
         return $this;
@@ -121,8 +115,7 @@ class Tinhtrangthuly
      *
      * @return \Acme\PermissionBundle\Entity\Trangthaihoso 
      */
-    public function getTrangthaihoso()
-    {
+    public function getTrangthaihoso() {
         return $this->trangthaihoso;
     }
 
@@ -132,8 +125,7 @@ class Tinhtrangthuly
      * @param \Acme\PermissionBundle\Entity\Hosotthc $hosotthc
      * @return Tinhtrangthuly
      */
-    public function setHosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthc = null)
-    {
+    public function setHosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthc = null) {
         $this->hosotthc = $hosotthc;
 
         return $this;
@@ -144,8 +136,7 @@ class Tinhtrangthuly
      *
      * @return \Acme\PermissionBundle\Entity\Hosotthc 
      */
-    public function getHosotthc()
-    {
+    public function getHosotthc() {
         return $this->hosotthc;
     }
 
@@ -155,8 +146,7 @@ class Tinhtrangthuly
      * @param \Acme\PermissionBundle\Entity\User $chiutrachnhiem
      * @return Tinhtrangthuly
      */
-    public function setChiutrachnhiem(\Acme\PermissionBundle\Entity\User $chiutrachnhiem = null)
-    {
+    public function setChiutrachnhiem(\Acme\PermissionBundle\Entity\User $chiutrachnhiem = null) {
         $this->chiutrachnhiem = $chiutrachnhiem;
 
         return $this;
@@ -167,8 +157,7 @@ class Tinhtrangthuly
      *
      * @return \Acme\PermissionBundle\Entity\User 
      */
-    public function getChiutrachnhiem()
-    {
+    public function getChiutrachnhiem() {
         return $this->chiutrachnhiem;
     }
 
@@ -178,8 +167,7 @@ class Tinhtrangthuly
      * @param \Acme\PermissionBundle\Entity\Chuyenvienthuly $tiepnhan
      * @return Tinhtrangthuly
      */
-    public function setTiepnhan(\Acme\PermissionBundle\Entity\Chuyenvienthuly $tiepnhan = null)
-    {
+    public function setTiepnhan(\Acme\PermissionBundle\Entity\Chuyenvienthuly $tiepnhan = null) {
         $this->tiepnhan = $tiepnhan;
 
         return $this;
@@ -190,8 +178,8 @@ class Tinhtrangthuly
      *
      * @return \Acme\PermissionBundle\Entity\Chuyenvienthuly 
      */
-    public function getTiepnhan()
-    {
+    public function getTiepnhan() {
         return $this->tiepnhan;
     }
+
 }

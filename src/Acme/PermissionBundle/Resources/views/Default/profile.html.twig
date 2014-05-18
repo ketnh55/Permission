@@ -1,134 +1,134 @@
 {% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
 {%block content%}
-<div class="col-lg-2">
-        <!-- Profile links -->
+<div class="col-lg-2">    
+    <div class="block">
         <div class="block">
-          <div class="block">
             <div class="thumbnail">
                 <div class="thumb"><img alt="" src="{{asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg'))}}">
-                <div class="thumb-options"><span><a href="#" class="btn btn-icon btn-success"><i class="icon-pencil"></i></a><a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a></span></div>
-              </div>
-              <div class="caption text-center">
-                  <h6>{{app.user.thontincanhan.hoten|default(app.user.username)}}<small>{{app.user.role[0].name}}</small></h6>
-                <div class="icons-group"> <a href="#" title="" class="tip" data-original-title="Google Drive"><i class="icon-google-drive"></i></a> <a href="#" title="" class="tip" data-original-title="Twitter"><i class="icon-twitter"></i></a> <a href="#" title="" class="tip" data-original-title="Github"><i class="icon-github3"></i></a> </div>
-              </div>
+                    <div class="thumb-options"><span><a href="#" class="btn btn-icon btn-success"><i class="icon-pencil"></i></a><a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a></span></div>
+                </div>
+                <div class="caption text-center">
+                    <h6>{{app.user.thontincanhan.hoten|default(app.user.username)}}<small>{{app.user.role[0].name}}</small></h6>
+                    <div class="icons-group"> <a href="#" title="" class="tip" data-original-title="Google Drive"><i class="icon-google-drive"></i></a> <a href="#" title="" class="tip" data-original-title="Twitter"><i class="icon-twitter"></i></a> <a href="#" title="" class="tip" data-original-title="Github"><i class="icon-github3"></i></a> </div>
+                </div>
             </div>
-          </div>
         </div>
-        <!-- /profile links -->
-      </div>
+    </div>
+</div>
 <div class="tab-pane fade active in" id="settings">
               {{ form_start(form,{'attr':{'class':'block','rp;e':'form'}}) }}
                 {{ form_errors(form) }}              
-                <h6 class="heading-hr"><i class="icon-user"></i> Profile information:</h6>
-                <div class="block-inner">
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Họ tên</label>
-                        <input type="text" value="{{app.user.hoten}}" class="form-control" disabled>
-                      </div>
-                      <div class="col-md-6">
-                        <label>CMTND</label>
+    <h6 class="heading-hr"><i class="icon-user"></i> Thông tin cá nhân:</h6>
+    <div class="block-inner">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Họ tên</label>
+                    <input type="text" value="{{app.user.hoten}}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label>CMTND</label>
                         {{ form_widget(form.thontincanhan.cmtnd, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Quê quán</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Quê quán</label>
                         {{ form_widget(form.thontincanhan.quequan, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                      <div class="col-md-6">
-                        <label>Ngày sinh</label>                            
-                      </div>
-                    </div>
-                  </div>   
-                    <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <label>Ngày</label>
+                </div>
+                <div class="col-md-6">
+                    <label>Ngày sinh</label>                            
+                </div>
+            </div>
+        </div>   
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Ngày</label>
                         {%set ngay = null == form.vars.value.thontincanhan?'': form.vars.value.thontincanhan.ngaysinh|date('d')%}
                         {%set thang = null == form.vars.value.thontincanhan?'': form.vars.value.thontincanhan.ngaysinh|date('m')%}
                         {%set nam = null == form.vars.value.thontincanhan?'': form.vars.value.thontincanhan.ngaysinh|date('Y')%}
-                        <input type="text" id="thongtincanhan_ngaysinh_day" name="user[thontincanhan][ngaysinh][day]" value="{{ngay}}" class="form-control">
-                      </div>
-                      <div class="col-md-4">
-                        <label>Tháng</label>
-                            <input type="text" id="thongtincanhan_ngaysinh_month" name="user[thontincanhan][ngaysinh][month]" value="{{thang}}" class="form-control">
-                      </div>
-                      <div class="col-md-4">
-                        <label>Năm</label>
-                        <input type="text" id="thongtincanhan_ngaysinh_year" name="user[thontincanhan][ngaysinh][year]" value="{{nam}}" class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Email</label>
+                    <input type="text" id="thongtincanhan_ngaysinh_day" name="user[thontincanhan][ngaysinh][day]" value="{{ngay}}" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label>Tháng</label>
+                    <input type="text" id="thongtincanhan_ngaysinh_month" name="user[thontincanhan][ngaysinh][month]" value="{{thang}}" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label>Năm</label>
+                    <input type="text" id="thongtincanhan_ngaysinh_year" name="user[thontincanhan][ngaysinh][year]" value="{{nam}}" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Email</label>
                         {{ form_widget(form.thontincanhan.email, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                      <div class="col-md-6">
-                        <label>Nơi ở hiện tại</label>
+                </div>
+                <div class="col-md-6">
+                    <label>Nơi ở hiện tại</label>
                         {{ form_widget(form.thontincanhan.noiohientai, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Phone #</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Số điện thoại</label>
                         {{ form_widget(form.thontincanhan.sdt, {'attr': {'class': 'form-control'}}) }}
+                         {{form_errors(form.thontincanhan.sdt)}}
                         <span class="help-block">+84-99-9999-9999</span> </div>
-                      <div class="col-md-6">
-                        <label>Upload profile image:</label>
+                    <div class="col-md-6">
+                        <label>Chọn ảnh đại diện:</label>
                         <div class="uploader" id="uniform-report-screenshot">
                              {{ form_widget(form.thontincanhan.file, {'attr': {'class': 'styled form-control','id':'report-screenshot'}}) }}
-                                <span class="filename" style="-webkit-user-select: none;">No file selected</span>
-                                <span class="action" style="-webkit-user-select: none;">Choose File</span>
+                            <span class="filename" style="-webkit-user-select: none;">No file selected</span>
+                            <span class="action" style="-webkit-user-select: none;">Choose File</span>
                         </div>                       
-                        <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span></div>
-                    </div>
-                  </div>
+                        <span class="help-block">Định dạng gif: gif, png, jpg. Tối đa 2MB</span></div>
                 </div>
-                <h6 class="heading-hr"><i class="icon-lock"></i> Security information:</h6>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <label>Username:</label>
-                      <input type="text" value="{{app.user.username|slice(app.user.username|length - app.user.tenant.domain|length, app.user.username|length)}}" class="form-control" disabled>
-                    </div>
-                    <div class="col-md-6">
-                      <label>Current password:</label>
-                      <input type="password" value="{{app.user.password}}" disabled class="form-control">
-                    </div>
-                  </div>
+            </div>
+        </div>
+        <h6 class="heading-hr"><i class="icon-lock"></i> Bảo mật cá nhân:</h6>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Tên đăng nhập:</label>
+                    <input type="text" value="{{app.user.username|slice(0,app.user.username|length - app.user.tenant.domain|length - 1)}}" class="form-control" disabled>
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <label>New password:</label>
+                <div class="col-md-6">
+                    <label>Mật khẩu hiện tại:</label>
+                    <input type="password" value="{{app.user.password}}" disabled class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Mật khẩu mới:</label>
                        {{ form_widget(form.password.first, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                    <div class="col-md-6">
-                      <label>Repeat password:</label>
+                       {{form_errors(form.password)}}
+                </div>
+                <div class="col-md-6">
+                    <label>Nhập lại mật khẩu:</label>
                        {{ form_widget(form.password.second, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                  </div>
-                </div>                
-        </div>
-         <div class="form-actions text-right">
+                </div>
+            </div>
+        </div>                
+    </div>
+    <div class="form-actions text-right">
              {{ form_widget(form.submit,{'attr': {'class': 'btn btn-success','onclick':'prepare();'}}) }}
-        </div>
+    </div>
 </div>
 {{ form_widget(form._token) }}
 {{form_end(form, {'render_rest': false})}}
 <script>
-    function prepare(){
-        if ($("#user_password_first").val() === ""){
-            $("#user_password_first").attr("disabled",true);
-            $("#user_password_second").attr("disabled",true);
+    function prepare() {
+        if ($("#user_password_first").val() === "") {
+            $("#user_password_first").attr("disabled", true);
+            $("#user_password_second").attr("disabled", true);
         }
     }
 </script>

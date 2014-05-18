@@ -1,5 +1,7 @@
 <?php
+
 // src/Acme/UserBundle/Entity/UserRepository.php
+
 namespace Acme\PermissionBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -9,28 +11,26 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
 
-class UserRepository extends EntityRepository implements UserProviderInterface
-{
-    public function loadUserByUsername($username)
-    {
+class UserRepository extends EntityRepository implements UserProviderInterface {
+
+    public function loadUserByUsername($username) {
         $mix = explode('@', $username);
         $name = $mix[0];
         $domain = $mix[1];
         $q = $this
-            ->createQueryBuilder('u')
-            ->join('u.tenant', 't')
-            ->where('u.username = :username and t.domain=:domain')
-            ->setParameter('username', $username)                                
-            ->setParameter('domain', $domain)                      
-            ->getQuery();
+                ->createQueryBuilder('u')
+                ->join('u.tenant', 't')
+                ->where('u.username = :username and t.domain=:domain')
+                ->setParameter('username', $username)
+                ->setParameter('domain', $domain)
+                ->getQuery();
         try {
             // The Query::getSingleResult() method throws an exception
             // if there is no record matching the criteria.
             $user = $q->getSingleResult();
         } catch (NoResultException $e) {
             $message = sprintf(
-                'Unable to find an active admin AcmeUserBundle:User object identified by "%s".',
-                $username
+                    'Unable to find an active admin AcmeUserBundle:User object identified by "%s".', $username
             );
             throw new UsernameNotFoundException($message, 0, $e);
         }
@@ -38,24 +38,21 @@ class UserRepository extends EntityRepository implements UserProviderInterface
         return $user;
     }
 
-    public function refreshUser(UserInterface $user)
-    {
+    public function refreshUser(UserInterface $user) {
         $class = get_class($user);
         if (!$this->supportsClass($class)) {
             throw new UnsupportedUserException(
-                sprintf(
-                    'Instances of "%s" are not supported.',
-                    $class
-                )
+            sprintf(
+                    'Instances of "%s" are not supported.', $class
+            )
             );
         }
 
         return $this->find($user->getId());
     }
 
-    public function supportsClass($class)
-    {
-        return $this->getEntityName() === $class
-            || is_subclass_of($class, $this->getEntityName());
+    public function supportsClass($class) {
+        return $this->getEntityName() === $class || is_subclass_of($class, $this->getEntityName());
     }
+
 }

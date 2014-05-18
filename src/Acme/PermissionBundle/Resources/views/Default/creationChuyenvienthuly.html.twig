@@ -2,86 +2,92 @@
                         'bundles/acmepermission/bootstrap/css/styles.min.css'
                         'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
                      filter='cssrewrite' %}
-                    <link rel="stylesheet" href="{{ asset_url }}" />
+<link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %} 
-                    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
-                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 {%block content%}
-        <div class="tab-pane fade active in" id="settings" onload="onload();">
+<div class="tab-pane fade active in" id="settings" onload="onload();">
               {{ form_start(form,{'attr':{'class':'block','rp;e':'form'}}) }}
                 {{ form_errors(form) }}              
-                <h6 class="heading-hr"><i class="icon-user"></i> Thông tin cá nhân</h6>
-                <div class="block-inner">
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Họ tên</label>
+    <h6 class="heading-hr"><i class="icon-user"></i> Thông tin cá nhân</h6>
+    {% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-danger fade in block-inner">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+    <div class="block-inner">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Họ tên</label>
                         {{ form_widget(form.namecb, {'attr': {'class': 'form-control'}}) }}
                         {{form_errors(form.namecb)}}
-                      </div>
-                       <div class="col-md-6">
-                        <label>Đơn vị thụ lý</label>
+                </div>
+                <div class="col-md-6">
+                    <label>Đơn vị thụ lý</label>
                         {{ form_widget(form.donvithuly, {'attr': {'class': 'form-control'}}) }}
                         {{form_errors(form.donvithuly)}}
-                      </div>
-                      <div class="col-md-6">
-                        <label>CMTND</label>
+                </div>
+                <div class="col-md-6">
+                    <label>CMTND</label>
                         {{ form_widget(form.cmtnd, {'attr': {'class': 'form-control'}}) }}
                         {{form_errors(form.cmtnd)}}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Quê quán</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Quê quán</label>
                         {{ form_widget(form.quequan, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                      <div class="col-md-6">
-                        <label>Nơi ở hiện tại</label>
+                </div>
+                <div class="col-md-6">
+                    <label>Nơi ở hiện tại</label>
                             {{ form_widget(form.noiohientai, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                    </div>
-                  </div>   
-                    <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <label>Ngày</label>
+                </div>
+            </div>
+        </div>   
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Ngày</label>
                             {{ form_widget(form.ngaysinh.day, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                      <div class="col-md-4">
-                        <label>Tháng</label>
+                </div>
+                <div class="col-md-4">
+                    <label>Tháng</label>
                              {{ form_widget(form.ngaysinh.month, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                      <div class="col-md-4">
-                        <label>Năm</label>
+                </div>
+                <div class="col-md-4">
+                    <label>Năm</label>
                              {{ form_widget(form.ngaysinh.year, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Email</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Email</label>
                             {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
-                      </div>
-                      <div class="col-md-6">
-                        <label>Phone </label>
+                </div>
+                <div class="col-md-6">
+                    <label>Số điện thoại </label>
                         {{ form_widget(form.sdt, {'attr': {'class': 'form-control'}}) }}
                         {{form_errors(form.sdt)}}
-                        <span class="help-block">+84-99-9999-9999</span> </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
+                    <span class="help-block">+84-99-9999-9999</span> </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
 
-                    </div>
-                  </div>
-                </div>             
-        </div>
-         <div class="form-actions text-right">
+                </div>
+            </div>
+        </div>             
+    </div>
+    <div class="form-actions text-right">
              {{ form_widget(form.submit,{'attr': {'class': 'btn btn-success','onclick':'xong();'}}) }}
-        </div>
+    </div>
 </div>
 {{ form_widget(form._token) }}
 {{form_end(form, {'render_rest': false})}}

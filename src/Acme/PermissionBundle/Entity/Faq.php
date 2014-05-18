@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="faq", indexes={@ORM\Index(name="FK_FAQ_DichVu_idx", columns={"idTTHC"})})
  * @ORM\Entity
  */
-class Faq
-{
+class Faq {
+
     /**
      * @var string
      *
@@ -45,16 +45,13 @@ class Faq
      */
     private $idtthc;
 
-
-
     /**
      * Set ndcauhoi
      *
      * @param string $ndcauhoi
      * @return Faq
      */
-    public function setNdcauhoi($ndcauhoi)
-    {
+    public function setNdcauhoi($ndcauhoi) {
         $this->ndcauhoi = $ndcauhoi;
 
         return $this;
@@ -65,8 +62,7 @@ class Faq
      *
      * @return string 
      */
-    public function getNdcauhoi()
-    {
+    public function getNdcauhoi() {
         return $this->ndcauhoi;
     }
 
@@ -76,8 +72,7 @@ class Faq
      * @param string $ndcautraloi
      * @return Faq
      */
-    public function setNdcautraloi($ndcautraloi)
-    {
+    public function setNdcautraloi($ndcautraloi) {
         $this->ndcautraloi = $ndcautraloi;
 
         return $this;
@@ -88,8 +83,7 @@ class Faq
      *
      * @return string 
      */
-    public function getNdcautraloi()
-    {
+    public function getNdcautraloi() {
         return $this->ndcautraloi;
     }
 
@@ -98,8 +92,7 @@ class Faq
      *
      * @return integer 
      */
-    public function getIdfaq()
-    {
+    public function getIdfaq() {
         return $this->idfaq;
     }
 
@@ -109,8 +102,7 @@ class Faq
      * @param \Acme\PermissionBundle\Entity\Tthc $idtthc
      * @return Faq
      */
-    public function setIdtthc(\Acme\PermissionBundle\Entity\Tthc $idtthc = null)
-    {
+    public function setIdtthc(\Acme\PermissionBundle\Entity\Tthc $idtthc = null) {
         $this->idtthc = $idtthc;
 
         return $this;
@@ -121,8 +113,8 @@ class Faq
      *
      * @return \Acme\PermissionBundle\Entity\Tthc 
      */
-    public function getIdtthc()
-    {
+    public function getIdtthc() {
         return $this->idtthc;
     }
+
 }

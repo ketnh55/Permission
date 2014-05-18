@@ -1,6 +1,6 @@
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 {%block title%}<title>Dịch Vụ Công - Khóa Luận Tốt Nghiệp</title>{%endblock%}
 {% stylesheets 'bundles/acmepermission/bootstrap/css/bootstrap.min.css' 
                 'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
@@ -10,16 +10,16 @@
         <link rel="stylesheet" href="{{ asset_url }}" />
         <link rel="icon" type="image/ico" href="{{asset('bundles/acmepermission/bootstrap/images/icon1.png')}}">
         {% endstylesheets %}  
-<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
-        
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
+
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
         <script>
-                $(document).ready(function () {
-                $("li").click(function () {
-                $('li > ul').not($(this).children("ul")).hide();
-                $(this).children("ul").toggle();
-            });
+            $(document).ready(function() {
+                $("li").click(function() {
+                    $('li > ul').not($(this).children("ul")).hide();
+                    $(this).children("ul").toggle();
+                });
             });
         </script>
         {% block javascript%}       
@@ -32,101 +32,107 @@
         <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/plugins/interface/collapsible.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/application_blank.js')}}"></script>
         <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/application.js')}}"></script>
-        
+
         {% endblock%}
 {##}
 
-       
-</head>
-<body class="sidebar-wide">
-    
-<!-- Navbar -->
-<div class="navbar navbar-inverse" role="navigation">
-  <div class="navbar-header">
-      <a class="navbar-brand" href="#">{{app.user.tenant.tendonvi}}</a>
-      <a class="sidebar-toggle"><i class="icon-paragraph-justify2"></i></a>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons"><span class="sr-only">Toggle navbar</span><i class="icon-grid3"></i></button>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar"><span class="sr-only">Toggle navigation</span><i class="icon-paragraph-justify2"></i></button>
-  </div>
-   
-  <ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
+
+    </head>
+    <body class="sidebar-wide">
+
+        <!-- Navbar -->
+        <div class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">{{app.user.tenant.tendonvi}}</a>
+                <a class="sidebar-toggle"><i class="icon-paragraph-justify2"></i></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons"><span class="sr-only">Toggle navbar</span><i class="icon-grid3"></i></button>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar"><span class="sr-only">Toggle navigation</span><i class="icon-paragraph-justify2"></i></button>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
     {%if is_granted('ROLE_STAFF')%}
-        
-        
+
+
         {{ render(controller('AcmePermissionBundle:Default:countTTHCChoniemyet'))}}
       {{ render(controller('AcmePermissionBundle:Default:countHS'))}}
       {{ render(controller('AcmePermissionBundle:Default:countAQ'))}}
     {%endif%}
-    <li class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg')) }}" alt=""><span>{{app.user.username}}</span><i class="caret"></i></a>
-      <ul class="dropdown-menu dropdown-menu-right icons-right">
-        <li><a href="{{path('createUserProfile')}}"><i class="icon-user"></i> Thông tin cá nhân</a></li>
-        <li><a href="{{path('logout')}}"><i class="icon-exit"></i>Đăng xuất</a></li>
-      </ul>
-    </li>
-  </ul>
-    
-</div>
-<!-- /navbar -->
-<!-- Page container -->
-<div class="page-container">
-  <!-- Sidebar -->
-  <div class="sidebar collapse">
-    <div class="sidebar-content">
-      <div class="user-menu dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg'))}}" alt="">
-              <div class="user-info">{{app.user.hoten}} <span>{{app.user.role[0].name|default('Không xác định trách nhiệm')}}</span></div>
-        </a>
-        <div class="popup dropdown-menu dropdown-menu-right">
-          <div class="thumbnail">
-            <div class="thumb"><img alt="" src="{{ asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg')) }}">
-              <div class="thumb-options"><span><a href="{{path('createUserProfile')}}" class="btn btn-icon btn-success"><i class="icon-pencil"></i></a><a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a></span></div>
-            </div>
-            <div class="caption text-center">
-                <h6>{{app.user.hoten}}<small>{{app.user.role[0].name|default('không xác định')}}</small></h6>
-            </div>
-          </div>
-          <ul class="list-group">
-              {%set ngaysinh = app.user.thontincanhan.ngaysinh|default('0-0-0')%}
-              <li class="list-group-item"><i class="icon-pencil3 text-muted"></i> {{app.user.hoten|default('Chưa cập nhật ...')}} <span class="label label-success"><i class="icon-pencil"></i></span></li>
-            <li class="list-group-item"><i class="icon-people text-muted"></i> {{app.user.thontincanhan.quequan|default('Chưa cập nhật ...')}} <span class="label label-danger"><i class="icon-pencil"></i></span></li>
-            <li class="list-group-item"><i class="icon-stats2 text-muted"></i> {{app.user.thontincanhan.SDT|default('Chưa cập nhật ...')}} <span class="label label-primary"><i class="icon-pencil"></i></span></li>
-            <li class="list-group-item"><i class="icon-stack text-muted"></i> {{ngaysinh|date('d-m-Y')}}<span class="label label-primary"><i class="icon-pencil"></i></span></li>
-            </li>
-          </ul>
+                <li class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg')) }}" alt=""><span>{{app.user.username}}</span><i class="caret"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-right icons-right">
+                        <li><a href="{{path('createUserProfile')}}"><i class="icon-user"></i> Thông tin cá nhân</a></li>
+                        <li><a href="{{path('logout')}}"><i class="icon-exit"></i>Đăng xuất</a></li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
-      </div>
+        <!-- /navbar -->
+        <!-- Page container -->
+        <div class="page-container">
+            <!-- Sidebar -->
+            <div class="sidebar collapse">
+                <div class="sidebar-content">
+                    <div class="user-menu dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg'))}}" alt="">
+                            <div class="user-info">{{app.user.hoten}} <span>{{app.user.role[0].name|default('Không xác định trách nhiệm')}}</span></div>
+                        </a>
+                        <div class="popup dropdown-menu dropdown-menu-right">
+                            <div class="thumbnail">
+                                <div class="thumb"><img alt="" src="{{ asset(app.user.thontincanhan.pathtoimage|default('uploads/avatar/anonymous.jpg')) }}">
+                                    <div class="thumb-options"><span><a href="{{path('createUserProfile')}}" class="btn btn-icon btn-success"><i class="icon-pencil"></i></a><a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a></span></div>
+                                </div>
+                                <div class="caption text-center">
+                                    <h6>{{app.user.hoten}}<small>{{app.user.role[0].name|default('không xác định')}}</small></h6>
+                                </div>
+                            </div>
+                            <ul class="list-group">
+              {%set ngaysinh = app.user.thontincanhan.ngaysinh|default('0-0-0')%}
+                                <li class="list-group-item"><i class="icon-pencil3 text-muted"></i> {{app.user.hoten|default('Chưa cập nhật ...')}} <span class="label label-success"><i class="icon-pencil"></i></span></li>
+                                <li class="list-group-item"><i class="icon-people text-muted"></i> {{app.user.thontincanhan.quequan|default('Chưa cập nhật ...')}} <span class="label label-danger"><i class="icon-pencil"></i></span></li>
+                                <li class="list-group-item"><i class="icon-stats2 text-muted"></i> {{app.user.thontincanhan.SDT|default('Chưa cập nhật ...')}} <span class="label label-primary"><i class="icon-pencil"></i></span></li>
+                                <li class="list-group-item"><i class="icon-stack text-muted"></i> {{ngaysinh|date('d-m-Y')}}<span class="label label-primary"><i class="icon-pencil"></i></span></li>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
         {% block control%}            
             {{ render(controller('AcmePermissionBundle:Default:menuCreate'))}}
         {%endblock%}       
-    </div>
-  </div>
-  <div class="page-content">
-      <div class="page-header">
-      <div class="page-title">
-         
-        
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <div class="page-title">
+
+
           {%block pagetitle%}
-        <h3>Hệ thống dịch vụ công - {{app.user.tenant.tendonvi}}<small>Nguyễn Hữu Kết - K55C-CLC</small></h3>       
+                        <h3>Hệ thống dịch vụ công - {{app.user.tenant.tendonvi}}<small>Nguyễn Hữu Kết - K55C-CLC</small></h3>       
         {% endblock%}
-      </div>
-      <div id="reportrange" class="range">
-        <div class="visible-xs header-element-toggle"><a class="btn btn-primary btn-icon"><i class="icon-calendar"></i></a></div>
-        <div class="date-range"></div>
-        <span class="label label-danger">9</span></div>         
-        </div>
+                    </div>
+                    <div id="reportrange" class="range">
+                        <div class="visible-xs header-element-toggle"><a class="btn btn-primary btn-icon"><i class="icon-calendar"></i></a></div>
+                        <div class="date-range"></div>
+                        <span class="label label-danger">9</span></div>         
+                </div>
         {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="alert alert-success fade in block-inner">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+                <div class="alert alert-success fade in block-inner">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
                 {{ flashMessage }}
-        </div>
+                </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger fade in block-inner">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ flashMessage }}
+                </div>
         {% endfor %}
         {% block content %}Welcome {{app.user.username}}{% endblock %}
-	<div class="footer clearfix">
-      <div class="pull-left">&copy; 2014. Dịch Vụ Công - Khóa Luận Tốt Nghiệp</div>
-    </div>
-    <!-- /footer -->
-  </div>
-  <!-- /page content -->
-</div>
-<!-- /page container -->
-</body>
+                <div class="footer clearfix">
+                    <div class="pull-left">&copy; 2014. Dịch Vụ Công - Khóa Luận Tốt Nghiệp</div>
+                </div>
+                <!-- /footer -->
+            </div>
+            <!-- /page content -->
+        </div>
+        <!-- /page container -->
+    </body>
 </html>

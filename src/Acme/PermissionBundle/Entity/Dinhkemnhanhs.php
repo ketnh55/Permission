@@ -4,14 +4,15 @@ namespace Acme\PermissionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * Dinhkemnhanhs
  *
  * @ORM\Table(name="dinhkemnhanhs", indexes={@ORM\Index(name="fk_dinhkemnhanhs_hosotthc1_idx", columns={"hosotthc"}), @ORM\Index(name="IDX_264C20294FC789D4", columns={"dinhkemtthc"})})
  * @ORM\Entity
  */
-class Dinhkemnhanhs
-{
+class Dinhkemnhanhs {
+
     /**
      * @var string
      *
@@ -55,8 +56,6 @@ class Dinhkemnhanhs
      */
     private $dinhkemtthc;
 
-
-
     /**
      * Set tenfiledinhkem
      *
@@ -64,21 +63,21 @@ class Dinhkemnhanhs
      * @return Dinhkemnhanhs
      */
     private $file;
-    public function setFile(UploadedFile $file = null)
-    {
+
+    public function setFile(UploadedFile $file = null) {
         $this->file = $file;
     }
+
     /**
-    * Get file.
-    *
-    * @return UploadedFile
-    */
-    public function getFile()
-    {
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile() {
         return $this->file;
     }
-    public function setTenfiledinhkem($tenfiledinhkem)
-    {
+
+    public function setTenfiledinhkem($tenfiledinhkem) {
         $this->tenfiledinhkem = $tenfiledinhkem;
 
         return $this;
@@ -89,8 +88,7 @@ class Dinhkemnhanhs
      *
      * @return string 
      */
-    public function getTenfiledinhkem()
-    {
+    public function getTenfiledinhkem() {
         return $this->tenfiledinhkem;
     }
 
@@ -100,8 +98,7 @@ class Dinhkemnhanhs
      * @param string $pathtofile
      * @return Dinhkemnhanhs
      */
-    public function setPathtofile($pathtofile)
-    {
+    public function setPathtofile($pathtofile) {
         $this->pathtofile = $pathtofile;
 
         return $this;
@@ -112,8 +109,7 @@ class Dinhkemnhanhs
      *
      * @return string 
      */
-    public function getPathtofile()
-    {
+    public function getPathtofile() {
         return $this->pathtofile;
     }
 
@@ -122,8 +118,7 @@ class Dinhkemnhanhs
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -133,8 +128,7 @@ class Dinhkemnhanhs
      * @param \Acme\PermissionBundle\Entity\Hosotthc $hosotthc
      * @return Dinhkemnhanhs
      */
-    public function setHosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthc = null)
-    {
+    public function setHosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthc = null) {
         $this->hosotthc = $hosotthc;
 
         return $this;
@@ -145,8 +139,7 @@ class Dinhkemnhanhs
      *
      * @return \Acme\PermissionBundle\Entity\Hosotthc 
      */
-    public function getHosotthc()
-    {
+    public function getHosotthc() {
         return $this->hosotthc;
     }
 
@@ -156,8 +149,7 @@ class Dinhkemnhanhs
      * @param \Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkemtthc
      * @return Dinhkemnhanhs
      */
-    public function setDinhkemtthc(\Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkemtthc = null)
-    {
+    public function setDinhkemtthc(\Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkemtthc = null) {
         $this->dinhkemtthc = $dinhkemtthc;
 
         return $this;
@@ -168,43 +160,39 @@ class Dinhkemnhanhs
      *
      * @return \Acme\PermissionBundle\Entity\Dinhkemtthc 
      */
-    public function getDinhkemtthc()
-    {
+    public function getDinhkemtthc() {
         return $this->dinhkemtthc;
     }
-    public function getAbsolutePath()
-    {
-        return null === $this->pathtofile
-        ? null
-        : $this->getUploadRootDir().'/'.$this->pathtofile;
+
+    public function getAbsolutePath() {
+        return null === $this->pathtofile ? null : $this->getUploadRootDir() . '/' . $this->pathtofile;
     }
-    public function getWebPath()
-    {
-        return null === $this->pathtofile
-        ? null
-        : $this->getUploadDir().'/'.$this->pathtofile;
+
+    public function getWebPath() {
+        return null === $this->pathtofile ? null : $this->getUploadDir() . '/' . $this->pathtofile;
     }
-    protected function getUploadRootDir()
-    {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+
+    protected function getUploadRootDir() {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
-    protected function getUploadDir()
-    {
+
+    protected function getUploadDir() {
         return 'uploads/attachments';
     }
-    public function upload(){
+
+    public function upload() {
 
         if (null === $this->getFile()) {
-        return;
+            return;
         }
-        if(null === $this->tenfiledinhkem){
+        if (null === $this->tenfiledinhkem) {
             $this->tenfiledinhkem = $this->getFile()->getClientOriginalName();
         }
         $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
+                $this->getUploadRootDir(), $this->getFile()->getClientOriginalName()
         );
-        $this->pathtofile = $this->getUploadDir().'/'.$this->getFile()->getClientOriginalName();
+        $this->pathtofile = $this->getUploadDir() . '/' . $this->getFile()->getClientOriginalName();
         $this->file = null;
     }
+
 }

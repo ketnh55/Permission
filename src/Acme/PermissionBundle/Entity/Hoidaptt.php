@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="hoidaptt", indexes={@ORM\Index(name="FK_HoiDapTT_DichVu_idx", columns={"TTHC"}), @ORM\Index(name="FK_HoiDapTT_CongDan_idx", columns={"CongDan"})})
  * @ORM\Entity
  */
-class Hoidaptt
-{
+class Hoidaptt {
+
     /**
      * @var string
      *
@@ -76,16 +76,13 @@ class Hoidaptt
      */
     private $congdan;
 
-
-
     /**
      * Set cauhoi
      *
      * @param string $cauhoi
      * @return Hoidaptt
      */
-    public function setCauhoi($cauhoi)
-    {
+    public function setCauhoi($cauhoi) {
         $this->cauhoi = $cauhoi;
 
         return $this;
@@ -96,8 +93,7 @@ class Hoidaptt
      *
      * @return string 
      */
-    public function getCauhoi()
-    {
+    public function getCauhoi() {
         return $this->cauhoi;
     }
 
@@ -107,8 +103,7 @@ class Hoidaptt
      * @param string $cautraloi
      * @return Hoidaptt
      */
-    public function setCautraloi($cautraloi)
-    {
+    public function setCautraloi($cautraloi) {
         $this->cautraloi = $cautraloi;
 
         return $this;
@@ -119,8 +114,7 @@ class Hoidaptt
      *
      * @return string 
      */
-    public function getCautraloi()
-    {
+    public function getCautraloi() {
         return $this->cautraloi;
     }
 
@@ -130,8 +124,7 @@ class Hoidaptt
      * @param boolean $ishide
      * @return Hoidaptt
      */
-    public function setIshide($ishide)
-    {
+    public function setIshide($ishide) {
         $this->ishide = $ishide;
 
         return $this;
@@ -142,8 +135,7 @@ class Hoidaptt
      *
      * @return boolean 
      */
-    public function getIshide()
-    {
+    public function getIshide() {
         return $this->ishide;
     }
 
@@ -153,8 +145,7 @@ class Hoidaptt
      * @param \DateTime $thoigianhoi
      * @return Hoidaptt
      */
-    public function setThoigianhoi($thoigianhoi)
-    {
+    public function setThoigianhoi($thoigianhoi) {
         $this->thoigianhoi = $thoigianhoi;
 
         return $this;
@@ -165,8 +156,7 @@ class Hoidaptt
      *
      * @return \DateTime 
      */
-    public function getThoigianhoi()
-    {
+    public function getThoigianhoi() {
         return $this->thoigianhoi;
     }
 
@@ -176,8 +166,7 @@ class Hoidaptt
      * @param \DateTime $thoigiantraloi
      * @return Hoidaptt
      */
-    public function setThoigiantraloi($thoigiantraloi)
-    {
+    public function setThoigiantraloi($thoigiantraloi) {
         $this->thoigiantraloi = $thoigiantraloi;
 
         return $this;
@@ -188,8 +177,7 @@ class Hoidaptt
      *
      * @return \DateTime 
      */
-    public function getThoigiantraloi()
-    {
+    public function getThoigiantraloi() {
         return $this->thoigiantraloi;
     }
 
@@ -198,8 +186,7 @@ class Hoidaptt
      *
      * @return integer 
      */
-    public function getIdhoidaptt()
-    {
+    public function getIdhoidaptt() {
         return $this->idhoidaptt;
     }
 
@@ -209,8 +196,7 @@ class Hoidaptt
      * @param \Acme\PermissionBundle\Entity\Tthc $tthc
      * @return Hoidaptt
      */
-    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null)
-    {
+    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null) {
         $this->tthc = $tthc;
 
         return $this;
@@ -221,8 +207,7 @@ class Hoidaptt
      *
      * @return \Acme\PermissionBundle\Entity\Tthc 
      */
-    public function getTthc()
-    {
+    public function getTthc() {
         return $this->tthc;
     }
 
@@ -232,8 +217,7 @@ class Hoidaptt
      * @param \Acme\PermissionBundle\Entity\Congdan $congdan
      * @return Hoidaptt
      */
-    public function setCongdan(\Acme\PermissionBundle\Entity\Congdan $congdan = null)
-    {
+    public function setCongdan(\Acme\PermissionBundle\Entity\Congdan $congdan = null) {
         $this->congdan = $congdan;
 
         return $this;
@@ -244,8 +228,8 @@ class Hoidaptt
      *
      * @return \Acme\PermissionBundle\Entity\Congdan 
      */
-    public function getCongdan()
-    {
+    public function getCongdan() {
         return $this->congdan;
     }
+
 }

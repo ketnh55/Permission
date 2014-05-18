@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="vaitro")
  * @ORM\Entity
  */
-class Vaitro
-{
+class Vaitro {
+
     /**
      * @var string
      *
@@ -35,16 +35,13 @@ class Vaitro
      */
     private $id;
 
-
-
     /**
      * Set name
      *
      * @param string $name
      * @return Vaitro
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -55,8 +52,7 @@ class Vaitro
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -66,8 +62,7 @@ class Vaitro
      * @param string $mota
      * @return Vaitro
      */
-    public function setMota($mota)
-    {
+    public function setMota($mota) {
         $this->mota = $mota;
 
         return $this;
@@ -78,8 +73,7 @@ class Vaitro
      *
      * @return string 
      */
-    public function getMota()
-    {
+    public function getMota() {
         return $this->mota;
     }
 
@@ -88,8 +82,8 @@ class Vaitro
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace Acme\PermissionBundle\Entity;
+
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,20 +11,22 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="thontincanhan")
  * @ORM\Entity
  */
-class Thontincanhan
-{
+class Thontincanhan {
+
     /**
      * @var string
      *
      * @ORM\Column(name="pathtoimage", type="string", length=100, nullable=true)
      */
     private $pathtoimage;
+
     /**
      * @var string
      *
      * @ORM\Column(name="quequan", type="string", length=45, nullable=true)
      */
     private $quequan;
+
     /**
      * @var string
      *
@@ -51,6 +54,7 @@ class Thontincanhan
      * @ORM\Column(name="email", type="string", length=45, nullable=true)
      */
     private $email;
+
     /**
      * @var \DateTime
      *
@@ -67,33 +71,34 @@ class Thontincanhan
      */
     private $id;
     private $file;
+
 //    public function __construct() {
 //        $this->file = new UploadedFile($this->pathtoimage,  'xxx');
 //    }
-    public function getNameFile(){
+    public function getNameFile() {
         return $this->file->getClientOriginalName();
     }
-    public function setFile(UploadedFile $file = null)
-    {
+
+    public function setFile(UploadedFile $file = null) {
         $this->file = $file;
     }
+
     /**
-    * Get file.
-    *
-    * @return UploadedFile
-    */
-    public function getFile()
-    {
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile() {
         return $this->file;
     }
+
     /**
      * Set pathtoimage
      *
      * @param string $username
      * @return User
      */
-    public function setPathtoimage($pathtoimage)
-    {
+    public function setPathtoimage($pathtoimage) {
         $this->pathtoimage = $pathtoimage;
 
         return $this;
@@ -104,18 +109,17 @@ class Thontincanhan
      *
      * @return string 
      */
-    public function getPathtoimage()
-    {
+    public function getPathtoimage() {
         return $this->pathtoimage;
     }
+
     /**
      * Set quequan
      *
      * @param string $quequan
      * @return Thontincanhan
      */
-    public function setQuequan($quequan)
-    {
+    public function setQuequan($quequan) {
         $this->quequan = $quequan;
 
         return $this;
@@ -126,8 +130,7 @@ class Thontincanhan
      *
      * @return string 
      */
-    public function getQuequan()
-    {
+    public function getQuequan() {
         return $this->quequan;
     }
 
@@ -137,8 +140,7 @@ class Thontincanhan
      * @param string $cmtnd
      * @return Thontincanhan
      */
-    public function setCmtnd($cmtnd)
-    {
+    public function setCmtnd($cmtnd) {
         $this->cmtnd = $cmtnd;
 
         return $this;
@@ -149,8 +151,7 @@ class Thontincanhan
      *
      * @return string 
      */
-    public function getCmtnd()
-    {
+    public function getCmtnd() {
         return $this->cmtnd;
     }
 
@@ -160,8 +161,7 @@ class Thontincanhan
      * @param string $sdt
      * @return Thontincanhan
      */
-    public function setSdt($sdt)
-    {
+    public function setSdt($sdt) {
         $this->sdt = $sdt;
 
         return $this;
@@ -172,8 +172,7 @@ class Thontincanhan
      *
      * @return string 
      */
-    public function getSdt()
-    {
+    public function getSdt() {
         return $this->sdt;
     }
 
@@ -183,8 +182,7 @@ class Thontincanhan
      * @param \DateTime $ngaysinh
      * @return Thontincanhan
      */
-    public function setNgaysinh($ngaysinh)
-    {
+    public function setNgaysinh($ngaysinh) {
         $this->ngaysinh = $ngaysinh;
 
         return $this;
@@ -195,8 +193,7 @@ class Thontincanhan
      *
      * @return \DateTime 
      */
-    public function getNgaysinh()
-    {
+    public function getNgaysinh() {
         return $this->ngaysinh;
     }
 
@@ -205,40 +202,35 @@ class Thontincanhan
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
-    public function getAbsolutePath()
-    {
-        return null === $this->pathtoimage
-        ? null
-        : $this->getUploadRootDir().'/'.$this->pathtoimage;
+
+    public function getAbsolutePath() {
+        return null === $this->pathtoimage ? null : $this->getUploadRootDir() . '/' . $this->pathtoimage;
     }
-    public function getWebPath()
-    {
-        return null === $this->pathtoimage
-        ? null
-        : $this->getUploadDir().'/'.$this->pathtoimage;
+
+    public function getWebPath() {
+        return null === $this->pathtoimage ? null : $this->getUploadDir() . '/' . $this->pathtoimage;
     }
-    protected function getUploadRootDir()
-    {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+
+    protected function getUploadRootDir() {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
-    protected function getUploadDir()
-    {
+
+    protected function getUploadDir() {
         return 'uploads/avatar';
     }
-    public function upload(){
+
+    public function upload() {
         // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
-        return;
+            return;
         }
         $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
+                $this->getUploadRootDir(), $this->getFile()->getClientOriginalName()
         );
-        $this->pathtoimage = $this->getUploadDir().'/'.$this->getFile()->getClientOriginalName();
+        $this->pathtoimage = $this->getUploadDir() . '/' . $this->getFile()->getClientOriginalName();
         $this->file = null;
     }
 
@@ -248,8 +240,7 @@ class Thontincanhan
      * @param string $email
      * @return Thontincanhan
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -260,8 +251,7 @@ class Thontincanhan
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -271,8 +261,7 @@ class Thontincanhan
      * @param string $noiohientai
      * @return Thontincanhan
      */
-    public function setNoiohientai($noiohientai)
-    {
+    public function setNoiohientai($noiohientai) {
         $this->noiohientai = $noiohientai;
 
         return $this;
@@ -283,8 +272,8 @@ class Thontincanhan
      *
      * @return string 
      */
-    public function getNoiohientai()
-    {
+    public function getNoiohientai() {
         return $this->noiohientai;
     }
+
 }

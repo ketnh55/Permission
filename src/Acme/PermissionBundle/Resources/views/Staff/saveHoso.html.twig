@@ -4,15 +4,15 @@
                     '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
     %}  
     {{parent()}}
-          
-     <script type="text/javascript" src="{{ asset_url }}"></script>        
+
+<script type="text/javascript" src="{{ asset_url }}"></script>        
     {% endjavascripts %}     
 {%endblock%}
 {%block title%}
 <title>Hồ sơ trong kho lưu trữ</title>
 {%endblock%}
 {%block pagetitle%}
-     <h3>Hồ sơ trong kho lưu trữ <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+<h3>Hồ sơ trong kho lưu trữ <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
 {%endblock%}
 {%block content %}
 <div class="panel panel-info">
@@ -24,22 +24,22 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <td>Id</td>
-                        <td>Thủ tục hành chính</td>
-                        <td>Số biên nhận</td>
-                        <td>Ngày nhận</td>                        
-                        <td>Ngày trả</td>                        
-                        <td>Người tiếp nhận</td>                        
+                    <td>Id</td>
+                    <td>Thủ tục hành chính</td>
+                    <td>Số biên nhận</td>
+                    <td>Ngày nhận</td>                        
+                    <td>Ngày trả</td>                        
+                    <td>Người tiếp nhận</td>                        
                     </thead>
                     <tfoot>
-                  <tr>
-                    <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
-                    <th><input type="text" name="search_thu" placeholder="Thủ tục hành chính" class="form-control"></th>
-                    <th><input type="text" name="search_so" placeholder="Số biên nhận" class="form-control"></th>
-                    <th><input type="text" name="search_ngaynhan" placeholder="Ngày nhận" class="form-control"></th>
-                    <th><input type="text" name="search_ngaytra" placeholder="Ngày trả" class="form-control"></th>
-                    <th><input type="text" name="search_ngtiepnhan" placeholder="Người tiếp nhận" class="form-control"></th>
-                  </tr>
+                        <tr>
+                            <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                            <th><input type="text" name="search_thu" placeholder="Thủ tục hành chính" class="form-control"></th>
+                            <th><input type="text" name="search_so" placeholder="Số biên nhận" class="form-control"></th>
+                            <th><input type="text" name="search_ngaynhan" placeholder="Ngày nhận" class="form-control"></th>
+                            <th><input type="text" name="search_ngaytra" placeholder="Ngày trả" class="form-control"></th>
+                            <th><input type="text" name="search_ngtiepnhan" placeholder="Người tiếp nhận" class="form-control"></th>
+                        </tr>
                     </tfoot>
                 {% for hoso in hosotthc%}
                     {% if loop.index %2 == 0 %}
@@ -52,7 +52,7 @@
                         <td>{{hoso.sobiennhanhoso}}</td>
                         <td>{{hoso.ngaynhan|date('d-m-y')}}</td>
                         <td>{{hoso.ngayhentra|date('d-m-y')}}</td>
-                        <td>{{hoso.tthc.quyentthc[1].user.thontincanhan.hoten}}</td>
+                        <td>{{hoso.tthc.quyentthc[1].user.hoten|default(hoso.tthc.quyentthc[1].user.username)}}</td>
                     </tr>
                 {%endfor%}
                 </table>

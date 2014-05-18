@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="functions", indexes={@ORM\Index(name="fk_Function_GroupFunction1_idx", columns={"GroupFunction"})})
  * @ORM\Entity
  */
-class Functions
-{
+class Functions {
+
     /**
      * @var string
      *
@@ -25,7 +25,6 @@ class Functions
      * @ORM\Column(name="path", type="string", length=45, nullable=false)
      */
     private $path;
-    
 
     /**
      * @var integer
@@ -34,7 +33,6 @@ class Functions
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    
     private $idfunctions;
 
     /**
@@ -57,11 +55,9 @@ class Functions
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->role = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Set name
@@ -69,8 +65,7 @@ class Functions
      * @param string $name
      * @return Functions
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -81,8 +76,7 @@ class Functions
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -92,33 +86,27 @@ class Functions
      * @param string $path
      * @return Functions
      */
-    public function setPath($path)
-    {
+    public function setPath($path) {
         $this->path = $path;
 
         return $this;
     }
-    
+
     /**
      * Get path
      *
      * @return string 
      */
-    public function getPath()
-    {
+    public function getPath() {
         return $this->path;
     }
-
-    
-
 
     /**
      * Get idfunctions
      *
      * @return integer 
      */
-    public function getIdfunctions()
-    {
+    public function getIdfunctions() {
         return $this->idfunctions;
     }
 
@@ -128,8 +116,7 @@ class Functions
      * @param \Acme\PermissionBundle\Entity\Groupfunction $groupfunction
      * @return Functions
      */
-    public function setGroupfunction(\Acme\PermissionBundle\Entity\Groupfunction $groupfunction = null)
-    {
+    public function setGroupfunction(\Acme\PermissionBundle\Entity\Groupfunction $groupfunction = null) {
         $this->groupfunction = $groupfunction;
 
         return $this;
@@ -140,8 +127,7 @@ class Functions
      *
      * @return \Acme\PermissionBundle\Entity\Groupfunction 
      */
-    public function getGroupfunction()
-    {
+    public function getGroupfunction() {
         return $this->groupfunction;
     }
 
@@ -151,8 +137,7 @@ class Functions
      * @param \Acme\PermissionBundle\Entity\Role $role
      * @return Functions
      */
-    public function addRole(\Acme\PermissionBundle\Entity\Role $role)
-    {
+    public function addRole(\Acme\PermissionBundle\Entity\Role $role) {
         $this->role[] = $role;
 
         return $this;
@@ -163,8 +148,7 @@ class Functions
      *
      * @param \Acme\PermissionBundle\Entity\Role $role
      */
-    public function removeRole(\Acme\PermissionBundle\Entity\Role $role)
-    {
+    public function removeRole(\Acme\PermissionBundle\Entity\Role $role) {
         $this->role->removeElement($role);
     }
 
@@ -173,8 +157,8 @@ class Functions
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
+
 }

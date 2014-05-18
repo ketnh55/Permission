@@ -9,50 +9,50 @@
     
 {%endblock%}#}
 {%block content %}
-     <div class="panel panel-info">
-        <div class="panel-heading">
-            <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
-        </div>
-        <div class="datatable-add-row">
-            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <td>ID</td>
-                            <td>Tên đơn vị</td>
-                            <td>Chủ đăng ký</td>
-                            <td>Liên hệ</td>
-                            <td>Sửa</td>
-                            <td>Xóa</td>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                              <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
-                              <th><input type="text" name="search_hoten" placeholder="Công dân" class="form-control"></th>
-                              <th><input type="text" name="search_quyenhan" placeholder="Thủ tục hành chính" class="form-control"></th>
-                              <th><input type="text" name="search_tthc" placeholder="Ngày nhận" size="10" class="form-control"></th>                                                            
-                              <th></th>
-                              <th></th>
-                            </tr>
-                        </tfoot>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
+    </div>
+    <div class="datatable-add-row">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <td>ID</td>
+                    <td>Tên đơn vị</td>
+                    <td>Chủ đăng ký</td>
+                    <td>Liên hệ</td>
+                    <td>Sửa</td>
+                    <td>Xóa</td>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                            <th><input type="text" name="search_hoten" placeholder="Công dân" class="form-control"></th>
+                            <th><input type="text" name="search_quyenhan" placeholder="Thủ tục hành chính" class="form-control"></th>
+                            <th><input type="text" name="search_tthc" placeholder="Ngày nhận" size="10" class="form-control"></th>                                                            
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
                     {% for tn in tenant%}
                         {% if loop.index %2 == 0 %}
-                        <tr class="odd">
+                    <tr class="odd">
                         {% else %}
-                        <tr class="even">
+                    <tr class="even">
                         {% endif%}
-                            <td>{{tn.id}}</td>
-                            <td>{{tn.tendonvi}}</td>
-                            <td>{{tn.hoten}}</td>
-                            <td>{{tn.sdt}}</td>
+                        <td>{{tn.id}}</td>
+                        <td>{{tn.tendonvi}}</td>
+                        <td>{{tn.hoten}}</td>
+                        <td>{{tn.sdt}}</td>
 {#                            <td><a href="{{path('editPermission',{'id':func.id})}}">Edit</a></td>
                             <td>{{form_widget(form.quyenhan[func.id])}}</td>#}
-                        </tr>
+                    </tr>
                     {%endfor%}
-   
-                    </table>
-                </div>   
-            </div>
+
+                </table>
+            </div>   
         </div>
-     </div>    
+    </div>
+</div>    
 {%endblock%}

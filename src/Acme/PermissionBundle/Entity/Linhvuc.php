@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="linhvuc")
  * @ORM\Entity
  */
-class Linhvuc
-{
+class Linhvuc {
+
     /**
      * @var string
      *
@@ -34,6 +34,7 @@ class Linhvuc
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idlinhvuc;
+
     /**
      * @var \Acme\PermissionBundle\Entity\Tenant
      *
@@ -44,15 +45,13 @@ class Linhvuc
      */
     private $tenant;
 
-
     /**
      * Set namedv
      *
      * @param string $namedv
      * @return Linhvuc
      */
-    public function setNamedv($namedv)
-    {
+    public function setNamedv($namedv) {
         $this->namedv = $namedv;
 
         return $this;
@@ -63,8 +62,7 @@ class Linhvuc
      *
      * @return string 
      */
-    public function getNamedv()
-    {
+    public function getNamedv() {
         return $this->namedv;
     }
 
@@ -74,8 +72,7 @@ class Linhvuc
      * @param string $motalinhvuc
      * @return Linhvuc
      */
-    public function setMotalinhvuc($motalinhvuc)
-    {
+    public function setMotalinhvuc($motalinhvuc) {
         $this->motalinhvuc = $motalinhvuc;
 
         return $this;
@@ -86,8 +83,7 @@ class Linhvuc
      *
      * @return string 
      */
-    public function getMotalinhvuc()
-    {
+    public function getMotalinhvuc() {
         return $this->motalinhvuc;
     }
 
@@ -96,8 +92,7 @@ class Linhvuc
      *
      * @return integer 
      */
-    public function getIdlinhvuc()
-    {
+    public function getIdlinhvuc() {
         return $this->idlinhvuc;
     }
 
@@ -107,8 +102,7 @@ class Linhvuc
      * @param \Acme\PermissionBundle\Entity\Tenant $tenant
      * @return Linhvuc
      */
-    public function setTenant(\Acme\PermissionBundle\Entity\Tenant $tenant = null)
-    {
+    public function setTenant(\Acme\PermissionBundle\Entity\Tenant $tenant = null) {
         $this->tenant = $tenant;
 
         return $this;
@@ -119,8 +113,8 @@ class Linhvuc
      *
      * @return \Acme\PermissionBundle\Entity\Tenant 
      */
-    public function getTenant()
-    {
+    public function getTenant() {
         return $this->tenant;
     }
+
 }

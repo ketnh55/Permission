@@ -3,111 +3,111 @@
 <title>Kiểm tra thông tin hồ sơ</title>
 {%endblock%}
 {%block pagetitle%}
-     <h3>Kiểm tra thông tin hồ sơ <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+<h3>Kiểm tra thông tin hồ sơ <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
 {%endblock%}
 {%block content%}
 
 <div class="col-lg-2">
-        <!-- Profile links -->
+    <!-- Profile links -->
+    <div class="block">
         <div class="block">
-          <div class="block">
             <div class="thumbnail">
                 <div class="thumb"><img alt="" src="{{asset(hosotthc.congdan.pathtoimage|default('uploads/avatar/anonymous.jpg'))}}">
-                <div class="thumb-options"><span><a href="#" class="btn btn-icon btn-success"><i class="icon-pencil"></i></a><a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a></span></div>
-              </div>
-              <div class="caption text-center">
-                  <h6>{{hosotthc.congdan.name}}<small>Công dân</small></h6>
-                <div class="icons-group"> <a href="#" title="" class="tip" data-original-title="Google Drive"><i class="icon-google-drive"></i></a> <a href="#" title="" class="tip" data-original-title="Twitter"><i class="icon-twitter"></i></a> <a href="#" title="" class="tip" data-original-title="Github"><i class="icon-github3"></i></a> </div>
-              </div>
+                    <div class="thumb-options"><span><a href="#" class="btn btn-icon btn-success"><i class="icon-pencil"></i></a><a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a></span></div>
+                </div>
+                <div class="caption text-center">
+                    <h6>{{hosotthc.congdan.name}}<small>Công dân</small></h6>
+                    <div class="icons-group"> <a href="#" title="" class="tip" data-original-title="Google Drive"><i class="icon-google-drive"></i></a> <a href="#" title="" class="tip" data-original-title="Twitter"><i class="icon-twitter"></i></a> <a href="#" title="" class="tip" data-original-title="Github"><i class="icon-github3"></i></a> </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
 <div class="tab-pane fade active in" id="settings">              
-                <h6 class="heading-hr"><i class="icon-user"></i> Profile information:</h6>
-                <div class="block-inner">
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>First name</label>
-                            <input type="text" value="{{hosotthc.congdan.name}}" class="form-control" disabled>
-                      </div>
-                      <div class="col-md-6">
-                        <label>CMTND</label>
-                            <input type="text" value="{{hosotthc.congdan.name}}" class="form-control" disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Quê quán</label>
-                            <input type="text" value="{{hosotthc.congdan.quequan}}" class="form-control" disabled>
-                      </div>
-                      <div class="col-md-6">
-                        <label>Ngày sinh</label>
-                            <input type="text" value="{{hosotthc.congdan.sdt}}" class="form-control" disabled>
-                      </div>
-                    </div>
-                  </div>   
-                    <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <label>Ngày</label>                       
-                        <input type="text" id="thongtincanhan_ngaysinh_day" name="user[thontincanhan][ngaysinh][day]" value="{{hosotthc.congdan.ngaysinh|date('d')}}" class="form-control" disabled>
-                      </div>
-                      <div class="col-md-4">
-                        <label>Tháng</label>
+    <h6 class="heading-hr"><i class="icon-user"></i> Profile information:</h6>
+    <div class="block-inner">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>First name</label>
+                    <input type="text" value="{{hosotthc.congdan.name}}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label>CMTND</label>
+                    <input type="text" value="{{hosotthc.congdan.name}}" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Quê quán</label>
+                    <input type="text" value="{{hosotthc.congdan.quequan}}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label>Ngày sinh</label>
+                    <input type="text" value="{{hosotthc.congdan.sdt}}" class="form-control" disabled>
+                </div>
+            </div>
+        </div>   
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Ngày</label>                       
+                    <input type="text" id="thongtincanhan_ngaysinh_day" name="user[thontincanhan][ngaysinh][day]" value="{{hosotthc.congdan.ngaysinh|date('d')}}" class="form-control" disabled>
+                </div>
+                <div class="col-md-4">
+                    <label>Tháng</label>
 {#                        <input type="text" value="Munich" class="form-control">#}
-                            <input type="text" id="thongtincanhan_ngaysinh_month" name="user[thontincanhan][ngaysinh][month]" value="{{hosotthc.congdan.ngaysinh|date('m')}}" class="form-control" disabled>
-                      </div>
-                      <div class="col-md-4">
-                        <label>Năm</label>
+                    <input type="text" id="thongtincanhan_ngaysinh_month" name="user[thontincanhan][ngaysinh][month]" value="{{hosotthc.congdan.ngaysinh|date('m')}}" class="form-control" disabled>
+                </div>
+                <div class="col-md-4">
+                    <label>Năm</label>
 {#                        <input type="text" value="Munich" class="form-control">#}
-                        <input type="text" id="thongtincanhan_ngaysinh_year" name="user[thontincanhan][ngaysinh][year]" value="{{hosotthc.congdan.ngaysinh|date('Y')}}" class="form-control" disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Email</label>
-                        <input type="text" readonly="readonly" value="{{hosotthc.congdan.email}}" class="form-control" disabled>
-                      </div>
-                      <div class="col-md-6">
-                        <label>Your country:</label>
-                        <input type="text" value="{{hosotthc.congdan.email}}" class="form-control" disabled>
+                    <input type="text" id="thongtincanhan_ngaysinh_year" name="user[thontincanhan][ngaysinh][year]" value="{{hosotthc.congdan.ngaysinh|date('Y')}}" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Email</label>
+                    <input type="text" readonly="readonly" value="{{hosotthc.congdan.email}}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label>Your country:</label>
+                    <input type="text" value="{{hosotthc.congdan.email}}" class="form-control" disabled>
 
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
                         <label>Phone #</label>
                         <input type="text" value="{{hosotthc.congdan.sdt}}" class="form-control" disabled>
                         <span class="help-block">+84-99-9999-9999</span> </div>
-                  </div>
                 </div>
-                <h6 class="heading-hr"><i class="icon-lock"></i>Thủ tục hành chính {{hosotthc.tthc.nametthc}}:</h6>
-                <div class="form-group">
-                  <div class="row">
+            </div>
+            <h6 class="heading-hr"><i class="icon-lock"></i>Thủ tục hành chính {{hosotthc.tthc.nametthc}}:</h6>
+            <div class="form-group">
+                <div class="row">
                     {%for dinhkem in hosotthc.dinhkemnhanhs%}                    
-                        <div class="col-md-6">
-                          <label>{{dinhkem.dinhkemtthc.tenfiledk}}</label>
+                    <div class="col-md-6">
+                        <label>{{dinhkem.dinhkemtthc.tenfiledk}}</label>
                           {%if dinhkem.pathtofile != null%}
-                          <a href = "{{asset(dinhkem.pathtofile)|default('#')}}"> Download</a> 
+                        <a href = "{{asset(dinhkem.pathtofile)|default('#')}}"> Download</a> 
                           {%endif%}
-                          <label class="checkbox-inline checkbox-danger">
+                        <label class="checkbox-inline checkbox-danger">
                             <div class="checker"><span class="checked"><input type="checkbox" class="styled" checked="checked"></span></div>
-                                OK</label>
-                        </div>
+                            OK</label>
+                    </div>
                     {%endfor%}
-                  </div>
-                </div>             
+                </div>
+            </div>             
         </div>
-         <div class="form-actions text-right">
-            
+        <div class="form-actions text-right">
+
         </div>
-</div>
+    </div>
 </div>
 {%endblock%}

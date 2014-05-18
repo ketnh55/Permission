@@ -4,14 +4,15 @@ namespace Acme\PermissionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use \Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Tthc
  *
  * @ORM\Table(name="tthc", indexes={@ORM\Index(name="FK_TTHC_DichVu_idx", columns={"LinhVuc"}), @ORM\Index(name="FK_TTHC_DVThuLy_idx", columns={"DonViThuLy"})})
  * @ORM\Entity
  */
-class Tthc
-{
+class Tthc {
+
     /**
      * @var string
      *
@@ -75,34 +76,35 @@ class Tthc
      * })
      */
     private $donvithuly;
-    
+
     /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Vanbanlienquan", mappedBy="tthc")
-    */
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Vanbanlienquan", mappedBy="tthc")
+     */
     private $vanbanlienquan;
 
-   /**
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc", mappedBy="tthc")
-    */
+    /**
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc", mappedBy="tthc")
+     */
     private $dinhkem;
-    /**
-    * @var \Doctrine\Common\Collections\Collection
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Quyentthc", mappedBy="tthc")
-    */
-    private $quyentthc;
-    /**
-    * @var \Doctrine\Common\Collections\Collection
-    * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Hoidaptt", mappedBy="tthc")
-    */
-    private $hoidaptt;
-    public function __construct()
-    {
-        $this->quyentthc = new ArrayCollection();       
-        $this->hoidaptt = new ArrayCollection();       
-        $this->vanbanlienquan = new ArrayCollection();               
-        $this->dinhkem = new ArrayCollection();               
-    }
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Quyentthc", mappedBy="tthc")
+     */
+    private $quyentthc;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Hoidaptt", mappedBy="tthc")
+     */
+    private $hoidaptt;
+
+    public function __construct() {
+        $this->quyentthc = new ArrayCollection();
+        $this->hoidaptt = new ArrayCollection();
+        $this->vanbanlienquan = new ArrayCollection();
+        $this->dinhkem = new ArrayCollection();
+    }
 
     /**
      * Set nametthc
@@ -110,8 +112,7 @@ class Tthc
      * @param string $nametthc
      * @return Tthc
      */
-    public function setNametthc($nametthc)
-    {
+    public function setNametthc($nametthc) {
         $this->nametthc = $nametthc;
 
         return $this;
@@ -122,8 +123,7 @@ class Tthc
      *
      * @return string 
      */
-    public function getNametthc()
-    {
+    public function getNametthc() {
         return $this->nametthc;
     }
 
@@ -133,8 +133,7 @@ class Tthc
      * @param string $noidungthuchien
      * @return Tthc
      */
-    public function setNoidungthuchien($noidungthuchien)
-    {
+    public function setNoidungthuchien($noidungthuchien) {
         $this->noidungthuchien = $noidungthuchien;
 
         return $this;
@@ -145,8 +144,7 @@ class Tthc
      *
      * @return string 
      */
-    public function getNoidungthuchien()
-    {
+    public function getNoidungthuchien() {
         return $this->noidungthuchien;
     }
 
@@ -156,8 +154,7 @@ class Tthc
      * @param string $giaytohoso
      * @return Tthc
      */
-    public function setGiaytohoso($giaytohoso)
-    {
+    public function setGiaytohoso($giaytohoso) {
         $this->giaytohoso = $giaytohoso;
 
         return $this;
@@ -168,8 +165,7 @@ class Tthc
      *
      * @return string 
      */
-    public function getGiaytohoso()
-    {
+    public function getGiaytohoso() {
         return $this->giaytohoso;
     }
 
@@ -179,8 +175,7 @@ class Tthc
      * @param string $thoigiangiaiquyet
      * @return Tthc
      */
-    public function setThoigiangiaiquyet($thoigiangiaiquyet)
-    {
+    public function setThoigiangiaiquyet($thoigiangiaiquyet) {
         $this->thoigiangiaiquyet = $thoigiangiaiquyet;
 
         return $this;
@@ -191,8 +186,7 @@ class Tthc
      *
      * @return string 
      */
-    public function getThoigiangiaiquyet()
-    {
+    public function getThoigiangiaiquyet() {
         return $this->thoigiangiaiquyet;
     }
 
@@ -202,8 +196,7 @@ class Tthc
      * @param boolean $ishide
      * @return Tthc
      */
-    public function setIshide($ishide)
-    {
+    public function setIshide($ishide) {
         $this->ishide = $ishide;
 
         return $this;
@@ -214,8 +207,7 @@ class Tthc
      *
      * @return boolean 
      */
-    public function getIshide()
-    {
+    public function getIshide() {
         return $this->ishide;
     }
 
@@ -224,8 +216,7 @@ class Tthc
      *
      * @return integer 
      */
-    public function getIdtthc()
-    {
+    public function getIdtthc() {
         return $this->idtthc;
     }
 
@@ -235,8 +226,7 @@ class Tthc
      * @param \Acme\PermissionBundle\Entity\Linhvuc $linhvuc
      * @return Tthc
      */
-    public function setLinhvuc(\Acme\PermissionBundle\Entity\Linhvuc $linhvuc = null)
-    {
+    public function setLinhvuc(\Acme\PermissionBundle\Entity\Linhvuc $linhvuc = null) {
         $this->linhvuc = $linhvuc;
 
         return $this;
@@ -247,8 +237,7 @@ class Tthc
      *
      * @return \Acme\PermissionBundle\Entity\Linhvuc 
      */
-    public function getLinhvuc()
-    {
+    public function getLinhvuc() {
         return $this->linhvuc;
     }
 
@@ -258,8 +247,7 @@ class Tthc
      * @param \Acme\PermissionBundle\Entity\Donvithuly $donvithuly
      * @return Tthc
      */
-    public function setDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly = null)
-    {
+    public function setDonvithuly(\Acme\PermissionBundle\Entity\Donvithuly $donvithuly = null) {
         $this->donvithuly = $donvithuly;
 
         return $this;
@@ -270,8 +258,7 @@ class Tthc
      *
      * @return \Acme\PermissionBundle\Entity\Donvithuly 
      */
-    public function getDonvithuly()
-    {
+    public function getDonvithuly() {
         return $this->donvithuly;
     }
 
@@ -281,8 +268,7 @@ class Tthc
      * @param \Acme\PermissionBundle\Entity\Vanbanlienquan $vanbanlienquan
      * @return Tthc
      */
-    public function addVanbanlienquan(\Acme\PermissionBundle\Entity\Vanbanlienquan $vanbanlienquan)
-    {
+    public function addVanbanlienquan(\Acme\PermissionBundle\Entity\Vanbanlienquan $vanbanlienquan) {
         $this->vanbanlienquan[] = $vanbanlienquan;
 
         return $this;
@@ -293,8 +279,7 @@ class Tthc
      *
      * @param \Acme\PermissionBundle\Entity\Vanbanlienquan $vanbanlienquan
      */
-    public function removeVanbanlienquan(\Acme\PermissionBundle\Entity\Vanbanlienquan $vanbanlienquan)
-    {
+    public function removeVanbanlienquan(\Acme\PermissionBundle\Entity\Vanbanlienquan $vanbanlienquan) {
         $this->vanbanlienquan->removeElement($vanbanlienquan);
     }
 
@@ -303,18 +288,17 @@ class Tthc
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getVanbanlienquan()
-    {
+    public function getVanbanlienquan() {
         return $this->vanbanlienquan;
     }
+
     /**
      * Add dinhkem
      *
      * @param \Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkem
      * @return Tthc
      */
-    public function addDinhkem(\Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkem)
-    {
+    public function addDinhkem(\Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkem) {
         $this->dinhkem[] = $dinhkem;
 
         return $this;
@@ -325,8 +309,7 @@ class Tthc
      *
      * @param \Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkem
      */
-    public function removeDinhkem(\Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkem)
-    {
+    public function removeDinhkem(\Acme\PermissionBundle\Entity\Dinhkemtthc $dinhkem) {
         $this->dinhkem->removeElement($dinhkem);
     }
 
@@ -335,8 +318,7 @@ class Tthc
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getDinhkem()
-    {
+    public function getDinhkem() {
         return $this->dinhkem;
     }
 
@@ -346,8 +328,7 @@ class Tthc
      * @param \Acme\PermissionBundle\Entity\Quyentthc $quyentthc
      * @return Tthc
      */
-    public function addQuyentthc(\Acme\PermissionBundle\Entity\Quyentthc $quyentthc)
-    {
+    public function addQuyentthc(\Acme\PermissionBundle\Entity\Quyentthc $quyentthc) {
         $this->quyentthc[] = $quyentthc;
 
         return $this;
@@ -358,8 +339,7 @@ class Tthc
      *
      * @param \Acme\PermissionBundle\Entity\Quyentthc $quyentthc
      */
-    public function removeQuyentthc(\Acme\PermissionBundle\Entity\Quyentthc $quyentthc)
-    {
+    public function removeQuyentthc(\Acme\PermissionBundle\Entity\Quyentthc $quyentthc) {
         $this->quyentthc->removeElement($quyentthc);
     }
 
@@ -368,21 +348,21 @@ class Tthc
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getQuyentthc()
-    {
+    public function getQuyentthc() {
         return $this->quyentthc;
     }
-    public function setHoidaptt($hoidaptt){
+
+    public function setHoidaptt($hoidaptt) {
         $this->hoidaptt = $hoidaptt;
     }
+
     /**
      * Add hoidaptt
      *
      * @param \Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt
      * @return Tthc
      */
-    public function addHoidaptt(\Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt)
-    {
+    public function addHoidaptt(\Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt) {
         $this->hoidaptt[] = $hoidaptt;
 
         return $this;
@@ -393,8 +373,7 @@ class Tthc
      *
      * @param \Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt
      */
-    public function removeHoidaptt(\Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt)
-    {
+    public function removeHoidaptt(\Acme\PermissionBundle\Entity\Hoidaptt $hoidaptt) {
         $this->hoidaptt->removeElement($hoidaptt);
     }
 
@@ -403,8 +382,8 @@ class Tthc
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getHoidaptt()
-    {
+    public function getHoidaptt() {
         return $this->hoidaptt;
     }
+
 }

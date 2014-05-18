@@ -10,32 +10,36 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="donvithuly")
  * @ORM\Entity
  */
-class Donvithuly
-{
+class Donvithuly {
+
     /**
      * @var string
      *
      * @ORM\Column(name="NameDonViThuLy", type="string", length=45, nullable=false)
      */
     private $namedonvithuly;
+
     /**
      * @var string
      *
      * @ORM\Column(name="mota", type="string", length=45, nullable=false)
      */
     private $mota;
+
     /**
      * @var string
      *
      * @ORM\Column(name="diachi", type="string", length=45, nullable=false)
      */
     private $diachi;
+
     /**
      * @var string
      *
      * @ORM\Column(name="sdt", type="string", length=45, nullable=false)
      */
     private $sdt;
+
     /**
      * @var string
      *
@@ -51,6 +55,7 @@ class Donvithuly
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $iddonvithuly;
+
     /**
      * @var \Acme\PermissionBundle\Entity\Tenant
      *
@@ -61,15 +66,13 @@ class Donvithuly
      */
     private $tenant;
 
-
     /**
      * Set namedonvithuly
      *
      * @param string $namedonvithuly
      * @return Donvithuly
      */
-    public function setNamedonvithuly($namedonvithuly)
-    {
+    public function setNamedonvithuly($namedonvithuly) {
         $this->namedonvithuly = $namedonvithuly;
 
         return $this;
@@ -80,8 +83,7 @@ class Donvithuly
      *
      * @return string 
      */
-    public function getNamedonvithuly()
-    {
+    public function getNamedonvithuly() {
         return $this->namedonvithuly;
     }
 
@@ -90,8 +92,7 @@ class Donvithuly
      *
      * @return integer 
      */
-    public function getIddonvithuly()
-    {
+    public function getIddonvithuly() {
         return $this->iddonvithuly;
     }
 
@@ -101,8 +102,7 @@ class Donvithuly
      * @param \Acme\PermissionBundle\Entity\Tenant $tenant
      * @return Donvithuly
      */
-    public function setTenant(\Acme\PermissionBundle\Entity\Tenant $tenant = null)
-    {
+    public function setTenant(\Acme\PermissionBundle\Entity\Tenant $tenant = null) {
         $this->tenant = $tenant;
 
         return $this;
@@ -113,8 +113,7 @@ class Donvithuly
      *
      * @return \Acme\PermissionBundle\Entity\Tenant 
      */
-    public function getTenant()
-    {
+    public function getTenant() {
         return $this->tenant;
     }
 
@@ -124,8 +123,7 @@ class Donvithuly
      * @param string $mota
      * @return Donvithuly
      */
-    public function setMota($mota)
-    {
+    public function setMota($mota) {
         $this->mota = $mota;
 
         return $this;
@@ -136,8 +134,7 @@ class Donvithuly
      *
      * @return string 
      */
-    public function getMota()
-    {
+    public function getMota() {
         return $this->mota;
     }
 
@@ -147,8 +144,7 @@ class Donvithuly
      * @param string $diachi
      * @return Donvithuly
      */
-    public function setDiachi($diachi)
-    {
+    public function setDiachi($diachi) {
         $this->diachi = $diachi;
 
         return $this;
@@ -159,8 +155,7 @@ class Donvithuly
      *
      * @return string 
      */
-    public function getDiachi()
-    {
+    public function getDiachi() {
         return $this->diachi;
     }
 
@@ -170,8 +165,7 @@ class Donvithuly
      * @param string $sdt
      * @return Donvithuly
      */
-    public function setSdt($sdt)
-    {
+    public function setSdt($sdt) {
         $this->sdt = $sdt;
 
         return $this;
@@ -182,8 +176,7 @@ class Donvithuly
      *
      * @return string 
      */
-    public function getSdt()
-    {
+    public function getSdt() {
         return $this->sdt;
     }
 
@@ -193,8 +186,7 @@ class Donvithuly
      * @param string $madonvi
      * @return Donvithuly
      */
-    public function setMadonvi($madonvi)
-    {
+    public function setMadonvi($madonvi) {
         $this->madonvi = $madonvi;
 
         return $this;
@@ -205,8 +197,8 @@ class Donvithuly
      *
      * @return string 
      */
-    public function getMadonvi()
-    {
+    public function getMadonvi() {
         return $this->madonvi;
     }
+
 }

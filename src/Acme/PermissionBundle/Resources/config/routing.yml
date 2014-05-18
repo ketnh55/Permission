@@ -103,9 +103,12 @@ saveHoso:
 createChuyenvienthuly:
     pattern:  /function/createChuyenvienthuly
     defaults: { _controller: AcmePermissionBundle:Default:createChuyenvienthuly } 
+statisticTTHC:
+    pattern:  /function/statisticTTHC
+    defaults: { _controller: AcmePermissionBundle:Major:statisticTTHC } 
 manageTenant:
     pattern:  /manageTenant
     defaults: { _controller: AcmePermissionBundle:SuperAdmin:manageTenant } 
-test:
-    pattern:  /admin
-    defaults: { _controller: AcmePermissionBundle:Major:test } 
+forwardback:
+    pattern:  /function/forwardBack
+    defaults: { _controller: AcmePermissionBundle:Staff:forwardBack } 

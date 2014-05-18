@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="vaitroxuly", indexes={@ORM\Index(name="fk_Vaitroxuly_User1_idx", columns={"User"}), @ORM\Index(name="fk_Vaitroxuly_Vaitro1_idx", columns={"Vaitro"}), @ORM\Index(name="fk_Vaitroxuly_HoSoTTHC1_idx", columns={"HoSoTTHC"})})
  * @ORM\Entity
  */
-class Vaitroxuly
-{
+class Vaitroxuly {
+
     /**
      * @var integer
      *
@@ -51,15 +51,12 @@ class Vaitroxuly
      */
     private $user;
 
-
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -69,8 +66,7 @@ class Vaitroxuly
      * @param \Acme\PermissionBundle\Entity\Hosotthc $hosotthc
      * @return Vaitroxuly
      */
-    public function setHosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthc = null)
-    {
+    public function setHosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthc = null) {
         $this->hosotthc = $hosotthc;
 
         return $this;
@@ -81,8 +77,7 @@ class Vaitroxuly
      *
      * @return \Acme\PermissionBundle\Entity\Hosotthc 
      */
-    public function getHosotthc()
-    {
+    public function getHosotthc() {
         return $this->hosotthc;
     }
 
@@ -92,8 +87,7 @@ class Vaitroxuly
      * @param \Acme\PermissionBundle\Entity\Vaitro $vaitro
      * @return Vaitroxuly
      */
-    public function setVaitro(\Acme\PermissionBundle\Entity\Vaitro $vaitro = null)
-    {
+    public function setVaitro(\Acme\PermissionBundle\Entity\Vaitro $vaitro = null) {
         $this->vaitro = $vaitro;
 
         return $this;
@@ -104,8 +98,7 @@ class Vaitroxuly
      *
      * @return \Acme\PermissionBundle\Entity\Vaitro 
      */
-    public function getVaitro()
-    {
+    public function getVaitro() {
         return $this->vaitro;
     }
 
@@ -115,8 +108,7 @@ class Vaitroxuly
      * @param \Acme\PermissionBundle\Entity\User $user
      * @return Vaitroxuly
      */
-    public function setUser(\Acme\PermissionBundle\Entity\User $user = null)
-    {
+    public function setUser(\Acme\PermissionBundle\Entity\User $user = null) {
         $this->user = $user;
 
         return $this;
@@ -127,8 +119,8 @@ class Vaitroxuly
      *
      * @return \Acme\PermissionBundle\Entity\User 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
+
 }

@@ -38,7 +38,9 @@ class NewTTHCType extends AbstractType{
             ->add('quyentthc','collection',array(
                 'type'=>new QuyenTTHCType($this->user),
             ))
-            ->add('submit','submit');                       
+            ->add('submit','submit',array(
+                'label'=>'Ghi nhận'
+            ));                       
     }
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {

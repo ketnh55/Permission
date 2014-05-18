@@ -4,14 +4,15 @@ namespace Acme\PermissionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * Vanbanlienquan
  *
  * @ORM\Table(name="vanbanlienquan", indexes={@ORM\Index(name="IDX_C328B7844F4C5628", columns={"Tthc"})})
  * @ORM\Entity
  */
-class Vanbanlienquan
-{
+class Vanbanlienquan {
+
     /**
      * @var string
      *
@@ -45,17 +46,17 @@ class Vanbanlienquan
      */
     private $tthc;
     private $file;
-    public function setFile(UploadedFile $file = null)
-    {
+
+    public function setFile(UploadedFile $file = null) {
         $this->file = $file;
     }
+
     /**
-    * Get file.
-    *
-    * @return UploadedFile
-    */
-    public function getFile()
-    {
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile() {
         return $this->file;
     }
 
@@ -65,8 +66,7 @@ class Vanbanlienquan
      * @param string $tenvblq
      * @return Vanbanlienquan
      */
-    public function setTenvblq($tenvblq)
-    {
+    public function setTenvblq($tenvblq) {
         $this->tenvblq = $tenvblq;
 
         return $this;
@@ -77,8 +77,7 @@ class Vanbanlienquan
      *
      * @return string 
      */
-    public function getTenvblq()
-    {
+    public function getTenvblq() {
         return $this->tenvblq;
     }
 
@@ -88,8 +87,7 @@ class Vanbanlienquan
      * @param string $pathtovblq
      * @return Vanbanlienquan
      */
-    public function setPathtovblq($pathtovblq)
-    {
+    public function setPathtovblq($pathtovblq) {
         $this->pathtovblq = $pathtovblq;
 
         return $this;
@@ -100,8 +98,7 @@ class Vanbanlienquan
      *
      * @return string 
      */
-    public function getPathtovblq()
-    {
+    public function getPathtovblq() {
         return $this->pathtovblq;
     }
 
@@ -110,8 +107,7 @@ class Vanbanlienquan
      *
      * @return integer 
      */
-    public function getIdvanbanlienquan()
-    {
+    public function getIdvanbanlienquan() {
         return $this->idvanbanlienquan;
     }
 
@@ -121,8 +117,7 @@ class Vanbanlienquan
      * @param \Acme\PermissionBundle\Entity\Tthc $tthc
      * @return Vanbanlienquan
      */
-    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null)
-    {
+    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null) {
         $this->tthc = $tthc;
 
         return $this;
@@ -133,40 +128,35 @@ class Vanbanlienquan
      *
      * @return \Acme\PermissionBundle\Entity\Tthc 
      */
-    public function getTthc()
-    {
+    public function getTthc() {
         return $this->tthc;
     }
-     public function getAbsolutePath()
-    {
-        return null === $this->pathtovblq
-        ? null
-        : $this->getUploadRootDir().'/'.$this->pathtovblq;
+
+    public function getAbsolutePath() {
+        return null === $this->pathtovblq ? null : $this->getUploadRootDir() . '/' . $this->pathtovblq;
     }
-    public function getWebPath()
-    {
-        return null === $this->pathtovblq
-        ? null
-        : $this->getUploadDir().'/'.$this->pathtovblq;
+
+    public function getWebPath() {
+        return null === $this->pathtovblq ? null : $this->getUploadDir() . '/' . $this->pathtovblq;
     }
-    protected function getUploadRootDir()
-    {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+
+    protected function getUploadRootDir() {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
-    protected function getUploadDir()
-    {
+
+    protected function getUploadDir() {
         return 'uploads/attachments';
     }
-    public function upload(){
+
+    public function upload() {
         // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
-        return;
+            return;
         }
         $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
+                $this->getUploadRootDir(), $this->getFile()->getClientOriginalName()
         );
-        $this->pathtovblq = $this->getUploadDir().'/'.$this->getFile()->getClientOriginalName();
+        $this->pathtovblq = $this->getUploadDir() . '/' . $this->getFile()->getClientOriginalName();
         $this->file = null;
     }
 

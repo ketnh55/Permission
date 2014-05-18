@@ -1,6 +1,7 @@
 <?php
 
 namespace Acme\PermissionBundle\Entity;
+
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="dinhkemguihs", indexes={@ORM\Index(name="fk_dinhkemguihs_hosotthc1_idx", columns={"hosotthc"})})
  * @ORM\Entity
  */
-class Dinhkemguihs
-{
+class Dinhkemguihs {
+
     /**
      * @var string
      *
@@ -43,23 +44,21 @@ class Dinhkemguihs
      *   @ORM\JoinColumn(name="hosotthc", referencedColumnName="idHoSoTTHC", nullable=false)
      * })
      */
-    private $hosotthchosotthc;    
+    private $hosotthchosotthc;
     private $file;
-    public function setFile(UploadedFile $file = null)
-    {
+
+    public function setFile(UploadedFile $file = null) {
         $this->file = $file;
     }
+
     /**
-    * Get file.
-    *
-    * @return UploadedFile
-    */
-    public function getFile()
-    {
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile() {
         return $this->file;
     }
-
-
 
     /**
      * Set tenfiledinhkem
@@ -67,8 +66,7 @@ class Dinhkemguihs
      * @param string $tenfiledinhkem
      * @return Dinhkemguihs
      */
-    public function setTenfiledinhkem($tenfiledinhkem)
-    {
+    public function setTenfiledinhkem($tenfiledinhkem) {
         $this->tenfiledinhkem = $tenfiledinhkem;
 
         return $this;
@@ -79,8 +77,7 @@ class Dinhkemguihs
      *
      * @return string 
      */
-    public function getTenfiledinhkem()
-    {
+    public function getTenfiledinhkem() {
         return $this->tenfiledinhkem;
     }
 
@@ -90,8 +87,7 @@ class Dinhkemguihs
      * @param string $pathtofile
      * @return Dinhkemguihs
      */
-    public function setPathtofile($pathtofile)
-    {
+    public function setPathtofile($pathtofile) {
         $this->pathtofile = $pathtofile;
 
         return $this;
@@ -102,8 +98,7 @@ class Dinhkemguihs
      *
      * @return string 
      */
-    public function getPathtofile()
-    {
+    public function getPathtofile() {
         return $this->pathtofile;
     }
 
@@ -112,8 +107,7 @@ class Dinhkemguihs
      *
      * @return integer 
      */
-    public function getIddinhkemguihs()
-    {
+    public function getIddinhkemguihs() {
         return $this->iddinhkemguihs;
     }
 
@@ -123,8 +117,7 @@ class Dinhkemguihs
      * @param \Acme\PermissionBundle\Entity\Hosotthc $hosotthchosotthc
      * @return Dinhkemguihs
      */
-    public function setHosotthchosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthchosotthc = null)
-    {
+    public function setHosotthchosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthchosotthc = null) {
         $this->hosotthchosotthc = $hosotthchosotthc;
 
         return $this;
@@ -135,41 +128,35 @@ class Dinhkemguihs
      *
      * @return \Acme\PermissionBundle\Entity\Hosotthc 
      */
-    public function getHosotthchosotthc()
-    {
+    public function getHosotthchosotthc() {
         return $this->hosotthchosotthc;
     }
-    
-    public function getAbsolutePath()
-    {
-        return null === $this->pathtofile
-        ? null
-        : $this->getUploadRootDir().'/'.$this->pathtofile;
+
+    public function getAbsolutePath() {
+        return null === $this->pathtofile ? null : $this->getUploadRootDir() . '/' . $this->pathtofile;
     }
-    public function getWebPath()
-    {
-        return null === $this->pathtofile
-        ? null
-        : $this->getUploadDir().'/'.$this->pathtofile;
+
+    public function getWebPath() {
+        return null === $this->pathtofile ? null : $this->getUploadDir() . '/' . $this->pathtofile;
     }
-    protected function getUploadRootDir()
-    {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+
+    protected function getUploadRootDir() {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
-    protected function getUploadDir()
-    {
+
+    protected function getUploadDir() {
         return 'uploads/attachments';
     }
-    public function upload(){
+
+    public function upload() {
         // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
-        return;
+            return;
         }
         $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
+                $this->getUploadRootDir(), $this->getFile()->getClientOriginalName()
         );
-        $this->pathtofile = $this->getUploadDir().'/'.$this->getFile()->getClientOriginalName();
+        $this->pathtofile = $this->getUploadDir() . '/' . $this->getFile()->getClientOriginalName();
         $this->file = null;
     }
 

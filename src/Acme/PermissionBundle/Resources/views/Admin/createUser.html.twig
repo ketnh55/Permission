@@ -48,7 +48,7 @@
         {{ form_widget(form._token) }}
 {{form_end(form, {'render_rest': false})}}
 <script>
-    function submit(){
+    function submit() {
 {#        var temp = $("#user_username").val();
         $("#user_username").val(temp+"@{{app.user.tenant.domain}}");
         return false;#}

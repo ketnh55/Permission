@@ -1,0 +1,48 @@
+{% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{% block javascript%}
+    {{parent()}}
+    {% javascripts 
+                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
+    %}        
+<script type="text/javascript" src="{{ asset_url }}"></script>        
+    {% endjavascripts %}     
+{%endblock%}
+{%block content %}        
+<div class="tab-pane fade active in" id="advanced">     
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-table"></i> Thống kê thủ tục hành chính</h6>
+                </div>
+                <div class="datatable">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <td>Id</td>
+                                <td>Tên thủ tục</td>
+                                <td>Lĩnh vực</td>     
+                                <td>Niêm yết</td>
+                                <td>Tiếp nhận</td>
+                                <td>Chuyển thụ lý</td>
+                                </thead>
+                            {% for tt in tthc%}
+                                {% if loop.index %2 == 0 %}
+                                <tr class="odd">
+                                {% else %}
+                                <tr class="even">
+                                {% endif%}
+                                    <td>{{tt.idtthc}}</td>
+                                    <td>{{tt.nametthc}}</td>
+                                    <td>{{tt.linhvuc.namedv}}</td>
+                                    <td>{{tt.quyentthc[0].user.hoten|default(tt.quyentthc[0].user.username)}}</td>
+                                    <td>{{tt.quyentthc[1].user.hoten|default(tt.quyentthc[1].user.username)}}</td>
+                                    <td>{{tt.quyentthc[2].user.hoten|default(tt.quyentthc[2].user.username)}}</td>
+                                </tr>
+                            {%endfor%}
+                            </table>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+        </div>
+{%endblock%}
