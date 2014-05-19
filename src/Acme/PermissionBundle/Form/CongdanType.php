@@ -13,7 +13,8 @@ class CongdanType extends AbstractType {
                     'label' => 'Tên công dân:'
                 ))
                 ->add('ngaysinh', 'date', array(
-                    'label' => 'Ngày sinh'
+                    'label' => 'Ngày sinh',
+                    'years'=>range(1930,1994)
                 ))
                 ->add('quequan', 'text', array(
                     'label' => 'Quê quán'

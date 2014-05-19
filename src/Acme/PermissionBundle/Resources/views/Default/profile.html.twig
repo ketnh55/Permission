@@ -29,6 +29,7 @@
                 <div class="col-md-6">
                     <label>CMTND</label>
                         {{ form_widget(form.thontincanhan.cmtnd, {'attr': {'class': 'form-control'}}) }}
+                        {{form_errors(form.thontincanhan.cmtnd)}}
                 </div>
             </div>
         </div>
@@ -37,6 +38,7 @@
                 <div class="col-md-6">
                     <label>Quê quán</label>
                         {{ form_widget(form.thontincanhan.quequan, {'attr': {'class': 'form-control'}}) }}
+                        {{form_errors(form.thontincanhan.quequan)}}
                 </div>
                 <div class="col-md-6">
                     <label>Ngày sinh</label>                            
@@ -47,18 +49,22 @@
             <div class="row">
                 <div class="col-md-4">
                     <label>Ngày</label>
-                        {%set ngay = null == form.vars.value.thontincanhan?'': form.vars.value.thontincanhan.ngaysinh|date('d')%}
+                       {# {%set ngay = null == form.vars.value.thontincanhan?'': form.vars.value.thontincanhan.ngaysinh|date('d')%}
                         {%set thang = null == form.vars.value.thontincanhan?'': form.vars.value.thontincanhan.ngaysinh|date('m')%}
                         {%set nam = null == form.vars.value.thontincanhan?'': form.vars.value.thontincanhan.ngaysinh|date('Y')%}
                     <input type="text" id="thongtincanhan_ngaysinh_day" name="user[thontincanhan][ngaysinh][day]" value="{{ngay}}" class="form-control">
+                    #}
+                     {{ form_widget(form.thontincanhan.ngaysinh.day, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div class="col-md-4">
                     <label>Tháng</label>
-                    <input type="text" id="thongtincanhan_ngaysinh_month" name="user[thontincanhan][ngaysinh][month]" value="{{thang}}" class="form-control">
+{#                    <input type="text" id="thongtincanhan_ngaysinh_month" name="user[thontincanhan][ngaysinh][month]" value="{{thang}}" class="form-control">#}
+                     {{ form_widget(form.thontincanhan.ngaysinh.month, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div class="col-md-4">
                     <label>Năm</label>
-                    <input type="text" id="thongtincanhan_ngaysinh_year" name="user[thontincanhan][ngaysinh][year]" value="{{nam}}" class="form-control">
+{#                    <input type="text" id="thongtincanhan_ngaysinh_year" name="user[thontincanhan][ngaysinh][year]" value="{{nam}}" class="form-control">#}
+                     {{ form_widget(form.thontincanhan.ngaysinh.year, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
         </div>
@@ -67,6 +73,7 @@
                 <div class="col-md-6">
                     <label>Email</label>
                         {{ form_widget(form.thontincanhan.email, {'attr': {'class': 'form-control'}}) }}
+                        
                 </div>
                 <div class="col-md-6">
                     <label>Nơi ở hiện tại</label>
@@ -84,6 +91,7 @@
                         <label>Chọn ảnh đại diện:</label>
                         <div class="uploader" id="uniform-report-screenshot">
                              {{ form_widget(form.thontincanhan.file, {'attr': {'class': 'styled form-control','id':'report-screenshot'}}) }}
+                             {{form_errors(form.thontincanhan.file)}}
                             <span class="filename" style="-webkit-user-select: none;">No file selected</span>
                             <span class="action" style="-webkit-user-select: none;">Choose File</span>
                         </div>                       

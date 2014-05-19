@@ -13,10 +13,10 @@ class TenantRegisterType extends AbstractType {
                 ->add('quequan', 'text', array(
                     'label' => 'Quê quán'
                 ))
-                ->add('cmtnd', 'text', array(
+                ->add('cmtnd', 'number', array(
                     'label' => 'CMTND'
                 ))
-                ->add('sdt', 'text', array(
+                ->add('sdt', 'number', array(
                     'label' => 'Số điện thoại'
                 ))
                 ->add('tendonvi', 'text', array(
@@ -27,7 +27,8 @@ class TenantRegisterType extends AbstractType {
                 ))
                 ->add('ngaysinh', 'date', array(
                     'label' => 'Ngày sinh',
-                    'widget' => 'text'
+//                    'widget' => 'text',
+                    'years' => range(1930,1994)
                 ))
         ;
     }

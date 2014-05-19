@@ -1,4 +1,69 @@
 Acme\PermissionBundle\Entity\Thontincanhan:
     properties:
         cmtnd:
-            - NotBlank: ~
+            - Length:
+                    min: 9
+                    max: 9
+                    exactMessage: "Vui lòng nhập chính xác 9 chữ số của CMTND"
+        sdt:
+            - Length:
+                    min: 10
+                    max: 11
+                    minMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                    maxMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                    exactMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+        file:
+            - File:
+                maxSize: 2M                
+                maxSizeMessage: "Vui lòng upload file ảnh có dung lượng nhỏ hơn 2MB"
+Acme\PermissionBundle\Entity\Vanbanlienquan:
+    properties:
+        file:
+            - File:
+                maxSize: 16M
+                mimeTypes: [application/pdf, application/x-pdf, application/msword]
+                mimeTypesMessage: "Đính kèm văn bản định dạng MSDOC hoặc PDF"
+Acme\PermissionBundle\Entity\Dinhkemtthc:
+    properties:
+        file:
+            - File:
+                maxSize: 16M
+                mimeTypes: [application/pdf, application/x-pdf, application/msword]
+                mimeTypesMessage: "Đính kèm văn bản định dạng MSDOC hoặc PDF"
+Acme\PermissionBundle\Entity\Donvithuly:
+    properties:  
+        sdt:
+             - Length:
+                    min: 10
+                    max: 11
+                    minMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                    maxMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                    exactMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+Acme\PermissionBundle\Entity\Congdan:
+    properties:  
+        sdt:
+             - Length:
+                    min: 10
+                    max: 11
+                    minMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                    maxMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                    exactMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+        cmtnd:
+            - Length:
+                    min: 9
+                    max: 9
+                    exactMessage: "Vui lòng nhập chính xác 9 chữ số của CMTND"
+Acme\PermissionBundle\Entity\Chuyenvienthuly:
+    properties:  
+        sdt:
+             - Length:
+                    min: 10
+                    max: 11
+                    minMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                    maxMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                    exactMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+        cmtnd:
+            - Length:
+                    min: 9
+                    max: 9
+                    exactMessage: "Vui lòng nhập chính xác 9 chữ số của CMTND"        

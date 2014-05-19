@@ -91,7 +91,9 @@ class PermissionController extends Controller {
                     'label' => 'Mã đơn vị'
                 ))
                 ->getForm()
-                ->add('submit', 'submit');
+                ->add('submit', 'submit',array(
+                    'label'=>'Ghi nhận'
+                ));
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

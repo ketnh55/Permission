@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Đăng nhập hệ thống dịch vụ công {{tenant.tendonvi}}</title>
+        <link rel="icon" type="image/ico" href="{{asset('bundles/acmepermission/bootstrap/images/icon1.png')}}">
 {% stylesheets 'bundles/acmepermission/bootstrap/css/bootstrap.min.css' 
                 'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
                 'bundles/acmepermission/bootstrap/css/styles.min.css'
@@ -28,9 +29,12 @@
                 <a class="navbar-brand" href="#">Hệ thống dịch vụ công - {{tenant.tendonvi}}</a></div>
 
         </div>
-         {% if error %}
-            <div>{{ error }}</div>
-            {% endif %}
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success fade in block-inner">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ flashMessage }}
+                </div>
+        {% endfor %}
         <div class="login-wrapper">           
             <form action="{{ path('login_check') }}" role="form" method="post">
                 <div class="popup-header"><a href="#" class="pull-left"><i class="icon-user-plus"></i></a><span class="text-semibold">Đăng nhập hệ thống</span>
@@ -41,7 +45,7 @@
                 <div class="well">
                     <div class="form-group has-feedback">
                         <label>Tên đăng nhập</label>
-                        <input type="text" class="form-control" id="kate"  placeholder="Username" required>
+                        <input type="text" class="form-control" id="kate"  placeholder="Username" value="{{last_username|split('@')[0]}}" required>
                         <input type="hidden" class="form-control" id="username" name="_username" placeholder="Username">
                         <i class="icon-users form-control-feedback"></i></div>
                     <div class="form-group has-feedback">

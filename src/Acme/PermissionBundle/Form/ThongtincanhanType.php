@@ -14,7 +14,7 @@ class ThongtincanhanType extends AbstractType {
                     'label' => 'Quê quán',
                     'required' => FALSE
                 ))
-                ->add('cmtnd', 'text', array(
+                ->add('cmtnd', 'number', array(
                     'label' => 'CMTND',
                     'required' => FALSE
                 ))
@@ -25,20 +25,19 @@ class ThongtincanhanType extends AbstractType {
                 ->add('ngaysinh', 'date', array(
                     'label' => 'Ngày sinh',
                     'required' => FALSE,
-                    'widget' => 'text'
+                    'years'=>range(1949,1994)
                 ))
                 ->add('file', 'file', array(
                     'label' => 'Ảnh đại diện',
-//                    'constraints'=>array(
-//                        'maxSize'=>'1k'
-//                    ),
                     'required' => FALSE
                 ))
                 ->add('email', 'email', array(
                     'label' => 'Email',
+                    'required' => FALSE
                 ))
                 ->add('noiohientai', 'text', array(
                     'label' => 'Nơi ở hiện tại',
+                    'required' => FALSE
                 ))
                 ->add('submit', 'submit', array(
                     'label' => 'Ghi nhận'

@@ -52,16 +52,24 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                     <h2>Đăng ký <small>Miễn phí và mãi mãi như vậy</small></h2>
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+                    <div class="alert alert-danger fade in block-inner">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ flashMessage }}
+                    </div>
+                    {% endfor %}
                     <hr class="colorgraph">			
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                            {{ form_widget(form.tenant.cmtnd,{'attr': {'class': 'form-control input-lg','placeholder':'CMTND','tableindex':1}}) }}                        
+                                {{ form_widget(form.tenant.cmtnd,{'attr': {'class': 'form-control input-lg','placeholder':'CMTND','tableindex':1}}) }}                        
+                                {{form_errors(form.tenant.cmtnd)}}
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-						{{ form_widget(form.tenant.sdt,{'attr': {'class': 'form-control input-lg','placeholder':'Số điện thoại','tableindex':1}}) }}                        
+                                {{ form_widget(form.tenant.sdt,{'attr': {'class': 'form-control input-lg','placeholder':'Số điện thoại','tableindex':1}}) }}                        
+                                {{form_errors(form.tenant.sdt)}}
                             </div>
                         </div>
                     </div>
@@ -71,39 +79,42 @@
                     <div class="form-group">
 				{{ form_widget(form.tenant.quequan,{'attr': {'class': 'form-control input-lg','placeholder':'Quê quán','tableindex':1}}) }}                        
                     </div>
-                    <div class="row">
-                        <div class="col-xs-3 col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <input type ="text" class="form-control input-lg" placeholder="Ngày tháng năm sinh" disabled/>
+                    </div>
+                    <div class="row">                        
+                        <div class="col-xs-3 col-sm-3 col-md-3">                           
                             <div class="form-group">
-                                            {{ form_widget(form.tenant.ngaysinh.day,{'attr': {'class': 'form-control input-lg','placeholder':'Ngày sinh','tableindex':1}}) }}                        
+                                {{ form_widget(form.tenant.ngaysinh.day,{'attr': {'class': 'form-control input-lg','placeholder':'Ngày sinh','tableindex':1}}) }}                        
                             </div>
                         </div>
                         <div class="col-xs-3 col-sm-3 col-md-3">
                             <div class="form-group">
-						{{ form_widget(form.tenant.ngaysinh.month,{'attr': {'class': 'form-control input-lg','placeholder':'Tháng sinh','tableindex':1}}) }}                        
+                                {{ form_widget(form.tenant.ngaysinh.month,{'attr': {'class': 'form-control input-lg','placeholder':'Tháng sinh','tableindex':1}}) }}                        
                             </div>
                         </div>
                         <div class="col-xs-3 col-sm-3 col-md-3">
                             <div class="form-group">
-						{{ form_widget(form.tenant.ngaysinh.year,{'attr': {'class': 'form-control input-lg','placeholder':'Năm sinh','tableindex':1}}) }}                        
+                                {{ form_widget(form.tenant.ngaysinh.year,{'attr': {'class': 'form-control input-lg','placeholder':'Năm sinh','tableindex':1}}) }}                        
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                            {{ form_widget(form.tenant.domain,{'attr': {'class': 'form-control input-lg','placeholder':'Domain','tableindex':1}}) }}                        
+                                {{ form_widget(form.tenant.domain,{'attr': {'class': 'form-control input-lg','placeholder':'Domain','tableindex':1}}) }}                        
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-						{{ form_widget(form.tenant.tendonvi,{'attr': {'class': 'form-control input-lg','placeholder':'Tên đơn vị','tableindex':1}}) }}                        
+                                {{ form_widget(form.tenant.tendonvi,{'attr': {'class': 'form-control input-lg','placeholder':'Tên đơn vị','tableindex':1}}) }}                        
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-						{{ form_widget(form.username,{'attr': {'class': 'form-control input-lg','placeholder':'Username','tableindex':1}}) }}
+                                {{ form_widget(form.username,{'attr': {'class': 'form-control input-lg','placeholder':'Username','tableindex':1}}) }}
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">

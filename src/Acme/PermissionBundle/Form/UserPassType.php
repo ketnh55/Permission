@@ -25,7 +25,8 @@ class UserPassType extends AbstractType {
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\PermissionBundle\Entity\User'
+            'data_class' => 'Acme\PermissionBundle\Entity\User',
+            'cascade_validation' => true,
         ));
     }
 

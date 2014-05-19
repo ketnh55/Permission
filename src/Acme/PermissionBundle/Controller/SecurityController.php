@@ -11,17 +11,14 @@ class SecurityController extends Controller {
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Tenant');
         $tenant = $resposity->findOneBy(array('domain' => $domain));
         if (count($tenant) == 0) {
-            throw $this->createNotFoundException('Your domain does not exist.');
+            throw $this->createNotFoundException('Cơ quan - tổ chức này không tồn tại. Vui lòng kiểm tra lại tên domain trên url.');
         }
         $request = $this->getRequest();
         $session = $request->getSession();
         $error = 'Sai tên đăng nhập hoặc mật khẩu';
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error =//                    'Sai tên đăng nhập hoặc mật khẩu' 
-                    $request->attributes->get(
-                    SecurityContext::AUTHENTICATION_ERROR
-            );
-        } else {
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {            
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        } else {            
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }

@@ -41,8 +41,9 @@ class DefaultController extends Controller {
                 $em->persist($thongtincanhan);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('notice', 'Cập nhật thông tin người dùng thành công!');
-            } else {
-                $this->get('session')->getFlashBag()->add('error', 'Thông tin đăng ký chưa đúng!!!');
+            } 
+            else {
+                $this->get('session')->getFlashBag()->add('error', 'Vui lòng điền chính xác các thông tin yêu cầu bên dưới!!!');
             }
         }
         return $this->render('AcmePermissionBundle:Default:profile.html.twig', array('form' => $form->createView()));
@@ -172,7 +173,7 @@ class DefaultController extends Controller {
     public function tenantRegisterAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Role');
-        $role = $resposity->findOneBy(array('role' => 'ROLE_ADMIN'));
+        $role = $resposity->find(1);
         $user = new User();
         $form = $this->createFormBuilder($user)
                 ->add('username', 'text')
@@ -192,7 +193,14 @@ class DefaultController extends Controller {
             $user->setPassword($password12);
             $user->addRole($role);
             $em->persist($user);
-            $em->flush();
+            try {
+                $em->flush();
+            }
+            catch(\Doctrine\DBAL\DBALException $e){
+                $this->get('session')->getFlashBag()->add('notice', 'Đơn vị này đã được đăng ký với hệ thống - Quý khách vui lòng kiểm tra lại!');
+                return $this->render('AcmePermissionBundle:Default:blank1.html.twig', array('form' => $form->createView()));
+            }
+            $this->get('session')->getFlashBag()->add('notice', 'Tạo người dùng mới thành công - Hãy đăng nhập theo tên đăng nhập và mật khẩu đã đăng ký!');
             return $this->redirect($this->generateUrl('login', array('domain' => $user->getTenant()->getDomain())));
         }
         return $this->render('AcmePermissionBundle:Default:blank1.html.twig', array('form' => $form->createView()));

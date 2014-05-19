@@ -25,11 +25,13 @@ class HosotthcType extends AbstractType{
         ))
         ->add('ngaynhan','date',array(
             'widget'=>'text',
-            'label'=>'Ngày nhận'
+            'label'=>'Ngày nhận',
+            'years'=>range(2014,2014)
         ))
         ->add('ngayhentra','date',array(
             'widget'=>'text',
-            'label'=>'Ngày hẹn trả'
+            'label'=>'Ngày hẹn trả',
+            'years'=>range(2014,2016)
         )) 
         ->add('submit','submit',array(
             'label'=>'Ghi nhận'

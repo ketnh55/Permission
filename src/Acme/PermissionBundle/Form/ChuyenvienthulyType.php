@@ -27,7 +27,8 @@ class ChuyenvienthulyType extends AbstractType {
                     'label' => 'Nơi ở hiện tại'
                 ))
                 ->add('ngaysinh', 'date', array(
-                    'label' => 'Ngày sinh'
+                    'label' => 'Ngày sinh',
+                    'years'=>range(1949,1994)
                 ))
                 ->add('cmtnd', 'number', array(
                     'label' => 'Số CMTND'

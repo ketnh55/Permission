@@ -168,23 +168,27 @@ class StaffController extends Controller {
         $form = $this->createForm(new TTHCType(), $tthc);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
-        if ($form->isValid()) {
-            if ($form->get('niemyet')->isClicked()) {
-                $tthc->setIshide(TRUE);
+        if ($form->isSubmitted()){
+            if ($form->isValid()) {
+                if ($form->get('niemyet')->isClicked()) {
+                    $tthc->setIshide(TRUE);
+                }
+                foreach ($tthc->getDinhkem() as $dinhkem) {
+                    $dinhkem->upload();
+                    $dinhkem->setTthc($tthc);
+                    $em->persist($dinhkem);
+                }
+                foreach ($tthc->getVanbanlienquan() as $vblq) {
+                    $vblq->upload();
+                    $vblq->setTthc($tthc);
+                    $em->persist($vblq);
+                }
+                $em->flush();
+                $this->get('session')->getFlashBag()->add('notice', 'Thêm thông tin thủ tục hành chính thành công!');
+                return $this->redirect($this->generateUrl('statisticListTTHC'));
+            } else {
+                $this->get('session')->getFlashBag()->add('error', 'Vui lòng điền chính xác các thông tin bên dưới!');
             }
-            foreach ($tthc->getDinhkem() as $dinhkem) {
-                $dinhkem->upload();
-                $dinhkem->setTthc($tthc);
-                $em->persist($dinhkem);
-            }
-            foreach ($tthc->getVanbanlienquan() as $vblq) {
-                $vblq->upload();
-                $vblq->setTthc($tthc);
-                $em->persist($vblq);
-            }
-            $em->flush();
-            $this->get('session')->getFlashBag()->add('notice', 'Thêm thông tin thủ tục hành chính thành công!');
-            return $this->redirect($this->generateUrl('statisticListTTHC'));
         }
         return $this->render('AcmePermissionBundle:Staff:listedTTHC.html.twig', array('tthc' => $tthc, 'form' => $form->createView()));
     }
@@ -268,9 +272,9 @@ class StaffController extends Controller {
     public function giveBackHosoTTHCAction(Request $request) {
         $usr = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Trangthaihoso');        
+        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Trangthaihoso');
         $hoso = $em->createQuery(
-            'SELECT hs
+                        'SELECT hs
             FROM AcmePermissionBundle:Hosotthc hs
             JOIN hs.tthc t
             JOIN t.quyentthc q
@@ -309,14 +313,14 @@ class StaffController extends Controller {
         $form->handleRequest($request);
         if ($form->isValid()) {
 //            foreach ($form->getData()['hosotthc'] as $hosotthc) {
-                $hosotthc = $form->getData()['hosotthc'];
-                $tinhtrangthuly = new Tinhtrangthuly();
-                $tinhtrangthuly->setTrangthaihoso($resposity->find(6));
-                $tinhtrangthuly->setChiutrachnhiem($usr);
-                $tinhtrangthuly->setHosotthc($hosotthc);
-                $now = new \DateTime();
-                $tinhtrangthuly->setTime($now);
-                $em->persist($tinhtrangthuly);
+            $hosotthc = $form->getData()['hosotthc'];
+            $tinhtrangthuly = new Tinhtrangthuly();
+            $tinhtrangthuly->setTrangthaihoso($resposity->find(6));
+            $tinhtrangthuly->setChiutrachnhiem($usr);
+            $tinhtrangthuly->setHosotthc($hosotthc);
+            $now = new \DateTime();
+            $tinhtrangthuly->setTime($now);
+            $em->persist($tinhtrangthuly);
 //            }
             $em->flush();
             $this->get('session')->getFlashBag()->add('notice', 'Trả hồ sơ thành công');
@@ -349,8 +353,7 @@ class StaffController extends Controller {
                         ->setParameter("tenant", $usr->getTenant()->getId())->getQuery()->getResult();
         return $this->render('AcmePermissionBundle:Staff:saveHoso.html.twig', array('hosotthc' => $hoso));
     }
-    
-    
+
     public function forwardBackAction(Request $request) {
         $usr = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -416,7 +419,7 @@ class StaffController extends Controller {
 //            return $pdfGenerator->displayForView(
 //                            'AcmePermissionBundle:Staff:quittanceForwardBack.html.twig', array('chuyenvienthuly' => $form->getData()['chuyenvienthuly'], 'hoso' => $form->getData()['hosotthc'])
 //            );
-             return $this->render('AcmePermissionBundle:Staff:quittanceForwardBack.html.twig', array('chuyenvienthuly' => $form->getData()['chuyenvienthuly'], 'hoso' => $form->getData()['hosotthc']));
+            return $this->render('AcmePermissionBundle:Staff:quittanceForwardBack.html.twig', array('chuyenvienthuly' => $form->getData()['chuyenvienthuly'], 'hoso' => $form->getData()['hosotthc']));
         }
         return $this->render('AcmePermissionBundle:Staff:forwardBack.html.twig', array('form' => $form->createView(), 'hoso' => $hoso));
     }
