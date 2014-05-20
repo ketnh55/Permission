@@ -8,11 +8,17 @@
     {{parent()}}             
     {% endjavascripts %}     
 {%endblock%}
+{%block title%}
+<title>Điều chỉnh quyền hạn chuyên viên BP1C</title>
+{%endblock%}
+{%block pagetitle%}
+<h3>Điều chỉnh quyền hạn chuyên viên BP1C <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+{%endblock%}
 {% block content%}
         {{ form_start(form_array,{'attr':{'class':'form-horizontal'}}) }}
         {{ form_errors(form_array) }}
 
-<div class="panel panel-info">
+<div class="panel panel-warning">
     <div class="panel-heading">
         <h6 class="panel-title"><i class="icon-table"></i>Điều chỉnh thủ tục hành chính</h6>
     </div>

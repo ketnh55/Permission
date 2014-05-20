@@ -39,6 +39,10 @@ class ThongtincanhanType extends AbstractType {
                     'label' => 'Nơi ở hiện tại',
                     'required' => FALSE
                 ))
+                ->add('noicapcmt', 'text', array(
+                    'label' => 'Nơi cấp',
+                    'required' => FALSE
+                ))
                 ->add('submit', 'submit', array(
                     'label' => 'Ghi nhận'
                 ))

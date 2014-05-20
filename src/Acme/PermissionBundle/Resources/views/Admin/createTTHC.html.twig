@@ -1,8 +1,8 @@
 {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
 {{ form_errors(form) }}
-<div class="panel panel-success">
+<div class="panel panel-primary">
     <div class="panel-heading">
-        <h6 class="panel-title"><i class="icon-bubble4"></i> Tạo mới thủ tục hành chính</h6>
+        <h6 class="panel-title"><i class="icon-folder8"></i> Tạo mới thủ tục hành chính</h6>
     </div>
     <div class="panel-body">
         <div class="form-group">
@@ -16,7 +16,6 @@
             {{ form_label(form.linhvuc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
             <div class="col-sm-10">
                 {{ form_widget(form.linhvuc,{'attr': {'class': 'multi-select'}}) }}
-
                 {{ form_errors(form.linhvuc) }}
             </div>
         </div>
@@ -28,18 +27,110 @@
                 {{ form_errors(form.donvithuly) }}
             </div>
         </div>
-        {%for quyentthc in form.quyentthc%}
-           {% set idElement = 'tthc_quyentthc_'~loop.index0~'_user' %}
+{#        {%for quyentthc in form.quyentthc%}#}
+{#           {% set idElement = 'tthc_quyentthc_'~loop.index0~'_user' %}#}
         <div class="form-group">
-            <label class="col-sm-2 control-label">Quyền <b>{{form.vars.value.quyentthc[loop.index0].quyenhan.name}}</b> </label>
-            <div class="col-sm-10">
-                    {{ form_widget(quyentthc.user,{'attr': {'class': 'multi-select'}}) }}
-                    {{ form_errors(quyentthc.user) }}
-                <a href="#" onclick="window.open('{{path('tableUser',{'idElement':idElement})}}', 'name', 'height=500,width=800')">Tìm Nhanh</a>
+
+            <label class="col-sm-2 control-label">Quyền <b>{{form.vars.value.quyentthc[0].quyenhan.name}}</b> <a id="niemyet"> (thêm)</a></label>
+
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[0].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][0][quyenhan]" value="{{form.vars.value.quyentthc[0].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[1].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][1][quyenhan]" value="{{form.vars.value.quyentthc[1].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[2].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][2][quyenhan]" value="{{form.vars.value.quyentthc[2].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[3].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][3][quyenhan]" value="{{form.vars.value.quyentthc[3].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[4].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][4][quyenhan]" value="{{form.vars.value.quyentthc[4].quyenhan.id}}"/>
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Quyền <b>{{form.vars.value.quyentthc[5].quyenhan.name}}</b><a id="tiepnhan"> (thêm)</a>  </label>
+            <div class="col-sm-2">
+                
+                    {{ form_widget(form.quyentthc[5].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][5][quyenhan]" value="{{form.vars.value.quyentthc[5].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">                
+                    {{ form_widget(form.quyentthc[6].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][6][quyenhan]" value="{{form.vars.value.quyentthc[6].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[7].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][7][quyenhan]" value="{{form.vars.value.quyentthc[7].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[8].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][8][quyenhan]" value="{{form.vars.value.quyentthc[8].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[9].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][9][quyenhan]" value="{{form.vars.value.quyentthc[9].quyenhan.id}}"/>
             </div>
         </div>
-        <input type="hidden" name="tthc[quyentthc][{{loop.index0}}][quyenhan]" value="{{form.vars.value.quyentthc[loop.index0].quyenhan.id}}"/>
-        {%endfor%}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Quyền <b>{{form.vars.value.quyentthc[10].quyenhan.name}}</b> <a id="ptl"> (thêm)</a>  </label>
+
+            <div class="col-sm-2">
+
+                    {{ form_widget(form.quyentthc[10].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][10][quyenhan]" value="{{form.vars.value.quyentthc[10].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[11].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][11][quyenhan]" value="{{form.vars.value.quyentthc[11].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[12].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][12][quyenhan]" value="{{form.vars.value.quyentthc[12].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[13].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][13][quyenhan]" value="{{form.vars.value.quyentthc[13].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[14].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][14][quyenhan]" value="{{form.vars.value.quyentthc[14].quyenhan.id}}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Quyền <b>{{form.vars.value.quyentthc[15].quyenhan.name}}</b><a id="traloi"> (thêm)</a>  </label>
+
+            <div class="col-sm-2">
+                
+                    {{ form_widget(form.quyentthc[15].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][15][quyenhan]" value="{{form.vars.value.quyentthc[15].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[16].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][16][quyenhan]" value="{{form.vars.value.quyentthc[16].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[17].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][17][quyenhan]" value="{{form.vars.value.quyentthc[17].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[18].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][18][quyenhan]" value="{{form.vars.value.quyentthc[18].quyenhan.id}}"/>
+            </div>
+            <div class="col-sm-2">
+                    {{ form_widget(form.quyentthc[19].user,{'attr': {'class': 'multi-select'}}) }}
+                <input type="hidden" name="tthc[quyentthc][19][quyenhan]" value="{{form.vars.value.quyentthc[19].quyenhan.id}}"/>
+            </div>
+        </div>
+{#        {%endfor%}#}
         <div class="form-actions text-right">
              {{ form_widget(form.submit,{'attr': {'class': 'btn btn-primary'}}) }}
         </div>
@@ -47,4 +138,57 @@
 </div>
         {{ form_widget(form._token) }}
 {{form_end(form, {'render_rest': false})}}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#tthc_quyentthc_1_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_2_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_3_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_4_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_6_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_7_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_8_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_9_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_11_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_12_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_13_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_14_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_16_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_17_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_18_user").attr("disabled", "disabled").hide();
+        $("#tthc_quyentthc_19_user").attr("disabled", "disabled").hide();
+    });
+    (function() {
+        var niemyet = 0;
+
+        $('#niemyet').click(function() {
+            if (niemyet < 5) {
+                niemyet += 1;
+                $("#tthc_quyentthc_".concat(niemyet, "_user")).removeAttr("disabled").show();
+            }
+        });
+        var tiepnhan = 5;
+        $('#tiepnhan').click(function() {
+            if (tiepnhan < 10) {
+                tiepnhan += 1;
+                $("#tthc_quyentthc_".concat(tiepnhan, "_user")).removeAttr("disabled").show();
+            }
+        });
+        var ptl = 10;
+        $('#ptl').click(function() {
+            if (ptl < 15) {
+                ptl += 1;
+                $("#tthc_quyentthc_".concat(ptl, "_user")).removeAttr("disabled").show();
+            }
+        });
+        var traloi = 15;
+        $('#traloi').click(function() {
+            if (traloi < 20) {
+                traloi += 1;
+                $("#tthc_quyentthc_".concat(traloi, "_user")).removeAttr("disabled").show();
+            }
+        });
+    })();
+</script>
 

@@ -8,12 +8,18 @@
     {{parent()}}
 
 {%endblock%}
+{%block title%}
+<title>Điều chỉnh quyền hạn chuyên viên BP1C</title>
+{%endblock%}
+{%block pagetitle%}
+<h3>Điều chỉnh quyền hạn chuyên viên BP1C <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
+{%endblock%}
 {%block content %}
     {{ form_start(form) }}
     {{ form_errors(form) }} 
-<div class="panel panel-info">
+<div class="panel panel-primary">
     <div class="panel-heading">
-        <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
+        <h6 class="panel-title"><i class="icon-user3"></i> Bảng phân quyền</h6>
     </div>
     <div class="datatable-add-row">
         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">

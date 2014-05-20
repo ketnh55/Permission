@@ -91,9 +91,9 @@ class PermissionController extends Controller {
                     'label' => 'Mã đơn vị'
                 ))
                 ->getForm()
-                ->add('submit', 'submit',array(
-                    'label'=>'Ghi nhận'
-                ));
+                ->add('submit', 'submit', array(
+            'label' => 'Ghi nhận'
+        ));
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -116,9 +116,11 @@ class PermissionController extends Controller {
         $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Quyenhan');
         $quyenhan = $resposity->findAll();
         foreach ($quyenhan as $quyen) {
-            $quyentthc = new Quyentthc();
-            $quyentthc->setQuyenhan($quyen);
-            $tthc->addQuyentthc($quyentthc);
+            foreach (range(1, 5) as $i) {
+                $quyentthc = new Quyentthc();
+                $quyentthc->setQuyenhan($quyen);
+                $tthc->addQuyentthc($quyentthc);
+            }
         }
         $form = $this->createForm(new NewTTHCType($usr), $tthc, array(
             'action' => $this->generateUrl('createTTHC')
@@ -161,7 +163,9 @@ class PermissionController extends Controller {
                     'multiple' => TRUE,
                     'expanded' => TRUE
                 ))
-                ->add('submit', 'submit')
+                ->add('submit', 'submit',array(
+                    'label'=>'Xóa'
+                ))
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -178,7 +182,7 @@ class PermissionController extends Controller {
     }
 
     /**
-     * @Secure(roles="ROLE_ADMIN")
+     * @Secure(roles="ROLE_ADMIN,ROLE_MAJOR")
      */
     public function editPermissionAction($id, Request $request) {
         $usr = $this->get('security.context')->getToken()->getUser();

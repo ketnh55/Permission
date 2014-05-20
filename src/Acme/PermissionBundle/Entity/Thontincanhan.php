@@ -40,6 +40,12 @@ class Thontincanhan {
      * @ORM\Column(name="CMTND", type="string", length=45, nullable=true)
      */
     private $cmtnd;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noicapcmt", type="string", length=45, nullable=true)
+     */
+    private $noicapcmt;
 
     /**
      * @var string
@@ -276,4 +282,27 @@ class Thontincanhan {
         return $this->noiohientai;
     }
 
+
+    /**
+     * Set noicapcmt
+     *
+     * @param string $noicapcmt
+     * @return Thontincanhan
+     */
+    public function setNoicapcmt($noicapcmt)
+    {
+        $this->noicapcmt = $noicapcmt;
+
+        return $this;
+    }
+
+    /**
+     * Get noicapcmt
+     *
+     * @return string 
+     */
+    public function getNoicapcmt()
+    {
+        return $this->noicapcmt;
+    }
 }

@@ -3,7 +3,7 @@
         <div class="popup-header"><a href="#" class="pull-left"><i class="icon-spinner7"></i></a><span>Thủ tục hành chính</span><a href="#" class="pull-right"><i class="icon-new-tab"></i></a></div>
         <ul class="activity">
             {%for tt in tthc%}
-            <li> <i class="icon-cart-checkout text-success"></i>
+            <li> <i class="icon-folder8"></i>
                 <div> {{tt.linhvuc.namedv}}<a href="{{path('listedTTHC',{'id':tt.idtthc})}}"> {{tt.nametthc|slice(0,25)}}</a></div>
             </li>
             {%endfor%}

@@ -30,7 +30,7 @@ class ChuyenvienthulyType extends AbstractType {
                     'label' => 'Ngày sinh',
                     'years'=>range(1949,1994)
                 ))
-                ->add('cmtnd', 'number', array(
+                ->add('cmtnd', 'text', array(
                     'label' => 'Số CMTND'
                 ))
                 ->add('email', 'email', array(

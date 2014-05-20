@@ -2,20 +2,22 @@ Acme\PermissionBundle\Entity\Thontincanhan:
     properties:
         cmtnd:
             - Length:
-                    min: 9
-                    max: 9
-                    exactMessage: "Vui lòng nhập chính xác 9 chữ số của CMTND"
+                min: 9
+                max: 9
+                exactMessage: "Vui lòng nhập chính xác 9 chữ số của CMTND"
         sdt:
             - Length:
-                    min: 10
-                    max: 11
-                    minMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
-                    maxMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
-                    exactMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                min: 10
+                max: 11
+                minMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                maxMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
+                exactMessage: "Vui lòng nhập 10 hoặc 11 chữ số của SĐT"
         file:
             - File:
                 maxSize: 2M                
                 maxSizeMessage: "Vui lòng upload file ảnh có dung lượng nhỏ hơn 2MB"
+                mimeTypes: [image/png, imgae/gif, image/jpeg]
+                mimeTypesMessage: Vui lòng upload file đúng định dạng -
 Acme\PermissionBundle\Entity\Vanbanlienquan:
     properties:
         file:
@@ -23,6 +25,7 @@ Acme\PermissionBundle\Entity\Vanbanlienquan:
                 maxSize: 16M
                 mimeTypes: [application/pdf, application/x-pdf, application/msword]
                 mimeTypesMessage: "Đính kèm văn bản định dạng MSDOC hoặc PDF"
+                maxSizeMessage: "File văn bản liên quan phải có dung lượng nhỏ hơn 16M"
 Acme\PermissionBundle\Entity\Dinhkemtthc:
     properties:
         file:

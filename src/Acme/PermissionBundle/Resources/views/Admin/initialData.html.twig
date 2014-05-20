@@ -5,7 +5,7 @@
 {%block pagetitle%}
 <h3>Khởi tạo dữ liệu cho hệ thống <small>Nguyễn Hữu Kết - K55C-CLC</small></h3>
 {%endblock%}
-{% block javascript%}
+{#{% block javascript%}
     {{parent()}}
     {% javascripts 
                     '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/forms/*'    
@@ -13,15 +13,15 @@
     %}        
 <script type="text/javascript" src="{{ asset_url }}"></script>        
     {% endjavascripts %}     
-{%endblock%}
+{%endblock%}#}
 {%block content %}
 <div class="tabbable page-tabs">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#inside" data-toggle="tab"><i class="icon-checkbox-partial"></i> Tạo mới người dùng</a></li>
-        <li class=""><a href="#outside" data-toggle="tab"><i class="icon-checkbox-unchecked"></i> Tạo mới lĩnh vực hành chính</a></li>
+        <li class="active"><a href="#inside" data-toggle="tab"><i class="icon-user3"></i> Tạo mới người dùng</a></li>
+        <li class=""><a href="#outside" data-toggle="tab"><i class="icon-storage"></i> Tạo mới lĩnh vực hành chính</a></li>
 
-        <li class=""><a href="#ok" data-toggle="tab"><i class="icon-checkmark3"></i>Tạo đơn vị thụ lý</a></li>
-        <li class=""><a href="#advanced" data-toggle="tab"><i class="icon-checkmark3"></i> Tạo mới thủ tục hành chính</a></li>
+        <li class=""><a href="#ok" data-toggle="tab"><i class="icon-leaf"></i>Tạo đơn vị thụ lý</a></li>
+        <li class=""><a href="#advanced" data-toggle="tab"><i class="icon-folder8"></i> Tạo mới thủ tục hành chính</a></li>
     </ul>
     <div class="tab-content">
         <!-- First tab content -->
@@ -39,4 +39,5 @@
         </div>
     </div>
 </div>
+
 {% endblock%}

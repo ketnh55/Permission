@@ -36,7 +36,7 @@ class NewTTHCType extends AbstractType{
             'label'=>'Tên TTHC'
             ))
             ->add('quyentthc','collection',array(
-                'type'=>new QuyenTTHCType($this->user),
+                'type'=>new QuyenTTHCType($this->user),                
             ))
             ->add('submit','submit',array(
                 'label'=>'Ghi nhận'
