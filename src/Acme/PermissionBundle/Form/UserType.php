@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Acme\PermissionBundle\Form\QuyenlinhvucType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-
+use Doctrine\ORM\EntityRepository;
 class UserType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
@@ -33,6 +33,11 @@ class UserType extends AbstractType {
                         ->add('role', 'entity', array(
                             'label' => 'Trách nhiệm',
                             'class' => 'AcmePermissionBundle:Role',
+                            'query_builder' => function(EntityRepository $er) {
+                                return $er->createQueryBuilder('u')
+                                
+                                ->WHERE('u.id < 5');                                
+                    },
                             'property' => 'name',
                             'multiple' => TRUE,
                             'attr' => array('class' => 'styled'),
