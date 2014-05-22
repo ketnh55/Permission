@@ -1,4 +1,10 @@
 {%extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{%block title%}
+<title>Điều chỉnh quyền chuyên viên BP1C</title>
+{%endblock%}
+{%block pagetitle%}
+<h3>Điều chỉnh quyền chuyên viên BP1C <small>Hệ thống dịch vụ công - {{app.user.tenant.tendonvi}}</small></h3>
+{%endblock%}
 {% block content%}
 {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
 {{ form_errors(form) }}

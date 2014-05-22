@@ -77,12 +77,12 @@ class Hosotthc {
     private $congdan;
 
     /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemnhanhs", mappedBy="hosotthc")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemnhanhs", mappedBy="hosotthc", cascade={"remove"})
      */
     public $dinhkemnhanhs;
 
     /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Tinhtrangthuly", mappedBy="hosotthc")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Tinhtrangthuly", mappedBy="hosotthc", cascade={"remove"})
      */
     public $tinhtrangthuly;
 

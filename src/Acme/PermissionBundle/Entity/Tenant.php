@@ -6,9 +6,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Thontincanhan
+ * Tenant
  *
- * @ORM\Table(name="tenant")
+ * @ORM\Table(name="tenant", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_4E59C462A7A91E0B", columns={"domain"})})
  * @ORM\Entity
  */
 class Tenant {
@@ -72,27 +72,22 @@ class Tenant {
     private $domain;
 
     /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\User", mappedBy="tenant")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\User", mappedBy="tenant", cascade={"remove"})
      */
     public $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Congdan", mappedBy="tenant")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Congdan", mappedBy="tenant", cascade={"remove"})
      */
     public $congdan;
 
     /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Linhvuc", mappedBy="tenant")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Linhvuc", mappedBy="tenant", cascade={"remove"})
      */
-    public $linhvuc;
+    public $linhvuc;    
 
     /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Quyenhan", mappedBy="tenant")
-     */
-    public $quyenhan;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Donvithuly", mappedBy="tenant")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Donvithuly", mappedBy="tenant", cascade="remove")
      */
     public $donvithuly;
 

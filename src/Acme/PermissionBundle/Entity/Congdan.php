@@ -91,6 +91,10 @@ class Congdan {
      * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Hoidaptt", mappedBy="congdan")
      */
     public $hoidaptt;
+     /**
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Hosotthc", mappedBy="congdan", cascade={"remove"})
+     */
+    public $hosotthc;
 
     public function __construct() {
         $this->hoidaptt = new \Doctrine\Common\Collections\ArrayCollection();

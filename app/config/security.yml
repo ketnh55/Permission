@@ -47,4 +47,4 @@ security:
                 path: /
                 domain: ~ 
     access_control:
-        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/admin, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

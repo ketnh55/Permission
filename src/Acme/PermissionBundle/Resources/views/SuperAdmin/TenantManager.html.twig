@@ -1,58 +1,88 @@
-{#{% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}#}
-{#{% block javascript%}
-{% javascripts 
-                    '@AcmePermissionBundle/Resources/public/bootstrap/js/plugins/interface/datatables.min.js'        
-    %}        
-     <script type="text/javascript" src="{{ asset_url }}"></script>        
-    {% endjavascripts %}     
-    {{parent()}}
-    
-{%endblock%}#}
-{%block content %}
-<div class="panel panel-info">
-    <div class="panel-heading">
-        <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
-    </div>
-    <div class="datatable-add-row">
-        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <td>ID</td>
-                    <td>Tên đơn vị</td>
-                    <td>Chủ đăng ký</td>
-                    <td>Liên hệ</td>
-                    <td>Sửa</td>
-                    <td>Xóa</td>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
-                            <th><input type="text" name="search_hoten" placeholder="Công dân" class="form-control"></th>
-                            <th><input type="text" name="search_quyenhan" placeholder="Thủ tục hành chính" class="form-control"></th>
-                            <th><input type="text" name="search_tthc" placeholder="Ngày nhận" size="10" class="form-control"></th>                                                            
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dịch Vụ Công - Khóa Luận Tốt Nghiệp</title>
+{% stylesheets 'bundles/acmepermission/bootstrap/css/bootstrap.min.css' 
+                'bundles/acmepermission/bootstrap/css/londinium-theme.min.css'
+                'bundles/acmepermission/bootstrap/css/styles.min.css'
+                'bundles/acmepermission/bootstrap/css/icons.min.css'
+         filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />        
+        
+        {% endstylesheets %}  
+        <link rel="icon" type="image/ico" href="{{asset('bundles/acmepermission/bootstrap/images/icons.png')}}">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/plugins/interface/daterangepicker.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/plugins/interface/moment.js')}}"></script>        
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/bootstrap.min.js')}}"></script>        
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/plugins/interface/moment.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/plugins/interface/jgrowl.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/plugins/interface/collapsible.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/application_blank.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/application.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/acmepermission/bootstrap/js/plugins/interface/datatables.min.js')}}"></script>
+    </head>
+    <body>
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success fade in block-inner">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ flashMessage }}
+        </div>
+        {% endfor %}
+            {{ form_start(form) }}
+    {{ form_errors(form) }} 
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h6 class="panel-title"><i class="icon-table"></i> Quản lý các đơn vị thuê dịch vụ</h6>
+            </div>
+            <div class="datatable-add-row">
+                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <td>ID</td>
+                            <td>Tên đơn vị</td>
+                            <td>Mã đơn vị</td>
+                            <td>Chủ đăng ký</td>
+                            <td>Liên hệ</td>                            
+                            <td>Xóa</td>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><input type="text" name="search_id" placeholder="id" class="form-control" size="3"></th>
+                                    <th><input type="text" name="search_hoten" placeholder="Công dân" class="form-control"></th>
+                                    <th><input type="text" name="search_quyenhan" placeholder="Thủ tục hành chính" class="form-control"></th>
+                                    <th><input type="text" name="search_tthc" placeholder="Ngày nhận" size="10" class="form-control"></th>                                                            
+                                    <th></th>
+
+                                </tr>
+                            </tfoot>
                     {% for tn in tenant%}
                         {% if loop.index %2 == 0 %}
-                    <tr class="odd">
+                            <tr class="odd">
                         {% else %}
-                    <tr class="even">
+                            <tr class="even">
                         {% endif%}
-                        <td>{{tn.id}}</td>
-                        <td>{{tn.tendonvi}}</td>
-                        <td>{{tn.hoten}}</td>
-                        <td>{{tn.sdt}}</td>
-{#                            <td><a href="{{path('editPermission',{'id':func.id})}}">Edit</a></td>
-                            <td>{{form_widget(form.quyenhan[func.id])}}</td>#}
-                    </tr>
+                                <td>{{tn.id}}</td>
+                                <td>{{tn.tendonvi}}</td>
+                                <td>{{tn.domain}}</td>
+                                <td>{{tn.hoten}}</td>
+                                <td>{{tn.sdt}}</td>                               
+                                <td>{{form_widget(form.tenant[tn.id])}}</td>
+                            </tr>
                     {%endfor%}
 
-                </table>
-            </div>   
-        </div>
-    </div>
-</div>    
-{%endblock%}
+                        </table>
+                    </div>   
+                </div>
+            </div>
+            <div class="form-actions text-right">
+                    {{ form_widget(form.submit,{'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+        </div>    
+            {{form_end(form)}}
+    </body>
+</html>

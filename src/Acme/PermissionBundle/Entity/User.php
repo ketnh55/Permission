@@ -87,7 +87,7 @@ class User implements UserInterface, EquatableInterface, \Serializable {
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Quyentthc", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Quyentthc", mappedBy="user" , cascade={"remove"})
      */
     private $quyentthc;
 
@@ -96,6 +96,11 @@ class User implements UserInterface, EquatableInterface, \Serializable {
      * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Vaitroxuly", mappedBy="user")
      */
     private $vaitroxuly;
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Tinhtrangthuly", mappedBy="chiutrachnhiem", cascade={"remove"})
+     */
+    private $chiutrachnhiem;
 
     /**
      * Constructor

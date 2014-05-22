@@ -129,7 +129,7 @@ class DefaultController extends Controller {
             JOIN q.user u
             JOIN t.linhvuc lv
             JOIN hs.tinhtrangthuly tt
-            WHERE u.id = :userid AND qh.id = 2 AND lv.tenant = :tenant group by hs.idhosotthc having count(tt.trangthaihoso) = 1'
+            WHERE u.id = :userid AND qh.id = 2 AND lv.tenant = :tenant group by hs.idhosotthc having count(tt.trangthaihoso) < 4'
                 )
                 ->setParameter('userid', $usr->getId())
                 ->setParameter("tenant", $usr->getTenant()->getId())
@@ -178,7 +178,6 @@ class DefaultController extends Controller {
         $form = $this->createFormBuilder($user)
                 ->add('username', 'text')
                 ->add('password', 'password')
-                ->add('hoten', 'text')
                 ->add('tenant', new TenantRegisterType())
                 ->add('register', 'submit', array(
                     'label' => 'Đăng ký'
@@ -191,6 +190,7 @@ class DefaultController extends Controller {
             $password12 = $encoder->encodePassword($user->getPassword(), $user->getSalt());
             $user->setUsername($user->getUsername() . "@" . $user->getTenant()->getDomain());
             $user->setPassword($password12);
+            $user->setHoten($user->getTenant()->getHoten());
             $user->addRole($role);
             $em->persist($user);
             try {

@@ -107,7 +107,7 @@ statisticTTHC:
     pattern:  /function/statisticTTHC
     defaults: { _controller: AcmePermissionBundle:Major:statisticTTHC } 
 manageTenant:
-    pattern:  /manageTenant
+    pattern:  /admin
     defaults: { _controller: AcmePermissionBundle:SuperAdmin:manageTenant } 
 forwardback:
     pattern:  /function/forwardBack

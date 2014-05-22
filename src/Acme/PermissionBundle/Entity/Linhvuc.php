@@ -44,6 +44,10 @@ class Linhvuc {
      * })
      */
     private $tenant;
+     /**
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Tthc", mappedBy="linhvuc", cascade={"remove"})
+     */
+    public $tthc;
 
     /**
      * Set namedv

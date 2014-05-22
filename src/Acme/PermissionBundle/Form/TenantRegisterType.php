@@ -10,6 +10,9 @@ class TenantRegisterType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
+                ->add('hoten','text',array(
+                    'label'=>'Tên cá nhân đăng ký'
+                ))
                 ->add('quequan', 'text', array(
                     'label' => 'Quê quán'
                 ))

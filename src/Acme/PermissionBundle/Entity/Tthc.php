@@ -78,12 +78,12 @@ class Tthc {
     private $donvithuly;
 
     /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Vanbanlienquan", mappedBy="tthc")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Vanbanlienquan", mappedBy="tthc", cascade={"remove"})
      */
     private $vanbanlienquan;
 
     /**
-     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc", mappedBy="tthc")
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc", mappedBy="tthc", cascade={"remove"})
      */
     private $dinhkem;
 
