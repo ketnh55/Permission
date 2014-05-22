@@ -15,26 +15,44 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
 
     public function loadUserByUsername($username) {
         $mix = explode('@', $username);
-        $name = $mix[0];
-        $domain = $mix[1];
-        $q = $this
-                ->createQueryBuilder('u')
-                ->join('u.tenant', 't')
-                ->where('u.username = :username and t.domain=:domain')
-                ->setParameter('username', $username)
-                ->setParameter('domain', $domain)
-                ->getQuery();
-        try {
-            // The Query::getSingleResult() method throws an exception
-            // if there is no record matching the criteria.
-            $user = $q->getSingleResult();
-        } catch (NoResultException $e) {
-            $message = sprintf(
-                    'Unable to find an active admin AcmeUserBundle:User object identified by "%s".', $username
-            );
-            throw new UsernameNotFoundException($message, 0, $e);
+        if (count($mix)>1) {
+            $domain = $mix[1];
+            $q = $this
+                    ->createQueryBuilder('u')
+                    ->join('u.tenant', 't')
+                    ->where('u.username = :username and t.domain=:domain')
+                    ->setParameter('username', $username)
+                    ->setParameter('domain', $domain)
+                    ->getQuery();
+            try {
+                // The Query::getSingleResult() method throws an exception
+                // if there is no record matching the criteria.
+                $user = $q->getSingleResult();
+            } catch (NoResultException $e) {
+                $message = sprintf(
+                        'Unable to find an active admin AcmeUserBundle:User object identified by "%s".', $username
+                );
+                throw new UsernameNotFoundException($message, 0, $e);
+            }
         }
-
+        else {
+            $q = $this
+                    ->createQueryBuilder('u')
+                    ->join('u.tenant', 't')
+                    ->where('u.username = :username')
+                    ->setParameter('username', $username)
+                    ->getQuery();
+            try {
+                // The Query::getSingleResult() method throws an exception
+                // if there is no record matching the criteria.
+                $user = $q->getSingleResult();
+            } catch (NoResultException $e) {
+                $message = sprintf(
+                        'Unable to find an active admin AcmeUserBundle:User object identified by "%s".', $username
+                );
+                throw new UsernameNotFoundException($message, 0, $e);
+            }
+        }
         return $user;
     }
 

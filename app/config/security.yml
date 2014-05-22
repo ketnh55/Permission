@@ -46,5 +46,8 @@ security:
                 lifetime: 31536000 
                 path: /
                 domain: ~ 
+        admin_area:
+            pattern: ^/admin
+            http_basic: ~
     access_control:
-        - { path: ^/admin, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN, ip: 127.0.0.1, requires_channel: https }
