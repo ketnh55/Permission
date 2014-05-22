@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2014 at 09:59 AM
+-- Generation Time: May 22, 2014 at 02:07 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `kate`
 --
-CREATE DATABASE IF NOT EXISTS `kate2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `kate2`;
+CREATE DATABASE IF NOT EXISTS `kate` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `kate`;
 
 -- --------------------------------------------------------
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `chuyenvienthuly` (
   `sdt` tinytext NOT NULL,
   PRIMARY KEY (`idChuyenVienThuLy`),
   KEY `FK_CanBo_DVThuLy_idx` (`DonViThuLy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `chuyenvienthuly`
@@ -58,7 +58,16 @@ INSERT INTO `chuyenvienthuly` (`idChuyenVienThuLy`, `NameCB`, `NgaySinh`, `DonVi
 (8, 'Đinh Công Mạnh', '2009-01-01', NULL, 'àda', 'Hà Nội', '1323523', '43243@dfafdas', '321321'),
 (9, 'Đinh Công Mạnh', '2009-01-01', 3, '23432', 'fdaf', '1323523', 'vietnam@vtc.vn', '3232'),
 (10, 'Phạm Khánh Huyền', '2009-01-01', 1, 'Hà Nội', 'Hà Nội', '123456789', '43243@dfafdas', '321321'),
-(11, 'Phạm Khánh Huyền', '2009-01-01', 1, 'àda', '342432', '1323523', 'vietnam@vtc.vn', '0');
+(11, 'Phạm Khánh Huyền', '2009-01-01', 1, 'àda', '342432', '1323523', 'vietnam@vtc.vn', '0'),
+(12, 'Phạm Khánh Huyền', '1949-01-01', 5, '23432', 'fdaf', '132352355', '43243@dfafdas', '1234567898'),
+(13, 'Phạm Khánh Huyền', '1949-01-01', 5, '23432', 'fdaf', '132352355', '43243@dfafdas', '1234567898'),
+(14, 'Phạm Khánh Huyền', '1949-01-01', 5, '23432', 'fdaf', '132352355', '43243@dfafdas', '1234567898'),
+(15, 'Phạm Khánh Huyền', '1949-01-01', 5, '23432', 'fdaf', '123456789', 'vietnam@vtc.vn', '1234567891'),
+(16, 'Nguyễn Hữu Kết', '1949-01-01', 5, '23432', '342432', '123456789', 'vietnam@vtc.vn', '1234567892'),
+(17, 'Hà Đức Trung', '1949-01-01', 5, '23432', 'Hà Nội', '123456789', '43243@dfafdas', '1234567895'),
+(18, 'Đinh Công Mạnh', '1949-01-01', 5, '23432', 'fdaf', '123456789', 'vietnam@vtc.vn', '1234567884'),
+(19, 'Đinh Công Mạnh', '1949-01-01', 6, 'àda', 'fdaf', '132352388', 'vietnam@vtc.vn', '1656122711'),
+(20, 'Phạm Khánh Huyền', '1949-01-01', 6, 'àda', 'fdaf', '132352378', '43243@dfafdas', '1656122711');
 
 -- --------------------------------------------------------
 
@@ -79,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `congdan` (
   `noiohientai` varchar(45) NOT NULL,
   PRIMARY KEY (`idCongDan`),
   KEY `IDX_C751475A4E59C462` (`tenant`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `congdan`
@@ -92,12 +101,6 @@ INSERT INTO `congdan` (`idCongDan`, `Name`, `Ngaysinh`, `QueQuan`, `SDT`, `email
 (4, 'd', '2014-04-14', 'vn', '010000000', 'aa@xyz', '', 3, '', ''),
 (5, '1', '2014-04-01', 'vp', '123', '123@gmail.com', 'uploads/avatar/icon.png', 4, '', ''),
 (6, '2', '2014-04-01', 'vp', '123', '123@gmail.com', 'uploads/avatar/icon.png', 4, '', ''),
-(7, 'anonymous', '0000-00-00', '', '', '', NULL, 7, '', ''),
-(8, 'anonymous', '0000-00-00', '', '', '', NULL, 8, '', ''),
-(9, 'anonymous', '0000-00-00', '', '', '', NULL, 9, '', ''),
-(10, 'anonymous', '0000-00-00', '', '', '', NULL, 10, '', ''),
-(11, 'anonymous', '0000-00-00', '', '', '', NULL, 11, '', ''),
-(12, 'anonymous', '0000-00-00', '', '', '', NULL, 12, '', ''),
 (13, 'Nguyễn Văn Rỗi', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 18, '0123456789', 'Hà Nội'),
 (14, 'Nguyễn Văn Mỗi', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 18, '0123456789', 'Hà Nội'),
 (15, 'Nguyễn Văn Yỗi', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 18, '0123456789', 'Hà Nội'),
@@ -120,8 +123,6 @@ INSERT INTO `congdan` (`idCongDan`, `Name`, `Ngaysinh`, `QueQuan`, `SDT`, `email
 (32, 'Nguyễn Văn CƯơng', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 3, '0123456789', 'Hà Nội'),
 (33, 'Nguyễn Hữu Kết', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 3, '0123456789', 'Hà Nội'),
 (34, '89', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 3, '0123456789', 'Hà Nội'),
-(35, 'Rooney', '2009-01-01', 'Việt Nam', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 17, '134745654645', 'Hà Nội'),
-(36, 'Nguyễn Văn Rỗi', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 17, '134745654645', 'Hà Nội'),
 (37, 'Nguyễn Thị Khanh', '2009-01-01', 'Hưng Yên', '126566513', 'phamthikhanh@gmail.com', NULL, 18, '0123654789', 'Hà Nội'),
 (38, 'Hồ Hữu Bính', '2009-01-01', 'Hưng Yên', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 18, '134745654645', 'Hà Nội'),
 (39, 'Phạm Văn Doanh', '2009-01-01', 'Hưng Yên', '126566513', 'ket.nguyen.huu@gmail.com', NULL, 18, '03132313', 'Hà Nội'),
@@ -133,7 +134,8 @@ INSERT INTO `congdan` (`idCongDan`, `Name`, `Ngaysinh`, `QueQuan`, `SDT`, `email
 (45, 'Nguyễn Thị THanh Huyền', '2009-01-01', 'Hà Nội', '123456789', 'huyen@vnu', NULL, 18, 'iodl;;sdfl', 'Hưng Yên'),
 (46, 'Im', '1930-01-01', 'Hưng Yên', '123456789', 'fdas@fdsa', NULL, 18, '123456789', 'dfasfdsa'),
 (47, 'An', '1930-01-01', 'Hưng Hà', '123456789', 'ket.nguyen.huu@gmail.com', NULL, 18, '123', 'dfasfdsa'),
-(48, 'Nguyễn Văn Rỗi', '1930-01-01', 'Hưng Yên', '1265665130', 'ket.nguyen.huu@gmail.com', NULL, 27, '123234566', 'Hà Nội');
+(48, 'Nguyễn Văn Rỗi', '1930-01-01', 'Hưng Yên', '1265665130', 'ket.nguyen.huu@gmail.com', NULL, 27, '123234566', 'Hà Nội'),
+(49, 'Nguyễn Thị THanh Huyền', '1930-01-01', 'Hưng Yên', '1234567891', 'ket.nguyen.huu@gmail.com', NULL, 28, '123456789', 'Hà Nội');
 
 -- --------------------------------------------------------
 
@@ -165,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `dinhkemnhanhs` (
   PRIMARY KEY (`id`),
   KEY `fk_dinhkemnhanhs_hosotthc1_idx` (`hosotthc`),
   KEY `IDX_264C20294FC789D4` (`dinhkemtthc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=296 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=310 ;
 
 --
 -- Dumping data for table `dinhkemnhanhs`
@@ -183,11 +185,6 @@ INSERT INTO `dinhkemnhanhs` (`id`, `TenFileDinhKem`, `PathToFile`, `hosotthc`, `
 (9, 'Thumbs.db', 'uploads/attachments/Thumbs.db', 20, 21),
 (10, 'zoom.png', 'uploads/attachments/zoom.png', 21, 26),
 (11, 'typing.gif', 'uploads/attachments/typing.gif', 21, 27),
-(12, '01_td (1).pdf', 'uploads/attachments/01_td (1).pdf', 22, 28),
-(13, '01_td (1).pdf', 'uploads/attachments/01_td (1).pdf', 22, 29),
-(14, '01_td (1).pdf', 'uploads/attachments/01_td (1).pdf', 23, 30),
-(15, 'First Run', 'uploads/attachments/First Run', 24, 31),
-(16, 'debug.log', 'uploads/attachments/debug.log', 24, 32),
 (17, 'Con mua ngang qua.doc', 'uploads/attachments/Con mua ngang qua.doc', 25, 22),
 (18, 'Cuộc gọi của ex.doc', 'uploads/attachments/Cuộc gọi của ex.doc', 25, 23),
 (19, 'Cuộc gọi của ex.doc', 'uploads/attachments/Cuộc gọi của ex.doc', 26, 22),
@@ -231,25 +228,6 @@ INSERT INTO `dinhkemnhanhs` (`id`, `TenFileDinhKem`, `PathToFile`, `hosotthc`, `
 (57, '1', NULL, 54, 23),
 (58, '1', NULL, 55, 22),
 (59, '1', NULL, 55, 23),
-(60, '1', NULL, 56, 37),
-(61, '1', NULL, 57, 37),
-(62, '1', NULL, 58, 37),
-(63, '1', NULL, 59, 37),
-(64, '1', NULL, 60, 37),
-(65, '1', NULL, 61, 37),
-(66, '1', NULL, 62, 37),
-(67, '1', NULL, 66, 37),
-(68, '1', NULL, 67, 37),
-(69, '1', NULL, 68, 37),
-(70, '1', NULL, 70, 37),
-(71, '1', NULL, 71, 37),
-(72, '1', NULL, 72, 37),
-(73, '1', NULL, 76, 37),
-(74, '1', NULL, 77, 38),
-(75, '1', NULL, 78, 37),
-(76, '1', NULL, 79, 38),
-(77, '1', NULL, 80, 37),
-(78, '1', NULL, 81, 37),
 (79, '1', NULL, 82, 40),
 (80, '1', NULL, 82, 41),
 (81, '1', NULL, 82, 42),
@@ -258,8 +236,6 @@ INSERT INTO `dinhkemnhanhs` (`id`, `TenFileDinhKem`, `PathToFile`, `hosotthc`, `
 (84, '1', NULL, 83, 41),
 (85, '1', NULL, 83, 42),
 (86, '1', NULL, 83, 43),
-(87, '1', NULL, 84, 39),
-(88, '1', NULL, 85, 39),
 (89, '1', NULL, 86, 33),
 (90, '1', NULL, 87, 33),
 (91, '1', NULL, 88, 33),
@@ -466,7 +442,21 @@ INSERT INTO `dinhkemnhanhs` (`id`, `TenFileDinhKem`, `PathToFile`, `hosotthc`, `
 (292, '1', NULL, 149, 41),
 (293, '1', NULL, 149, 42),
 (294, '1', NULL, 149, 43),
-(295, '1', NULL, 150, 50);
+(295, '1', NULL, 150, 50),
+(296, '1', NULL, 151, 50),
+(297, '1', NULL, 152, 50),
+(298, '1', NULL, 153, 50),
+(299, '1', NULL, 154, 50),
+(300, '1', NULL, 155, 50),
+(301, '1', NULL, 156, 50),
+(302, '1', NULL, 157, 52),
+(303, '1', NULL, 158, 52),
+(304, '1', NULL, 159, 52),
+(305, '1', NULL, 160, 52),
+(306, '1', NULL, 161, 52),
+(307, '1', NULL, 162, 52),
+(308, '1', NULL, 163, 52),
+(309, '1', NULL, 164, 52);
 
 -- --------------------------------------------------------
 
@@ -481,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `dinhkemtthc` (
   `Tthc` int(11) NOT NULL,
   PRIMARY KEY (`idDinhKemTTHC`),
   KEY `IDX_4FC789D44F4C5628` (`Tthc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table `dinhkemtthc`
@@ -497,18 +487,10 @@ INSERT INTO `dinhkemtthc` (`idDinhKemTTHC`, `TenFileDK`, `PathToFile`, `Tthc`) V
 (25, '123', 'uploads/attachments/Thumbs.db', 28),
 (26, '123', 'uploads/attachments/icon.png', 29),
 (27, '456', 'uploads/attachments/zoom.png', 29),
-(28, 'mỗi khi a nhìn', 'uploads/attachments/ok (1).sql', 30),
-(29, 'mỗi khi a nhìn', 'uploads/attachments/01_td (1).pdf', 30),
-(30, 'fsd', 'uploads/attachments/01_td (1).pdf', 31),
-(31, '123', 'uploads/attachments/01_td (1).pdf', 32),
-(32, 'sss', 'uploads/attachments/chrome.exe', 32),
 (33, 'fda', 'uploads/attachments/[kickass.to]cracking.the.new.gmat.2013.edition.pdf.epub.mobi.torrent', 35),
 (34, '3232', 'uploads/attachments/[kickass.to]dragon.tiger.gate.2006.720p.brrip.xvid.ac3.vision.torrent', 36),
 (35, '3232', 'uploads/attachments/[kickass.to]dragon.tiger.gate.2006.720p.brrip.xvid.ac3.vision.torrent', 36),
 (36, 'giấy tờ nhà đất', NULL, 37),
-(37, 'đăng ký kết hôn', NULL, 38),
-(38, 'Sổ hộ khẩu', NULL, 39),
-(39, 'sổ hộ khẩu', NULL, 40),
 (40, 'Sổ hộ khẩu có công chứng', NULL, 42),
 (41, 'Chứng minh thư nhân dân của nam đăng ký kết hôn', NULL, 42),
 (42, 'Chứng minh thư của nữ đăng ký kết hôn', NULL, 42),
@@ -519,7 +501,9 @@ INSERT INTO `dinhkemtthc` (`idDinhKemTTHC`, `TenFileDK`, `PathToFile`, `Tthc`) V
 (47, 'Sổ hộ khẩu', NULL, 46),
 (48, 'Giấy cam đoan', NULL, 46),
 (49, 'abc', NULL, 47),
-(50, 'fafdas', NULL, 48);
+(50, 'fafdas', NULL, 48),
+(51, 's', NULL, 49),
+(52, 'CMTND', NULL, 54);
 
 -- --------------------------------------------------------
 
@@ -537,7 +521,7 @@ CREATE TABLE IF NOT EXISTS `donvithuly` (
   `madonvi` varchar(45) NOT NULL,
   PRIMARY KEY (`idDonViThuLy`),
   KEY `IDX_9D1555684E59C462` (`tenant`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `donvithuly`
@@ -548,7 +532,8 @@ INSERT INTO `donvithuly` (`idDonViThuLy`, `NameDonViThuLy`, `tenant`, `mota`, `d
 (2, 'Sở nhà đất hà nội', 18, '', '', '', ''),
 (3, 'Sở nhà đất hà nội', 19, 'Sở nhà đất', 'Lạc long quân âu cơ', '0125698741', 'EVN'),
 (4, 'Sở nhà đất hà nội', 3, 'Sở nhà đất', 'Lạc long quân âu cơ', '0125698741', 'EVN'),
-(5, 'UBND Huyên Hải hà', 27, 'Sở nhà đất', 'Kim Mã Ba Đình Hà Nội', '0134654', 'HH');
+(5, 'UBND Huyên Hải hà', 27, 'Sở nhà đất', 'Kim Mã Ba Đình Hà Nội', '0134654', 'HH'),
+(6, 'Sở y tế Hà Nội', 28, 'Chịu trách nhiệm trên địa bàn Hà Nội', 'Gia Lâm Hà Nội', '0123456789', 'yhn');
 
 -- --------------------------------------------------------
 
@@ -647,7 +632,7 @@ CREATE TABLE IF NOT EXISTS `hoidaptt` (
   PRIMARY KEY (`idHoiDapTT`),
   KEY `FK_HoiDapTT_DichVu_idx` (`TTHC`),
   KEY `FK_HoiDapTT_CongDan_idx` (`CongDan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `hoidaptt`
@@ -658,7 +643,15 @@ INSERT INTO `hoidaptt` (`idHoiDapTT`, `TTHC`, `CongDan`, `CauHoi`, `CauTraLoi`, 
 (17, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'ok', 0, '2014-05-23', '2014-05-05'),
 (18, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'uh', 0, '2014-05-23', '2014-05-05'),
 (19, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'ok', 0, '2014-05-23', '2014-05-05'),
-(20, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'ok men', 0, '2014-05-23', '2014-05-05');
+(20, 25, 3, 'afdlkajflkdajkflkdjaflmcxm,.bm.xc,vmslkjfsdafdas', 'ok men', 0, '2014-05-23', '2014-05-05'),
+(21, 54, 49, 'abc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz', 'abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz', 0, '2014-05-14', '2014-05-21'),
+(22, 54, 49, 'abc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz', 'abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz abc xyz', 0, '2014-05-14', '2014-05-21'),
+(23, 54, 49, 'abc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz', 'àdafdafdasfds', 0, '2014-05-14', '2014-05-21'),
+(24, 54, 49, 'abc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz', NULL, 0, '2014-05-14', '2014-05-21'),
+(25, 54, 49, 'abc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz', NULL, 0, '2014-05-14', '2014-05-21'),
+(26, 54, 49, 'abc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz', NULL, 0, '2014-05-14', '2014-05-21'),
+(27, 54, 49, 'abc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz', NULL, 0, '2014-05-14', '2014-05-21'),
+(28, 54, 49, 'abc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz\r\nabc xyz', NULL, 0, '2014-05-14', '2014-05-21');
 
 -- --------------------------------------------------------
 
@@ -678,7 +671,7 @@ CREATE TABLE IF NOT EXISTS `hosotthc` (
   PRIMARY KEY (`idHoSoTTHC`),
   KEY `FK_HSTTHC_CongDan_idx` (`CongDan`),
   KEY `FK_HSTTHC_TTHC_idx` (`TTHC`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=151 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=165 ;
 
 --
 -- Dumping data for table `hosotthc`
@@ -691,9 +684,6 @@ INSERT INTO `hosotthc` (`idHoSoTTHC`, `TTHC`, `CongDan`, `NgayNhan`, `NgayHenTra
 (19, 25, 1, '2014-04-22', '2014-04-22', NULL, NULL, 0),
 (20, 25, 4, '2014-04-22', '2014-04-22', NULL, NULL, 0),
 (21, 29, 5, '2014-04-23', '2014-04-23', NULL, NULL, 0),
-(22, 30, 7, '2014-04-23', '2014-04-23', NULL, NULL, 0),
-(23, 31, 7, '2014-04-23', '2014-04-23', NULL, NULL, 0),
-(24, 32, 8, '2014-04-24', '2014-04-24', NULL, NULL, 0),
 (25, 26, 32, '2014-04-27', '2014-04-27', NULL, NULL, 0),
 (26, 26, 34, '2014-04-27', '2014-04-27', NULL, NULL, 0),
 (28, 26, 1, '2014-04-27', '2014-04-27', NULL, NULL, 0),
@@ -719,29 +709,8 @@ INSERT INTO `hosotthc` (`idHoSoTTHC`, `TTHC`, `CongDan`, `NgayNhan`, `NgayHenTra
 (53, 26, 1, '2014-05-05', '2014-05-05', NULL, NULL, 8541),
 (54, 26, 1, '2014-05-05', '2014-05-05', NULL, NULL, 28547),
 (55, 26, 1, '2014-05-05', '2014-05-05', NULL, NULL, 15058),
-(56, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 6183),
-(57, 38, 36, '2014-05-06', '2014-05-06', NULL, NULL, 31641),
-(58, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 28254),
-(59, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 21055),
-(60, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 23500),
-(61, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 26380),
-(62, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 26867),
-(66, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 20825),
-(67, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 28181),
-(68, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 14421),
-(70, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 32255),
-(71, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 5321),
-(72, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 1996),
-(76, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 1775),
-(77, 39, 35, '2014-05-06', '2014-05-06', NULL, NULL, 30204),
-(78, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 27056),
-(79, 39, 36, '2014-05-06', '2014-05-06', NULL, NULL, 24434),
-(80, 38, 35, '2014-05-06', '2014-05-06', NULL, NULL, 20521),
-(81, 38, 36, '2014-05-06', '2014-05-06', NULL, NULL, 24347),
 (82, 42, 42, '2014-05-08', '2014-05-08', NULL, NULL, 29608),
 (83, 42, 37, '2014-05-08', '2014-05-08', NULL, NULL, 8001),
-(84, 40, 35, '2014-05-11', '2014-05-11', NULL, NULL, 16856),
-(85, 40, 35, '2014-05-11', '2014-05-11', NULL, NULL, 25310),
 (86, 35, 1, '2014-05-13', '2014-05-13', NULL, NULL, 16948),
 (87, 35, 1, '2014-05-13', '2014-05-13', NULL, NULL, 6801),
 (88, 35, 1, '2014-05-13', '2014-05-13', NULL, NULL, 11766),
@@ -806,7 +775,21 @@ INSERT INTO `hosotthc` (`idHoSoTTHC`, `TTHC`, `CongDan`, `NgayNhan`, `NgayHenTra
 (147, 42, 13, '2014-05-18', '2014-05-18', NULL, NULL, 10739),
 (148, 42, 13, '2014-04-18', '2014-05-18', NULL, NULL, 5808),
 (149, 42, 13, '2014-03-18', '2014-05-18', NULL, NULL, 31017),
-(150, 48, 48, '2014-05-18', '2011-05-18', NULL, NULL, 22174);
+(150, 48, 48, '2014-05-18', '2011-05-18', NULL, NULL, 22174),
+(151, 48, 48, '2014-05-19', '2014-05-19', NULL, NULL, 31762),
+(152, 48, 48, '2014-05-19', '2014-05-19', NULL, NULL, 32739),
+(153, 48, 48, '2014-05-19', '2014-05-19', NULL, NULL, 32363),
+(154, 48, 48, '2014-05-19', '2014-05-19', NULL, NULL, 28870),
+(155, 48, 48, '2014-05-20', '2014-05-20', NULL, NULL, 25102),
+(156, 48, 48, '2014-05-20', '2014-05-20', NULL, NULL, 12502),
+(157, 54, 49, '2014-05-21', '2014-05-21', NULL, NULL, 21481),
+(158, 54, 49, '2014-05-21', '2014-05-21', NULL, NULL, 3909),
+(159, 54, 49, '2014-05-21', '2014-05-21', NULL, NULL, 26734),
+(160, 54, 49, '2014-05-21', '2014-05-21', NULL, NULL, 26981),
+(161, 54, 49, '2014-05-21', '2014-05-21', NULL, NULL, 11023),
+(162, 54, 49, '2014-05-21', '2014-05-21', NULL, NULL, 13978),
+(163, 54, 49, '2014-05-21', '2014-05-21', NULL, NULL, 23499),
+(164, 54, 49, '2014-05-21', '2014-05-21', NULL, NULL, 32354);
 
 -- --------------------------------------------------------
 
@@ -821,7 +804,7 @@ CREATE TABLE IF NOT EXISTS `linhvuc` (
   `tenant` int(11) NOT NULL,
   PRIMARY KEY (`idLinhVuc`),
   KEY `IDX_F09E180E4E59C462` (`tenant`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `linhvuc`
@@ -837,15 +820,11 @@ INSERT INTO `linhvuc` (`idLinhVuc`, `NameDV`, `MoTaLinhVuc`, `tenant`) VALUES
 (7, 'buôn bán bất động sản', 'abcxyz', 3),
 (8, 'cấp phép xây dựng cung văn hóa hữu nghị việt ', 'abcxyz', 4),
 (9, 'cấp học bổng', 'đi ko về luôn @@', 4),
-(10, 'cạn ý tưởng luôn', 'chán', 7),
-(11, 'test cái vớ vẩn này chán vl', 'cjasm', 7),
-(12, 'buôn bán bất động sản', 'sdfsdfdf', 8),
-(13, 'cạn ý tưởng luôn', 'jgfhgf', 8),
 (14, 'cạn ý tưởng luôn', 'àdafsd', 3),
-(15, 'hôn nhân', 'hôn nhân', 17),
 (16, 'Hôn nhân', 'Đăng ký kết hôn', 18),
 (17, 'Đăng ký cho thuê trung cư', 'Buôn bán bất động sản', 19),
-(18, 'buôn bán bất động sản', 'Buôn bán nhà đất', 27);
+(18, 'buôn bán bất động sản', 'Buôn bán nhà đất', 27),
+(19, 'Y tế', 'Các dịch vụ y tế cộng đồng', 28);
 
 -- --------------------------------------------------------
 
@@ -888,7 +867,7 @@ CREATE TABLE IF NOT EXISTS `quyentthc` (
   KEY `fk_QuyenTTHC_User1_idx` (`User`),
   KEY `fk_QuyenTTHC_TTHC1_idx` (`TTHC`),
   KEY `fk_QuyenTTHC_Quyenhan1_idx` (`Quyenhan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=165 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=249 ;
 
 --
 -- Dumping data for table `quyentthc`
@@ -915,26 +894,6 @@ INSERT INTO `quyentthc` (`id`, `mota`, `User`, `TTHC`, `Quyenhan`) VALUES
 (82, NULL, 24, 29, 2),
 (83, NULL, 24, 29, 3),
 (84, NULL, 24, 29, 4),
-(85, NULL, 30, 30, 1),
-(86, NULL, 30, 30, 2),
-(87, NULL, 30, 30, 3),
-(88, NULL, 30, 30, 4),
-(89, NULL, 30, 31, 1),
-(90, NULL, 30, 31, 2),
-(91, NULL, 30, 31, 3),
-(92, NULL, 30, 31, 4),
-(93, NULL, 33, 32, 1),
-(94, NULL, 33, 32, 2),
-(95, NULL, 33, 32, 3),
-(96, NULL, 33, 32, 4),
-(97, NULL, 33, 33, 1),
-(98, NULL, 33, 33, 2),
-(99, NULL, 33, 33, 3),
-(100, NULL, 33, 33, 4),
-(101, NULL, 33, 34, 1),
-(102, NULL, 33, 34, 2),
-(103, NULL, 33, 34, 3),
-(104, NULL, 33, 34, 4),
 (105, NULL, 20, 35, 1),
 (106, NULL, 20, 35, 2),
 (107, NULL, 46, 35, 3),
@@ -947,26 +906,7 @@ INSERT INTO `quyentthc` (`id`, `mota`, `User`, `TTHC`, `Quyenhan`) VALUES
 (114, NULL, 20, 37, 2),
 (115, NULL, 46, 37, 3),
 (116, NULL, 20, 37, 4),
-(117, NULL, 52, 38, 1),
-(118, NULL, 53, 38, 2),
-(119, NULL, 55, 38, 3),
-(120, NULL, 52, 38, 4),
-(121, NULL, 52, 39, 1),
-(122, NULL, 53, 39, 2),
-(123, NULL, 55, 39, 3),
-(124, NULL, 53, 39, 4),
-(125, NULL, 52, 40, 1),
-(126, NULL, 52, 40, 2),
-(127, NULL, 55, 40, 3),
-(128, NULL, 53, 40, 4),
-(129, NULL, 52, 41, 1),
-(130, NULL, 52, 41, 2),
-(131, NULL, 55, 41, 3),
-(132, NULL, 52, 41, 4),
-(133, NULL, 57, 42, 1),
-(134, NULL, 57, 42, 2),
-(135, NULL, 59, 42, 3),
-(136, NULL, 57, 42, 4),
+(136, NULL, 57, 42, 1),
 (141, NULL, 64, 44, 1),
 (142, NULL, 64, 44, 2),
 (143, NULL, 66, 44, 3),
@@ -990,7 +930,90 @@ INSERT INTO `quyentthc` (`id`, `mota`, `User`, `TTHC`, `Quyenhan`) VALUES
 (161, NULL, 71, 49, 1),
 (162, NULL, 71, 49, 2),
 (163, NULL, 74, 49, 3),
-(164, NULL, 71, 49, 4);
+(164, NULL, 71, 49, 4),
+(165, NULL, 71, 50, 1),
+(166, NULL, NULL, 50, 1),
+(167, NULL, NULL, 50, 1),
+(168, NULL, 71, 50, 2),
+(169, NULL, NULL, 50, 2),
+(170, NULL, NULL, 50, 2),
+(171, NULL, 74, 50, 3),
+(172, NULL, NULL, 50, 3),
+(173, NULL, NULL, 50, 3),
+(174, NULL, NULL, 50, NULL),
+(175, NULL, NULL, 50, NULL),
+(176, NULL, NULL, 50, NULL),
+(177, NULL, 71, 51, 1),
+(178, NULL, NULL, 51, 1),
+(179, NULL, NULL, 51, 1),
+(180, NULL, 71, 51, 2),
+(181, NULL, NULL, 51, 2),
+(182, NULL, NULL, 51, 2),
+(183, NULL, 74, 51, 3),
+(184, NULL, NULL, 51, 3),
+(185, NULL, NULL, 51, 3),
+(186, NULL, 71, 51, 4),
+(187, NULL, NULL, 51, 4),
+(188, NULL, NULL, 51, 4),
+(189, NULL, 71, 52, 1),
+(190, NULL, 72, 52, 1),
+(191, NULL, NULL, 52, 1),
+(192, NULL, NULL, 52, 1),
+(193, NULL, NULL, 52, 1),
+(194, NULL, 71, 52, 2),
+(195, NULL, 76, 52, 2),
+(196, NULL, NULL, 52, 2),
+(197, NULL, NULL, 52, 2),
+(198, NULL, NULL, 52, 2),
+(199, NULL, 74, 52, 3),
+(200, NULL, NULL, 52, 3),
+(201, NULL, NULL, 52, 3),
+(202, NULL, NULL, 52, 3),
+(203, NULL, NULL, 52, 3),
+(204, NULL, 71, 52, 4),
+(205, NULL, 76, 52, 4),
+(206, NULL, NULL, 52, 4),
+(207, NULL, NULL, 52, 4),
+(208, NULL, NULL, 52, 4),
+(209, NULL, 57, 53, 1),
+(210, NULL, 58, 53, 1),
+(211, NULL, NULL, 53, 1),
+(212, NULL, NULL, 53, 1),
+(213, NULL, NULL, 53, 1),
+(214, NULL, 57, 53, 2),
+(215, NULL, 58, 53, 2),
+(216, NULL, NULL, 53, 2),
+(217, NULL, NULL, 53, 2),
+(218, NULL, NULL, 53, 2),
+(219, NULL, 59, 53, 3),
+(220, NULL, NULL, 53, 3),
+(221, NULL, NULL, 53, 3),
+(222, NULL, NULL, 53, 3),
+(223, NULL, NULL, 53, 3),
+(224, NULL, 57, 53, 4),
+(225, NULL, 58, 53, 4),
+(226, NULL, NULL, 53, 4),
+(227, NULL, NULL, 53, 4),
+(228, NULL, NULL, 53, 4),
+(229, NULL, 80, 54, 1),
+(230, NULL, 79, 54, 1),
+(232, NULL, NULL, 54, 1),
+(233, NULL, NULL, 54, 1),
+(234, NULL, 79, 54, 2),
+(235, NULL, 80, 54, 2),
+(236, NULL, 81, 54, 2),
+(237, NULL, NULL, 54, 2),
+(238, NULL, NULL, 54, 2),
+(239, NULL, 83, 54, 3),
+(240, NULL, NULL, 54, 3),
+(241, NULL, NULL, 54, 3),
+(242, NULL, NULL, 54, 3),
+(243, NULL, NULL, 54, 3),
+(244, NULL, 79, 54, 4),
+(245, NULL, 80, 54, 4),
+(246, NULL, 81, 54, 4),
+(247, NULL, NULL, 54, 4),
+(248, NULL, NULL, 54, 4);
 
 -- --------------------------------------------------------
 
@@ -1046,7 +1069,7 @@ CREATE TABLE IF NOT EXISTS `tenant` (
   `tendonvi` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_4E59C462A7A91E0B` (`domain`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `tenant`
@@ -1055,23 +1078,14 @@ CREATE TABLE IF NOT EXISTS `tenant` (
 INSERT INTO `tenant` (`id`, `hoten`, `quequan`, `CMTND`, `SDT`, `ngaysinh`, `domain`, `tendonvi`) VALUES
 (3, 'Lê Đình Thanh', 'Hà Nội', '0123456789', '0123456789', '2014-04-23', 'uet', 'Đại học công nghệ'),
 (4, 'Nguyễn Chí Thanh', 'Hà Nội', '0123456789', '0123456789', '2014-04-01', 'ulis', 'ĐH Ngoại Ngữ'),
-(6, 'Ibrahimovic', '123', '231', '42321313', '2009-01-01', 'sol', 'Khoa luật'),
-(7, 'Rooney', 'HN', '0132', '32132', '2009-01-01', 'bbc', '213132'),
-(8, 'Messi', 'Brazil', '12234', '12341', '2009-01-01', 'vnu', '234'),
-(9, 'Ibrahimovic', 'Brazil', '0132', '12341', '2009-01-01', 'abc', 'Bộ văn hóa thể thao và du lịch'),
-(10, 'Ibrahimovic', 'Brazil', '0132', '12341', '2009-01-01', 'xyz', 'Bộ văn hóa thể thao và du lịch'),
-(11, 'Ibrahimovic', 'Brazil', '0132', '12341', '2009-01-01', 'ubuntu', 'Bộ văn hóa thể thao và du lịch'),
-(12, '123', '123', '0132', '12341', '2009-01-01', 'ntu', 'ĐHQG'),
 (14, 'Ibrahimovic', '123', '0132', '12341', '1111-02-24', 'yaml', 'Khoa luật'),
-(15, 'Ibrahimovic', '123', '0132', '12341', '1111-02-24', 'xml', 'sadfdaf'),
 (16, 'Ronaldo', 'Brazil', '0132', '12341', '1111-02-24', 'html', 'Microsoft'),
-(17, 'Nguyễn Văn A', 'Hà Nội', '012914971', '01656122711', '1992-11-25', 'kateteddy', 'Lao động chân tay'),
 (18, 'Nguyễn Hữu Kết', 'Hà Nội', '012914951', '01656122711', '1992-11-25', 'coltech', 'Đại học công nghệ'),
 (19, NULL, 'Hưng Hà', '012914951', '42321313', '1111-11-24', 'ars', 'Arsenal'),
-(20, NULL, 'Brazil', '1235564', '23165', '1992-11-25', 'ibm', 'Apple'),
-(25, NULL, 'Brazil', '231', '42321313', '1111-02-25', 'lll', 'Khoa luật'),
-(26, NULL, 'Brazil', '132', '12341', '1930-01-01', 'app', 'Apple'),
-(27, NULL, 'Brazil', '132', '12341', '1930-01-01', 'samsung', 'Samsung');
+(27, NULL, 'Brazil', '132', '12341', '1930-01-01', 'samsung', 'Samsung'),
+(28, NULL, 'Mễ Trì', '12678202', '321322031', '1930-01-01', 'php', 'Hải Dương'),
+(29, NULL, 'Brazil', '12904955', '123456789', '1930-01-01', 'python', 'Bộ kế hoạch và đầu tư'),
+(30, 'Rooney', 'Brazil', '1235564', '1656122711', '1930-01-01', 'C++', 'Khoa luật');
 
 -- --------------------------------------------------------
 
@@ -1088,27 +1102,30 @@ CREATE TABLE IF NOT EXISTS `thontincanhan` (
   `pathtoimage` varchar(100) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `noiohientai` varchar(45) DEFAULT NULL,
+  `noicapcmt` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `thontincanhan`
 --
 
-INSERT INTO `thontincanhan` (`id`, `quequan`, `CMTND`, `SDT`, `ngaysinh`, `pathtoimage`, `email`, `noiohientai`) VALUES
-(1, 'Hà Nội', '0123456789', '123456789', '1958-04-22', 'uploads/avatar/bulldog.jpg', 'abc@xyz', 'Hứng Khởi'),
-(2, 'Hà Nội', NULL, '1', '1967-04-23', 'uploads/avatar/anonymous.jpg', NULL, NULL),
-(3, NULL, NULL, NULL, '2014-04-23', 'uploads/avatar/icon.png', NULL, NULL),
-(4, NULL, NULL, NULL, '2014-04-23', 'uploads/avatar/icon.png', NULL, NULL),
-(5, NULL, '0123456789', NULL, NULL, 'uploads/avatar/images.jpg', NULL, NULL),
-(6, NULL, NULL, NULL, '2014-05-04', 'uploads/avatar/bulldog.jpg', NULL, NULL),
-(7, 'Hứng Yên', '012952136', '0123456789', '1992-12-23', 'uploads/avatar/icon.png', NULL, NULL),
-(8, 'Hà Nội', '0123456789', '0123456789', '2000-05-19', NULL, NULL, NULL),
-(9, 'fdsafdas', '031321', '0132413', '1111-11-25', NULL, NULL, NULL),
-(10, 'Hà Nội', NULL, NULL, '1992-05-23', 'uploads/avatar/SaaSinCloud-rep.pdf', 'abc@xyz', 'Hứng Khởi'),
-(11, 'Hà Nội', '0123456789', '01223', '1992-04-19', 'uploads/avatar/bulldog.jpg', 'abc@xyz', 'Hứng Khởi'),
-(12, NULL, '1431245', NULL, NULL, NULL, 'abc@xyz', 'Hứng Khởi'),
-(13, NULL, '1234567898', NULL, NULL, 'uploads/avatar/images.jpg', NULL, NULL);
+INSERT INTO `thontincanhan` (`id`, `quequan`, `CMTND`, `SDT`, `ngaysinh`, `pathtoimage`, `email`, `noiohientai`, `noicapcmt`) VALUES
+(1, 'Hà Nội', '0123456789', '123456789', '1958-04-22', 'uploads/avatar/bulldog.jpg', 'abc@xyz', 'Hứng Khởi', NULL),
+(2, 'Hà Nội', NULL, '1', '1967-04-23', 'uploads/avatar/anonymous.jpg', NULL, NULL, NULL),
+(3, NULL, NULL, NULL, '2014-04-23', 'uploads/avatar/icon.png', NULL, NULL, NULL),
+(4, NULL, NULL, NULL, '2014-04-23', 'uploads/avatar/icon.png', NULL, NULL, NULL),
+(5, NULL, '0123456789', NULL, NULL, 'uploads/avatar/images.jpg', NULL, NULL, NULL),
+(6, NULL, NULL, NULL, '2014-05-04', 'uploads/avatar/bulldog.jpg', NULL, NULL, NULL),
+(7, 'Hứng Yên', '012952136', '0123456789', '1992-12-23', 'uploads/avatar/icon.png', NULL, NULL, NULL),
+(8, 'Hà Nội', '0123456789', '0123456789', '2000-05-19', NULL, NULL, NULL, NULL),
+(9, 'fdsafdas', '031321', '0132413', '1111-11-25', NULL, NULL, NULL, NULL),
+(10, 'Hà Nội', NULL, NULL, '1992-05-23', 'uploads/avatar/images.jpg', 'abc@xyz', 'Hứng Khởi', NULL),
+(11, 'Hà Nội', '0123456789', '01223', '1992-04-19', 'uploads/avatar/bulldog.jpg', 'abc@xyz', 'Hứng Khởi', NULL),
+(12, NULL, '1431245', NULL, NULL, NULL, 'abc@xyz', 'Hứng Khởi', NULL),
+(13, NULL, '1234567898', NULL, NULL, 'uploads/avatar/images.jpg', NULL, NULL, NULL),
+(14, NULL, '322345655', NULL, NULL, 'uploads/avatar/images.jpg', NULL, NULL, 'Hà Tây'),
+(15, 'Thái Bình', '123456789', '1234567891', '1966-09-15', 'uploads/avatar/images.jpg', 'abc@xyz', 'Hứng Khởi', 'Hà Tây');
 
 -- --------------------------------------------------------
 
@@ -1128,7 +1145,7 @@ CREATE TABLE IF NOT EXISTS `tinhtrangthuly` (
   KEY `IDX_33CFE5E1BA4A83C4` (`Hosotthc`),
   KEY `IDX_33CFE5E1554DDB45` (`Chiutrachnhiem`),
   KEY `IDX_33CFE5E1405A5954` (`Tiepnhan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=203 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=253 ;
 
 --
 -- Dumping data for table `tinhtrangthuly`
@@ -1144,20 +1161,9 @@ INSERT INTO `tinhtrangthuly` (`idTinhTrangThuLy`, `Time`, `Chiutrachnhiem`, `Tra
 (11, '2014-05-05 17:26:08', NULL, 1, 0, NULL),
 (12, '2014-05-06 03:24:46', NULL, 1, 0, NULL),
 (13, '2014-05-06 03:25:44', NULL, 1, 35, NULL),
-(14, '2014-05-06 04:00:53', NULL, 1, 76, NULL),
-(15, '2014-05-06 04:11:06', NULL, 1, 77, NULL),
-(16, '2014-05-06 04:20:16', NULL, 1, 78, NULL),
-(17, '2014-05-06 04:20:55', NULL, 1, 79, NULL),
-(18, '2014-05-06 04:21:43', NULL, 1, 80, NULL),
-(19, '2014-05-06 04:33:37', 53, 1, 81, NULL),
-(20, '2014-05-06 05:47:07', NULL, 2, 77, 2),
-(21, '2014-05-07 04:58:35', NULL, 2, 76, 2),
 (22, '2014-05-08 10:27:55', 57, 1, 82, NULL),
 (23, '2014-05-08 10:28:31', 57, 1, 83, NULL),
 (24, '2014-05-08 10:46:51', NULL, 2, 82, 2),
-(25, '2014-05-11 04:59:20', 52, 1, 84, NULL),
-(26, '2014-05-11 05:35:11', NULL, 2, 84, 6),
-(27, '2014-05-11 05:36:27', 52, 1, 85, NULL),
 (28, '2014-05-13 04:11:30', NULL, 2, 35, 7),
 (29, '2014-05-13 04:16:04', 20, 1, 86, NULL),
 (30, '2014-05-13 16:04:42', 20, 1, 87, NULL),
@@ -1332,7 +1338,57 @@ INSERT INTO `tinhtrangthuly` (`idTinhTrangThuLy`, `Time`, `Chiutrachnhiem`, `Tra
 (199, '2014-05-18 03:12:31', 57, 1, 147, NULL),
 (200, '2014-05-18 03:12:35', 57, 1, 148, NULL),
 (201, '2014-05-18 03:12:37', 57, 1, 149, NULL),
-(202, '2014-05-18 16:26:46', 71, 1, 150, NULL);
+(202, '2014-05-18 16:26:46', 71, 1, 150, NULL),
+(203, '2014-05-19 11:09:36', NULL, 2, 150, 14),
+(204, '2014-05-19 11:09:46', 71, 1, 151, NULL),
+(205, '2014-05-19 11:11:34', NULL, 2, 151, 15),
+(206, '2014-05-19 11:12:01', 71, 1, 152, NULL),
+(207, '2014-05-19 11:12:04', 71, 1, 153, NULL),
+(208, '2014-05-19 11:12:38', NULL, 2, 152, 16),
+(209, '2014-05-19 11:14:28', NULL, 2, 153, 17),
+(210, '2014-05-19 11:15:06', 71, 1, 154, NULL),
+(211, '2014-05-19 11:18:37', NULL, 2, 154, 18),
+(212, '2014-05-20 03:32:16', 71, 1, 155, NULL),
+(213, '2014-05-20 03:32:19', 71, 1, 156, NULL),
+(214, '2014-05-20 03:32:35', NULL, 2, 155, 14),
+(215, '2014-05-20 03:32:35', NULL, 2, 156, 14),
+(216, '2014-05-20 03:32:54', 71, 5, 151, 14),
+(217, '2014-05-20 03:32:54', 71, 5, 152, 14),
+(218, '2014-05-20 03:32:54', 71, 5, 153, 14),
+(219, '2014-05-20 03:32:54', 71, 5, 150, 14),
+(220, '2014-05-20 03:33:06', 71, 6, 150, NULL),
+(221, '2014-05-21 03:22:04', 79, 1, 157, NULL),
+(222, '2014-05-21 03:24:27', NULL, 2, 157, 19),
+(223, '2014-05-21 03:27:00', 79, 1, 158, NULL),
+(224, '2014-05-21 03:27:17', NULL, 2, 158, 19),
+(225, '2014-05-21 03:28:31', 79, 5, 157, 20),
+(226, '2014-05-21 03:30:35', 79, 5, 158, 19),
+(227, '2014-05-21 03:31:52', 79, 1, 159, NULL),
+(228, '2014-05-21 03:32:06', NULL, 2, 159, 20),
+(229, '2014-05-21 03:33:03', 79, 1, 160, NULL),
+(230, '2014-05-21 03:33:14', NULL, 2, 160, 20),
+(231, '2014-05-21 03:33:58', 79, 5, 159, 20),
+(232, '2014-05-21 03:33:58', 79, 5, 160, 20),
+(233, '2014-05-21 03:34:34', 79, 6, 157, NULL),
+(234, '2014-05-21 03:36:13', 79, 6, 158, NULL),
+(235, '2014-05-21 03:36:33', 79, 6, 159, NULL),
+(236, '2014-05-21 03:37:34', 79, 6, 160, NULL),
+(237, '2014-05-21 03:39:35', 79, 1, 161, NULL),
+(238, '2014-05-21 03:39:39', 79, 1, 162, NULL),
+(239, '2014-05-21 03:39:41', 79, 1, 163, NULL),
+(240, '2014-05-21 03:39:58', NULL, 2, 161, 20),
+(241, '2014-05-21 03:39:58', NULL, 2, 162, 20),
+(242, '2014-05-21 03:39:58', NULL, 2, 163, 20),
+(243, '2014-05-21 03:40:20', 79, 5, 161, 20),
+(244, '2014-05-21 03:40:20', 79, 5, 162, 20),
+(245, '2014-05-21 03:40:20', 79, 5, 163, 20),
+(246, '2014-05-21 03:40:30', 79, 6, 161, NULL),
+(247, '2014-05-21 03:41:28', 79, 6, 162, NULL),
+(248, '2014-05-21 03:43:25', 79, 6, 163, NULL),
+(249, '2014-05-21 04:31:39', 80, 1, 164, NULL),
+(250, '2014-05-21 04:31:57', NULL, 2, 164, 19),
+(251, '2014-05-21 04:33:18', 80, 5, 164, 19),
+(252, '2014-05-21 04:33:28', 80, 6, 164, NULL);
 
 -- --------------------------------------------------------
 
@@ -1374,7 +1430,7 @@ CREATE TABLE IF NOT EXISTS `tthc` (
   PRIMARY KEY (`idTTHC`),
   KEY `FK_TTHC_DichVu_idx` (`LinhVuc`),
   KEY `FK_TTHC_DVThuLy_idx` (`DonViThuLy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
 
 --
 -- Dumping data for table `tthc`
@@ -1387,18 +1443,9 @@ INSERT INTO `tthc` (`idTTHC`, `NameTTHC`, `LinhVuc`, `DonViThuLy`, `NoiDungThucH
 (27, 'Đi Hawoai', 9, NULL, 'hãy khóc đi khóc đi', 'giấy khám sức khỏa,200 triệu tiền hoa hồng', '2 tháng', 1),
 (28, 'xin cấp phép xây dựng bộ giao thông vận tải', 8, NULL, 'ok', 'ok', 'ok', 1),
 (29, 'Đóng bảo hiểm y tế', 9, NULL, '123', '123', '123', 1),
-(30, 'đại khái là chán', 11, NULL, 'còn lại gì sau cơn mưa', 'bây h con đường lơi ấy', '2 năm', 1),
-(31, 'chiều nay âm u quá', 11, NULL, 'fdsa', 'fadfdas', 'fasdasdf', 1),
-(32, 'fadsfdas', 12, NULL, '123', '123', 'a', 1),
-(33, 'giao thông vận tải', 13, NULL, NULL, NULL, NULL, 0),
-(34, 'kiến trúc', 12, NULL, NULL, NULL, NULL, 0),
 (35, 'giao thông vận tải', 1, NULL, '20', 'ok', 'oik', 1),
 (36, 'heroes', 6, NULL, '232', '23', '23', 1),
 (37, 'niêm yết tthc', 2, NULL, 'ok', 'ok', 'ko', 1),
-(38, '123', 15, NULL, 'bố đéo biết', 'ko cần', '2 năm', 1),
-(39, 'kiến trúc', 15, NULL, 'ok', 'ok', 'ok', 1),
-(40, 'Và anh muốn xin lỗi em', 15, NULL, 'nghỉ đê', 'àd', 'adfasd', 1),
-(41, 'Đăng ký kết hôn', 15, NULL, NULL, NULL, NULL, 0),
 (42, 'Đăng ký kết hôn', 16, NULL, 'Thực hiện thủ tục đăng ký kết hôn giữa hai công dân khác giới trong phường xã thuộc thẩm quyền', 'Giấy tờ bắt buộc gồm: CMTND của 2 công dân,sổ', '1 tháng', 1),
 (43, 'Giao thông vận tải', 17, NULL, NULL, NULL, NULL, 0),
 (44, 'kiến trúc', 17, NULL, 'Kiến trúc', 'không có', '2 tháng', 1),
@@ -1406,7 +1453,12 @@ INSERT INTO `tthc` (`idTTHC`, `NameTTHC`, `LinhVuc`, `DonViThuLy`, `NoiDungThucH
 (46, 'Mua bán bất động sản', 1, 4, 'Thực hiện quyền chuyển đôi người sử dụng nhà ở trên địa bàn quận cầu giấy', 'Gồm các giấy tờ nhà đất,giấy đăng ký kinh doa', '1 tháng', 1),
 (47, 'kiến trúc', 1, 4, 'a', 'a', 'a', 1),
 (48, 'Bán nhà giá rẻ', 18, 5, 'sdafasd', 'fdafdas', 'fasd', 1),
-(49, 'Buôn lậu', 18, 5, NULL, NULL, NULL, 0);
+(49, 'Buôn lậu', 18, 5, 'đá', 'ấd', 'fasd', 1),
+(50, 'Bán bút xóa', 18, 5, NULL, NULL, NULL, 0),
+(51, 'Thu khóa luận', 18, 5, NULL, NULL, NULL, 0),
+(52, 'giao thông vận tải', 18, 5, NULL, NULL, NULL, 0),
+(53, 'giao thông vận tải', 16, 1, NULL, NULL, NULL, 0),
+(54, 'Tiêm chủng mở rộng', 19, 6, 'Tiêm chủng free cho các cháu', 'Không cần', '1 ngày', 1);
 
 -- --------------------------------------------------------
 
@@ -1426,7 +1478,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `isActive_UNIQUE` (`isActive`),
   KEY `fk_User_Thontincanhan1_idx` (`Thontincanhan`),
   KEY `IDX_8D93D6494E59C462` (`tenant`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=76 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
 
 --
 -- Dumping data for table `user`
@@ -1440,32 +1492,9 @@ INSERT INTO `user` (`id`, `username`, `password`, `isActive`, `Thontincanhan`, `
 (23, 'admin@ulis', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 3, 4, ''),
 (24, 'staff@ulis', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 4, 4, ''),
 (26, 'major@ulis', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 4, ''),
-(28, 'admin@sol', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 6, ''),
-(29, 'admin@bbc', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 7, ''),
-(30, 'staff@bbc', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 7, ''),
-(31, 'major@bbc', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 7, ''),
-(32, 'admin@vnu', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 8, ''),
-(33, 'staff@vnu', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 8, ''),
-(34, 'major@vnu', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 8, ''),
-(35, 'leader@vnu', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 8, ''),
-(36, 'admin@abc', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 5, 9, ''),
-(37, 'admin@xyz', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 10, ''),
-(38, 'admin@ubuntu', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 11, ''),
-(39, '@ubuntu', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', NULL, NULL, 11, ''),
-(40, '@ubuntu', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', NULL, NULL, 11, ''),
-(41, 'staff', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 11, ''),
-(42, 'kate', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 11, ''),
-(44, 'staff1@ubuntu', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 11, ''),
-(45, 'admin@ntu', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 12, ''),
 (46, 'leader@uet', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 3, ''),
 (48, 'admin@yaml', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 14, ''),
-(49, 'admin@xml', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 15, ''),
 (50, 'admin@html', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 6, 16, ''),
-(51, 'admin@kateteddy', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 7, 17, ''),
-(52, 'staff1@kateteddy', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 8, 17, ''),
-(53, 'staff2@kateteddy', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 9, 17, ''),
-(54, 'major@kateteddy', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 17, ''),
-(55, 'leader@kateteddy', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 17, ''),
 (56, 'admin@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 12, 18, ''),
 (57, 'staff1@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 10, 18, ''),
 (58, 'staff2@coltech', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 18, ''),
@@ -1477,15 +1506,22 @@ INSERT INTO `user` (`id`, `username`, `password`, `isActive`, `Thontincanhan`, `
 (64, 'hohuubinh@ars', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 19, 'Hồ Hữu Bính'),
 (65, 'nguyenvancuong@ars', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 19, 'Nguyễn Văn Cương'),
 (66, 'hoangvanthang@ars', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 19, 'Hoàng Văn Thắng'),
-(67, 'admin@ibm', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 20, 'Cù Trọng Xoay'),
-(68, 'admin@lll', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 25, 'Cù Trọng Xoay'),
-(69, 'admin@app', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 26, 'Cù Trọng Xoay'),
 (70, 'admin@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 13, 27, 'Cù Trọng Xoay'),
-(71, 'staff@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 27, 'Hoàng Văn Thắng'),
+(71, 'staff@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 14, 27, 'Hoàng Văn Thắng'),
 (72, 'staff2@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 27, 'Hồ Hữu Bính'),
 (73, 'major@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 27, 'Phạm Khánh Huyền'),
 (74, 'leader@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 27, 'Nguyễn Thị Loan'),
-(75, 'super@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 27, 'SuperHero');
+(75, 'super@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 27, 'SuperHero'),
+(76, 'staff1@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 27, 'Nguyễn Thị Loan'),
+(77, 'staff2@samsung', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 27, 'Hoàng Văn Thắng'),
+(78, 'admin@php', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 28, 'Hoàng văn thắng'),
+(79, 'staff1@php', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 15, 28, 'Nguyễn Văn Một'),
+(80, 'staff2@php', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 28, 'Nguyễn Thị Hai'),
+(81, 'staff3@php', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 28, 'Trần Văn Ba'),
+(82, 'major@php', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 28, 'Trưởng Văn Một'),
+(83, 'leader@php', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 28, 'Nguyễn Tấn dũng'),
+(84, 'admin@python', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 29, 'Nguyễn hữu kết'),
+(85, 'admin@C++', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 30, 'Rooney');
 
 -- --------------------------------------------------------
 
@@ -1508,55 +1544,42 @@ CREATE TABLE IF NOT EXISTS `user_has_role` (
 INSERT INTO `user_has_role` (`User_id`, `Role_id`) VALUES
 (1, 1),
 (23, 1),
-(28, 1),
-(29, 1),
-(32, 1),
-(36, 1),
-(37, 1),
-(38, 1),
-(45, 1),
 (48, 1),
-(49, 1),
 (50, 1),
-(51, 1),
 (56, 1),
 (63, 1),
-(67, 1),
-(68, 1),
 (70, 1),
 (75, 1),
+(78, 1),
+(84, 1),
+(85, 1),
 (20, 2),
 (24, 2),
-(30, 2),
-(33, 2),
-(41, 2),
-(42, 2),
-(52, 2),
-(53, 2),
 (57, 2),
 (58, 2),
 (61, 2),
 (62, 2),
 (64, 2),
-(69, 2),
 (71, 2),
 (72, 2),
 (75, 2),
+(76, 2),
+(77, 2),
+(79, 2),
+(80, 2),
+(81, 2),
 (21, 3),
 (26, 3),
-(31, 3),
-(34, 3),
-(54, 3),
 (60, 3),
 (65, 3),
 (73, 3),
 (75, 3),
-(35, 4),
+(82, 3),
 (46, 4),
-(55, 4),
 (59, 4),
 (66, 4),
-(74, 4);
+(74, 4),
+(83, 4);
 
 -- --------------------------------------------------------
 
@@ -1601,7 +1624,7 @@ CREATE TABLE IF NOT EXISTS `vanbanlienquan` (
   `Tthc` int(11) DEFAULT NULL,
   PRIMARY KEY (`idVanBanLienQuan`),
   KEY `IDX_C328B7844F4C5628` (`Tthc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `vanbanlienquan`
@@ -1614,22 +1637,18 @@ INSERT INTO `vanbanlienquan` (`idVanBanLienQuan`, `TenVBLQ`, `PathToVBLQ`, `Tthc
 (18, '123', 'uploads/attachments/icon.png', 28),
 (19, '789', 'uploads/attachments/plupload_error.png', 29),
 (20, '1111', 'uploads/attachments/plupload_error.png', 29),
-(21, 'a nhìn', 'uploads/attachments/ok (1).sql', 30),
-(22, 'àdafds', 'uploads/attachments/01_td (1).pdf', 31),
-(23, '123', 'uploads/attachments/ok (1).sql', 32),
 (24, '123', 'uploads/attachments/[kickass.to]cracking.the.new.gmat.2013.edition.pdf.epub.mobi.torrent', 35),
 (25, '3232', 'uploads/attachments/[kickass.to]brick.lane.limited.dvdrip.xvid.done.torrent', 36),
 (28, 'abc', NULL, 37),
-(29, 'văn bản nhà đất', NULL, 38),
-(30, 'nhà đất', NULL, 39),
-(31, 'giấy tờ chứng thực', NULL, 40),
 (32, 'Nghị định 36CQ về việc đăng ký kết hôn', 'uploads/attachments/zoom.png', 42),
 (33, 'Quyết định của chủ tịch UBND Xã về việc đăng ký kết hôn', 'uploads/attachments/images.jpg', 42),
 (34, 'VB nhà nước', NULL, 44),
 (35, 'Nghị định 36CQ về việc mua bán nhà', NULL, 46),
 (36, 'Nghị định 91 EC về việc chuyển nhượng nhà ở', NULL, 46),
 (37, 'jjj', 'uploads/attachments/SaaSinCloud-rep.pdf', 47),
-(38, '12131', NULL, 48);
+(38, '12131', NULL, 48),
+(39, 'ab', 'uploads/attachments/SaaSinCloud-rep.pdf', 49),
+(40, 'Thông báo của bộ', 'uploads/attachments/V_L0_01464.pdf', 54);
 
 --
 -- Constraints for dumped tables
