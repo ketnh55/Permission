@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2014 at 02:07 AM
+-- Generation Time: May 22, 2014 at 04:27 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -1026,7 +1026,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `name` varchar(45) NOT NULL,
   `role` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `role`
@@ -1036,7 +1036,8 @@ INSERT INTO `role` (`id`, `name`, `role`) VALUES
 (1, 'Quản trị viên', 'ROLE_ADMIN'),
 (2, 'Chuyên viên BP1C', 'ROLE_STAFF'),
 (3, 'Trưởng BP1C', 'ROLE_MAJOR'),
-(4, 'Lãnh đạo', 'ROLE_LEADER');
+(4, 'Lãnh đạo', 'ROLE_LEADER'),
+(5, 'Quản trị hệ thống', 'ROLE_SUPER_ADMIN');
 
 -- --------------------------------------------------------
 
@@ -1478,7 +1479,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `isActive_UNIQUE` (`isActive`),
   KEY `fk_User_Thontincanhan1_idx` (`Thontincanhan`),
   KEY `IDX_8D93D6494E59C462` (`tenant`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
 
 --
 -- Dumping data for table `user`
@@ -1521,7 +1522,8 @@ INSERT INTO `user` (`id`, `username`, `password`, `isActive`, `Thontincanhan`, `
 (82, 'major@php', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 28, 'Trưởng Văn Một'),
 (83, 'leader@php', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 28, 'Nguyễn Tấn dũng'),
 (84, 'admin@python', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 29, 'Nguyễn hữu kết'),
-(85, 'admin@C++', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 30, 'Rooney');
+(85, 'admin@C++', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 30, 'Rooney'),
+(87, 'admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 3, '');
 
 -- --------------------------------------------------------
 
@@ -1579,7 +1581,8 @@ INSERT INTO `user_has_role` (`User_id`, `Role_id`) VALUES
 (59, 4),
 (66, 4),
 (74, 4),
-(83, 4);
+(83, 4),
+(87, 5);
 
 -- --------------------------------------------------------
 
